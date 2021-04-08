@@ -20,7 +20,7 @@ public class Vaccinated extends Person{
 		return super.toString() + "vaccinationTime: "+ this.vaccinationTime;
 	}
 	
-	public abstract double contagionProbability() {
+	public double contagionProbability() {
 		
 	}
 	

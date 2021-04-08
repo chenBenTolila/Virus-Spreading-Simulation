@@ -5,7 +5,7 @@ import virus.IVirus;
 
 public class Sick extends Person{
 	
-	public abstract double contagionProbability() {
+	public double contagionProbability() {
 		
 	}
 	

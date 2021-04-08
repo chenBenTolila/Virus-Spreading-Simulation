@@ -9,7 +9,7 @@ public class Healthy extends Person{
 		super(age, location, settlement);
 	}
 	
-	public abstract double contagionProbability() {
+	public double contagionProbability() {
 		
 	}
 	
