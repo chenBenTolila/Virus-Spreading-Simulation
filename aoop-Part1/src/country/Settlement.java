@@ -18,7 +18,7 @@ public class Settlement {
 		for(int i=0; i < numPeople; i++)
 		{
 			// call function who randomally create a person and then call ass person  function
-			
+			addPerson(p);
 		}
 		// adding an array of people
 	}
