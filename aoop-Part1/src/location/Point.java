@@ -1,5 +1,9 @@
 package location;
 
 public class Point {
-	// hello
+	
+	private int x;
+	private int y;
+	
+	// chen
 }
