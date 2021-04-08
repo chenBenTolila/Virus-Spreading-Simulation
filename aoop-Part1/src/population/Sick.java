@@ -1,7 +1,13 @@
 package population;
+import country.Settlement;
+import location.Point;
 import virus.IVirus;
 
 public class Sick extends Person{
+	
+	public abstract double contagionProbability() {
+		
+	}
 	
 	public boolean tryToDie() {
 		
@@ -11,9 +17,14 @@ public class Sick extends Person{
 		
 	}
 	
-	public Sick(long contagiousTime, IVirus virus) {
+	public Sick(int age, Point location, Settlement settlement, long contagiousTime, IVirus virus) {
+		super(age, location, settlement);
 		this.contagiousTime=contagiousTime;
 		this.virus=virus;
+	}
+	
+	public String toString(){
+		return super.toString() + "contagiousTime: "+ this.contagiousTime + "virus: "+ this.virus
 	}
 	
 	private  long contagiousTime;

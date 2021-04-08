@@ -10,5 +10,9 @@ public class Convalescent extends Person{
 		this.virus =virus;
 	}
 	
-	private  IVirus virus;
+	public abstract double contagionProbability() {
+		
+	}
+	
+	private IVirus virus;
 }

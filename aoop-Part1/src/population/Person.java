@@ -3,7 +3,7 @@ import location.Point;
 import country.Settlement;
 import virus.IVirus;
 
-public class Person {
+public abstract class Person {
 	/**
 	 * 
 	 * @param age - person age
@@ -12,18 +12,20 @@ public class Person {
 	 */ 
 	public Person(int age, Point location, Settlement settlement) {
 		this.age= age;
-		this.location= location;
-		this.settlement=settlement;
+		this.location= new Location(location);
+		this.settlement= new Settlement(settlement);
 	}
 	
-	public double contagionProbability() {
-		//
-	}
+	public abstract double contagionProbability();
+	
 	
 	public Person contagion(IVirus IV) {
 		//
 	}
 	
+	public String toString(){
+		return "age:"+ this.age + "location: " + this.location.toString() +"settlement: " + this.settlement.getSettlementName()
+	}
 	
 	private int age;
 	private Point location;
