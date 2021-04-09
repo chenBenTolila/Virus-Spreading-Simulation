@@ -13,7 +13,7 @@ public class Healthy extends Person{
 	 * return the basic reproduction number 
 	 */
 	public double contagionProbability() {
-		return 1.0;
+		return 1;
 	}
 	
 	public Person vaccinate() {

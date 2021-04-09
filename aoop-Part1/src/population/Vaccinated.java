@@ -1,4 +1,5 @@
 package population;
+import simulation.Clock;
 
 import country.Settlement;
 import location.Point;
@@ -20,8 +21,20 @@ public class Vaccinated extends Person{
 		return super.toString() + "vaccinationTime: "+ this.vaccinationTime;
 	}
 	
+	
+	/**
+	 * the method returns the probabilty of the person to get infected in a virus
+	 */
 	public double contagionProbability() {
-		
+		long t = Clock.now() - m_vaccinationTime;
+		if(t<21)
+		{
+			
+		}
+		else
+		{
+			
+		}
 	}
 	
 	/**
@@ -32,5 +45,5 @@ public class Vaccinated extends Person{
 		return true;
 	}
 	
-	private long vaccinationTime; // maybe add final
+	private long m_vaccinationTime; // maybe add final
 }

@@ -11,7 +11,7 @@ public class Convalescent extends Person{
 	}
 	
 	public double contagionProbability() {
-		
+		return 0.2;
 	}
 	
 	

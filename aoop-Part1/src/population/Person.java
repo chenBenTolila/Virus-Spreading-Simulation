@@ -19,17 +19,29 @@ public abstract class Person {
 	
 	public abstract double contagionProbability();
 	
-	public abstract boolean checkIfHealthy();   // we added
-	
 	public Person contagion(IVirus IV) {
 		//
 	}
 	
-	public String toString(){
-		return "age:"+ this.age + "location: " + this.location.toString() +"settlement: " + this.settlement.getSettlementName()
+	// we added
+	public abstract boolean checkIfHealthy();   
+	
+	/**
+	 * 
+	 * @return the age of the person
+	 */
+	public int getAge()
+	{
+		return m_age;
 	}
 	
-	private int age;
-	private Point location;
-	private Settlement settlement;
+	public double distance()
+	
+	public String toString(){
+		return "age:"+ m_age + "location: " + m_location.toString() +"settlement: " + this.settlement.getSettlementName()
+	}
+	
+	private int m_age;
+	private Point m_location;
+	private Settlement m_settlement;
 }
