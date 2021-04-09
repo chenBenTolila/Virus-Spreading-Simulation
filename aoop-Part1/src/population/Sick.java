@@ -16,6 +16,10 @@ public class Sick extends Person{
 		return 1;
 	}
 	
+	
+	/**
+	 * return true if the person in not infected in the virus
+	 */
 	public boolean checkIfHealthy()
 	{
 		return false;
