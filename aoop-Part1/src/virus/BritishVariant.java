@@ -16,7 +16,7 @@ public class BritishVariant implements IVirus {
 		 double probToSick;
 			if(p2.checkIfHealthy()) {
 				probToSick = p2.contagionProbability()*min(1,0.14*Math.pow(Math.E, 2-0.25*p1.getDistance(p2)));
-				if(p2.contagionProbability() > probToSick)
+				if(contagionProbability(p2) > probToSick)
 					return false;
 				else 
 					return true;

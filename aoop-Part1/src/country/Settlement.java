@@ -33,6 +33,9 @@ public class Settlement {
 		return m_name;
 	}
 	
+	public void setRamzorColor(RamzorColor rc) {
+		m_ramzorColor = rc;
+	}
 	
 	// not finished
 	
