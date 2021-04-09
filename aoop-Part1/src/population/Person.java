@@ -11,7 +11,7 @@ public abstract class Person {
 	 * @param settlement - settlement of person
 	 */ 
 	public Person(int age, Point location, Settlement settlement) {
-		this.age = age;
+		this.age = age; 
 		this.location= new Location(location);
 		this.settlement= new Settlement(settlement);
 	}
