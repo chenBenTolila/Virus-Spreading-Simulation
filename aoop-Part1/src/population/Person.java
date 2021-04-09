@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package population;
 import location.Point;
 import country.Settlement;
@@ -45,3 +46,5 @@ public abstract class Person {
 	private Point m_location;
 	private Settlement m_settlement;
 }
+=======
+>>>>>>> branch 'main' of https://github.com/chenBenTolila/aoop1.git
