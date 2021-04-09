@@ -24,5 +24,10 @@ public class Vaccinated extends Person{
 		
 	}
 	
+	public boolean checkIfHealthy()
+	{
+		return true;
+	}
+	
 	private long vaccinationTime; // maybe add final
 }

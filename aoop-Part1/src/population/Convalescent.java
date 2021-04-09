@@ -14,5 +14,10 @@ public class Convalescent extends Person{
 		
 	}
 	
+	public boolean checkIfHealthy()
+	{
+		return true;
+	}
+	
 	private IVirus virus;
 }

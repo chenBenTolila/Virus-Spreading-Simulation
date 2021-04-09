@@ -1,17 +1,15 @@
 package simulation;
 
 public class Clock {
-	/**
-	 * 
-	 * @return
-	 */
+	
 	public static long now() {
-		
+		return currentTime;
 	}
 	
 	public static void nextTick() {
-		
+		currentTime++;
 	}
+	
 	
 	private static long currentTime;
 }

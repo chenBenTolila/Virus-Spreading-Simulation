@@ -9,11 +9,19 @@ public class Healthy extends Person{
 		super(age, location, settlement);
 	}
 	
+	/**
+	 * return the basic reproduction number 
+	 */
 	public double contagionProbability() {
-		
+		return 1.0;
 	}
 	
 	public Person vaccinate() {
 		//
+	}
+	
+	public boolean checkIfHealthy()
+	{
+		return true;
 	}
 }

@@ -16,8 +16,10 @@ public abstract class Person {
 		this.settlement= new Settlement(settlement);
 	}
 	
+	
 	public abstract double contagionProbability();
 	
+	public abstract boolean checkIfHealthy();   // we added
 	
 	public Person contagion(IVirus IV) {
 		//
