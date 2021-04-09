@@ -21,7 +21,7 @@ public class BritishVariant implements IVirus {
 				else 
 					return true;
 			}
-			return false; // check what to return
+			return false; // check what to return///
 	 }
 
 	 //boolean tryToKill(Sick){}
