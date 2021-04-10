@@ -3,7 +3,7 @@ package location;
 public class Size {
 	
 	/**
-	 * Ctor of Size class
+	 * constructor of Size class
 	 * @param width - width input
 	 * @param height - height input
 	 */
@@ -29,7 +29,7 @@ public class Size {
 	 */
 	public String toString() 
 	{
-		return "(" + m_width + ", " + m_height + ")";
+		return "width: " + m_width + ", heigth: " + m_height;
 	}
 	
 	/**

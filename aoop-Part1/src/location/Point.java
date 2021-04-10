@@ -3,7 +3,7 @@ package location;
 
 public class Point {
 	/**
-	 * Ctor of Point class
+	 * constructor of Point class
 	 * @param x - is the x coordinate of the point
 	 * @param y - is the y coordinate of the point
 	 */
@@ -59,6 +59,15 @@ public class Point {
 		return m_y;
 	}
 	
+	/**
+	 * 
+	 * @param p2
+	 * @return the distance between two points
+	 */
+	public double distanceBetweenTwoPoints(Point p2)
+	{
+		return Math.sqrt(Math.pow((m_y - p2.m_y),2) + Math.pow((m_x - p2.m_x),2));
+	}
 	
 	private int m_x;
 	private int m_y;

@@ -50,8 +50,8 @@ public abstract class Person {
 	//	m_settlement = new Settlement(s); // do cctor to settlement class
 	//}
 	
-	public double getDistance(Person p) {
-		return Math.sqrt(Math.pow((p.m_location.getX()-this.m_location.getX()),2)+Math.pow((p.m_location.getY()-this.m_location.getY()),2));
+	public double distance(Person p) {
+		return m_location.distanceBetweenTwoPoints(p.m_location);
 	}
 	
 	public String toString(){

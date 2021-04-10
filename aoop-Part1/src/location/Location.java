@@ -13,10 +13,22 @@ public class Location {
 		m_size = new Size(s);
 	}
 	
+	/**
+	 * copy constructor
+	 * @param l the location to be copied
+	 */
 	public Location(Location l)
 	{
 		m_position = new Point(l.m_position);
 		m_size = new Size(l.m_size);
+	}
+	
+	/**
+	 * return the location in string form
+	 */
+	public String toString() 
+	{
+		return "position:  " + m_position.toString() + "\nsize: " + m_size.toString();
 	}
 	
 	/**
