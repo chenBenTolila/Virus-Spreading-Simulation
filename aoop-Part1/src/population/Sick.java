@@ -31,16 +31,16 @@ public class Sick extends Person{
 	}
 	
 	public boolean tryToDie() {
-		
+		return m_virus.tryToKill(this);
 	}
 	
 	public Person recover() {
-		
+		return new Convalescent(this.getAge(), this.getLocation(), this.getSettlement(),m_virus);
 	}
 	
 	
 	public String toString(){
-		return super.toString() + "contagiousTime: "+ this.contagiousTime + "virus: "+ this.virus
+		return super.toString() + "contagiousTime: "+ m_contagiousTime + "virus: "+ m_virus;
 	}
 	
 	private long m_contagiousTime;

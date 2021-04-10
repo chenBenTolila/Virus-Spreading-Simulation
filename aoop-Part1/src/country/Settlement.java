@@ -1,8 +1,9 @@
 package country;
 import location.*;
+import population.Person;
 
 
-public class Settlement {
+public abstract class Settlement {
 	
 	/**
 	 * the constructor
@@ -23,7 +24,17 @@ public class Settlement {
 		// adding an array of people
 	}
 	
-	
+	//cctor
+	public Settlement(Settlement s) {
+		m_name = s.name;
+		m_location = new Location(location);   // to build a copy constructor in location or to get point and size
+		m_ramzorColor = s.ramzorColor;
+		for(int i=0; i < numPeople; i++)
+		{
+			// call function who randomally create a person and then call ass person  function
+			addPerson(p);
+		}
+	}
 	/**
 	 * 
 	 * @return the settlement name
@@ -35,6 +46,10 @@ public class Settlement {
 	
 	public void setRamzorColor(RamzorColor rc) {
 		m_ramzorColor = rc;
+	}
+	
+	public RamzorColor getRamzorColor() { //??????
+		return m_ramzorColor;
 	}
 	
 	// not finished
@@ -53,22 +68,29 @@ public class Settlement {
 		
 	}
 	
-	public RamzorColor calculateRamzorGrade()  // calculate the new color of the settlement
-	{
-	}
+	public abstract RamzorColor calculateRamzorGrade();  // calculate the new color of the settlement
 	
-	public double contagiousPercent()   // 
-	{}
+	
+	public double contagiousPercent(){
+		int len= m_people.length;
+		int countSicks=0;
+		for(int i=0; i<len; ++i) {
+			if(m_people[i].checkIfHealthy()==false)
+				countSicks ++; 
+		}
+		return countSicks/len;
+	}
 	
 	public Point randomLocation()
 	{}
  
-	public boolean addPerson(Person p)   
-	{}
-	
-	public boolean transferPerson(Person p, Settlement s)
-	{
+	public boolean addPerson(Person p){
 		
+	}
+	
+	public boolean transferPerson(Person p, Settlement s){
+		
+		return true;
 	}
 	
 	
@@ -78,5 +100,6 @@ public class Settlement {
 	// need to add an array of people 
 	private Person[] m_people;
 	private RamzorColor m_ramzorColor;
+	protected double m_c; // ?????
 	
 }

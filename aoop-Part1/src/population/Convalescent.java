@@ -7,7 +7,7 @@ public class Convalescent extends Person{
 	
 	public Convalescent(int age, Point location, Settlement settlement, IVirus virus) {
 		super(age, location, settlement);
-		this.virus =virus;
+		m_virus =virus;
 	}
 	
 	public double contagionProbability() {
@@ -23,5 +23,9 @@ public class Convalescent extends Person{
 		return true;
 	}
 	
-	private IVirus virus;
+	public String toString(){
+		return super.toString() + "virus: "+ m_virus;
+	}
+	
+	private IVirus m_virus;
 }

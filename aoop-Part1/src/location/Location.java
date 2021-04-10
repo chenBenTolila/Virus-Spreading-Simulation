@@ -13,6 +13,12 @@ public class Location {
 		m_size = new Size(s);
 	}
 	
+	public Location(Location l)
+	{
+		m_position = new Point(l.m_position);
+		m_size = new Size(l.m_size);
+	}
+	
 	/**
 	 * return true if the object has the same values
 	 */

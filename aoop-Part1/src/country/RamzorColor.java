@@ -16,5 +16,17 @@ public enum RamzorColor {
 		return this.value;
 	}
 	
+	public RamzorColor getColor(double PromotesDisease) {
+		if(PromotesDisease < GREEN.getValue())
+			return GREEN;
+		else if(PromotesDisease < RED.getValue())
+			return RED;
+		else if(PromotesDisease < YELLOW.getValue())
+			return YELLOW;
+		else
+			return ORANGE;
+		
+	}
+	
 	private final double value;
 }

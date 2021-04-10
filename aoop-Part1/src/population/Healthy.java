@@ -1,5 +1,6 @@
 package population;
 import location.Point;
+import simulation.Clock;
 import country.Settlement;
 
 
@@ -17,7 +18,7 @@ public class Healthy extends Person{
 	}
 	
 	public Person vaccinate() {
-		//
+		return new Vaccinated(this.getAge(), this.getLocation(), this.getSettlement(), Clock.now());
 	}
 	
 
@@ -27,5 +28,9 @@ public class Healthy extends Person{
 	public boolean checkIfHealthy()
 	{
 		return true;
+	}
+	
+	public String toString(){
+		return super.toString();
 	}
 }
