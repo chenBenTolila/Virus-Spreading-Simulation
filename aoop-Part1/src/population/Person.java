@@ -1,5 +1,4 @@
 package population;
-import location.Location;
 import location.Point;
 import simulation.Clock;
 import country.Settlement;
