@@ -27,7 +27,7 @@ public class City extends Settlement{
 	}
 	
 	/**
-	 * return city in string form
+	 * return city in string form 
 	 */
 	public String toString(){
 		return "City " + super.toString();
