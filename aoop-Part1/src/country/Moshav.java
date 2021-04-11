@@ -4,7 +4,7 @@ import location.Location;
 public class Moshav extends Settlement{
 
 	/**
-	 * constractor
+	 * constructor
 	 * @param name- name of settlement
 	 * @param location - location of settlement
 	 * @param ramzorColor - ramzor color of settlement

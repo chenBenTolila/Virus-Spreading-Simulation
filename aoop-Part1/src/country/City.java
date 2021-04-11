@@ -5,8 +5,8 @@ import location.Location;
 public class City extends Settlement{
 	
 	/**
-	 * constractor
-	 * @param name - neme of settlement
+	 * constructor
+	 * @param name - name of settlement
 	 * @param location - location of settlement
 	 * @param ramzorColor - ramzor color of settlement
 	 * @param numPeople - number of people in settlement
