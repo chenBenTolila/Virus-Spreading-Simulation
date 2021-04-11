@@ -120,7 +120,12 @@ public abstract class Settlement {
 	{
 		if(getPersonIndex(p) != -1)
 		{
-			Person[] newPersonArr = new Person[]
+			Person[] newArray = new Person[m_people.length - 1];
+			;
+			
+			for(i=0; i<m_people.length; ++i)
+				if()
+					
 		}
 		else
 			return false;
