@@ -19,12 +19,13 @@ public class SimulationFile {
 
 	}
 	
-	public Person createPerson(Settelment s)
+	public Person intizializePersonAge(Settelment s)
 	{
 		int y;
 		int x;
 		Random rand = new Random();
-		y = rand.nextInt(5);
+		y = rand.nextInt(5);  // check if y is real or integer ///
+		
 		
 	}
 
