@@ -3,14 +3,32 @@ import location.Location;
 
 public class Moshav extends Settlement{
 
-	//ctor
+	/**
+	 * constractor
+	 * @param name- name of settlement
+	 * @param location - location of settlement
+	 * @param ramzorColor - ramzor color of settlement
+	 * @param numPeople- number of people in settlement
+	 */
 	public Moshav(String name, Location location, RamzorColor ramzorColor, int numPeople) {
 		super(name, location, ramzorColor, numPeople);
 	}
 	
-	public RamzorColor calculateRamzorGrade()  // calculate the new color of the settlement
+	/**
+	 * calculate the new ramzor color of settlement
+	 */
+	public RamzorColor calculateRamzorGrade()  
 	{
-		m_c= 0.3+ 3*Math.pow((Math.pow(1.2, m_c)*contagiousPercent()-0.35),5);
-		return getRamzorColor().getColor(m_c); // ??????
+		double newColor;
+		newColor= 0.3+ 3*Math.pow((Math.pow(1.2, getRamzorColor().getColorValue())*contagiousPercent()-0.35),5);
+		setRamzorColor(colorByValue(newColor));
+		return getRamzorColor(); 
+	}
+	
+	/**
+	 * return moshav in string form
+	 */
+	public String toString(){
+		return "Moshav " + super.toString();
 	}
 }
