@@ -1,7 +1,7 @@
 package country;
 import location.*;
 import population.Person;
-
+import java.util.Random;
 
 public abstract class Settlement {
 	
@@ -63,7 +63,7 @@ public abstract class Settlement {
 	
 	
 
-	public String toString()   // check if needed 
+	public String toString()   
 	{
 		
 	}
@@ -71,27 +71,51 @@ public abstract class Settlement {
 	public abstract RamzorColor calculateRamzorGrade();  // calculate the new color of the settlement
 	
 	
+	/**
+	 * 
+	 * @return the ratio of sick people in the settlement
+	 */
 	public double contagiousPercent(){
-		int len= m_people.length;
-		int countSicks=0;
+		int peopleCount= m_people.length;
+		double countSicks=0;
 		for(int i=0; i<len; ++i) {
 			if(m_people[i].checkIfHealthy()==false)
 				countSicks ++; 
 		}
-		return countSicks/len;
+		return countSicks/peopleCount;   // check if the result is double type ////
 	}
 	
+	
+	/**
+	 * the function creates a random point in the settlement area
+	 * @return the random point
+	 */
 	public Point randomLocation()
 	{
+		Random rand = new Random();
 		int xMin = m_location.getPointX();
 		int yMax = m_location.getPointY();
-		int xMax;
-		int yMin;
-		
+		int xMax = xMin + m_location.getSizeWidth();
+		int yMin = yMax - m_location.getSizeHeight();
+		Point randPoint = new Point(rand.nextInt(xMax- xMin +1) + xMin, rand.nextInt(yMax- yMin +1) + yMin);
+		return randPoint;
 	}
  
 	public boolean addPerson(Person p){
-		
+		Person newP = new Person(p);
+		Person[] newArray = new Person[m_people.length + 1];
+		int i;
+		for(i=0; i < m_people.length; ++i)
+			newArray[i] = m_people[i];
+		newArray[i] = newP;
+		m_people = newArray;
+	}
+	
+	
+	public int getPersonIndex(Person p)
+	{
+		int i;
+		for(i = 0; i< m_people.length; ++i)
 	}
 	
 	public boolean transferPerson(Person p, Settlement s){
