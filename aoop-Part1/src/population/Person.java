@@ -19,7 +19,7 @@ public abstract class Person {
 	}
 	
 	/**
-	 * cctor
+	 * copy constructor
 	 * @param p get person
 	 */
 	public Person(Person p) {
