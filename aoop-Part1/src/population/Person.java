@@ -93,7 +93,7 @@ public abstract class Person {
 	public boolean equals(Object o){
 		boolean ans = false;
 		if ((o instanceof Person))
-			ans = (m_location.equals(((Person)o).m_location)) && (m_age == ((Person)o).m_age));
+			ans = (m_location.equals(((Person)o).m_location)) && (m_age == ((Person)o).m_age);
 		return ans;
 	}
 	
