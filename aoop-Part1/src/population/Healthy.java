@@ -5,7 +5,12 @@ import country.Settlement;
 
 
 public class Healthy extends Person{
-	
+	/**
+	 * ctor
+	 * @param age - keep the age of healthy person
+	 * @param location - keep the location of healthy person
+	 * @param settlement - keep the settlement of healthy person
+	 */
 	public Healthy(int age, Point location, Settlement settlement) {
 		super(age, location, settlement);
 	}
@@ -16,7 +21,10 @@ public class Healthy extends Person{
 	public double contagionProbability() {
 		return 1;
 	}
-	
+	/**
+	 * make the healthy person to vaccinate
+	 * @return return vaccinate person
+	 */
 	public Person vaccinate() {
 		return new Vaccinated(this.getAge(), this.getLocation(), this.getSettlement(), Clock.now());
 	}
@@ -29,7 +37,11 @@ public class Healthy extends Person{
 	{
 		return true;
 	}
-	
+	 
+	 /**
+	  * return the healthy person in string form
+	  */
+
 	public String toString(){
 		return super.toString();
 	}

@@ -5,21 +5,24 @@ import location.Point;
 
 public class Vaccinated extends Person{
 	/***
-	 * 
-	 * @param age
-	 * @param location
-	 * @param settlement
-	 * @param vaccinationTime
+	 *  ctor
+	 * @param age - vaccinated person age
+	 * @param location - location of vaccinated
+	 * @param settlement - settlement of vaccinated
+	 * @param vaccinationTime - the moment get vaccinated
 	 */
 	public Vaccinated(int age, Point location, Settlement settlement, long vaccinationTime) {
 		super(age, location, settlement);
 		m_vaccinationTime= vaccinationTime;
 	}
-	
+	 
+	 /**
+	  * return the vaccinated person in string form
+	  */
+
 	public String toString(){
 		return super.toString() + "vaccinationTime: "+ m_vaccinationTime;
 	}
-	
 	
 	/**
 	 * the method returns the probabilty of the person to get infected in a virus
@@ -43,6 +46,6 @@ public class Vaccinated extends Person{
 	{
 		return true;
 	}
-	
-	private long m_vaccinationTime; // maybe add final
+	 // data members 
+	private long m_vaccinationTime; // the moment get vaccinated
 }
