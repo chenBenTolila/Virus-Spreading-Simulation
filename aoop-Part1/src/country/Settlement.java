@@ -25,6 +25,9 @@ public abstract class Settlement {
 	}
 	
 	
+	
+	
+	
 	/**
 	 * 
 	 * @return the settlement name

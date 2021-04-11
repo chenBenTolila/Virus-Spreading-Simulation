@@ -1,5 +1,7 @@
 package io;
 import java.io.*;
+import population.Person;
+import java.util.Random;
 
 
 public class SimulationFile {
@@ -16,5 +18,17 @@ public class SimulationFile {
 		}
 
 	}
+	
+	public Person createPerson(Settelment s)
+	{
+		int y;
+		int x;
+		Random rand = new Random();
+		y = rand.nextInt(5);
+		
+	}
 
+	
+	public static double deviation = 6;
+	public static double mean = 9;
 }
