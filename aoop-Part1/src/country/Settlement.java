@@ -82,7 +82,11 @@ public abstract class Settlement {
 	}
 	
 	public Point randomLocation()
-	{}
+	{
+		int xMin = m_location.getPointX();
+		int yMax = m_location.getPointY();
+		int xMax;
+	}
  
 	public boolean addPerson(Person p){
 		
