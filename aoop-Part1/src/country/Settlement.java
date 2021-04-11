@@ -86,6 +86,8 @@ public abstract class Settlement {
 		int xMin = m_location.getPointX();
 		int yMax = m_location.getPointY();
 		int xMax;
+		int yMin;
+		
 	}
  
 	public boolean addPerson(Person p){
