@@ -15,7 +15,7 @@ public abstract class Settlement {
 	{
 		m_name = name;
 		m_location = new Location(location);   // to build a copy constructor in location or to get point and size
-		m_ramzorColor = ramzorColor;
+		m_ramzorColor = new RamzorColor();
 		for(int i=0; i < numPeople; i++)
 		{
 			// call function who randomally create a person and then call ass person  function
@@ -34,19 +34,25 @@ public abstract class Settlement {
 		return m_name;
 	}
 	
-	public void setRamzorColor(RamzorColor rc) {
+	public void SetRamzorColor(RamzorColor rc)
+	{
 		m_ramzorColor = rc;
 	}
 	
-	public RamzorColor getRamzorColor() { //??????
+	/**
+	 * 
+	 * @return
+	 */
+	public RamzorColor getRamzorColor() { 
 		return m_ramzorColor;
 	}
 	
-	
-	public boolean equals(Object o) // check if needed
+	public void setRamzorColor(RamzorColor rc)
 	{
-		
+		m_ramzorColor = rc;
 	}
+	
+	
 	
 	
 
@@ -116,16 +122,24 @@ public abstract class Settlement {
 		return -1;		
 	}
 	
-	private boolean removePersonfromArray(Person p)
+	/**
+	 * the method removes p from the settlement people array
+	 * @param p - a person
+	 * @return return if the method succeed to remove or not
+	 */
+	private boolean removePersonfromArr(Person p)
 	{
 		if(getPersonIndex(p) != -1)
 		{
 			Person[] newArray = new Person[m_people.length - 1];
-			;
-			
-			for(i=0; i<m_people.length; ++i)
-				if()
-					
+			int j = 0; 
+			for(int i=0; i<m_people.length; ++i)
+				if(getPersonIndex(p) == i)
+					--j;
+				else
+					newArray[j] = m_people[i];
+				++j;
+			return true;
 		}
 		else
 			return false;
@@ -140,10 +154,23 @@ public abstract class Settlement {
 	public boolean transferPerson(Person p, Settlement s){
 		if(getPersonIndex(p) != -1)
 		{
-			
+			if(removePersonfromArr(p))
+				return s.addPerson(p);	
 		}
-		return true;
+		return false;
 	}
+	
+	public RamzorColor colorByValue(double val)
+	{
+		if(val <= 0.4)
+			return RamzorColor.GREEN;
+		else if(val <= 0.6)
+			return RamzorColor.YELLOW;
+		else if(val <= 0.8)
+			return RamzorColor.ORANGE;
+		else 
+			return RamzorColor.RED;
+		}
 	
 	
 	// attributes

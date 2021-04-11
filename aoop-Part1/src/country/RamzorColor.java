@@ -1,32 +1,29 @@
 package country;
 
-public enum RamzorColor {
-	GREEN(0.4),
-	YELLOW(0.6),
-	ORANGE(0.8),
-	RED(0.5);
+public enum RamzorColor 
+{
+	GREEN, YELLOW, ORANGE, RED;
 	
-	private RamzorColor(double value)
+	
+	public double getColorValue()
 	{
-		this.value = value;
+		switch(this)
+		{
+		case GREEN:
+			return 0.4;
+			
+		case YELLOW:
+			return 0.6;
+			
+		case ORANGE:
+			return 0.8;
+			
+		case RED:
+			return 0.5;
+			
+		 default:
+			 return 0;
+		}
 	}
-	
-	public double getValue()
-	{
-		return this.value;
-	}
-	
-	public RamzorColor getColor(double PromotesDisease) {
-		if(PromotesDisease < GREEN.getValue())
-			return GREEN;
-		else if(PromotesDisease < RED.getValue())
-			return RED;
-		else if(PromotesDisease < YELLOW.getValue())
-			return YELLOW;
-		else
-			return ORANGE;
-		
-	}
-	
-	private final double value;
 }
+
