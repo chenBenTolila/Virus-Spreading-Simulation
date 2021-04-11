@@ -24,17 +24,7 @@ public abstract class Settlement {
 		// adding an array of people
 	}
 	
-	//cctor
-	public Settlement(Settlement s) {
-		m_name = s.name;
-		m_location = new Location(location);   // to build a copy constructor in location or to get point and size
-		m_ramzorColor = s.ramzorColor;
-		for(int i=0; i < numPeople; i++)
-		{
-			// call function who randomally create a person and then call ass person  function
-			addPerson(p);
-		}
-	}
+	
 	/**
 	 * 
 	 * @return the settlement name
@@ -52,9 +42,6 @@ public abstract class Settlement {
 		return m_ramzorColor;
 	}
 	
-	// not finished
-	
-	// Maybe add copy Ctor
 	
 	public boolean equals(Object o) // check if needed
 	{
@@ -78,7 +65,7 @@ public abstract class Settlement {
 	public double contagiousPercent(){
 		int peopleCount= m_people.length;
 		double countSicks=0;
-		for(int i=0; i<len; ++i) {
+		for(int i=0; i<peopleCount; ++i) {
 			if(m_people[i].checkIfHealthy()==false)
 				countSicks ++; 
 		}
@@ -100,7 +87,12 @@ public abstract class Settlement {
 		Point randPoint = new Point(rand.nextInt(xMax- xMin +1) + xMin, rand.nextInt(yMax- yMin +1) + yMin);
 		return randPoint;
 	}
- 
+	
+	/**
+	 * the method adds a person to the settlement people array
+	 * @param p - a person
+	 * @return return if it succeed to add the person to the array
+	 */
 	public boolean addPerson(Person p){
 		Person newP = new Person(p);
 		Person[] newArray = new Person[m_people.length + 1];
@@ -111,13 +103,26 @@ public abstract class Settlement {
 		m_people = newArray;
 	}
 	
-	
+	/**
+	 * the function gets a person and search him in the person array of the settlement
+	 * @param p - a person
+	 * @return  the index of the person in the array of people, if he isn't there the function returns -1
+	 */
 	public int getPersonIndex(Person p)
 	{
-		int i;
-		for(i = 0; i< m_people.length; ++i)
+		for(int i = 0; i< m_people.length; i++)
+			if(m_people[i] == p)    // if they reference to the same person
+				return i;
+		return -1;		
 	}
 	
+	
+	/**
+	 * 
+	 * @param p - the person we want to transfer
+	 * @param s - the settlement we want to transfer the person to
+	 * @return true if the transfer succeeded
+	 */
 	public boolean transferPerson(Person p, Settlement s){
 		
 		return true;
