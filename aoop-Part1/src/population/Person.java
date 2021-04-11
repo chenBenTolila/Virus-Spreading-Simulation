@@ -18,9 +18,11 @@ public abstract class Person {
 		m_settlement = settlement; 
 	}
 	
+	
 	public Person(Person p)
 	{
-		this(p.getAge(),p.getLocation(), p.
+		this(p.getAge(),p.getLocation(), p.getSettlement());
+		p.getSettlement().addPerson(this);
 	}
 	
 	/**

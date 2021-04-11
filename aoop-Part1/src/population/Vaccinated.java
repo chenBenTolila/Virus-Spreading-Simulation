@@ -17,6 +17,13 @@ public class Vaccinated extends Person{
 		m_vaccinationTime= vaccinationTime;
 	}
 	 
+	
+	public Vaccinated(Vaccinated v) {
+		super(v.getAge(),v.getLocation(), v.getSettlement());
+		m_vaccinationTime=v.m_vaccinationTime;
+	}
+	
+	
 	 /**
 	  * return the vaccinated person in string form
 	  */

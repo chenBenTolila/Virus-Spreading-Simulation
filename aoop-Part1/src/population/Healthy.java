@@ -16,6 +16,11 @@ public class Healthy extends Person{
 		super(age, location, settlement);
 	}
 	
+	public Healthy(Healthy h) {
+		super(h.getAge(),h.getLocation(), h.getSettlement());
+	}
+	
+	
 	/**
 	 * return the basic reproduction number 
 	 */

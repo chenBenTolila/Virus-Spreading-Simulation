@@ -20,6 +20,12 @@ public class Sick extends Person{
 		m_virus=virus;
 	}
 	
+	public Sick(Sick s) {
+		super(s.getAge(),s.getLocation(), s.getSettlement());
+		m_contagiousTime=s.m_contagiousTime;
+		m_virus=s.m_virus;
+	}
+	
 	/**
 	 * return the contagion probability of sick person
 	 */

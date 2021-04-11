@@ -17,6 +17,13 @@ public class Convalescent extends Person{
 		m_virus =virus;
 	}
 	
+	
+	public Convalescent(Convalescent c) {
+		super(c.getAge(),c.getLocation(), c.getSettlement());
+		m_virus =c.m_virus;
+	}
+	
+	
 	/**
 	 * return the probability of getting sick again
 	 */
