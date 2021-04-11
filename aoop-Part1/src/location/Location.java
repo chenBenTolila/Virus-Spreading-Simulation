@@ -1,5 +1,7 @@
 package location;
 
+
+// location class
 public class Location {
 
 	/**

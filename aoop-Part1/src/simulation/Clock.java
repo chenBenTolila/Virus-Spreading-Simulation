@@ -1,5 +1,7 @@
 package simulation;
 
+// clock class
+
 public class Clock {
 	
 	public static long now() {
