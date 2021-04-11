@@ -1,4 +1,5 @@
 package population;
+import location.Location;
 import location.Point;
 import simulation.Clock;
 import country.Settlement;
@@ -84,6 +85,16 @@ public abstract class Person {
 	  */
 	public String toString(){
 		return "age:"+ m_age + "location: " + m_location.toString() +"settlement: " + m_settlement.getSettlementName();
+	}
+	
+	/*
+	 * return true if the object has the same values
+	 */
+	public boolean equals(Object o){
+		boolean ans = false;
+		if ((o instanceof Person))
+			ans = (m_location.equals(((Person)o).m_location)) && (m_age == ((Person)o).m_age));
+		return ans;
 	}
 	
 	// data members
