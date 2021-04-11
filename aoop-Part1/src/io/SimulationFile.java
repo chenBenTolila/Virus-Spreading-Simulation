@@ -5,7 +5,9 @@ import java.util.Random;
 
 
 public class SimulationFile {
-	public static void main (String []args) {
+	
+	
+	public void readFromFile() {
 		FileReader fr; 
 		try {
 			fr = new FileReader("SimulationFile.text");
@@ -16,8 +18,8 @@ public class SimulationFile {
 		catch(IOException e1){
 		
 		}
-
 	}
+	
 	
 	public Person intizializePersonAge(Settelment s)
 	{
@@ -25,7 +27,8 @@ public class SimulationFile {
 		int x;
 		Random rand = new Random();
 		y = rand.nextInt(5);  // check if y is real or integer //
-		
+		Random r = new Random();
+		double mySample = r.nextGaussian()*deviation+mean;
 		
 	}
 
