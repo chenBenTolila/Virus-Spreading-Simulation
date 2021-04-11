@@ -11,11 +11,11 @@ public abstract class Settlement {
 	 * @param location the settlement location
 	 * @param ramzorColor - the settlement ramzor color
 	 */
-	public Settlement(String name, Location location, RamzorColor ramzorColor, int numPeople)   // add persons array
+	public Settlement(String name, Location location, RamzorColor rc, int numPeople)   // add persons array
 	{
 		m_name = name;
 		m_location = new Location(location);   // to build a copy constructor in location or to get point and size
-		m_ramzorColor = new RamzorColor();
+		m_ramzorColor = colorByValue(rc.getColorValue());
 		for(int i=0; i < numPeople; i++)
 		{
 			// call function who randomally create a person and then call ass person  function
@@ -34,31 +34,30 @@ public abstract class Settlement {
 		return m_name;
 	}
 	
-	public void SetRamzorColor(RamzorColor rc)
+	/**
+	 * the method change the ramzor color 
+	 * @param rc * the color we want to change to
+	 */
+	protected void SetRamzorColor(RamzorColor rc)
 	{
 		m_ramzorColor = rc;
 	}
 	
 	/**
 	 * 
-	 * @return
+	 * @return the ramzor color of the settlement
 	 */
 	public RamzorColor getRamzorColor() { 
 		return m_ramzorColor;
 	}
 	
-	public void setRamzorColor(RamzorColor rc)
-	{
-		m_ramzorColor = rc;
-	}
 	
-	
-	
-	
-
+	/**
+	 * return the settlement in string form
+	 */
 	public String toString()   
 	{
-		
+		return "; " + m_name + "\nlocation: " + m_location.toString() + "\ncitizens: " + m_people.length + "; ramzor color: " + m_ramzorColor.getColorInString();
 	}
 	
 	public abstract RamzorColor calculateRamzorGrade();  // calculate the new color of the settlement

@@ -25,5 +25,26 @@ public enum RamzorColor
 			 return 0;
 		}
 	}
+	
+	public String getColorInString()
+	{
+		switch(this)
+		{
+		case GREEN:
+			return "Green";
+			
+		case YELLOW:
+			return "Yellow";
+			
+		case ORANGE:
+			return "Orange";
+			
+		case RED:
+			return "Red";
+			
+		default:
+			return "no color";
+		}
+	}
 }
 
