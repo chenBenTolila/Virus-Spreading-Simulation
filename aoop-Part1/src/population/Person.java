@@ -18,10 +18,14 @@ public abstract class Person {
 		m_settlement = settlement; 
 	}
 	
+	public Person(Person p)
+	{
+		this(p.getAge(),p.getLocation(), p.
+	}
 	
 	/**
 	 * abstract method
-	 * @return returns the probabilty of the person to get infected in a virus
+	 * @return returns the probabilty of the person to get infected in virus
 	 */
 	public abstract double contagionProbability();
 	
