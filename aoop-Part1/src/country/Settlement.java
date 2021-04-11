@@ -36,9 +36,9 @@ public abstract class Settlement {
 	
 	/**
 	 * the method change the ramzor color 
-	 * @param rc * the color we want to change to
+	 * @param rc - the color we want to change to
 	 */
-	protected void SetRamzorColor(RamzorColor rc)
+	protected void setRamzorColor(RamzorColor rc)
 	{
 		m_ramzorColor = rc;
 	}
