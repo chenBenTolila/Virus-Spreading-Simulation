@@ -47,7 +47,10 @@ public abstract class Person {
 	 * @return return the sick person
 	 */
 	public Person contagion(IVirus IV) {
-		return new Sick(m_age, m_location, m_settlement, Clock.now(), IV);
+		if(this.checkIfHealthy()==true)
+			return new Sick(m_age, m_location, m_settlement, Clock.now(), IV);
+		else
+			throw new RuntimeException("the person is allready sick");
 	}
 	
 	/**
