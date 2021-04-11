@@ -22,7 +22,8 @@ public abstract class Person {
 	 * copy constructor
 	 * @param p get person
 	 */
-	public Person(Person p) {
+	public Person(Person p) // check if neeeded  /// 
+	{
 		m_age = p.getAge(); 
 		m_location = new Point(p.getLocation());
 		m_settlement= p.getSettlement(); 

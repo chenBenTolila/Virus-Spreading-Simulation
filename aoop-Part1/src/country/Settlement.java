@@ -108,7 +108,7 @@ public abstract class Settlement {
 	 * @param p - a person
 	 * @return  the index of the person in the array of people, if he isn't there the function returns -1
 	 */
-	public int getPersonIndex(Person p)
+	private int getPersonIndex(Person p)
 	{
 		for(int i = 0; i< m_people.length; i++)
 			if(m_people[i] == p)    // if they reference to the same person
@@ -116,6 +116,15 @@ public abstract class Settlement {
 		return -1;		
 	}
 	
+	private boolean removePersonfromArray(Person p)
+	{
+		if(getPersonIndex(p) != -1)
+		{
+			Person[] newPersonArr = new Person[]
+		}
+		else
+			return false;
+	}
 	
 	/**
 	 * 
@@ -124,7 +133,10 @@ public abstract class Settlement {
 	 * @return true if the transfer succeeded
 	 */
 	public boolean transferPerson(Person p, Settlement s){
-		
+		if(getPersonIndex(p) != -1)
+		{
+			
+		}
 		return true;
 	}
 	
@@ -132,9 +144,7 @@ public abstract class Settlement {
 	// attributes
 	private String m_name;
 	private Location m_location;
-	// need to add an array of people 
 	private Person[] m_people;
 	private RamzorColor m_ramzorColor;
-	protected double m_c; // ?????
 	
 }
