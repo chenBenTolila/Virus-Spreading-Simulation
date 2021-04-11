@@ -22,6 +22,7 @@ public abstract class Settlement {
 			addPerson(p);
 		}
 		// adding an array of people
+		///????? delete
 	}
 	
 	
