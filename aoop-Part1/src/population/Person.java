@@ -5,6 +5,7 @@ import country.Settlement;
 import virus.IVirus;
 
 public abstract class Person {
+	
 	/**
 	 * 
 	 * @param m_age - person age
@@ -16,6 +17,7 @@ public abstract class Person {
 		m_location = new Point(location);
 		m_settlement= settlement; 
 	}
+	
 	/**
 	 * cctor
 	 * @param p get person
@@ -25,16 +27,19 @@ public abstract class Person {
 		m_location = new Point(p.getLocation());
 		m_settlement= p.getSettlement(); 
 	}
+	
 	/**
 	 * abstract method
 	 * @return returns the probabilty of the person to get infected in a virus
 	 */
 	public abstract double contagionProbability();
+	
 	/**
 	 * abstract method 
 	 * @return returns if the person is healthy
 	 */
 	public abstract boolean checkIfHealthy(); 
+	
 	/**
 	 * make the person sick
 	 * @param IV - type of the virus of the sick person
@@ -43,6 +48,7 @@ public abstract class Person {
 	public Person contagion(IVirus IV) {
 		return new Sick(m_age, m_location, m_settlement, Clock.now(), IV);
 	}
+	
 	/**
 	 * 
 	 * @return the age of the person
@@ -51,6 +57,7 @@ public abstract class Person {
 	{
 		return m_age;
 	}
+	
 	/**
 	 * 
 	 * @return the location of person
@@ -58,6 +65,7 @@ public abstract class Person {
 	public Point getLocation() {
 		return new Point(m_location);
 	}
+	
 	/**
 	 * 
 	 * @return the settlement of person
@@ -65,6 +73,7 @@ public abstract class Person {
 	public Settlement getSettlement() {
 		return m_settlement; 
 	}
+	
 	/**
 	 * 
 	 * @param p get person

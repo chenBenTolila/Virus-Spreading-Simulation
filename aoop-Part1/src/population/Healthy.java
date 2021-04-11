@@ -5,6 +5,7 @@ import country.Settlement;
 
 
 public class Healthy extends Person{
+	
 	/**
 	 * ctor
 	 * @param age - keep the age of healthy person
@@ -21,6 +22,7 @@ public class Healthy extends Person{
 	public double contagionProbability() {
 		return 1;
 	}
+	
 	/**
 	 * make the healthy person to vaccinate
 	 * @return return vaccinate person
@@ -33,6 +35,7 @@ public class Healthy extends Person{
 	/**
 	 * return true if the person in not infected in the virus
 	 */
+	
 	public boolean checkIfHealthy()
 	{
 		return true;

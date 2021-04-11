@@ -79,7 +79,7 @@ public class Location {
 		return m_size.getHeight();
 	}
 	
-	
-	private Point m_position;
-	private Size m_size;
+	// data members
+	private Point m_position; // represents upper left corner
+	private Size m_size; // keep the size of location
 }

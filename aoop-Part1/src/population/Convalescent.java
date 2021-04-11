@@ -4,6 +4,7 @@ import location.Point;
 import country.Settlement; 
 
 public class Convalescent extends Person{
+	
 	/**
 	 * ctor
 	 * @param age - keep the age of convalescent
@@ -15,6 +16,7 @@ public class Convalescent extends Person{
 		super(age, location, settlement);
 		m_virus =virus;
 	}
+	
 	/**
 	 * return the probability of getting sick again
 	 */
@@ -26,6 +28,7 @@ public class Convalescent extends Person{
 	/**
 	 * return true if the person in not infected in the virus
 	 */
+	
 	public boolean checkIfHealthy(){
 		return true;
 	}
@@ -38,5 +41,6 @@ public class Convalescent extends Person{
 		return super.toString() + "virus: "+ m_virus;
 	}
 	
+	// data members
 	private IVirus m_virus; // the type of virus that over
 }

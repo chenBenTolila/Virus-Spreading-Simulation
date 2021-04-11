@@ -2,6 +2,7 @@ package location;
 
 
 public class Point {
+	
 	/**
 	 * constructor of Point class
 	 * @param x - is the x coordinate of the point
@@ -69,7 +70,8 @@ public class Point {
 		return Math.sqrt(Math.pow((m_y - p2.m_y),2) + Math.pow((m_x - p2.m_x),2));
 	}
 	
-	private int m_x;
-	private int m_y;
+	// data members
+	private int m_x; // keep the x of point
+	private int m_y; // keep the y of point
 
 }

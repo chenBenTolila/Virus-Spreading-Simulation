@@ -4,6 +4,7 @@ import country.Settlement;
 import location.Point;
 
 public class Vaccinated extends Person{
+	
 	/***
 	 *  ctor
 	 * @param age - vaccinated person age
@@ -42,10 +43,10 @@ public class Vaccinated extends Person{
 	/**
 	 * return true if the person in not infected in the virus
 	 */
-	public boolean checkIfHealthy()
-	{
+	public boolean checkIfHealthy(){
 		return true;
 	}
+	
 	 // data members 
 	private long m_vaccinationTime; // the moment get vaccinated
 }
