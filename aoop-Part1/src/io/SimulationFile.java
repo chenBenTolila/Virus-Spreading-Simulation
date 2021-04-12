@@ -18,6 +18,7 @@ public class SimulationFile {
 			fr = new FileReader("SimulationFile.text");
 			BufferedReader bufferedReader = new BufferedReader(fr);
 			while((line = bufferedReader.readLine()) != null) {
+				line = line.replaceAll(" ", "");
 				String[] data = line.split(";");
 				Settlement temp;
 				String name = data[1];
