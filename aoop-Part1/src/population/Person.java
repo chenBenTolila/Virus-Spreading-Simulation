@@ -18,7 +18,10 @@ public abstract class Person {
 		m_settlement = settlement; 
 	}
 	
-	
+	/**
+	 * copy constructor
+	 * @param p - the person we want to clone
+	 */
 	public Person(Person p)
 	{
 		this(p.getAge(),p.getLocation(), p.getSettlement());
@@ -27,7 +30,7 @@ public abstract class Person {
 	
 	/**
 	 * abstract method
-	 * @return returns the probabilty of the person to get infected in virus
+	 * @return returns the probability of the person to get infected in virus
 	 */
 	public abstract double contagionProbability();
 	
@@ -45,10 +48,14 @@ public abstract class Person {
 	 * @return return the sick person
 	 */
 	public Person contagion(IVirus IV) {
-		if(this.checkIfHealthy()==true)
-			return new Sick(m_age, m_location, m_settlement, Clock.now(), IV);
+		if(this.checkIfHealthy()==true) {
+			Sick s = new Sick(m_age, m_location, m_settlement, Clock.now(), IV);
+			getSettlement().addPerson(s);   // add the sick person to the settlement
+			getSettlement().removePersonfromArr(this);  // remove the person healthy person from the settlement
+			return s;
+			}
 		else
-			throw new RuntimeException("the person is allready sick");
+			throw new RuntimeException("The person is allready sick");
 	}
 	
 	/**

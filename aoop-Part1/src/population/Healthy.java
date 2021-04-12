@@ -16,6 +16,11 @@ public class Healthy extends Person{
 		super(age, location, settlement);
 	}
 	
+	
+	/**
+	 * copy constructor
+	 * @param h - the healthy we want to clone
+	 */
 	public Healthy(Healthy h) {
 		super(h.getAge(),h.getLocation(), h.getSettlement());
 	}
@@ -29,11 +34,15 @@ public class Healthy extends Person{
 	}
 	
 	/**
-	 * make the healthy person to vaccinate
-	 * @return return vaccinate person
+	 * make the healthy person to vaccinated and adding him to the 
+	 * @return return vaccinated person
 	 */
 	public Person vaccinate() {
-		return new Vaccinated(this.getAge(), this.getLocation(), this.getSettlement(), Clock.now());
+		Vaccinated v = new Vaccinated(this.getAge(), this.getLocation(), this.getSettlement(), Clock.now());
+		getSettlement().addPerson(v);   // add v the to settlenent
+		getSettlement().removePersonfromArr(this);   // remove this from the settlement
+		return v;
+		
 	}
 	
 

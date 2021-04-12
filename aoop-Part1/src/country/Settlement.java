@@ -26,8 +26,6 @@ public abstract class Settlement {
 	
 	
 	
-	
-	
 	/**
 	 * 
 	 * @return the settlement name
@@ -129,7 +127,7 @@ public abstract class Settlement {
 	 * @param p - a person
 	 * @return return if the method succeed to remove or not
 	 */
-	private boolean removePersonfromArr(Person p)
+	public boolean removePersonfromArr(Person p)
 	{
 		if(getPersonIndex(p) != -1)
 		{
