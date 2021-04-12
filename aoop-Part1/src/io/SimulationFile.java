@@ -31,19 +31,19 @@ public class SimulationFile {
 				case "City":
 					temp = new City(name, loc, RamzorColor.GREEN);
 					createPeopleArrey(temp, numPeople);  
-					map.addSettlement(temp);  // adding the settlement to the map
+					map.setSettlements(map.addSettlement(temp));  // adding the settlement to the map
 					break;
 					
 				case "Kibbutz":
 					temp = new Kibbutz(name, loc, RamzorColor.GREEN);
 					createPeopleArrey(temp, numPeople);
-					map.addSettlement(temp);  // adding the settlement to the map
+					map.setSettlements(map.addSettlement(temp));  // adding the settlement to the map
 					break;
 					
 				case "Moshav":
 					temp  = new Moshav(name, loc, RamzorColor.GREEN);
 					createPeopleArrey(temp, numPeople);
-					map.addSettlement(temp);  // adding the settlement to the map
+					map.setSettlements(map.addSettlement(temp));  // adding the settlement to the map
 					break;
 					
 				 default:
