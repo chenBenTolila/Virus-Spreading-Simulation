@@ -13,11 +13,11 @@ public class SimulationFile {
 	 */
 	public static void createMap(Map map) throws IOException {
 		FileReader fr; 
-		try {
 			String line;
 			fr = new FileReader("SimulationFile.text");
 			BufferedReader bufferedReader = new BufferedReader(fr);
 			while((line = bufferedReader.readLine()) != null) {
+				System.out.println(line);
 				line = line.replaceAll(" ", "");
 				String[] data = line.split(";");
 				Settlement temp;
@@ -52,9 +52,6 @@ public class SimulationFile {
 				}
 			}
 			fr.close();
-		}
-		catch(IOException e1){
-		
 		}
 	}
 	
