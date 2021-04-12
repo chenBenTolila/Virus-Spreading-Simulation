@@ -53,7 +53,7 @@ public abstract class Settlement {
 	 */
 	public String toString()   
 	{
-		String s= "name: " + m_name + "\nlocation: " + m_location.toString()+"people in the settlement:\n";
+		String s= "name: " + m_name + "\nlocation: " + m_location.toString()+"\npeople in the settlement:\n";
 		for(int i=0;i<m_people.length;++i) {
 			s+= m_people[i].toString()+"\n";
 		}

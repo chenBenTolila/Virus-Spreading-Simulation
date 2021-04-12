@@ -52,8 +52,8 @@ public class SimulationFile {
 				}
 			}
 			fr.close();
-		}
-	}
+		
+}
 	
 	/**
 	 * the method calculates the age for a new person

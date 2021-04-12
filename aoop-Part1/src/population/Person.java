@@ -106,7 +106,7 @@ public abstract class Person {
 	  * return the person in string form
 	  */
 	public String toString(){
-		return "age:"+ m_age + "location: " + m_location.toString() +"settlement: " + m_settlement.getSettlementName();
+		return "age: "+ m_age + " location: " + m_location.toString() +" settlement: " + m_settlement.getSettlementName();
 	}
 	
 	/**
