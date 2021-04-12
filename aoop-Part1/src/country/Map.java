@@ -1,10 +1,8 @@
 package country;
 
-import population.Person;
 
 public class Map {
 	
-	private Settlement[] m_settlement;
 	
 	
 	public boolean addSettlement(Settlement s){
@@ -12,8 +10,11 @@ public class Map {
 		int i;
 		for(i=0; i < m_settlement.length; ++i)
 			newArray[i] = m_settlement[i];
-		newArray[i] = s;  // adding p itself///
+		newArray[i] = s;  
 		m_settlement = newArray;
 		return true;
 	}
+	
+	// data member
+	private Settlement[] m_settlement;
 }
