@@ -15,6 +15,17 @@ public class Map {
 		return true;
 	}
 	
+	
+	public String toString()   
+	{
+		String s= "Map:\n" ;
+		for(int i=0;i<m_settlement.length;++i) {
+			s+= m_settlement[i].toString()+"\n";
+		}
+		return s;
+	}
+	
+	
 	// data member
 	private Settlement[] m_settlement;
 }

@@ -51,7 +51,13 @@ public abstract class Settlement {
 	 */
 	public String toString()   
 	{
-		return "; " + m_name + "\nlocation: " + m_location.toString() + "\ncitizens: " + m_people.length + "; ramzor color: " + m_ramzorColor.getColorInString();
+		String s= "name: " + m_name + "\nlocation: " + m_location.toString()+"people in the settlement:\n";
+		for(int i=0;i<m_people.length;++i) {
+			s+= m_people[i].toString()+"\n";
+		}
+		s+="ramzor color: " + m_ramzorColor.getColorInString();
+		return s;
+		
 	}
 	
 	public abstract RamzorColor calculateRamzorGrade();  // calculate the new color of the settlement
