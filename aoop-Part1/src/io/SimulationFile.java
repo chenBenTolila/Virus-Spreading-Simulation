@@ -1,23 +1,41 @@
 package io;
 import java.io.*;
-import country.Settlement;
+import country.*;
 import population.*;
+import location.*;
 import java.util.Random;
-import java.util.Scanner;
-
 
 public class SimulationFile {
 	
 	
 	public void createMap() {
-		Scanner sc =new Scanner(System.in);
+		//Scanner sc =new Scanner(System.in);
 		FileReader fr; 
-		String st;
 		try {
+			RamzorColor rc=GREEN;
+			String line;
 			fr = new FileReader("SimulationFile.text");
-			//st = fr.readLine();
-
+			BufferedReader bufferedReader = new BufferedReader(fr);
+			while((line = bufferedReader.readLine()) != null) {
+				String[] data = line.split(";");
+				switch(data[0])
+				{
+				case "City":
+					City c= new City(data[1], Location(Point((int)data[2],(int)data[3])), Size((int)data[4],(int)data[5])),rc,(long)data[6]);
+					
+				case "Kibbutz":
+					Kibbutz s= new Kibbutz(data[1],Location(Point((int)data[2],(int)data[3])),Size((int)data[4],(int)data[5])),rc,(long)data[6]);
+					
+				case "Moshav":
+					Moshav s= new Moshav(data[1],Location(Point((int)data[2],(int)data[3])),Size((int)data[4],(int)data[5])),rc,(long)data[6]);
+					
+				 default:
+					 System.out.println("settelment is undefined");
+					 break;
+				}
+				
 			
+			}
 			fr.close();
 		}
 		catch(IOException e1){
