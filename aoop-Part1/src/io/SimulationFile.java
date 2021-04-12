@@ -17,7 +17,7 @@ public class SimulationFile {
 			BufferedReader bufferedReader = new BufferedReader(fr);
 			while((line = bufferedReader.readLine()) != null) {
 				String[] data = line.split(";");
-				
+				Settlement temp;
 				String name = data[1];
 				Point cord  = new Point(Integer.parseInt(data[2]), Integer.parseInt(data[3]));
 				Size sz = new Size(Integer.parseInt(data[4]), Integer.parseInt(data[5]));
@@ -26,20 +26,21 @@ public class SimulationFile {
 				switch(data[0])
 				{
 				case "City":
-					City c= new City(name, loc, RamzorColor.GREEN, )
+					temp = new City(name, loc, RamzorColor.GREEN);
+					createPeopleArrey(temp, numPeople);
 					
 				case "Kibbutz":
-					Kibbutz s= new Kibbutz(data[1],Location(Point((int)data[2],(int)data[3])),Size((int)data[4],(int)data[5])),rc,(long)data[6]);
+					temp = new Kibbutz(name, loc, RamzorColor.GREEN);
+					createPeopleArrey(temp, numPeople);
 					
 				case "Moshav":
-					Moshav s= new Moshav(data[1],Location(Point((int)data[2],(int)data[3])),Size((int)data[4],(int)data[5])),rc,(long)data[6]);
+					temp  = new Moshav(name, loc, RamzorColor.GREEN);
+					createPeopleArrey(temp, numPeople);
 					
 				 default:
 					 System.out.println("settelment is undefined");
 					 break;
 				}
-				
-			
 			}
 			fr.close();
 		}
