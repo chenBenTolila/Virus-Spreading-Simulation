@@ -205,6 +205,26 @@ public abstract class Settlement {
 		}
 	}
 	
+	public void tryToInfectSix() {
+		int count=0;
+		int j;
+		Random rand = new Random();
+		for(int i =0; i< m_people.length; ++i)
+		{
+			if(m_people[i].checkIfHealthy()==false) {
+			while(count<6) {
+				j=rand.nextInt(m_people.length);
+				if (i!=j) {
+					if(m_people[i].getVirus().tryToContagion(m_people[i], m_people[j])) 
+						m_people[j].contagion(m_people[i].getVirus());
+					count++;
+				}
+			}
+			count=0;
+			}
+		}
+	}
+	
 	// attributes
 	private String m_name;
 	private Location m_location;

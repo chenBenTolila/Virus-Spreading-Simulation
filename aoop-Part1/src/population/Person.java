@@ -58,6 +58,10 @@ public abstract class Person {
 			throw new RuntimeException("The person is allready sick");
 	}
 	
+	public IVirus getVirus() {
+		return null;
+	}
+	
 	/**
 	 * 
 	 * @return the age of the person

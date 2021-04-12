@@ -20,6 +20,11 @@ public class Sick extends Person{
 		m_virus=virus;
 	}
 	
+	
+	public IVirus getVirus() {
+		return m_virus;
+	}
+	
 	public Sick(Sick s) {
 		super(s.getAge(),s.getLocation(), s.getSettlement());
 		m_contagiousTime=s.m_contagiousTime;

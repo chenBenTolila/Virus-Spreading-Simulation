@@ -48,7 +48,15 @@ public class Map {
 			m_settlements[i].intializeSickPeople();
 		}
 	}
-	
+	 /**
+	  * try to contagion 6 people
+	  */
+	public void contagionSimu() {
+		for(int i = 0; i < m_settlements.length; ++i)
+		{
+			m_settlements[i].tryToInfectSix();
+		}
+	}
 	
 	// data member
 	private Settlement[] m_settlements;
