@@ -4,6 +4,7 @@ import location.Point;
 import virus.IVirus;
 import simulation.Clock;
 
+
 public class Sick extends Person{
 	
 	/**
@@ -84,6 +85,13 @@ public class Sick extends Person{
 	  */
 	public String toString(){
 		return super.toString() + "contagiousTime: "+ m_contagiousTime + "virus: "+ m_virus;
+	}
+	
+	/**
+	 * throws exception 
+	 */
+	public Person contagion(IVirus IV) {
+		throw new RuntimeException();
 	}
 	
 	 // data members

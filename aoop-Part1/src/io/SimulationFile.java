@@ -11,7 +11,7 @@ public class SimulationFile {
 	 * the method create the map for the simulation from the information in the file
 	 * @param map - will keep the map of the simulation
 	 */
-	public static void createMap(Map map) {
+	public static void createMap(Map map) throws IOException {
 		FileReader fr; 
 		try {
 			String line;

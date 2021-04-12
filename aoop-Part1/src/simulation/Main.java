@@ -2,6 +2,8 @@ package simulation;
 
 import country.Map;
 import io.SimulationFile;
+import java.io.*;
+
 
 public class Main {
 
@@ -10,10 +12,17 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		try {
 		Map m = new Map();
 		SimulationFile.createMap(m);
 		m.addSickToMap();
 		m.contagionSimu();
+		}
+		catch (FileNotFoundException ex1) {
+            System.out.println("File not found");
+        }catch (IOException ex2) {
+        	System.out.println("Error in file");
+        }
 	}
 	
 }

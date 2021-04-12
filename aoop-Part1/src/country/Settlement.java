@@ -3,6 +3,7 @@ import location.*;
 import population.*;
 import virus.*;
 import java.util.Random;
+import simulation.Clock;
 
 public abstract class Settlement {
 	
@@ -224,10 +225,17 @@ public abstract class Settlement {
 			}
 		}
 		for(i =0; i< sickArr.length; ++i) {
+			Clock.nextTick();
 			while(count<6) {
 				j=rand.nextInt(m_people.length);
+				try {
 				if(sickArr[i].getVirus().tryToContagion(sickArr[i], m_people[j])) 
 					m_people[j].contagion(sickArr[i].getVirus());
+				}
+				catch(RuntimeException ex)
+				{
+					System.out.println("Sick person cannot become sick again");
+				}
 				count++;	
 			}
 			count=0;
