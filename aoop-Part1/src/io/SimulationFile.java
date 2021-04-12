@@ -18,12 +18,15 @@ public class SimulationFile {
 			while((line = bufferedReader.readLine()) != null) {
 				String[] data = line.split(";");
 				
-				String name = data[0];
-				Location loc = new Location()
+				String name = data[1];
+				Point cord  = new Point(Integer.parseInt(data[2]), Integer.parseInt(data[3]));
+				Size sz = new Size(Integer.parseInt(data[4]), Integer.parseInt(data[5]));
+				Location loc = new Location(cord, sz);
+				int numPeople = Integer.parseInt(data[6]);
 				switch(data[0])
 				{
 				case "City":
-					City c= new City(data[1], Location(Point((int)data[2],(int)data[3])), Size((int)data[4],(int)data[5])),ramzorColor.,(long)data[6]);
+					City c= new City(name, loc, )
 					
 				case "Kibbutz":
 					Kibbutz s= new Kibbutz(data[1],Location(Point((int)data[2],(int)data[3])),Size((int)data[4],(int)data[5])),rc,(long)data[6]);

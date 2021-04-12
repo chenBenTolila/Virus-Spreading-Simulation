@@ -11,8 +11,7 @@ public abstract class Settlement {
 	 * @param location the settlement location
 	 * @param ramzorColor - the settlement ramzor color
 	 */
-	public Settlement(String name, Location location, RamzorColor rc, int numPeople)   // add persons array
-	{
+	public Settlement(String name, Location location, RamzorColor rc) 
 		m_name = name;
 		m_location = new Location(location);   // to build a copy constructor in location or to get point and size
 		m_ramzorColor = colorByValue(rc.getColorValue());
