@@ -64,7 +64,11 @@ public class Sick extends Person{
 	 * @return calculate and returns whether the person will die from the disease
 	 */
 	public boolean tryToDie() {
-		return m_virus.tryToKill(this);
+		if( m_virus.tryToKill(this)) {
+			this.getSettlement().removePersonFromArr(this);
+			return true;
+		}
+		return false;
 	}
 	
 	/**

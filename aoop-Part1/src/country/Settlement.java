@@ -127,7 +127,7 @@ public abstract class Settlement {
 	 * @param p - a person
 	 * @return return if the method succeed to remove or not
 	 */
-	public boolean removePersonfromArr(Person p)
+	public boolean removePersonFromArr(Person p)
 	{
 		if(getPersonIndex(p) != -1)
 		{
@@ -154,7 +154,7 @@ public abstract class Settlement {
 	public boolean transferPerson(Person p, Settlement s){
 		if(getPersonIndex(p) != -1)
 		{
-			if(removePersonfromArr(p))
+			if(removePersonFromArr(p))
 				return s.addPerson(p);	
 		}
 		return false;

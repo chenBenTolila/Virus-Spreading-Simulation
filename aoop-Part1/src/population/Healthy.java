@@ -40,7 +40,7 @@ public class Healthy extends Person{
 	public Person vaccinate() {
 		Vaccinated v = new Vaccinated(this.getAge(), this.getLocation(), this.getSettlement(), Clock.now());
 		getSettlement().addPerson(v);   // add v the to settlenent
-		getSettlement().removePersonfromArr(this);   // remove this from the settlement
+		getSettlement().removePersonFromArr(this);   // remove this from the settlement
 		return v;
 		
 	}

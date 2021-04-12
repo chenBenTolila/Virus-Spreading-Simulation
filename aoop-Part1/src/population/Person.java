@@ -51,7 +51,7 @@ public abstract class Person {
 		if(this.checkIfHealthy()==true) {
 			Sick s = new Sick(m_age, m_location, m_settlement, Clock.now(), IV);
 			getSettlement().addPerson(s);   // add the sick person to the settlement
-			getSettlement().removePersonfromArr(this);  // remove the person healthy person from the settlement
+			getSettlement().removePersonFromArr(this);  // remove the person healthy person from the settlement
 			return s;
 			}
 		else
