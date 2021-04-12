@@ -13,6 +13,7 @@ public class Main {
 		Map m = new Map();
 		SimulationFile.createMap(m);
 		m.addSickToMap();
+		
 	}
 	
 }
