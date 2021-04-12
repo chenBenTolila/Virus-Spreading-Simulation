@@ -1,6 +1,7 @@
 package country;
 import location.*;
 import population.Person;
+import virus.*;
 import java.util.Random;
 
 public abstract class Settlement {
@@ -45,7 +46,7 @@ public abstract class Settlement {
 		return m_ramzorColor;
 	}
 	
-	
+
 	/**
 	 * return the settlement in string form
 	 */
@@ -176,6 +177,33 @@ public abstract class Settlement {
 			return RamzorColor.RED;
 		}
 	
+	/**
+	 * 
+	 * @return the amount of people in the settlement
+	 */
+	public int getPeopleAmount()  
+	{
+		return m_people.length;
+	}
+	
+	/**
+	 * the method turns 1% of the people in the settlement into sick people
+	 */
+	public void intializeSickPeople()
+	{
+		BritishVariant britV = new BritishVariant();
+		ChineseVariant chinV = new ChineseVariant();
+		SouthAfricanVariant sAfriV = new SouthAfricanVariant();
+		for(int i =0; i< m_people.length / 100; ++i)
+		{
+			if (i % 3 == 0)
+				m_people[i].contagion(sAfriV);
+			else if (i% 3 == 1)
+				m_people[i].contagion(chinV);
+			else
+				m_people[i].contagion(britV);
+		}
+	}
 	
 	// attributes
 	private String m_name;

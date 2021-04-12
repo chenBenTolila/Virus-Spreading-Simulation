@@ -10,13 +10,9 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		SimulationFile sf=new SimulationFile();
-		Map m= new Map();
-		sf.createMap(m);
-		initializeSick(m);
+		Map m = new Map();
+		SimulationFile.createMap(m);
+		m.addSickToMap();
 	}
 	
-	public static void initializeSick(Map m) {
-		
-	}
 }

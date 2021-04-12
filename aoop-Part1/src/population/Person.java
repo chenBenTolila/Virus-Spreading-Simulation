@@ -75,6 +75,7 @@ public abstract class Person {
 		return new Point(m_location);
 	}
 	
+	
 	/**
 	 * 
 	 * @return the settlement of person
@@ -82,6 +83,7 @@ public abstract class Person {
 	public Settlement getSettlement() {
 		return m_settlement; 
 	}
+	
 	
 	/**
 	 * 
@@ -99,10 +101,11 @@ public abstract class Person {
 		return "age:"+ m_age + "location: " + m_location.toString() +"settlement: " + m_settlement.getSettlementName();
 	}
 	
-	/*
+	/**
 	 * return true if the object has the same values
 	 */
-	public boolean equals(Object o){
+	public boolean equals(Object o)
+	{
 		boolean ans = false;
 		if ((o instanceof Person))
 			ans = (m_location.equals(((Person)o).m_location)) && (m_age == ((Person)o).m_age);

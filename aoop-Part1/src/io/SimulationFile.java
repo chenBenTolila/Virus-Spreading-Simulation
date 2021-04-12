@@ -7,9 +7,11 @@ import java.util.Random;
 
 public class SimulationFile {
 	
-	
-	public void createMap() {
-		//Scanner sc =new Scanner(System.in);
+	/**
+	 * the method create the map for the simulation from the information in the file
+	 * @param map - will keep the map of the simulation
+	 */
+	public static void createMap(Map map) {
 		FileReader fr; 
 		try {
 			String line;
@@ -27,15 +29,21 @@ public class SimulationFile {
 				{
 				case "City":
 					temp = new City(name, loc, RamzorColor.GREEN);
-					createPeopleArrey(temp, numPeople);
+					createPeopleArrey(temp, numPeople);  
+					map.addSettlement(temp);  // adding the settlement to the map
+					break;
 					
 				case "Kibbutz":
 					temp = new Kibbutz(name, loc, RamzorColor.GREEN);
 					createPeopleArrey(temp, numPeople);
+					map.addSettlement(temp);  // adding the settlement to the map
+					break;
 					
 				case "Moshav":
 					temp  = new Moshav(name, loc, RamzorColor.GREEN);
 					createPeopleArrey(temp, numPeople);
+					map.addSettlement(temp);  // adding the settlement to the map
+					break;
 					
 				 default:
 					 System.out.println("settelment is undefined");
@@ -49,8 +57,11 @@ public class SimulationFile {
 		}
 	}
 	
-	
-	public int intizializePersonAge()
+	/**
+	 * the method calculates the age for a new person
+	 * @return the age
+	 */
+	public static int intizializePersonAge()
 	{
 		int y;
 		double x;
@@ -61,8 +72,12 @@ public class SimulationFile {
 		return (int)((5 * x) + y);
 	}
 
-	
-	public void createPeopleArrey(Settlement s, int numOfPersons) {
+	/**
+	 * the method initialize a settlement with people
+	 * @param s - the settlement
+	 * @param numOfPersons - the number of people to add to the settlement
+	 */
+	public static void createPeopleArrey(Settlement s, int numOfPersons) {
 		Healthy p;
 		for(int i=0; i< numOfPersons; ++i) {
 			p=new Healthy(intizializePersonAge(), s.randomLocation(), s );
