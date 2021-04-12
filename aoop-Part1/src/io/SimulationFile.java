@@ -26,7 +26,7 @@ public class SimulationFile {
 				switch(data[0])
 				{
 				case "City":
-					City c= new City(name, loc, )
+					City c= new City(name, loc, RamzorColor.GREEN, )
 					
 				case "Kibbutz":
 					Kibbutz s= new Kibbutz(data[1],Location(Point((int)data[2],(int)data[3])),Size((int)data[4],(int)data[5])),rc,(long)data[6]);

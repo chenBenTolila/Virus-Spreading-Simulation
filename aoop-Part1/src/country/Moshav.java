@@ -10,8 +10,8 @@ public class Moshav extends Settlement{
 	 * @param ramzorColor - ramzor color of settlement
 	 * @param numPeople- number of people in settlement
 	 */
-	public Moshav(String name, Location location, RamzorColor ramzorColor, int numPeople) {
-		super(name, location, ramzorColor, numPeople);
+	public Moshav(String name, Location location, RamzorColor ramzorColor) {
+		super(name, location, ramzorColor);
 	}
 	
 	/**

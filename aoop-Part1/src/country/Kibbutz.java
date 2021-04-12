@@ -11,8 +11,8 @@ public class Kibbutz extends Settlement{
 	 * @param ramzorColor - ramzor color of settlement
 	 * @param numPeople - number of people in the settlement
 	 */
-	public Kibbutz(String name, Location location, RamzorColor ramzorColor, int numPeople) {
-		super(name, location, ramzorColor, numPeople);
+	public Kibbutz(String name, Location location, RamzorColor ramzorColor) {
+		super(name, location, ramzorColor);
 	}
 	
 	/**
