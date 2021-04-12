@@ -12,16 +12,18 @@ public class SimulationFile {
 		//Scanner sc =new Scanner(System.in);
 		FileReader fr; 
 		try {
-			RamzorColor rc=GREEN;
 			String line;
 			fr = new FileReader("SimulationFile.text");
 			BufferedReader bufferedReader = new BufferedReader(fr);
 			while((line = bufferedReader.readLine()) != null) {
 				String[] data = line.split(";");
+				
+				String name = data[0];
+				Location loc = new Location()
 				switch(data[0])
 				{
 				case "City":
-					City c= new City(data[1], Location(Point((int)data[2],(int)data[3])), Size((int)data[4],(int)data[5])),rc,(long)data[6]);
+					City c= new City(data[1], Location(Point((int)data[2],(int)data[3])), Size((int)data[4],(int)data[5])),ramzorColor.,(long)data[6]);
 					
 				case "Kibbutz":
 					Kibbutz s= new Kibbutz(data[1],Location(Point((int)data[2],(int)data[3])),Size((int)data[4],(int)data[5])),rc,(long)data[6]);
