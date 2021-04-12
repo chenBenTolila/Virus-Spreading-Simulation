@@ -16,14 +16,8 @@ public abstract class Settlement {
 		m_name = name;
 		m_location = new Location(location);   // to build a copy constructor in location or to get point and size
 		m_ramzorColor = colorByValue(rc.getColorValue());
-		for(int i=0; i < numPeople; i++)
-		{
-			// call function who randomally create a person and then call ass person  function
-			addPerson(p);
-		}
-		// adding an array of people
+		m_people = new Person[0];
 	}
-	
 	
 	
 	/**
@@ -100,13 +94,13 @@ public abstract class Settlement {
 	 * @return return if it succeed to add the person to the array
 	 */
 	public boolean addPerson(Person p){
-		Person newP = new Person(p);
-		Person[] newArray = new Person[m_people.length + 1];
+		Person[] newArray = new Person[m_people.length + 1];  // check if the allocation succeed
 		int i;
 		for(i=0; i < m_people.length; ++i)
 			newArray[i] = m_people[i];
-		newArray[i] = newP;
+		newArray[i] = p;  // adding p itself///
 		m_people = newArray;
+		return true;
 	}
 	
 	/**
@@ -160,6 +154,11 @@ public abstract class Settlement {
 		return false;
 	}
 	
+	/**
+	 * 
+	 * @param val - a double that holds the settlement coefficient of the disease
+	 * @return  return the color the value match
+	 */
 	public RamzorColor colorByValue(double val)
 	{
 		if(val <= 0.4)
