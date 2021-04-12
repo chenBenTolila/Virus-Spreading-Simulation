@@ -20,11 +20,17 @@ public class Sick extends Person{
 		m_virus=virus;
 	}
 	
-	
+	/**
+	 * return the type of the virus
+	 */
 	public IVirus getVirus() {
 		return m_virus;
 	}
 	
+	/**
+	 * copy constructor
+	 * @param s get copy object of sick
+	 */
 	public Sick(Sick s) {
 		super(s.getAge(),s.getLocation(), s.getSettlement());
 		m_contagiousTime=s.m_contagiousTime;

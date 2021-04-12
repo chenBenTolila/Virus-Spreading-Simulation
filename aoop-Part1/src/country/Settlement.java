@@ -205,6 +205,9 @@ public abstract class Settlement {
 		}
 	}
 	
+	/**
+	 * try to infect 6 healthy persons in virus
+	 */
 	public void tryToInfectSix() {
 		int count=0;
 		int j, i;

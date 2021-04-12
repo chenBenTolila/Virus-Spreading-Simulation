@@ -58,6 +58,10 @@ public abstract class Person {
 			throw new RuntimeException("The person is allready sick");
 	}
 	
+	/**
+	 * 
+	 * @return the kind of the virus
+	 */
 	public IVirus getVirus() {
 		return null;
 	}
