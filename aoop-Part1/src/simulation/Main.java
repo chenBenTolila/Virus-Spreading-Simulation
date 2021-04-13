@@ -19,6 +19,8 @@ public class Main {
 		for(int i =0; i < 1; ++i)  // one time
 			m.contagionSimu();
 		System.out.println(m.toString());
+		m.contagionSimu();
+		//System.out.println(m.toString());
 		}
 		catch (FileNotFoundException ex1) {
             System.out.println("File not found");
