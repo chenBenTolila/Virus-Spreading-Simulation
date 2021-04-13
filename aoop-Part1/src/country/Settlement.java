@@ -134,12 +134,13 @@ public abstract class Settlement {
 		{
 			Person[] newArray = new Person[m_people.length - 1];
 			int j = 0; 
-			for(int i=0; i<m_people.length; ++i)
+			for(int i=0; i<m_people.length; ++i) {
 				if(getPersonIndex(p) == i)
 					--j;
 				else
 					newArray[j] = m_people[i];
 				++j;
+			}
 			return true;
 		}
 		else
