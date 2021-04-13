@@ -16,7 +16,7 @@ public class Main {
 		Map m = new Map();
 		SimulationFile.createMap(m);
 		m.addSickToMap();
-		for(int i =0; i < 1; ++i)
+		for(int i =0; i < 1; ++i)  // one time
 			m.contagionSimu();
 		System.out.println(m.toString());
 		}
