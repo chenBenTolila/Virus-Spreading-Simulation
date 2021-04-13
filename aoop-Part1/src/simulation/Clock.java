@@ -1,6 +1,11 @@
 package simulation;
 
-// clock class
+/**
+ * @author Hadar Amsalem
+ * ID: 316129212 
+ * @author Chen Ben Tolila
+ * ID: 207278029
+ */
 
 public class Clock {
 	

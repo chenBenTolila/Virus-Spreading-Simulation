@@ -5,6 +5,13 @@ import virus.*;
 import java.util.Random;
 import simulation.Clock;
 
+/**
+ * @author Hadar Amsalem
+ * ID: 316129212 
+ * @author Chen Ben Tolila
+ * ID: 207278029
+ */
+
 public abstract class Settlement {
 	
 	/**

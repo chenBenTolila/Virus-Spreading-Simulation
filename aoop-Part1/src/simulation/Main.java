@@ -6,6 +6,14 @@ import io.SimulationFile;
 import java.io.*;
 
 
+/**
+ * @author Hadar Amsalem
+ * ID: 316129212 
+ * @author Chen Ben Tolila
+ * ID: 207278029
+ */
+
+
 // try
 import location.*;
 import population.*;

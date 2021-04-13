@@ -4,6 +4,12 @@ import location.Point;
 import virus.IVirus;
 import simulation.Clock;
 
+/**
+ * @author Hadar Amsalem
+ * ID: 316129212 
+ * @author Chen Ben Tolila
+ * ID: 207278029
+ */
 
 public class Sick extends Person{
 	

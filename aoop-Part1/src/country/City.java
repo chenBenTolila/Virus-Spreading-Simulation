@@ -1,6 +1,12 @@
 package country;
-
 import location.Location;
+
+/**
+ * @author Hadar Amsalem
+ * ID: 316129212 
+ * @author Chen Ben Tolila
+ * ID: 207278029
+ */
 
 public class City extends Settlement{
 	

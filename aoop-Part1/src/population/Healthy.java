@@ -3,6 +3,12 @@ import location.Point;
 import simulation.Clock;
 import country.Settlement;
 
+/**
+ * @author Hadar Amsalem
+ * ID: 316129212 
+ * @author Chen Ben Tolila
+ * ID: 207278029
+ */
 
 public class Healthy extends Person{
 	

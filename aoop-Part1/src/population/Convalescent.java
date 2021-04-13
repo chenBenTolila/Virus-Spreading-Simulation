@@ -3,6 +3,13 @@ import virus.IVirus;
 import location.Point;
 import country.Settlement; 
 
+/**
+ * @author Hadar Amsalem
+ * ID: 316129212 
+ * @author Chen Ben Tolila
+ * ID: 207278029
+ */
+
 public class Convalescent extends Person{
 	
 	/**

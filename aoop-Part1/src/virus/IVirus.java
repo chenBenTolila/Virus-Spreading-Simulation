@@ -2,6 +2,12 @@ package virus;
 import population.Person;
 import population.Sick;
 
+/**
+ * @author Hadar Amsalem
+ * ID: 316129212 
+ * @author Chen Ben Tolila
+ * ID: 207278029
+ */
 
 public interface IVirus {
 	

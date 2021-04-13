@@ -3,7 +3,15 @@ import simulation.Clock;
 import country.Settlement;
 import location.Point;
 
+/**
+ * @author Hadar Amsalem
+ * ID: 316129212 
+ * @author Chen Ben Tolila
+ * ID: 207278029
+ */
+
 public class Vaccinated extends Person{
+	
 	
 	/***
 	 *  ctor
