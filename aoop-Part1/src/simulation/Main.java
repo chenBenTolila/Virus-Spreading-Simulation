@@ -16,8 +16,9 @@ public class Main {
 		Map m = new Map();
 		SimulationFile.createMap(m);
 		m.addSickToMap();
-		m.contagionSimu();
 		System.out.println(m.toString());
+		m.contagionSimu();
+		//System.out.println(m.toString());
 		}
 		catch (FileNotFoundException ex1) {
             System.out.println("File not found");
