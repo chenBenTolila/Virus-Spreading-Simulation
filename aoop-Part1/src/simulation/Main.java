@@ -16,11 +16,11 @@ public class Main {
 		Map m = new Map();
 		SimulationFile.createMap(m);
 		m.addSickToMap();
-		for(int i =0; i < 1; ++i)  // one time
+		for(int i =0; i < 5; ++i)  // one time
 			m.contagionSimu();
-		System.out.println(m.toString());
-		m.contagionSimu();
 		//System.out.println(m.toString());
+		m.contagionSimu();
+		System.out.println(m.toString());
 		}
 		catch (FileNotFoundException ex1) {
             System.out.println("File not found");

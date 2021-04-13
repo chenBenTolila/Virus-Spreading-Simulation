@@ -84,7 +84,7 @@ public class Sick extends Person{
 	  * return the sick person in string form
 	  */
 	public String toString(){
-		return super.toString() + " contagiousTime: "+ m_contagiousTime + "virus: "+ m_virus;
+		return super.toString() + " contagiousTime: "+ m_contagiousTime + " virus: "+ m_virus;
 	}
 	
 	/**

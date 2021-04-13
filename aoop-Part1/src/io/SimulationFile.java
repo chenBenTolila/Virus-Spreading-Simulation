@@ -66,7 +66,7 @@ public class SimulationFile {
 		Random rand = new Random();
 		y = rand.nextInt(5);  
 		Random r = new Random();
-		x = r.nextGaussian()*deviation+mean;
+		x = r.nextGaussian()*deviation + mean;
 		return (int)((5 * x) + y);
 	}
 

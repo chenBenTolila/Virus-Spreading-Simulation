@@ -218,7 +218,7 @@ public abstract class Settlement {
 		for(i =0; i< m_people.length; ++i)
 		{
 			if(m_people[i].checkIfHealthy()==false) {
-				Person[] newArray = new Person[m_people.length + 1];  // check if the allocation succeed
+				Person[] newArray = new Person[sickArr.length + 1];  // check if the allocation succeed
 				for(j=0; j < sickArr.length; ++j)
 					newArray[j] = sickArr[j];
 				newArray[j] = m_people[i];  // adding p itself///
