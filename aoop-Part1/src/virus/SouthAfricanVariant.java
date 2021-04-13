@@ -23,7 +23,7 @@ public class SouthAfricanVariant implements IVirus {
 		Random rand = new Random();
 		double probToSick;
 		if(p2.checkIfHealthy()) {
-			probToSick = contagionProbability(p2)*Math.min(1,0.14*Math.pow(Math.E, 2-0.25*p1.distance(p2)));
+			probToSick = contagionProbability(p2) * Math.min(1,0.14 * Math.pow(Math.E, 2-0.25*p1.distance(p2)));
 			return probToSick >= rand.nextDouble();  // exclude 1 - [0,1)  ///
 		}
 		return false; // check what to return

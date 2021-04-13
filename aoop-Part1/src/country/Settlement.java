@@ -23,7 +23,7 @@ public abstract class Settlement {
 	
 	/**
 	 * 
-	 * @return the settlement name
+	 * @return the settlement name 
 	 */
 	public String getSettlementName()
 	{
