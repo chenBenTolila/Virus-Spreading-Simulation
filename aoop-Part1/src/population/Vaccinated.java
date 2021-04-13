@@ -29,7 +29,7 @@ public class Vaccinated extends Person{
 	  */
 
 	public String toString(){
-		return super.toString() + "vaccinationTime: "+ m_vaccinationTime;
+		return "vaccinated: " + super.toString() + "vaccinationTime: "+ m_vaccinationTime;
 	}
 	
 	/**

@@ -13,5 +13,5 @@ public class Clock {
 	}
 	
 	
-	private static long currentTime;  // Difference
+	private static long currentTime = 0;  // Difference
 }

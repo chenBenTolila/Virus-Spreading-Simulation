@@ -77,14 +77,17 @@ public class Sick extends Person{
 	 * @return return healthy person
 	 */
 	public Person recover() {
-		return new Convalescent(this.getAge(), this.getLocation(), this.getSettlement(),m_virus);
+		Convalescent con = new Convalescent(this.getAge(), this.getLocation(), this.getSettlement(),m_virus);
+		this.getSettlement().addPerson(con);
+		this.getSettlement().removePersonFromArr(this);
+		return con;
 	}
 	
 	 /**
 	  * return the sick person in string form
 	  */
 	public String toString(){
-		return super.toString() + " contagiousTime: "+ m_contagiousTime + " virus: "+ m_virus;
+		return "sick: " + super.toString() + " contagiousTime: "+ m_contagiousTime + " virus: "+ m_virus;
 	}
 	
 	/**

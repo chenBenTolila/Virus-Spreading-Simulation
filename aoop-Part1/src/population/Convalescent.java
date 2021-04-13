@@ -48,7 +48,7 @@ public class Convalescent extends Person{
 	  */
 
 	public String toString(){
-		return super.toString() + "virus: "+ m_virus;
+		return  "convalescent: " + super.toString() + " virus: "+ m_virus;
 	}
 	
 	// data members

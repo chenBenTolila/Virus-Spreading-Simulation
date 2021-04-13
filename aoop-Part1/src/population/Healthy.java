@@ -60,6 +60,6 @@ public class Healthy extends Person{
 	  */
 
 	public String toString(){
-		return super.toString();
+		return "healty: " + super.toString();
 	}
 }
