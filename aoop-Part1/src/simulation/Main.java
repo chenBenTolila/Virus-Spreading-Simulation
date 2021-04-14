@@ -36,7 +36,7 @@ public class Main {
 		for(int i =0; i < 5; ++i)  // 5 times
 			m.contagionSimu();
 		
-		// System.out.println(m.toString());
+		System.out.println(m.toString());
 		}
 		catch (FileNotFoundException ex1) {
             System.out.println("File not found");
@@ -75,7 +75,7 @@ public class Main {
 		System.out.println(Ash.toString());
 		*/
 		
-		System.out.println(ploni.recover().toString());
+		// System.out.println(ploni.recover().toString());
 		
 		
 		

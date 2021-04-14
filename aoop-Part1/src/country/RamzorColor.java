@@ -7,12 +7,17 @@ package country;
  * ID: 207278029
  */
 
+
 public enum RamzorColor 
 {
 	GREEN, YELLOW, ORANGE, RED;
 	
 	
-	public double getColorValue()
+	/***
+	 * 
+	 * @return the upper limit for each color
+	 */
+	public double getColorValue()   
 	{
 		switch(this)
 		{
@@ -33,7 +38,10 @@ public enum RamzorColor
 		}
 	}
 	
-	public String getColorInString()
+	/**
+	 * @return get the color in a string format
+	 */
+	public String getColorInString()  
 	{
 		switch(this)
 		{

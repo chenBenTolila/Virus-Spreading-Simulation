@@ -36,7 +36,7 @@ public class Size {
 	 */
 	public String toString() 
 	{
-		return "width: " + m_width + ", heigth: " + m_height;
+		return "width: " + m_width + "  heigth: " + m_height;
 	}
 	
 	/**

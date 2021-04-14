@@ -73,7 +73,7 @@ public class Point {
 	 */
 	public double distanceBetweenTwoPoints(Point p2)
 	{
-		return Math.sqrt(Math.pow((m_y - p2.m_y),2) + Math.pow((m_x - p2.m_x),2));
+		return Math.sqrt(Math.pow((m_y - p2.m_y),2) + Math.pow((m_x - p2.m_x),2));  // calculation of the distance
 	}
 	
 	// data members

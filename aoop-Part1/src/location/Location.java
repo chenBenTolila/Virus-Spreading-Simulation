@@ -37,7 +37,7 @@ public class Location {
 	 */
 	public String toString() 
 	{
-		return "position:  " + m_position.toString() + "\nsize: " + m_size.toString();
+		return "position: " + m_position.toString() + "  size: " + m_size.toString();
 	}
 	
 	/**
@@ -89,6 +89,6 @@ public class Location {
 	}
 	
 	// data members
-	private Point m_position; // represents upper left corner
+	private Point m_position; // represents upper left corner of the location
 	private Size m_size; // keep the size of location
 }

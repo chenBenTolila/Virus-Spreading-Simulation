@@ -14,7 +14,7 @@ public class Map {
 	 */
 	public Map()
 	{
-		m_settlements = new Settlement[0];
+		m_settlements = new Settlement[0];   // create an empty map
 	}
 	
 
@@ -25,12 +25,12 @@ public class Map {
 	 * @return boolean according to if the add succeeded or failed
 	 */
 	public Settlement[] addSettlement(Settlement s){
-		Settlement[] newArray = new Settlement[m_settlements.length + 1];  // check if the allocation succeed
+		Settlement[] newArray = new Settlement[m_settlements.length + 1];  // create a new settlement array
 		int i;
-		for(i=0; i < m_settlements.length; ++i)
-			newArray[i] = m_settlements[i];
-		newArray[i] = s;  
-		m_settlements = newArray;
+		for(i=0; i < m_settlements.length; ++i)   // go over the existing settlements array
+			newArray[i] = m_settlements[i];    // copy the settlements to the new array
+		newArray[i] = s;  // copy the new settlement
+		m_settlements = newArray;  
 		return m_settlements;
 	}
 	
@@ -39,14 +39,23 @@ public class Map {
 	 */
 	public String toString()   
 	{
-		String s= "Map:\n" ;
+		String s = "=======================================\n"; 
+		s += "The Map:\n" ;
 		for(int i=0;i<m_settlements.length;++i) {
 			s+= m_settlements[i].toString()+"\n";
+			if(i != (m_settlements.length -1))
+				s += "-----------------------\n";
 		}
+		s += "=======================================\n";
 		return s;
 	}
 	
 	
+	/**
+	 * 
+	 * @param sett - an array of settlements
+	 * @return if the assignment succeeded or failed
+	 */
 	public boolean setSettlements(Settlement[] sett)
 	{
 		m_settlements = sett;
@@ -54,25 +63,25 @@ public class Map {
 	}
 	
 	/**
-	 * the 1% of the population in the to sick
+	 * Initialize 1% of the population as sick
 	 */
 	public void addSickToMap()
 	{
-		for(int i = 0; i < m_settlements.length; ++i)
+		for(int i = 0; i < m_settlements.length; ++i)  // go over the settlements
 		{
-			m_settlements[i].intializeSickPeople();
+			m_settlements[i].intializeSickPeople();    // turn 1% of settlement's population into sick people
 		}
 	}
 	 /**
-	  * try to contagion 6 people
+	  * try to contagion 6 people with each sick person
 	  */
 	public void contagionSimu() {
-		for(int i = 0; i < m_settlements.length; ++i)
+		for(int i = 0; i < m_settlements.length; ++i)  // go over the settlements
 		{
-			m_settlements[i].tryToInfectSix();
+			m_settlements[i].tryToInfectSix();   
 		}
 	}
 	
-	// data member
-	private Settlement[] m_settlements;
+	
+	private Settlement[] m_settlements;    // the list of settlements in the simulation
 }
