@@ -58,6 +58,7 @@ public abstract class Settlement {
 	/**
 	 * return the settlement in string form
 	 */
+	@Override
 	public String toString()   
 	{
 		String s= "Settlement name: " + m_name + "\nlocation: " + m_location.toString();

@@ -20,44 +20,44 @@ public class SimulationFile {
 	 */
 	public static void createMap(Map map) throws IOException {
 		FileReader fr; 
-			String line;
-			fr = new FileReader("SimulationFile.txt");
-			BufferedReader bufferedReader = new BufferedReader(fr);
-			while((line = bufferedReader.readLine()) != null) {
-				System.out.println(line);
-				line = line.replaceAll(" ", "");
-				String[] data = line.split(";");
-				Settlement temp;
-				String name = data[1];
-				Point cord  = new Point(Integer.parseInt(data[2]), Integer.parseInt(data[3]));
-				Size sz = new Size(Integer.parseInt(data[4]), Integer.parseInt(data[5]));
-				Location loc = new Location(cord, sz);
-				int numPeople = Integer.parseInt(data[6]);
-				switch(data[0])
-				{
-				case "City":
-					temp = new City(name, loc, RamzorColor.GREEN);
-					createPeopleArrey(temp, numPeople);  
-					map.setSettlements(map.addSettlement(temp));  // adding the settlement to the map
-					break;
+		String line;
+		fr = new FileReader("SimulationFile.txt");
+		BufferedReader bufferedReader = new BufferedReader(fr);
+		while((line = bufferedReader.readLine()) != null) {
+			System.out.println(line);
+			line = line.replaceAll(" ", "");
+			String[] data = line.split(";");
+			Settlement temp;
+			String name = data[1];
+			Point cord  = new Point(Integer.parseInt(data[2]), Integer.parseInt(data[3]));
+			Size sz = new Size(Integer.parseInt(data[4]), Integer.parseInt(data[5]));
+			Location loc = new Location(cord, sz);
+			int numPeople = Integer.parseInt(data[6]);
+			switch(data[0])
+			{
+			case "City":
+				temp = new City(name, loc, RamzorColor.GREEN);
+				createPeopleArrey(temp, numPeople);  
+				map.addSettlement(temp);  // adding the settlement to the map
+				break;
 					
-				case "Kibbutz":
-					temp = new Kibbutz(name, loc, RamzorColor.GREEN);
-					createPeopleArrey(temp, numPeople);
-					map.setSettlements(map.addSettlement(temp));  // adding the settlement to the map
-					break;
+			case "Kibbutz":
+				temp = new Kibbutz(name, loc, RamzorColor.GREEN);
+				createPeopleArrey(temp, numPeople);
+				map.addSettlement(temp);  // adding the settlement to the map
+				break;
 					
-				case "Moshav":
-					temp  = new Moshav(name, loc, RamzorColor.GREEN);
-					createPeopleArrey(temp, numPeople);
-					map.setSettlements(map.addSettlement(temp));  // adding the settlement to the map
-					break;
+			case "Moshav":
+				temp  = new Moshav(name, loc, RamzorColor.GREEN);
+				createPeopleArrey(temp, numPeople);
+				map.addSettlement(temp);  // adding the settlement to the map
+				break;
 					
-				 default:
-					 System.out.println("settelment is undefined");
-					 break;
-				}
+			default:
+				 System.out.println("type of settelment is undefined");
+				 break;
 			}
+		}
 			fr.close();
 		
 }
@@ -68,13 +68,16 @@ public class SimulationFile {
 	 */
 	public static int intizializePersonAge()
 	{
-		int y;
+		int y;   // a random integer between 1-4 (including)
 		double x;
+		double temp;
 		Random rand = new Random();
-		y = rand.nextInt(5);  
-		Random r = new Random();
-		x = r.nextGaussian()*deviation + mean;
-		return (int)((5 * x) + y);
+		y = rand.nextInt(5);
+		do {
+			temp = rand.nextGaussian();
+		}while (temp > 1 || temp < -1);
+		x = temp*deviation + mean;   // initialize x
+		return (int)((5 * x) + y);   // return the calculated age
 	}
 
 	/**
@@ -84,13 +87,13 @@ public class SimulationFile {
 	 */
 	public static void createPeopleArrey(Settlement s, int numOfPersons) {
 		Healthy p;
-		for(int i=0; i< numOfPersons; ++i) {
-			p=new Healthy(intizializePersonAge(), s.randomLocation(), s );
-			s.addPerson(p);
+		for(int i=0; i< numOfPersons; ++i) {   
+			p=new Healthy(intizializePersonAge(), s.randomLocation(), s );   // create an healthy person
+			s.addPerson(p);   // add the person to the settlement
 		}
 	}
 	
-	// data members
-	public static double deviation = 6;
-	public static double mean = 9;
+	// static data members
+	public static double deviation = 6;    // deviation 
+	public static double mean = 9;    // mean
 }

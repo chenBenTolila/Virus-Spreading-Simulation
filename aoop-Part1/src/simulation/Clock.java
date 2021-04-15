@@ -9,14 +9,21 @@ package simulation;
 
 public class Clock {
 	
+	/**
+	 * 
+	 * @return the current time in the simulation
+	 */
 	public static long now() {
 		return currentTime;
 	}
 	
+	/**
+	 * advance the time in one
+	 */
 	public static void nextTick() {
 		currentTime++;
 	}
 	
 	
-	private static long currentTime = 0;  // Difference
+	private static long currentTime = 0;  // the current time in the simulation
 }

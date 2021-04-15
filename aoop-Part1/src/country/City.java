@@ -24,10 +24,11 @@ public class City extends Settlement{
 	/**
 	 * calculate the new color of the settlement
 	 */
+	@Override
 	public RamzorColor calculateRamzorGrade()  
 	{
-		double newColor;
-		newColor= 0.2*Math.pow(4,1.25*contagiousPercent());
+		double newColor;   // the value of the new color
+		newColor= 0.2*Math.pow(4,1.25*contagiousPercent());   // calculate the new color
 		setRamzorColor(colorByValue(newColor));
 		return getRamzorColor(); 
 	}
@@ -35,8 +36,9 @@ public class City extends Settlement{
 	/**
 	 * return city in string form 
 	 */
+	@Override
 	public String toString(){
-		return "City " + super.toString();
+		return "Settlement type: City\n" + super.toString();
 	}
 	
 }

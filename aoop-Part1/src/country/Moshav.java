@@ -21,13 +21,15 @@ public class Moshav extends Settlement{
 		super(name, location, ramzorColor);
 	}
 	
+
 	/**
 	 * calculate the new ramzor color of settlement
 	 */
+	@Override
 	public RamzorColor calculateRamzorGrade()  
 	{
 		double newColor;
-		newColor= 0.3+ 3*Math.pow((Math.pow(1.2, getRamzorColor().getColorValue())*contagiousPercent()-0.35),5);
+		newColor= 0.3+ 3*Math.pow((Math.pow(1.2, getRamzorColor().getColorValue())*(contagiousPercent()-0.35)),5);
 		setRamzorColor(colorByValue(newColor));
 		return getRamzorColor(); 
 	}
@@ -35,7 +37,8 @@ public class Moshav extends Settlement{
 	/**
 	 * return moshav in string form
 	 */
+	@Override
 	public String toString(){
-		return "Moshav " + super.toString();
+		return "Settlement type: Moshav\n" + super.toString();
 	}
 }

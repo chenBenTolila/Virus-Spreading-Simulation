@@ -37,6 +37,7 @@ public class Convalescent extends Person{
 	/**
 	 * return the probability of getting sick again
 	 */
+	@Override
 	public double contagionProbability() {
 		return 0.2;
 	}
@@ -45,7 +46,7 @@ public class Convalescent extends Person{
 	/**
 	 * return true if the person in not infected in the virus
 	 */
-	
+	@Override
 	public boolean checkIfHealthy(){
 		return true;
 	}
@@ -53,11 +54,11 @@ public class Convalescent extends Person{
 	 /**
 	  * return the convalescent person in string form
 	  */
-
+	@Override
 	public String toString(){
-		return  "convalescent: " + super.toString() + " virus: "+ m_virus;
+		return super.toString() + "    Status: convalescent    recovered from: "+ m_virus;
 	}
 	
 	// data members
-	private IVirus m_virus; // the type of virus that over
+	private IVirus m_virus; // the type of virus the person recovered from
 }

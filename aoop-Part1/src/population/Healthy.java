@@ -35,6 +35,7 @@ public class Healthy extends Person{
 	/**
 	 * return the basic reproduction number 
 	 */
+	@Override
 	public double contagionProbability() {
 		return 1;
 	}
@@ -55,7 +56,7 @@ public class Healthy extends Person{
 	/**
 	 * return true if the person in not infected in the virus
 	 */
-	
+	@Override
 	public boolean checkIfHealthy()
 	{
 		return true;
@@ -64,8 +65,8 @@ public class Healthy extends Person{
 	 /**
 	  * return the healthy person in string form
 	  */
-
+	@Override
 	public String toString(){
-		return "healty: " + super.toString();
+		return super.toString() + "    Status: healty"; 
 	}
 }

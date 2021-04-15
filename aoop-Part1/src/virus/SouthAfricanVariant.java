@@ -54,6 +54,7 @@ public class SouthAfricanVariant implements IVirus {
 	/**
 	 * return the South African variant in string form
 	 */
+	@Override
 	public String toString()
 	{
 		return "South African variant";

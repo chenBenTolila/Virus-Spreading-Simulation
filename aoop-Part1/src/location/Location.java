@@ -35,6 +35,7 @@ public class Location {
 	/**
 	 * return the location in string form
 	 */
+	@Override
 	public String toString() 
 	{
 		return "position: " + m_position.toString() + "  size: " + m_size.toString();
@@ -43,6 +44,7 @@ public class Location {
 	/**
 	 * return true if the object has the same values
 	 */
+	@Override
 	public boolean equals(Object o)
 	{
 		boolean ans = false;

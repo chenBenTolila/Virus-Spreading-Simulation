@@ -35,21 +35,22 @@ public class Vaccinated extends Person{
 	 /**
 	  * return the vaccinated person in string form
 	  */
-
+	@Override
 	public String toString(){
-		return "vaccinated: " + super.toString() + "vaccinationTime: "+ m_vaccinationTime;
+		return super.toString() + "    Status: vaccinated: " + "    vaccination time: "+ m_vaccinationTime;
 	}
 	
 	/**
 	 * the method returns the probabilty of the person to get infected in a virus
 	 */
+	@Override
 	public double contagionProbability() {
-		long t = Clock.now() - m_vaccinationTime;
-		if(t<21)
+		long t = Clock.now() - m_vaccinationTime;   // the time since the vaccination
+		if(t<21)   // if the time passed is less then 21
 		{
 			return Math.min(1, 0.56+0.15*Math.sqrt(21-t));
 		}
-		else
+		else    // the time passed is 21 and above
 		{
 			return Math.max(0.05, 1.05/(t-14));
 		}
@@ -58,10 +59,11 @@ public class Vaccinated extends Person{
 	/**
 	 * return true if the person in not infected in the virus
 	 */
+	@Override
 	public boolean checkIfHealthy(){
 		return true;
 	}
 	
 	 // data members 
-	private long m_vaccinationTime; // the moment get vaccinated
+	private long m_vaccinationTime;  // the time the person got vaccinated
 }

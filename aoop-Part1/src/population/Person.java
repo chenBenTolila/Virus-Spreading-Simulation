@@ -32,7 +32,8 @@ public abstract class Person {
 	public Person(Person p)
 	{
 		this(p.getAge(),p.getLocation(), p.getSettlement());
-		p.getSettlement().addPerson(this);
+		p.getSettlement().addPerson(this);   // add the this to the same settlement
+		// the method don't delete p from the settlement
 	}
 	
 	/**
@@ -62,15 +63,15 @@ public abstract class Person {
 			return s;
 			}
 		else
-			throw new RuntimeException("The person is allready sick");
+			throw new RuntimeException("The person is allready sick");   // this is already sick
 	}
 	
 	/**
 	 * 
-	 * @return the kind of the virus
+	 * @return the kind of the virus 
 	 */
 	public IVirus getVirus() {
-		return null;
+		return null;    // for Sick class
 	}
 	
 	/**
@@ -112,13 +113,15 @@ public abstract class Person {
 	 /**
 	  * return the person in string form
 	  */
+	@Override
 	public String toString(){
-		return "age: "+ m_age + " location: " + m_location.toString() +" settlement: " + m_settlement.getSettlementName();
+		return "age: "+ m_age + "    location: " + m_location.toString() +"    settlement: " + m_settlement.getSettlementName();
 	}
 	
 	/**
 	 * return true if the object has the same values
 	 */
+	@Override
 	public boolean equals(Object o)
 	{
 		boolean ans = false;

@@ -24,10 +24,11 @@ public class Kibbutz extends Settlement{
 	/**
 	 * calculate the new color of the settlement
 	 */
+	@Override
 	public RamzorColor calculateRamzorGrade()  
 	{
-		double newColor;
-		newColor = 0.45 + Math.pow((Math.pow(1.5, getRamzorColor().getColorValue())*contagiousPercent()-0.4),3);
+		double newColor;    // the value of the new color
+		newColor = 0.45 + Math.pow((Math.pow(1.5, getRamzorColor().getColorValue())*(contagiousPercent()-0.4)),3);    // calculate the new color
 		setRamzorColor(colorByValue(newColor));
 		return getRamzorColor(); 
 	}	
@@ -35,7 +36,8 @@ public class Kibbutz extends Settlement{
 	/**
 	 * return kibbutz in string form
 	 */
+	@Override
 	public String toString(){
-		return "kibbutz " + super.toString();
+		return "settlement type: Kibbutz\n" + super.toString();
 	}
 }

@@ -59,6 +59,7 @@ public class ChineseVariant implements IVirus {
 	/**
 	 * return the Chinese variant in string form
 	 */
+	@Override
 	public String toString()
 	{
 		return "Chinese variant";

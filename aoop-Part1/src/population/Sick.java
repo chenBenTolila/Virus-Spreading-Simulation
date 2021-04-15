@@ -23,7 +23,7 @@ public class Sick extends Person{
 	 */
 	public Sick(int age, Point location, Settlement settlement, long contagiousTime, IVirus virus) {
 		super(age, location, settlement);
-		m_contagiousTime=contagiousTime;   // second option get from current time in clock
+		m_contagiousTime=contagiousTime;   
 		m_virus=virus;
 	}
 	
@@ -47,13 +47,15 @@ public class Sick extends Person{
 	/**
 	 * return the contagion probability of sick person
 	 */
+	@Override
 	public double contagionProbability() {
-		return 1;
+		return 1;    // default value
 	}
 	
 	/**
 	 * return true if the person in not infected in the virus
 	 */
+	@Override
 	public boolean checkIfHealthy(){
 		return false;
 	}
@@ -83,22 +85,24 @@ public class Sick extends Person{
 	 * @return return healthy person
 	 */
 	public Person recover() {
-		Convalescent con = new Convalescent(this.getAge(), this.getLocation(), this.getSettlement(),m_virus);
-		this.getSettlement().addPerson(con);
-		this.getSettlement().removePersonFromArr(this);
-		return con;
+		Convalescent con = new Convalescent(this.getAge(), this.getLocation(), this.getSettlement(),m_virus);   // create a convalescent type
+		this.getSettlement().addPerson(con);   // add the convalescent to this settlement 
+		this.getSettlement().removePersonFromArr(this);  // remove the sick from the settlement
+		return con; 
 	}
 	
 	 /**
 	  * return the sick person in string form
 	  */
+	@Override
 	public String toString(){
-		return "sick: " + super.toString() + " contagiousTime: "+ m_contagiousTime + " virus: "+ m_virus;
+		return super.toString() +"    Status: sick    infected in : "+ m_virus+"    contagious time: "+ m_contagiousTime;
 	}
 	
 	/**
 	 * throws exception 
 	 */
+	@Override
 	public Person contagion(IVirus IV) {
 		throw new RuntimeException();
 	}

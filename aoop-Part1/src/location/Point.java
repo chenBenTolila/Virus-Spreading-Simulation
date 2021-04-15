@@ -1,5 +1,6 @@
 package location;
 
+
 /**
  * @author Hadar Amsalem
  * ID: 316129212 
@@ -33,6 +34,7 @@ public class Point {
 	/**
 	 * return the point in string form
 	 */
+	@Override
 	public String toString() 
 	{
 		return "(" + m_x + ", " + m_y + ")";
@@ -41,6 +43,7 @@ public class Point {
 	/**
 	 * return true if the objects have the same values
 	 */
+	@Override
 	public boolean equals(Object o)
 	{
 		boolean ans = false;
