@@ -50,7 +50,7 @@ public abstract class Settlement {
 	 * 
 	 * @return the ramzor color of the settlement
 	 */
-	public RamzorColor getRamzorColor() { 
+	protected RamzorColor getRamzorColor() { 
 		return m_ramzorColor;
 	}
 	

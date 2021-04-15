@@ -115,7 +115,7 @@ public abstract class Person {
 	  */
 	@Override
 	public String toString(){
-		return "age: "+ m_age + "    location: " + m_location.toString() +"    settlement: " + m_settlement.getSettlementName();
+		return "age: "+ m_age + " \tlocation: " + m_location.toString() +"\tsettlement: " + m_settlement.getSettlementName();
 	}
 	
 	/**

@@ -31,11 +31,13 @@ public class Main {
 		SimulationFile.createMap(m);   // read the map from file
 		m.addSickToMap();   // initialize the population with 1% of sick people
 		for(int i =0; i < 5; ++i)  // do the simulation 5 times
+		{
+			System.out.println("************ Simulation " + (i+1) + "************");
 			m.contagionSimu();
-		
-		System.out.println(m.toString());   // catch errors related to files 
+			System.out.println(m.toString());
+		}  
 		}
-		catch (FileNotFoundException ex1) {
+		catch (FileNotFoundException ex1) {    // catch errors related to files
             System.out.println("File not found");
         }catch (IOException ex2) {
         	System.out.println("Error in file");
@@ -59,13 +61,11 @@ public class Main {
 		for(int i = 0; i < 15; ++i)
 			Clock.nextTick();
 		
-		System.out.println(Ashdod.getRamzorColor().getColorInString());
 		System.out.println(ploni.getSicknessDuration());
 		System.out.println(Ashdod.toString());
 		System.out.println(ploni.tryToDie());
 		System.out.println(Ashdod.toString());
 		Ashdod.calculateRamzorGrade();
-		System.out.println(Ashdod.getRamzorColor().getColorInString());
 		
 		Moshav Ash = new Moshav("hadar", loc, RamzorColor.GREEN);
 		System.out.println(Ashdod.toString());

@@ -51,16 +51,6 @@ public class Map {
 	}
 	
 	
-	/**
-	 * 
-	 * @param sett - an array of settlements
-	 * @return if the assignment succeeded or failed
-	 */
-	public boolean setSettlements(Settlement[] sett)
-	{
-		m_settlements = sett;
-		return true;
-	}
 	
 	/**
 	 * Initialize 1% of the population as sick
