@@ -13,12 +13,6 @@ import java.io.*;
  */
 
 
-// for testing
-import location.*;
-import population.*;
-import virus.*;
-
-
 public class Main {
 
 	/**
@@ -32,7 +26,7 @@ public class Main {
 		m.addSickToMap();   // initialize the population with 1% of sick people
 		for(int i =0; i < 5; ++i)  // do the simulation 5 times
 		{
-			System.out.println("************ Simulation " + (i+1) + "************");
+			System.out.println("************ Simulation " + (i+1) + " ************");
 			m.contagionSimu();
 			System.out.println(m.toString());
 		}  
@@ -42,41 +36,5 @@ public class Main {
         }catch (IOException ex2) {
         	System.out.println("Error in file");
         }
-		
-		// tryCode();   // checking the code
 	}
-	
-	/**
-	 * testing the code
-	 */
-	public static void tryCode()
-	{
-		Point point = new Point(0,0);
-		Size size = new Size(10,10);
-		Location loc = new Location(point, size);
-		
-		Kibbutz Ashdod = new Kibbutz("Ashdo", loc, RamzorColor.GREEN);
-		Sick ploni = new Sick(100, point, Ashdod, Clock.now(), new SouthAfricanVariant());
-		Ashdod.addPerson(ploni);
-		for(int i = 0; i < 15; ++i)
-			Clock.nextTick();
-		
-		System.out.println(ploni.getSicknessDuration());
-		System.out.println(Ashdod.toString());
-		System.out.println(ploni.tryToDie());
-		System.out.println(Ashdod.toString());
-		Ashdod.calculateRamzorGrade();
-		
-		Moshav Ash = new Moshav("hadar", loc, RamzorColor.GREEN);
-		System.out.println(Ashdod.toString());
-		System.out.println(Ash.toString());
-		Ashdod.transferPerson(ploni, Ash);
-		System.out.println(Ashdod.toString());
-		System.out.println(Ash.toString());
-		
-		
-		System.out.println(ploni.recover().toString());
-		
-	}
-	
 }

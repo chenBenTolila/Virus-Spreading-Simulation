@@ -64,6 +64,15 @@ public class Vaccinated extends Person{
 		return true;
 	}
 	
+	/**
+	 * 
+	 * @return the person vaccination time
+	 */
+	public long getVaccinationTime()
+	{
+		return m_vaccinationTime;
+	}
+	
 	 // data members 
 	private long m_vaccinationTime;  // the time the person got vaccinated
 }

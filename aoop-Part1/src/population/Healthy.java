@@ -67,6 +67,6 @@ public class Healthy extends Person{
 	  */
 	@Override
 	public String toString(){
-		return super.toString() + "\tStatus: healthy"; 
+		return super.toString() + "    \tStatus: healthy"; 
 	}
 }
