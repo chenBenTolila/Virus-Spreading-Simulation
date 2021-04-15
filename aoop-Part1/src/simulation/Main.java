@@ -77,9 +77,6 @@ public class Main {
 		
 		System.out.println(ploni.recover().toString());
 		
-		
-		
-		
 	}
 	
 }
