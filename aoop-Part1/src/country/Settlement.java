@@ -20,11 +20,14 @@ public abstract class Settlement {
 	 * @param location the settlement location
 	 * @param ramzorColor - the settlement ramzor color
 	 */
-	public Settlement(String name, Location location, RamzorColor rc) {
+	public Settlement(String name, Location location, RamzorColor rc, int mp) {
 		m_name = name;
 		m_location = new Location(location);  
 		m_ramzorColor = colorByValue(rc.getColorValue());
 		m_people = new Person[0];     // create an empty array of citizens
+		m_sickPeople = new Sick[0];
+		m_maxPeople = mp;
+		m_numVDoses = 0;
 	}
 	
 	
@@ -113,12 +116,27 @@ public abstract class Settlement {
 	 * @return return if it succeed to add the person to the array
 	 */
 	public boolean addPerson(Person p){
-		Person[] newArray = new Person[m_people.length + 1];    // create a new array of people with size plus 1
 		int i;
+		Person[] newArray = new Person[m_people.length + 1];// create a new array of people with size plus 1
 		for(i=0; i < m_people.length; ++i)   // go over the people
 			newArray[i] = m_people[i];   // copy them to the new array
 		newArray[i] = p;  // adding p itself///
 		m_people = newArray;
+		return true;
+	}
+	
+	/**
+	 * 
+	 * @param s get new sick person
+	 * @return return if it succeed to add the sick person to the array
+	 */
+	public boolean addSickPerson(Sick s){
+		int i;
+		Sick[] newArray = new Sick[m_sickPeople.length + 1];
+		for(i=0; i < m_people.length; ++i)   // go over the people
+			newArray[i] = m_sickPeople[i];  
+		newArray[i] = s;  // adding p itself///
+		m_sickPeople = newArray;
 		return true;
 	}
 	
@@ -257,7 +275,31 @@ public abstract class Settlement {
 			count=0;
 		}
 	}
-		
+	
+	/**
+	 * 
+	 * @param vd get more vaccines doses
+	 */
+	public void addVDoses(int vd) {
+		if(vd>0)
+			m_numVDoses+=vd;
+	}
+	
+	/**
+	 * 
+	 * @return the number of vaccines doses
+	 */
+	public int getNumVDoses() {
+		return m_numVDoses;
+	}
+	
+	/**
+	 * 
+	 * @return the max number of people in settlement
+	 */
+	public int getMaxPeople() {
+		return m_maxPeople;
+	}
 	
 	
 	// attributes
@@ -265,5 +307,7 @@ public abstract class Settlement {
 	private Location m_location;    // the location of the settlement
 	private Person[] m_people;    // the list of the people in the settlement
 	private RamzorColor m_ramzorColor;   // the ramzor color of the settlement
-	
+	private int m_maxPeople; // the max number of people in settlement
+	private int m_numVDoses; // the number of vaccines doses
+	private Sick[] m_sickPeople; // the list of the sick people in settlement
 }

@@ -35,19 +35,19 @@ public class SimulationFile {
 			switch(data[0])
 			{
 			case "City":
-				temp = new City(name, loc, RamzorColor.GREEN);
+				temp = new City(name, loc, RamzorColor.GREEN, (int)(numPeople*maxP));
 				createPeopleArrey(temp, numPeople);  
 				map.addSettlement(temp);  // adding the settlement to the map
 				break;
 					
 			case "Kibbutz":
-				temp = new Kibbutz(name, loc, RamzorColor.GREEN);
+				temp = new Kibbutz(name, loc, RamzorColor.GREEN, (int)(numPeople*maxP));
 				createPeopleArrey(temp, numPeople);
 				map.addSettlement(temp);  // adding the settlement to the map
 				break;
 					
 			case "Moshav":
-				temp  = new Moshav(name, loc, RamzorColor.GREEN);
+				temp  = new Moshav(name, loc, RamzorColor.GREEN, (int)(numPeople*maxP));
 				createPeopleArrey(temp, numPeople);
 				map.addSettlement(temp);  // adding the settlement to the map
 				break;
@@ -95,4 +95,5 @@ public class SimulationFile {
 	// static data members
 	public static double deviation = 6;    // deviation 
 	public static double mean = 9;    // mean
+	public static final double maxP = 1.3;
 }

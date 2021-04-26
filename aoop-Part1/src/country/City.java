@@ -17,8 +17,8 @@ public class City extends Settlement{
 	 * @param ramzorColor - ramzor color of settlement
 	 * @param numPeople - number of people in settlement
 	 */
-	public City(String name, Location location, RamzorColor ramzorColor) {
-		super(name, location, ramzorColor);
+	public City(String name, Location location, RamzorColor ramzorColor, int mp) {
+		super(name, location, ramzorColor, mp);
 	}
 		
 	/**

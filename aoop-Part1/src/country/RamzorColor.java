@@ -7,11 +7,21 @@ package country;
  * ID: 207278029
  */
 
+import java.awt.Color;
 
 public enum RamzorColor 
 {
-	GREEN, YELLOW, ORANGE, RED;
+	GREEN(0.4, Color.GREEN, 1), 
+	YELLOW(0.6, Color.YELLOW, 0.8), 
+	ORANGE(0.8, Color.ORANGE, 0.6), 
+	RED(0.5, Color.RED, 0.4);
 	
+	
+	private RamzorColor(double cSick, Color color, double pTransfer) {
+		this.cSick= cSick;
+		this.color= color;
+		this.pTransfer=pTransfer;
+	}
 	
 	/***
 	 * 
@@ -19,23 +29,24 @@ public enum RamzorColor
 	 */
 	public double getColorValue()   
 	{
-		switch(this)
-		{
-		case GREEN:
-			return 0.4;
-			
-		case YELLOW:
-			return 0.6;
-			
-		case ORANGE:
-			return 0.8;
-			
-		case RED:
-			return 0.5;
-			
-		 default:
-			 return 0;
-		}
+		return cSick;
+	}
+	
+	/**
+	 * 
+	 * @return the color object of the ramzor color
+	 */
+	public Color getColor()   
+	{
+		return color;
+	}
+	
+	/**
+	 * 
+	 * @return the transfer probability of the ramzor color
+	 */
+	public double getPTransfer() {
+		return pTransfer;
 	}
 	
 	/**
@@ -61,5 +72,11 @@ public enum RamzorColor
 			return "no color";
 		}
 	}
+	
+	
+	private double cSick;
+	private Color color;
+	private double pTransfer;
+	
 }
 
