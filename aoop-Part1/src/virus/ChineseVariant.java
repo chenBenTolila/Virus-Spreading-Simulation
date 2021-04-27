@@ -1,5 +1,7 @@
 package virus;
 import population.*;
+import simulation.Clock;
+
 import java.util.Random;
 
 
@@ -29,10 +31,12 @@ public class ChineseVariant implements IVirus {
 	/**
 	 * if the second person is healthy check if he got infected by the first person
 	 */
-	public boolean tryToContagion(Person p1, Person p2){
+	public boolean tryToContagion(Sick p1, Person p2){
 		Random rand = new Random();   // the random probability of the person getting infected
 		double probToSick;
 		if(p2.checkIfHealthy()) {
+			if(Clock.DaysPassed(p1.getSicknessDuration()) < 5)
+				 return false;
 			probToSick = contagionProbability(p2)*Math.min(1,0.14*Math.pow(Math.E, 2-0.25*p1.distance(p2)));
 			return probToSick >= rand.nextDouble();  // exclude 1 - [0,1)  ///
 		}

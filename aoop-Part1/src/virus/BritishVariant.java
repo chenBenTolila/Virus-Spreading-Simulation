@@ -1,6 +1,7 @@
 package virus;
 import population.*;
 import java.util.Random;
+import simulation.Clock;
 
 
 /**
@@ -24,15 +25,17 @@ public class BritishVariant implements IVirus {
 	 /**
 	  * if the second person is healthy check if he got infected by the first person
 	  */
-	 public boolean tryToContagion(Person p1, Person p2){
+	 public boolean tryToContagion(Sick p1, Person p2){
 		 Random rand = new Random();   // the random probability of the person getting infected
 		 double probToSick;   // the calculated probability
-			if(p2.checkIfHealthy()) {   
-				probToSick = contagionProbability(p2)*Math.min(1,0.14*Math.pow(Math.E, 2-0.25*p1.distance(p2)));   // calculation of the probability
-				return probToSick >= rand.nextDouble();  // exclude 1 - [0,1)  ///	
-			}
-			else
-				throw new RuntimeException();   // p2 is not healthy
+		 if(p2.checkIfHealthy()) {   
+			 if(Clock.DaysPassed(p1.getSicknessDuration()) < 5)
+				 return false;
+			 probToSick = contagionProbability(p2)*Math.min(1,0.14*Math.pow(Math.E, 2-0.25*p1.distance(p2)));   // calculation of the probability
+			 return probToSick >= rand.nextDouble();  // exclude 1 - [0,1)  ///	
+		 }
+		 else
+			 throw new RuntimeException();   // p2 is not healthy
 	 }
 
 	 /**
