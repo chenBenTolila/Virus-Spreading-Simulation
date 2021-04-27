@@ -72,6 +72,18 @@ public class Map {
 		}
 	}
 	
+	public void connectSettlements(String s1, String s2) {
+		int index=-1;
+		for(int i=0; i < m_settlements.length; ++i) {
+			if((s1.equals(m_settlements[i].getSettlementName())) || (s2.equals(m_settlements[i].getSettlementName())))
+				if(index==-1)
+					index=i;
+				else {
+					m_settlements[i].addConnectedSettlement(m_settlements[index]);
+					m_settlements[index].addConnectedSettlement(m_settlements[i]);
+				}
+		}
+	}
 	
 	private Settlement[] m_settlements;    // the list of settlements in the simulation
 }
