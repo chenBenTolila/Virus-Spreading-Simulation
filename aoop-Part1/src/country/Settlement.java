@@ -116,6 +116,8 @@ public abstract class Settlement {
 		int i;
 		if(getPersonIndex(p) != -1)   // check if p already exist in the people array
 			return false;
+		if (getMaxPeople() >= getPeopleAmount())
+			return false;
 		Person[] newArray = new Person[m_people.length + 1];// create a new array of people with size plus 1
 		for(i=0; i < m_people.length; ++i)   // go over the people
 			newArray[i] = m_people[i];   // copy them to the new array
@@ -132,6 +134,8 @@ public abstract class Settlement {
 	public boolean addSickPerson(Sick s){
 		int i;
 		if(getSickPersonIndex(s) != -1)   // check if s already exist in the sick people array
+			return false;
+		if (getMaxPeople() >= getPeopleAmount())
 			return false;
 		Sick[] newArray = new Sick[m_sickPeople.length + 1];
 		for(i=0; i < m_sickPeople.length; ++i)   // go over the people
@@ -224,6 +228,8 @@ public abstract class Settlement {
 	 * @return true if the transfer succeeded
 	 */
 	public boolean transferPerson(Person p, Settlement s){
+		if (s.getMaxPeople() >= s.getPeopleAmount())   // check if there is place in the settlement s
+			return false;
 		if(getPersonIndex(p) != -1)   // check if is in this settlement
 		{
 			if(removePersonFromArr(p))    // remove p from this settlement
@@ -239,6 +245,8 @@ public abstract class Settlement {
 	 * @return true if the transfer succeeded
 	 */
 	public boolean transferSickPerson(Sick p, Settlement s){
+		if (s.getMaxPeople() >= s.getPeopleAmount())   // check if there is place in the settlement s
+			return false;
 		if(getSickPersonIndex(p) != -1)   // check if is in this settlement
 		{
 			if(removeSickPersonFromArr(p))    // remove p from this settlement
@@ -270,7 +278,7 @@ public abstract class Settlement {
 	 */
 	public int getPeopleAmount()  
 	{
-		return m_people.length;
+		return m_people.length + m_sickPeople.length;   // the amount of healthy people + the amount of sick people
 	}
 	
 	/**
@@ -282,7 +290,6 @@ public abstract class Settlement {
 		BritishVariant britV = new BritishVariant();   
 		ChineseVariant chinV = new ChineseVariant();
 		SouthAfricanVariant sAfriV = new SouthAfricanVariant();
-		
 		for(int i =0; i< m_people.length / 100; ++i)  // go over the first 1% of people in the array
 		{
 			if (i % 3 == 0)    // infect the selected person in one of the variants
@@ -301,28 +308,16 @@ public abstract class Settlement {
 		int count=0;   // the number of attempted contagion for each sick person
 		int j, i;   // keep the indexes for the arrays
 		Random rand = new Random();   // will randomize the selection of the person to try contage
-		Person[] sickArr=new Person[0];    // array of only the sick people in the settlement
-		for(i =0; i< m_people.length; ++i)
-		{
-			if(m_people[i].checkIfHealthy()==false) {
-				Person[] newArray = new Person[sickArr.length + 1];  // adding the sick people to the sick array
-				for(j=0; j < sickArr.length; ++j)
-					newArray[j] = sickArr[j];
-				newArray[j] = m_people[i];  // adding p itself///
-				sickArr = newArray;
-			}
-		}
-		for(i =0; i< sickArr.length; ++i) {   // going over all the sick
-			Clock.nextTick();   // adding a tick to the clock for each round of contagion tries
+		for(i =0; i< m_sickPeople.length; ++i) {   // going over all the sick
 			while(count<6) {
 				j=rand.nextInt(m_people.length);    // choose a person to contage randomly
 				try {
-					if(sickArr[i].getVirus().tryToContagion(sickArr[i], m_people[j]))   // try to contage the selected person
-						m_people[j].contagion(sickArr[i].getVirus());
+					if(m_sickPeople[i].getVirus().tryToContagion(m_sickPeople[i], m_people[j]))   // try to contage the selected person
+						m_people[j].contagion(m_sickPeople[i].getVirus());
 				}
 				catch(RuntimeException ex)
 				{
-					System.out.println("Sick person cannot become sick again");   // the chosen person is already sick
+					System.out.println("A sick person cannot become sick again");   // the chosen person is already sick
 				}
 				count++;	
 			}
