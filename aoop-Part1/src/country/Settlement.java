@@ -5,6 +5,7 @@ import virus.*;
 import java.util.Random;
 import simulation.Clock;
 
+
 /**
  * @author Hadar Amsalem
  * ID: 316129212 
