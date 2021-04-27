@@ -24,10 +24,11 @@ public abstract class Settlement {
 		m_name = name;
 		m_location = new Location(location);  
 		m_ramzorColor = colorByValue(rc.getColorValue());
-		m_people = new Person[0];     // create an empty array of citizens
-		m_sickPeople = new Sick[0];
+		m_people = new Person[0];     // create an empty array of healthy citizens
+		m_sickPeople = new Sick[0];   // create an empty array of sick citizens
 		m_maxPeople = mp;
 		m_numVDoses = 0;
+		m_connectS = new Settlement[0];  // create an empty array of connected settlements
 	}
 	
 	
@@ -85,12 +86,8 @@ public abstract class Settlement {
 	 * @return the ratio of sick people in the settlement
 	 */
 	public double contagiousPercent(){
-		int peopleCount= m_people.length;   // the number of citizens in the settlement
-		double countSicks=0;    // the amount of sick people
-		for(int i=0; i<peopleCount; ++i) {    // go over all the people in the settlement
-			if(m_people[i].checkIfHealthy()==false)   // check if they are sick
-				countSicks ++; 
-		}
+		double countSicks=m_sickPeople.length;    // the amount of sick people
+		int peopleCount= m_people.length + (int)countSicks;   // the number of citizens in the settlement
 		return countSicks/peopleCount;   // check if the result is double type ////
 	}
 	
@@ -154,6 +151,19 @@ public abstract class Settlement {
 	}
 	
 	/**
+	 * the function gets a sick person and search him in the sick people array of the settlement
+	 * @param p - a sick person
+	 * @return  the index of the person sick in the array of sick people, if he isn't there the function returns -1
+	 */
+	private int getSickPersonIndex(Sick p)
+	{
+		for(int i = 0; i< m_sickPeople.length; i++)
+			if(m_sickPeople[i] == p)    // if they reference to the same person
+				return i;
+		return -1;		
+	}
+	
+	/**
 	 * the method removes p from the settlement people array
 	 * @param p - a person
 	 * @return return if the method succeed to remove or not
@@ -172,6 +182,31 @@ public abstract class Settlement {
 				++j;
 			}
 			m_people = newArray;
+			return true;
+		}
+		else
+			return false;
+	}
+	
+	/**
+	 * the method removes p from the settlement sick people array
+	 * @param p - a sick person
+	 * @return return if the method succeed in removing or not
+	 */
+	public boolean removeSickPersonFromArr(Sick p)
+	{
+		if(getSickPersonIndex(p) != -1)    // if p is in the settlement
+		{
+			Sick[] newArray = new Sick[m_sickPeople.length - 1];   // create a new array of sick people with size minus 1
+			int j = 0; 
+			for(int i=0; i<m_sickPeople.length; ++i) {   // go over the people 
+				if(getSickPersonIndex(p) == i)    
+					--j;
+				else
+					newArray[j] = m_sickPeople[i];   // copy everyone to the new array except for p
+				++j;
+			}
+			m_sickPeople = newArray;
 			return true;
 		}
 		else
@@ -310,4 +345,5 @@ public abstract class Settlement {
 	private int m_maxPeople; // the max number of people in settlement
 	private int m_numVDoses; // the number of vaccines doses
 	private Sick[] m_sickPeople; // the list of the sick people in settlement
+	private Settlement[] m_connectS; // the array of close settlements
 }
