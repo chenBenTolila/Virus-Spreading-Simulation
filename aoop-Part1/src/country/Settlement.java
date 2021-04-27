@@ -114,6 +114,8 @@ public abstract class Settlement {
 	 */
 	public boolean addPerson(Person p){
 		int i;
+		if(getPersonIndex(p) != -1)   // check if p already exist in the people array
+			return false;
 		Person[] newArray = new Person[m_people.length + 1];// create a new array of people with size plus 1
 		for(i=0; i < m_people.length; ++i)   // go over the people
 			newArray[i] = m_people[i];   // copy them to the new array
@@ -129,8 +131,10 @@ public abstract class Settlement {
 	 */
 	public boolean addSickPerson(Sick s){
 		int i;
+		if(getSickPersonIndex(s) != -1)   // check if s already exist in the sick people array
+			return false;
 		Sick[] newArray = new Sick[m_sickPeople.length + 1];
-		for(i=0; i < m_people.length; ++i)   // go over the people
+		for(i=0; i < m_sickPeople.length; ++i)   // go over the people
 			newArray[i] = m_sickPeople[i];  
 		newArray[i] = s;  // adding p itself///
 		m_sickPeople = newArray;
@@ -224,6 +228,21 @@ public abstract class Settlement {
 		{
 			if(removePersonFromArr(p))    // remove p from this settlement
 				return s.addPerson(p);	  // add p to the new settlement
+		}
+		return false;    // return if the the transfer succeeded or failed
+	}
+	
+	/**
+	 * 
+	 * @param p - the sick person we want to transfer
+	 * @param s - the settlement we want to transfer the sick person to
+	 * @return true if the transfer succeeded
+	 */
+	public boolean transferSickPerson(Sick p, Settlement s){
+		if(getSickPersonIndex(p) != -1)   // check if is in this settlement
+		{
+			if(removeSickPersonFromArr(p))    // remove p from this settlement
+				return s.addSickPerson(p);	  // add p to the new settlement
 		}
 		return false;    // return if the the transfer succeeded or failed
 	}
@@ -334,6 +353,11 @@ public abstract class Settlement {
 	 */
 	public int getMaxPeople() {
 		return m_maxPeople;
+	}
+	
+	public boolean addConnectedSettlement(Settlement a)
+	{
+		return true;
 	}
 	
 	
