@@ -72,6 +72,11 @@ public class Map {
 		}
 	}
 	
+	/**
+	 * 
+	 * @param s1 get first name of settlement
+	 * @param s2 get second name of settlement
+	 */
 	public void connectSettlements(String s1, String s2) {
 		int index=-1;
 		for(int i=0; i < m_settlements.length; ++i) {
