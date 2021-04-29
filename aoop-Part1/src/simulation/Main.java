@@ -38,4 +38,14 @@ public class Main {
         	System.out.println("Error in file");
         }
 	}
+	
+	
+	public static void setSleepTime(int st)
+	{
+		sleepTime = st;
+	}
+	
+	private static int sleepTime;   // will keep the speed of the simulation
 }
+
+
