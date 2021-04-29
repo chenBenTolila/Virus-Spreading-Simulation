@@ -30,6 +30,7 @@ public abstract class Settlement {
 		m_maxPeople = mp;
 		m_numVDoses = 0;
 		m_connectS = new Settlement[0];  // create an empty array of connected settlements
+		m_numDead =0;
 	}
 	
 	
@@ -231,10 +232,14 @@ public abstract class Settlement {
 	public boolean transferPerson(Person p, Settlement s){
 		if (s.getMaxPeople() >= s.getPeopleAmount())   // check if there is place in the settlement s
 			return false;
-		if(getPersonIndex(p) != -1)   // check if is in this settlement
-		{
-			if(removePersonFromArr(p))    // remove p from this settlement
-				return s.addPerson(p);	  // add p to the new settlement
+		Random rand= new Random();
+		double prob = m_ramzorColor.getPTransfer()*s.m_ramzorColor.getPTransfer();
+		if(rand.nextDouble() >= prob ) {
+			if(getPersonIndex(p) != -1)   // check if is in this settlement
+			{
+				if(removePersonFromArr(p))    // remove p from this settlement
+					return s.addPerson(p);	  // add p to the new settlement
+			}
 		}
 		return false;    // return if the the transfer succeeded or failed
 	}
@@ -248,10 +253,14 @@ public abstract class Settlement {
 	public boolean transferSickPerson(Sick p, Settlement s){
 		if (s.getMaxPeople() >= s.getPeopleAmount())   // check if there is place in the settlement s
 			return false;
-		if(getSickPersonIndex(p) != -1)   // check if is in this settlement
-		{
-			if(removeSickPersonFromArr(p))    // remove p from this settlement
-				return s.addSickPerson(p);	  // add p to the new settlement
+		Random rand= new Random();
+		double prob = m_ramzorColor.getPTransfer()*s.m_ramzorColor.getPTransfer();
+		if(rand.nextDouble() >= prob ) {
+			if(getSickPersonIndex(p) != -1)   // check if is in this settlement
+			{
+				if(removeSickPersonFromArr(p))    // remove p from this settlement
+					return s.addSickPerson(p);	  // add p to the new settlement
+			}
 		}
 		return false;    // return if the the transfer succeeded or failed
 	}
@@ -356,6 +365,20 @@ public abstract class Settlement {
 		return true;
 	}
 	
+	/**
+	 * add one new dead people
+	 */
+	public void addNewDead() {
+		m_numDead++;
+	}
+	
+	/**
+	 * 
+	 * @return number of dead people
+	 */
+	public int getNumDead() {
+		return m_numDead;
+	}
 	
 	// attributes
 	private String m_name;    // the  name of the settlement
@@ -366,4 +389,5 @@ public abstract class Settlement {
 	private int m_numVDoses; // the number of vaccines doses
 	private Sick[] m_sickPeople; // the list of the sick people in settlement
 	private Settlement[] m_connectS; // the array of close settlements
+	private int m_numDead; // the number of dead people
 }

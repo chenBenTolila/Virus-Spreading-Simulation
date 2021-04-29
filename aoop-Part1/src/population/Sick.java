@@ -74,6 +74,7 @@ public class Sick extends Person{
 	 */
 	public boolean tryToDie() {
 		if( m_virus.tryToKill(this)) {
+			this.getSettlement().addNewDead();
 			this.getSettlement().removePersonFromArr(this);
 			return true;
 		}
