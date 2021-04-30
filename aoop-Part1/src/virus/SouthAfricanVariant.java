@@ -52,6 +52,38 @@ public class SouthAfricanVariant implements IVirus {
 			 throw new RuntimeException();   // p2 is not healthy
 	 }
 	
+	public boolean contage(String s, Person p)
+	 {
+		 ChineseVariant chinV = new ChineseVariant();
+		 SouthAfricanVariant sAfriV = new SouthAfricanVariant();
+		 if(s == "British variant") {
+			 if (canContage == true)
+				 {
+				 	p.contagion(this);
+				 	return true;
+				 }
+			 else return false;
+		 }
+		 else if(s == "Chinese variant")
+		 {
+			 if (canContage == true)
+				 {
+				 	p.contagion(chinV);
+				 	return true;
+				 }
+			 else return false;
+		 }
+		 else
+		 {
+			 if (canContage == true)
+				 {
+				 	p.contagion(sAfriV);
+				 	return true;
+				 }
+			 else return false;
+		 }
+	 }
+	
 	
 	/**
 	 * return true if the person died from the virus
