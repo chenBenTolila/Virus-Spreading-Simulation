@@ -18,6 +18,7 @@ public class MainWindow extends JFrame {
      */
     public MainWindow()
     {
+    	super("Main Window");
     	myBorderLayout.setHgap(10);
     	myBorderLayout.setVgap(0);
     	this.setLayout(myBorderLayout);
@@ -26,7 +27,8 @@ public class MainWindow extends JFrame {
     	this.add(menu, BorderLayout.NORTH);
     	this.add(new JButton("Map Panel"), BorderLayout.CENTER);  // need to change to a panel!!!!
     	this.pack();
-    	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    	this.setLocationRelativeTo(null);
+    	this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
     	this.setVisible(true);
     }
     

@@ -59,7 +59,7 @@ public class BritishVariant implements IVirus {
 	 public String toString() {
 		 return "British variant";
 	 }
-	 
+	 public static double 
 
 	// data members
 	private static final double dieProb18 = 0.01; // The probability of dying by the age of 18

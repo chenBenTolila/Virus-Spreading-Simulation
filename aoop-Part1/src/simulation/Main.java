@@ -48,15 +48,19 @@ public class Main {
 			System.out.println("************ Simulation " + (i+1) + " ************");
 			m.contagionSimu();
 			System.out.println(m.toString());
-		   
+			
+			// second phase
 		
+			// third phase
 		
-		
-		// second phase
-		
-		// third phase
-		
-		//fourth phase
+			//fourth phase
+			
+			try {
+				Thread.sleep(1000 * sleepTime);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				System.out.println("Failed to sleep betweem simulations");
+			}
 		}
 	}
 	
@@ -72,7 +76,9 @@ public class Main {
 	}
 	
 	private static int sleepTime;   // will keep the speed of the simulation
-	private static boolean fileLoaded = false;
+	private static boolean fileLoaded = false;   // will keep true if a file is loaded
+	private static boolean statusPlay = true;    // will keep if the simulation are played or paused
+	private static boolean pause = false;   // will keep true is the simulation are paused
 }
 
 

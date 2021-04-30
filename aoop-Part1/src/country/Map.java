@@ -63,12 +63,12 @@ public class Map {
 		}
 	}
 	 /**
-	  * try to contagion 6 people with each sick person
+	  * try to contagion 3 people with each sick person
 	  */
 	public void contagionSimu() {
 		for(int i = 0; i < m_settlements.length; ++i)  // go over the settlements
 		{
-			m_settlements[i].tryToInfectSix();   
+			m_settlements[i].tryToInfectThree();   
 		}
 	}
 	

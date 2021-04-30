@@ -25,6 +25,7 @@ public class Menu extends JMenuBar {
 	 */
 	public void createFileMenu()
     {
+		Menu jf = this;
         JMenu m1 = new JMenu("FILE");
         this.add(m1);
         
@@ -33,6 +34,14 @@ public class Menu extends JMenuBar {
         JMenuItem m12 = new JMenuItem("Statistics");
         JMenuItem m13 = new JMenuItem("Mutations Edit");
         JMenuItem m14 = new JMenuItem("Exit");
+        m14.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);   // close the system
+			}
+		});
+        
         m1.add(m11);
         m1.add(m12);
         m1.add(m13);
@@ -129,7 +138,14 @@ public class Menu extends JMenuBar {
 	public void createSetTicksDialog()
 	{
 		String input = JOptionPane.showInputDialog("Enter numer of ticks per day:");
-		Clock.setTicksPerDay(Integer.parseInt(input));
+		try {
+			int temp = Integer.parseInt(input);
+			System.out.println(temp + " hello");
+		}
+		catch(Exception e1)
+		{
+			System.out.println("Error - a non integer value was entered");
+		}
 	}
 	
 	/**
