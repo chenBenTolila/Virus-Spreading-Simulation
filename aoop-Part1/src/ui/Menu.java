@@ -14,9 +14,15 @@ public class Menu extends JMenuBar {
 
 	public Menu()
 	{
-		
+		createFileMenu();
+		createSimulationMenu();
+		createHelpMenu();
 	}
 	
+	
+	/**
+	 * creates the mini menu file
+	 */
 	public void createFileMenu()
     {
         JMenu m1 = new JMenu("FILE");
@@ -32,6 +38,10 @@ public class Menu extends JMenuBar {
         m1.add(m13);
         m1.add(m14);
     }
+	
+	/**
+	 * create the mini menu simulation
+	 */
 	public void createSimulationMenu()
 	{
 		JMenu m2 = new JMenu("Simulation");
@@ -83,13 +93,23 @@ public class Menu extends JMenuBar {
         m2.add(m24);
 	}  
 	
-	public void createHelpMeu()
+	/**
+	 * create mini menu help
+	 */
+	public void createHelpMenu()
 	{
 		JMenu m3 = new JMenu("Help");
 		this.add(m3);
 		
      // create Simulation menu
         JMenuItem m31 = new JMenuItem("Help");
+        m31.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				createAboutDialog();	
+			}
+		});
+        
         JMenuItem m32 = new JMenuItem("About");
         m32.addActionListener(new ActionListener() {
 			
@@ -112,12 +132,30 @@ public class Menu extends JMenuBar {
 		Clock.setTicksPerDay(Integer.parseInt(input));
 	}
 	
+	/**
+	 * create an about modeless dialog
+	 */
 	public void createAboutDialog()
 	{
 		JDialog dialog = new JDialog((JFrame)null, "About");
 		Container dialogContainer = dialog.getContentPane();
 		dialogContainer.setLayout(new BorderLayout());
 	      dialogContainer.add(new JLabel("Authors: Chen Ben Tolila,\\nHadar Amsalem\\nCreation Date: 15/04/21")
+	      , BorderLayout.CENTER);
+		dialog.pack();
+		dialog.setVisible(true);
+		dialog.setLocationRelativeTo(null); // center on screen
+	}
+	
+	/**
+	 * create an help modeless dialog
+	 */
+	public void createHelpDialog()
+	{
+		JDialog dialog = new JDialog((JFrame)null, "Help");
+		Container dialogContainer = dialog.getContentPane();
+		dialogContainer.setLayout(new BorderLayout());
+	      dialogContainer.add(new JLabel("print help message")
 	      , BorderLayout.CENTER);
 		dialog.pack();
 		dialog.setVisible(true);

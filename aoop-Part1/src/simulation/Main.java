@@ -38,6 +38,30 @@ public class Main {
         }
 	}
 	
+	
+	public static void createSimu(Map m)
+	{
+		
+		for(int i =0; i < 5; ++i)  // do the simulation 5 times
+		{
+			// first phase
+			System.out.println("************ Simulation " + (i+1) + " ************");
+			m.contagionSimu();
+			System.out.println(m.toString());
+		   
+		
+		
+		
+		// second phase
+		
+		// third phase
+		
+		//fourth phase
+		}
+	}
+	
+	
+	
 	/**
 	 * the method sets a new sleep time
 	 * @param st  - sleep time
@@ -48,6 +72,7 @@ public class Main {
 	}
 	
 	private static int sleepTime;   // will keep the speed of the simulation
+	private static boolean fileLoaded = false;
 }
 
 

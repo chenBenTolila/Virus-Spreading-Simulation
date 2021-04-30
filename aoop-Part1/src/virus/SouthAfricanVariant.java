@@ -66,10 +66,10 @@ public class SouthAfricanVariant implements IVirus {
 	
 	
 	// data members
-	public static final double dieProb18 = 0.05;   // The probability of dying by the age of 18
-	public static final double dieProbUp18 = 0.08;    // The probability of dying over the age of 18
-	public static final double infectProb18 = 0.6;    // The probability of infection by the age of 18
-	public static final double infectProbUp18 = 0.5;    // The probability of infection over the age of 18
-	
-		
+	private static final double dieProb18 = 0.05;   // The probability of dying by the age of 18
+	private static final double dieProbUp18 = 0.08;    // The probability of dying over the age of 18
+	private static final double infectProb18 = 0.6;    // The probability of infection by the age of 18
+	private static final double infectProbUp18 = 0.5;    // The probability of infection over the age of 18
+	private static String mutations[] = new String[] {"SouthAfrican"};
+	private static boolean canContage = true;
 }

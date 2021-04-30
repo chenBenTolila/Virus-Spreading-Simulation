@@ -71,11 +71,12 @@ public class ChineseVariant implements IVirus {
 	
 	
 	// data members
-	public static final double dieProb18 = 0.001; // The probability of dying by the age of 18
-	public static final double dieProb55 = 0.05; // The probability of dying over the age of 18 to 55
-	public static final double dieProbUp55 = 0.1; // The probability of dying over the age of 55
-	public static final double infectProb18 = 0.2; //  The probability of infection by the age of 18 
-	public static final double infectProb55 = 0.5; //  The probability of infection over the age of 18 to 55
-	public static final double infectProbUp55 = 0.7;  // The probability of infection over the age of 55
-	
+	private static final double dieProb18 = 0.001; // The probability of dying by the age of 18
+	private static final double dieProb55 = 0.05; // The probability of dying over the age of 18 to 55
+	private static final double dieProbUp55 = 0.1; // The probability of dying over the age of 55
+	private static final double infectProb18 = 0.2; //  The probability of infection by the age of 18 
+	private static final double infectProb55 = 0.5; //  The probability of infection over the age of 18 to 55
+	private static final double infectProbUp55 = 0.7;  // The probability of infection over the age of 55
+	private static String mutations[] = new String[] {"Chinese"};
+	private static boolean canContage = true;
 }
