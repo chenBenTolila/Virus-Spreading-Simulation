@@ -31,6 +31,17 @@ public class Clock {
 	 */
 	public static int DaysPassed(long c) {
 		return (int)(Math.ceil((c-now())/ticks_per_day));
+		
+	}
+	
+	/**
+	 * change the number of ticks per day in the simulation
+	 * @param numTicks - the new number of ticks per day
+	 */
+	public static void setTicksPerDay(int numTicks)
+	{
+		if (numTicks > 0)
+			ticks_per_day = numTicks;
 	}
 	
 	private static long currentTime = 0;  // the current time in the simulation

@@ -3,7 +3,6 @@ import location.*;
 import population.*;
 import virus.*;
 import java.util.Random;
-import simulation.Clock;
 
 
 /**
@@ -351,8 +350,35 @@ public abstract class Settlement {
 		return m_maxPeople;
 	}
 	
+	/**
+	 * the function gets a settlement and search it in the connected settlements array 
+	 * @param p - a settlement
+	 * @return  the index of the settlement in the array of connected settlements, if it isn't there the function returns -1
+	 */
+	private int getConnectSetIndex(Settlement s)
+	{
+		for(int i = 0; i< m_connectS.length; i++)
+			if(m_connectS[i] == s)    // if they reference to the same person
+				return i;
+		return -1;		
+	}
+	
+	/**
+	 *  the method add a settlement to the list of the connected settlements
+	 * @param a - a settlement
+	 * @return  if the method succeeded to add the settlement to the list
+	 */
 	public boolean addConnectedSettlement(Settlement a)
 	{
+		if (getConnectSetIndex(a) == -1)  // check if a doesn't already exist in the list
+		{
+			Settlement temp[] = new Settlement[m_connectS.length+1];   // create new allocation
+			int i;
+			for(i =0; i < m_connectS.length; ++i)
+				temp[i] = m_connectS[i];
+			temp[i] = a;
+			m_connectS = temp;
+		}
 		return true;
 	}
 	

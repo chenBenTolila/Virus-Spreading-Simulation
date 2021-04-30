@@ -1,37 +1,59 @@
 package ui;
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import simulation.*;
 
 
 public class MainWindow extends JFrame {
     BorderLayout myBorderLayout = new BorderLayout();
     
-    public void setGap()
+    /**
+     * default constructor
+     */
+    public MainWindow()
     {
     	myBorderLayout.setHgap(10);
     	myBorderLayout.setVgap(0);
     	this.setLayout(myBorderLayout);
     	createJSlider();
-    	this.add(new JButton("Menu"), BorderLayout.NORTH);
-    	this.add(new JButton("Map Panel"), BorderLayout.CENTER);
+    	Menu menu = new Menu();
+    	this.add(menu, BorderLayout.NORTH);
+    	this.add(new JButton("Map Panel"), BorderLayout.CENTER);  // need to change to a panel!!!!
     	this.pack();
     	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     	this.setVisible(true);
-
     }
+    
+    /**
+     * creating the JSilder for the simulation speed
+     */
     public void createJSlider()
     {
         JSlider simuSpeed = new JSlider(JSlider.HORIZONTAL,FPS_MIN, FPS_MAX, FPS_INIT);
 
+        this.add(simuSpeed, BorderLayout.SOUTH);
+        simuSpeed.addChangeListener(new ChangeListener() {
+			@Override
+			public void stateChanged(ChangeEvent e) {
+				 
+				Main.setSleepTime(simuSpeed.getValue());  // change the sleep Time of the simulation
+			}
+		});	
+        
         //Turn on labels at major tick marks.
         simuSpeed.setMajorTickSpacing(10);
         simuSpeed.setMinorTickSpacing(1);
         simuSpeed.setPaintTicks(true);
         simuSpeed.setPaintLabels(true);
-        this.add(simuSpeed, BorderLayout.SOUTH);
     }
+    
+    
     
     
     /*
@@ -97,11 +119,8 @@ public class MainWindow extends JFrame {
     }
     */
 
-    public static void main(String[] args) {
-        MainWindow window = new MainWindow();
-        window.setGap();
-    }
     
+    // members for the slider
     private static final int FPS_MIN = 0;
     private static final int FPS_MAX = 30;
     private static final int FPS_INIT = 15;    //initial frames per second
