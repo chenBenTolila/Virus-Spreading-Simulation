@@ -61,6 +61,14 @@ public class Sick extends Person{
 	}
 	
 	/**
+	 * return true if the person in never infected in the virus
+	 */
+	@Override
+	public boolean checkIfHealthy() {
+		return false;
+	}
+	
+	/**
 	 * 
 	 * @return sickness duration of sick person
 	 */

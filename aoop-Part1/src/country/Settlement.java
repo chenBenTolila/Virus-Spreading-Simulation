@@ -415,11 +415,24 @@ public abstract class Settlement {
 	 * make sick people who passed 25 days to convalescent 
 	 */
 	public void makeConvalescent(){
-		for(int i=0; i < m_sickPeople.length; ++i)   // go over the people
+		for(int i=0; i < m_sickPeople.length; ++i)   
 			if(Clock.DaysPassed(m_sickPeople[i].getSicknessDuration())>=25) {
 				addPerson(new Convalescent(m_sickPeople[i].getAge(), m_sickPeople[i].getLocation(), m_sickPeople[i].getSettlement(), m_sickPeople[i].getVirus()));
 				removeSickPersonFromArr(m_sickPeople[i]);
 			}
+	}
+	
+	/**
+	 * make healthy people to vaccinated 
+	 */
+	public void vaccinatedPeople(){
+		for(int i=0; i < m_people.length; ++i) {
+			if(m_people[i].checkIfHealthy() && m_numVDoses>0) {
+				addPerson(new Vaccinated(m_people[i].getAge(), m_people[i].getLocation(), m_people[i].getSettlement(), Clock.now()));
+				removePersonFromArr(m_people[i]);
+				m_numVDoses--;
+			}
+		}
 	}
 	
 	// attributes

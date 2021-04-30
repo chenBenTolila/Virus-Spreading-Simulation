@@ -45,9 +45,15 @@ public abstract class Person {
 	
 	/**
 	 * abstract method 
-	 * @return returns if the person is healthy
+	 * @return returns if the person is sick
 	 */
 	public abstract boolean checkIfSick(); 
+	
+	/**
+	 * abstract method 
+	 * @return returns if the person is healthy
+	 */
+	public abstract boolean checkIfHealthy(); 
 	
 	
 	/**

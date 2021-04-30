@@ -99,5 +99,14 @@ public class Map {
 		}
 	}
 	
+	/**
+	 * vaccinated healthy people in settlement
+	 */
+	public void vaccinatedSettlement() {
+		for(int i=0; i < m_settlements.length; ++i) {
+			m_settlements[i].vaccinatedPeople();
+		}
+	}
+	
 	private Settlement[] m_settlements;    // the list of settlements in the simulation
 }

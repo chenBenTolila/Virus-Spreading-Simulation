@@ -65,6 +65,14 @@ public class Vaccinated extends Person{
 	}
 	
 	/**
+	 * return true if the person in never infected in the virus
+	 */
+	@Override
+	public boolean checkIfHealthy() {
+		return false;
+	}
+	
+	/**
 	 * 
 	 * @return the person vaccination time
 	 */
