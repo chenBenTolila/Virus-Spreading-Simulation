@@ -39,7 +39,10 @@ public class Main {
         }
 	}
 	
-	
+	/**
+	 * the method sets a new sleep time
+	 * @param st  - sleep time
+	 */
 	public static void setSleepTime(int st)
 	{
 		sleepTime = st;
