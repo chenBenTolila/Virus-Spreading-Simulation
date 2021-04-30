@@ -90,5 +90,14 @@ public class Map {
 		}
 	}
 	
+	/**
+	 * make the sick people in all settlement convalescent if passed 25 days
+	 */
+	public void sickToConvalecent() {
+		for(int i=0; i < m_settlements.length; ++i) {
+			m_settlements[i].makeConvalescent();
+		}
+	}
+	
 	private Settlement[] m_settlements;    // the list of settlements in the simulation
 }

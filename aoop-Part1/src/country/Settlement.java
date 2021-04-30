@@ -1,6 +1,7 @@
 package country;
 import location.*;
 import population.*;
+import simulation.Clock;
 import virus.*;
 import java.util.Random;
 
@@ -408,6 +409,17 @@ public abstract class Settlement {
 	 */
 	public int getNumDead() {
 		return m_numDead;
+	}
+	
+	/**
+	 * make sick people who passed 25 days to convalescent 
+	 */
+	public void makeConvalescent(){
+		for(int i=0; i < m_sickPeople.length; ++i)   // go over the people
+			if(Clock.DaysPassed(m_sickPeople[i].getSicknessDuration())>=25) {
+				addPerson(new Convalescent(m_sickPeople[i].getAge(), m_sickPeople[i].getLocation(), m_sickPeople[i].getSettlement(), m_sickPeople[i].getVirus()));
+				removeSickPersonFromArr(m_sickPeople[i]);
+			}
 	}
 	
 	// attributes

@@ -50,7 +50,8 @@ public class Main {
 			System.out.println(m.toString());
 			
 			// second phase
-		
+			m.sickToConvalecent();
+			System.out.println(m.toString());
 			// third phase
 		
 			//fourth phase
