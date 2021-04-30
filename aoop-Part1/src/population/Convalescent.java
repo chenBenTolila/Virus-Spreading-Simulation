@@ -47,8 +47,8 @@ public class Convalescent extends Person{
 	 * return true if the person in not infected in the virus
 	 */
 	@Override
-	public boolean checkIfHealthy(){
-		return true;
+	public boolean checkIfSick(){
+		return false;
 	}
 	 
 	 /**

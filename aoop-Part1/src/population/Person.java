@@ -47,7 +47,7 @@ public abstract class Person {
 	 * abstract method 
 	 * @return returns if the person is healthy
 	 */
-	public abstract boolean checkIfHealthy(); 
+	public abstract boolean checkIfSick(); 
 	
 	
 	/**
@@ -56,7 +56,7 @@ public abstract class Person {
 	 * @return return the sick person
 	 */
 	public Person contagion(IVirus IV) {
-		if(this.checkIfHealthy()==true) {
+		if(this.checkIfSick()==false) {
 			Sick s = new Sick(m_age, m_location, m_settlement, Clock.now(), IV);
 			getSettlement().addPerson(s);   // add the sick person to the settlement
 			getSettlement().removePersonFromArr(this);  // remove the person healthy person from the settlement

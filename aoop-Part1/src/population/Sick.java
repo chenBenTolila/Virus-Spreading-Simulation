@@ -56,8 +56,8 @@ public class Sick extends Person{
 	 * return true if the person in not infected in the virus
 	 */
 	@Override
-	public boolean checkIfHealthy(){
-		return false;
+	public boolean checkIfSick(){
+		return true;
 	}
 	
 	/**
