@@ -461,6 +461,10 @@ public abstract class Settlement {
 		}
 	}
 	
+	public Location getLocation() {
+		return m_location;
+	}
+	
 	
 	// attributes
 	private String m_name;    // the  name of the settlement

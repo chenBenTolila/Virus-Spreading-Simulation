@@ -1,5 +1,7 @@
 package country;
 
+import javax.swing.JButton;
+
 /**
  * @author Hadar Amsalem
  * ID: 316129212 
@@ -127,7 +129,16 @@ public class Map {
 			m_settlements[i].tryToTransfer();
 		}
 	}
-			
+	
+	public int getNumOfSettlement() {
+		return m_settlements.length;
+	}
+	
+	public JButton settlementButton(int i) {
+		JButton jb=new JButton(m_settlements[i].getSettlementName());
+		jb.setSize(m_settlements[i].getLocation().getSizeHeight(), m_settlements[i].getLocation().getSizeWidth());
+		return jb;
+	}
 			
 	private Settlement[] m_settlements;    // the list of settlements in the simulation
 }
