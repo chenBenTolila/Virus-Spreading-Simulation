@@ -293,7 +293,7 @@ public abstract class Settlement {
 	}
 	
 	/**
-	 * the method turns 20% of the healthy people in the settlement into sick people
+	 * the method turns 1% of the healthy people in the settlement into sick people
 	 */
 	public void intializeSickPeople()
 	{
@@ -304,7 +304,7 @@ public abstract class Settlement {
 		// int numPeople = m_people.length + m_sickPeople.length;  check what is the 20%!!!!
 		Random rand = new Random();
 		int randVirus;
-		for(int i =0; i < m_people.length * 0.2; ++i)  // go over the first 20% of the people in the array
+		for(int i =0; i < m_people.length * 0.01; ++i)  // go over the first 20% of the people in the array
 		{
 			randVirus = rand.nextInt(3);
 			if (randVirus == 0)    // infect the selected person in one of the variants
@@ -317,13 +317,13 @@ public abstract class Settlement {
 	}
 	
 	/**
-	 * for in sick person in the settlement try to infect 3 healthy people
+	 * for 20% of the sick people in the settlement try to infect 3 healthy people
 	 */
 	public void tryToInfectThree() {
 		int count=0;   // the number of attempted contagion for each sick person
 		int j, i;   // keep the indexes for the arrays
 		Random rand = new Random();   // will randomize the selection of the person to try contage
-		for(i =0; i< m_sickPeople.length; ++i) {   // going over all the sick
+		for(i =0; i< m_sickPeople.length*0.2; ++i) {   // going over 20% of the sick
 			while(count<3) {
 				j=rand.nextInt(m_people.length);    // choose a person to contage randomly
 				try {
