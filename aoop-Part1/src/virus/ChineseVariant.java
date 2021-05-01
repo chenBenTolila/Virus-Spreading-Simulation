@@ -34,20 +34,20 @@ public class ChineseVariant implements IVirus {
 	public boolean tryToContagion(Sick p1, Person p2){
 		 Random rand = new Random();   // the random probability of the person getting infected
 		 double probToSick;   // the calculated probability
-		 String vType;
-		 double varSickProb;
-		 if(!(p2.checkIfSick())) {   
-			 if(Clock.DaysPassed(p1.getSicknessDuration()) < 5)
+		 String vType;   // the variant type
+		 double varSickProb;   // the probability of p2 to get sick infected in the variant according to his age
+		 if(!(p2.checkIfSick())) {   // check if the p2 is healthy
+			 if(Clock.DaysPassed(p1.getSicknessDuration()) < 5)   // check that p1 is sick for 5 or more days
 				 return false;
 			 vType = mutations[rand.nextInt(mutations.length)];
 			 varSickProb = calcProbToSick(vType, p2);
-			 if(varSickProb == 0)
+			 if(varSickProb == 0)   // if the variant can contage at the moment (by status)
 				 return false;
 		
 			 probToSick = varSickProb*Math.min(1,0.14*Math.pow(Math.E, 2-0.25*p1.distance(p2)));   // calculation of the probability
 			 if (probToSick >= rand.nextDouble())  // exclude 1 - [0,1)  ///	
 			 {
-				 contage(vType, p2);
+				 contage(vType, p2);  // infect p2 in the chosen variant
 			 }
 			 return true;
 		 }
@@ -56,39 +56,49 @@ public class ChineseVariant implements IVirus {
 	 }
 	
 	
-	public boolean contage(String s, Person p)
+	/**
+	  * the method infect the person in the variant
+	  * @param s - a variant name
+	  * @param p - a person 
+	  * @return if the infection succeeded or not
+	  */
+	 public boolean contage(String s, Person p)
 	 {
-		 ChineseVariant chinV = new ChineseVariant();
+		 // creating all the variants kinds
+		 BritishVariant britV = new BritishVariant();   
 		 SouthAfricanVariant sAfriV = new SouthAfricanVariant();
-		 if(s == "British variant") {
-			 if (canContage == true)
+		 if(s.equals("British variant")) 
+		 {
+			 if (BritishVariant.getCanContage() == true)   // checking this the variant can contage (according to it's status)
 				 {
-				 	p.contagion(this);
+				 	p.contagion(britV);  // infecting the person in this variant
 				 	return true;
 				 }
 			 else return false;
 		 }
-		 else if(s == "Chinese variant")
+		 else if(s.equals("Chinese variant"))
 		 {
-			 if (canContage == true)
+			 if (ChineseVariant.getCanContage() == true)  // checking that this variant can contage (according to it's status)
 				 {
-				 	p.contagion(chinV);
+				 	p.contagion(this);   // infecting the person in this variant
 				 	return true;
 				 }
 			 else return false;
 		 }
 		 else
 		 {
-			 if (canContage == true)
+			 if (SouthAfricanVariant.getCanContage() == true)  // checking this the variant can contage (according to it's status)
 				 {
-				 	p.contagion(sAfriV);
+				 	p.contagion(sAfriV);  // infecting the person in this variant
 				 	return true;
 				 }
 			 else return false;
 		 }
 	 }
+	 
+	 
 	
-	/**
+	 /**
 	  * 
 	  * @param s - the name of the variant
 	  * @param p - a person
@@ -96,15 +106,24 @@ public class ChineseVariant implements IVirus {
 	  */
 	 public double calcProbToSick(String s, Person p)
 	 {
-		 
-		 BritishVariant britV = new BritishVariant();   
+		 // creating all the variant types
+		 BritishVariant britV = new BritishVariant();
 		 SouthAfricanVariant sAfriV = new SouthAfricanVariant();
-		 if(s == "British variant")
-			 return britV.contagionProbability(p);
-		 else if(s == "Chinese variant")
-			 return contagionProbability(p);
+		 
+		 if(s.equals("British variant")) {
+			 if (BritishVariant.getCanContage() == true)  // checking this the variant can contage (according to it's status)
+				 return britV.contagionProbability(p);
+			 else return 0;
+		 }
+		 else if(s.equals("Chinese variant"))
+			 if (ChineseVariant.getCanContage() == true)  // checking this the variant can contage (according to it's status)
+				 return contagionProbability(p);
+			 else return 0;
+		 	
 		 else
-			 return sAfriV.contagionProbability(p);
+			 if(SouthAfricanVariant.getCanContage() == true)  // checking this the variant can contage (according to it's status)
+				 return sAfriV.contagionProbability(p);
+			 else return 0;
 	 }
 	
 	
