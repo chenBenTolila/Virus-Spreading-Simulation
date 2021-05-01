@@ -119,7 +119,7 @@ public abstract class Settlement {
 		int i;
 		if(getPersonIndex(p) != -1)   // check if p already exist in the people array
 			return false;
-		if (getMaxPeople() >= getPeopleAmount())
+		if (getMaxPeople() <= getPeopleAmount())
 			return false;
 		Person[] newArray = new Person[m_people.length + 1];// create a new array of people with size plus 1
 		for(i=0; i < m_people.length; ++i)   // go over the people

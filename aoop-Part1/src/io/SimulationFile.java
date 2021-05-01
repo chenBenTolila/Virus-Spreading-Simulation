@@ -57,19 +57,19 @@ public class SimulationFile {
 		{
 		case "City":
 			temp = new City(name, loc, RamzorColor.GREEN, (int)(numPeople*maxP));
-			createPeopleArrey(temp, numPeople);  
+			createPeopleArray(temp, numPeople);  
 			map.addSettlement(temp);  // adding the settlement to the map
 			break;
 				
 		case "Kibbutz":
 			temp = new Kibbutz(name, loc, RamzorColor.GREEN, (int)(numPeople*maxP));
-			createPeopleArrey(temp, numPeople);
+			createPeopleArray(temp, numPeople);
 			map.addSettlement(temp);  // adding the settlement to the map
 			break;
 				
 		case "Moshav":
 			temp  = new Moshav(name, loc, RamzorColor.GREEN, (int)(numPeople*maxP));
-			createPeopleArrey(temp, numPeople);
+			createPeopleArray(temp, numPeople);
 			map.addSettlement(temp);  // adding the settlement to the map
 			break;
 				
@@ -102,7 +102,7 @@ public class SimulationFile {
 	 * @param s - the settlement
 	 * @param numOfPersons - the number of people to add to the settlement
 	 */
-	public static void createPeopleArrey(Settlement s, int numOfPersons) {
+	public static void createPeopleArray(Settlement s, int numOfPersons) {
 		Healthy p;
 		for(int i=0; i< numOfPersons; ++i) {   
 			p=new Healthy(intizializePersonAge(), s.randomLocation(), s );   // create an healthy person
