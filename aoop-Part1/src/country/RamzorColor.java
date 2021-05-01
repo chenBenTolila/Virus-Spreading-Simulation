@@ -74,6 +74,27 @@ public enum RamzorColor
 	}
 	
 	
+	public Color retColor()  
+	{
+		switch(this)
+		{
+		case GREEN:
+			return new Color(0,255,0);
+			
+		case YELLOW:
+			return "Yellow";
+			
+		case ORANGE:
+			return "Orange";
+			
+		case RED:
+			return "Red";
+			
+		default:
+			return "no color";
+		}
+	}
+	
 	private double cSick;
 	private Color color;
 	private double pTransfer;
