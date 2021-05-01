@@ -436,6 +436,10 @@ public abstract class Settlement {
 		}
 	}
 	
+	/**
+	 * 
+	 * @return the number of the sick people
+	 */
 	public int getNumOfSick() {
 		return m_sickPeople.length;
 	}

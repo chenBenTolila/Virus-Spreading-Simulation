@@ -20,7 +20,9 @@ public class Moshav extends Settlement{
 	public Moshav(String name, Location location, RamzorColor ramzorColor, int mp) {
 		super(name, location, ramzorColor, mp);
 	}
-	
+	/**
+	 * return the type of settlement
+	 */
 	public String getSettlementType() {
 		return "Moshav";
 	}

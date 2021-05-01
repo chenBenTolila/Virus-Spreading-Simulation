@@ -22,6 +22,9 @@ public class City extends Settlement{
 		super(name, location, ramzorColor, mp);
 	}
 	
+	/**
+	 * return the type of settlement
+	 */
 	public String getSettlementType() {
 		return "City";
 	}

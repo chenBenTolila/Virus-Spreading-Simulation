@@ -20,7 +20,9 @@ public class Kibbutz extends Settlement{
 	public Kibbutz(String name, Location location, RamzorColor ramzorColor, int mp) {
 		super(name, location, ramzorColor, mp);
 	}
-	
+	/**
+	 * return the type of settlement
+	 */
 	public String getSettlementType() {
 		return "Kibbutz";
 	}

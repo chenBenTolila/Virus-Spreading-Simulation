@@ -65,7 +65,7 @@ public class StatisticsWindow extends JFrame {
 	 */
 	public void createButtonOptions() {
 		JPanel p = new JPanel();
-		p.add(new JButton("Seve"));
+		p.add(new JButton("Save"));
 		p.add(new JButton("Add Sick"));
 		p.add(new JButton("Vaccinate"));
 		this.add(p);
