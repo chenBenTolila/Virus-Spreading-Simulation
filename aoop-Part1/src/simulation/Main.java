@@ -7,7 +7,7 @@ import ui.StatisticsWindow;
 import java.awt.Graphics;
 import java.io.*;
 import javax.swing.*;   // for GUI
-import ui.MapPanel;
+import ui.*;
 
 /**
  * @author Hadar Amsalem
@@ -29,9 +29,9 @@ public class Main {
 		m.addSickToMap();   // initialize the population with 1% of sick people
 		
 		createSimu(m);
-		
+		// MainWindow mw = new MainWindow();
 		//StatisticsWindow s = new StatisticsWindow(m);   // need to remove!!!!!!!!!!
-		new MapPanel();
+		// new MapPanel();
 		}
 		catch (FileNotFoundException ex1) {    // catch errors related to files
             System.out.println("File not found");
@@ -46,6 +46,8 @@ public class Main {
 		int i = 1;
 		while(statusPlay)  // do the simulation 5 times
 		{
+			if(stop == false)
+				return;
 			// first phase
 			System.out.println("************ Simulation " + (i) + " ************");
 			m.contagionSimu();
@@ -65,7 +67,8 @@ public class Main {
 				System.out.println("Failed to sleep betweem simulations");
 			}
 			++i;
-			statusPlay = false;
+			if(i == 5)
+				statusPlay = false;
 		}
 	}
 	
@@ -80,25 +83,38 @@ public class Main {
 		sleepTime = st;
 	}
 	
+	/**
+	 * the method sets the value of file loaded indicator
+	 * @param val - a boolean value
+	 */
 	public static void SetfileLoaded(boolean val)
 	{
 		fileLoaded = val;
 	}
 	
+	
+	/**
+	 * the method sets the value of play status indicator
+	 * @param val - a boolean value
+	 */
 	public static void setStatusPlay(boolean val)
 	{
 		statusPlay = val;
 	}	
 	
-	public static void setPause(boolean val)
+	/**
+	* the method sets the value of stop indicator
+	 * @param val - a boolean value
+	 */
+	public static void setStop(boolean val)
 	{
-		pause = val;
+		stop = val;
 	}
 	
 	private static int sleepTime;   // will keep the speed of the simulation
 	private static boolean fileLoaded = false;   // will keep true if a file is loaded
 	private static boolean statusPlay = true;    // will keep if the simulation are played or paused
-	private static boolean pause = false;   // will keep true is the simulation are paused
+	private static boolean stop = false;   // will keep true is the simulation are paused
 }
 
 

@@ -23,12 +23,20 @@ public class MainWindow extends JFrame {
     	myBorderLayout.setVgap(0);
     	this.setLayout(myBorderLayout);
     	createJSlider();
-    	Menu menu = new Menu();
+    	Menu menu = new Menu();   // creating the menu object
     	this.add(menu, BorderLayout.NORTH);
     	this.add(new JButton("Map Panel"), BorderLayout.CENTER);  // need to change to a panel!!!!
     	this.pack();
     	this.setLocationRelativeTo(null);
-    	this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+    	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    	this.addWindowListener(new java.awt.event.WindowAdapter() {
+    	    @Override
+    	    public void windowClosing(java.awt.event.WindowEvent e) {
+    	        e.getWindow().dispose();
+    	        System.out.println("Program Finished");
+    	        System.exit(0);
+    	    }
+    	});
     	this.setVisible(true);
     }
     
@@ -37,9 +45,11 @@ public class MainWindow extends JFrame {
      */
     public void createJSlider()
     {
+    	JPanel jp = new JPanel();
+    	jp.setLayout(new BoxLayout(jp, BoxLayout.PAGE_AXIS));
+    	jp.add(new JLabel("Simulation speed"));
         JSlider simuSpeed = new JSlider(JSlider.HORIZONTAL,FPS_MIN, FPS_MAX, FPS_INIT);
-
-        this.add(simuSpeed, BorderLayout.SOUTH);
+        jp.add(simuSpeed, BorderLayout.SOUTH);
         simuSpeed.addChangeListener(new ChangeListener() {
 			@Override
 			public void stateChanged(ChangeEvent e) {
@@ -53,9 +63,8 @@ public class MainWindow extends JFrame {
         simuSpeed.setMinorTickSpacing(1);
         simuSpeed.setPaintTicks(true);
         simuSpeed.setPaintLabels(true);
+        this.add(jp, BorderLayout.SOUTH);
     }
-    
-    
     
     
     /*

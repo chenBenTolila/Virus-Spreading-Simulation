@@ -62,8 +62,7 @@ public class Menu extends JMenuBar {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				
+				Main.setStatusPlay(true);  // update the play status to true
 			}
 		});
        
@@ -72,8 +71,7 @@ public class Menu extends JMenuBar {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				
+				Main.setStatusPlay(false);  // update the play status to false
 			}
 		});
         
