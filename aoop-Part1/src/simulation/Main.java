@@ -4,9 +4,10 @@ import country.*;
 import io.SimulationFile;
 import ui.StatisticsWindow;
 
+import java.awt.Graphics;
 import java.io.*;
 import javax.swing.*;   // for GUI
-
+import ui.MapPanel;
 
 /**
  * @author Hadar Amsalem
@@ -29,8 +30,8 @@ public class Main {
 		
 		createSimu(m);
 		
-		StatisticsWindow s = new StatisticsWindow(m);   // need to remove!!!!!!!!!!
-		
+		//StatisticsWindow s = new StatisticsWindow(m);   // need to remove!!!!!!!!!!
+		//new MapPanel();
 		}
 		catch (FileNotFoundException ex1) {    // catch errors related to files
             System.out.println("File not found");

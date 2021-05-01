@@ -1,6 +1,7 @@
 package country;
 
 import javax.swing.JButton;
+import location.Point;
 
 /**
  * @author Hadar Amsalem
@@ -138,6 +139,10 @@ public class Map {
 		JButton jb=new JButton(m_settlements[i].getSettlementName());
 		jb.setSize(m_settlements[i].getLocation().getSizeHeight(), m_settlements[i].getLocation().getSizeWidth());
 		return jb;
+	}
+	
+	public Point getLocation(int index) {
+		return new Point(m_settlements[index].getLocation().getPointX(),m_settlements[index].getLocation().getPointY());
 	}
 			
 	private Settlement[] m_settlements;    // the list of settlements in the simulation
