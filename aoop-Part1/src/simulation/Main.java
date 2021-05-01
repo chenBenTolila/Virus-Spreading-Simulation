@@ -27,13 +27,10 @@ public class Main {
 		SimulationFile.createMap(m);   // read the map from file
 		m.addSickToMap();   // initialize the population with 1% of sick people
 		
-		for(int i =0; i < 5; ++i)  // do the simulation 5 times
-		{
-			System.out.println("************ Simulation " + (i+1) + " ************");
-			m.contagionSimu();
-			System.out.println(m.toString());
-		}  
-		StatisticsWindow s= new StatisticsWindow(m);
+		createSimu(m);
+		
+		StatisticsWindow s = new StatisticsWindow(m);   // need to remove!!!!!!!!!!
+		
 		}
 		catch (FileNotFoundException ex1) {    // catch errors related to files
             System.out.println("File not found");
@@ -46,7 +43,7 @@ public class Main {
 	public static void createSimu(Map m)
 	{
 		
-		for(int i =0; i < 5; ++i)  // do the simulation 5 times
+		while()  // do the simulation 5 times
 		{
 			// first phase
 			System.out.println("************ Simulation " + (i+1) + " ************");
@@ -78,6 +75,21 @@ public class Main {
 	public static void setSleepTime(int st)
 	{
 		sleepTime = st;
+	}
+	
+	public void SetfileLoaded(boolean val)
+	{
+		fileLoaded = val;
+	}
+	
+	public void setStatusPlay(boolean val)
+	{
+		statusPlay = val;
+	}	
+	
+	public void setPause(boolean val)
+	{
+		pause = val;
 	}
 	
 	private static int sleepTime;   // will keep the speed of the simulation
