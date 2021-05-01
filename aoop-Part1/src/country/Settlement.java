@@ -444,6 +444,24 @@ public abstract class Settlement {
 		return m_sickPeople.length;
 	}
 	
+	
+	public void tryToTransfer()
+	{
+		Random rand = new Random();
+		int gp, gs;
+		for(int i=0;i<this.getPeopleAmount()*0.03;++i) {
+			gp=rand.nextInt(this.getPeopleAmount());
+			gs=rand.nextInt(m_connectS.length);
+			if(gp<m_people.length) {
+				transferPerson(m_people[gp],m_connectS[gs]);
+			}
+			else {
+				transferPerson(m_sickPeople[gp],m_connectS[gs]);
+			}
+		}
+	}
+	
+	
 	// attributes
 	private String m_name;    // the  name of the settlement
 	private Location m_location;    // the location of the settlement
