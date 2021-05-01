@@ -43,11 +43,11 @@ public class Main {
 	
 	public static void createSimu(Map m)
 	{
-		
-		while()  // do the simulation 5 times
+		int i = 1;
+		while(statusPlay)  // do the simulation 5 times
 		{
 			// first phase
-			System.out.println("************ Simulation " + (i+1) + " ************");
+			System.out.println("************ Simulation " + (i) + " ************");
 			m.contagionSimu();
 			System.out.println(m.toString());
 			
@@ -64,6 +64,8 @@ public class Main {
 				// TODO Auto-generated catch block
 				System.out.println("Failed to sleep betweem simulations");
 			}
+			++i;
+			statusPlay = false;
 		}
 	}
 	
@@ -78,17 +80,17 @@ public class Main {
 		sleepTime = st;
 	}
 	
-	public void SetfileLoaded(boolean val)
+	public static void SetfileLoaded(boolean val)
 	{
 		fileLoaded = val;
 	}
 	
-	public void setStatusPlay(boolean val)
+	public static void setStatusPlay(boolean val)
 	{
 		statusPlay = val;
 	}	
 	
-	public void setPause(boolean val)
+	public static void setPause(boolean val)
 	{
 		pause = val;
 	}
