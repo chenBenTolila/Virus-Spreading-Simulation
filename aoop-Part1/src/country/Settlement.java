@@ -138,7 +138,7 @@ public abstract class Settlement {
 		int i;
 		if(getSickPersonIndex(s) != -1)   // check if s already exist in the sick people array
 			return false;
-		if (getMaxPeople() >= getPeopleAmount())
+		if (getMaxPeople() <= getPeopleAmount())
 			return false;
 		Sick[] newArray = new Sick[m_sickPeople.length + 1];
 		for(i=0; i < m_sickPeople.length; ++i)   // go over the people
