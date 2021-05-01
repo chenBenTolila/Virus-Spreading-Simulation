@@ -110,7 +110,10 @@ public class Map {
 			m_settlements[i].vaccinatedPeople();
 		}
 	}
-	
+	/**
+	 * 
+	 * @return create the data of all settlement
+	 */
 	public String[][] makeData(){
 		String[][] data= new String [m_settlements.length][7];
 		for(int i=0; i < m_settlements.length; ++i) {
@@ -124,13 +127,18 @@ public class Map {
 		}
 		return data;
 	}
-	
+	/**
+	 * start transfer from settlement
+	 */
 	public void transferSettlement() {
 		for(int i=0; i < m_settlements.length; ++i) {
 			m_settlements[i].tryToTransfer();
 		}
 	}
-	
+	/**
+	 * 
+	 * @return  number of settlements
+	 */
 	public int getNumOfSettlement() {
 		return m_settlements.length;
 	}
@@ -140,7 +148,11 @@ public class Map {
 		jb.setSize(m_settlements[i].getLocation().getSizeHeight(), m_settlements[i].getLocation().getSizeWidth());
 		return jb;
 	}
-	
+	/**
+	 * 
+	 * @param index get index of settlement
+	 * @return location of settlement
+	 */
 	public Point getLocation(int index) {
 		return new Point(m_settlements[index].getLocation().getPointX(),m_settlements[index].getLocation().getPointY());
 	}

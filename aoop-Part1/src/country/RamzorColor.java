@@ -73,7 +73,10 @@ public enum RamzorColor
 		}
 	}
 	
-	
+	/**
+	 * 
+	 * @return type of color
+	 */
 	public Color retColor()  
 	{
 		switch(this)
@@ -82,16 +85,16 @@ public enum RamzorColor
 			return new Color(0,255,0);
 			
 		case YELLOW:
-			return "Yellow";
+			return new Color(255,255,0);
 			
 		case ORANGE:
-			return "Orange";
+			return new Color(255,200,0);
 			
 		case RED:
-			return "Red";
+			return new Color(255,0,0);
 			
 		default:
-			return "no color";
+			return null;
 		}
 	}
 	

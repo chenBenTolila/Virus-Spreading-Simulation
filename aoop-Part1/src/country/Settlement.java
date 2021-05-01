@@ -444,7 +444,9 @@ public abstract class Settlement {
 		return m_sickPeople.length;
 	}
 	
-	
+	/**
+	 * try to transfer 3% people from settlement
+	 */
 	public void tryToTransfer()
 	{
 		Random rand = new Random();
@@ -460,9 +462,19 @@ public abstract class Settlement {
 			}
 		}
 	}
-	
+	/**
+	 * 
+	 * @return location of settlement
+	 */
 	public Location getLocation() {
 		return m_location;
+	}
+	/**
+	 * 
+	 * @return point in the middle of settlement
+	 */
+	public Point middleOfSettlement() {
+		return new Point(m_location.getPointX()+m_location.getSizeWidth()/2,m_location.getPointY()+m_location.getSizeHeight()/2);
 	}
 	
 	
