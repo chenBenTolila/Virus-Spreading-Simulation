@@ -21,7 +21,12 @@ public class City extends Settlement{
 	public City(String name, Location location, RamzorColor ramzorColor, int mp) {
 		super(name, location, ramzorColor, mp);
 	}
-		
+	
+	public String getSettlementType() {
+		return "City";
+	}
+	
+	
 	/**
 	 * calculate the new color of the settlement
 	 */

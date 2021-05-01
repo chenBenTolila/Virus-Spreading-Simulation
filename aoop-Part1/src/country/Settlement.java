@@ -82,6 +82,7 @@ public abstract class Settlement {
 	
 	public abstract RamzorColor calculateRamzorGrade();  // Abstract - calculate the new color of the settlement
 	
+	public abstract String getSettlementType(); // return the type of all settlement 
 	
 	/**
 	 * 
@@ -433,6 +434,10 @@ public abstract class Settlement {
 				m_numVDoses--;
 			}
 		}
+	}
+	
+	public int getNumOfSick() {
+		return m_sickPeople.length;
 	}
 	
 	// attributes

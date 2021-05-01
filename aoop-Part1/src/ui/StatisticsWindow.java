@@ -1,7 +1,9 @@
 package ui;
 
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import javax.swing.*;
+import country.Map;
 
 
 public class StatisticsWindow extends JFrame {
@@ -9,12 +11,12 @@ public class StatisticsWindow extends JFrame {
 	/**
      * default constructor
     */
-	public StatisticsWindow()
+	public StatisticsWindow(Map m)
     {
 		super("Statistics Window");   
 	    this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.PAGE_AXIS));
 		createFilterW();
-		createTableWindow();
+		createTableWindow(m);
 		createButtonOptions();
 		this.setSize(800,500);  
 	    this.setLocationRelativeTo(null);
@@ -40,13 +42,17 @@ public class StatisticsWindow extends JFrame {
 	/**
 	 * function for table show
 	 */
-	public void createTableWindow()
+	public void createTableWindow(Map m)
     {
 		JPanel p = new JPanel();
 		this.setLayout(new GridLayout(0, 1));
-		String data[][]={ {"101","chen","670000","2", "11", "12","jdbd"}}; // do function to data
+		String data[][]=m.makeData(); // do function to data
 		String col[]={"Settlement Name","Settlemen kind","Ramzor Color", "Sick People", "Num Doses", "Num of Dead", "Num of People"};     
 		JTable jt=new JTable(data,col);
+		jt.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		jt.setPreferredScrollableViewportSize(new Dimension(750, 200));
+		jt.setFillsViewportHeight(true);
+
 		jt.setSize(1000, 500);
 		JScrollPane sp=new JScrollPane(jt);    
 	    p.add(sp);

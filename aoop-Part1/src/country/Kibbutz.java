@@ -21,6 +21,11 @@ public class Kibbutz extends Settlement{
 		super(name, location, ramzorColor, mp);
 	}
 	
+	public String getSettlementType() {
+		return "Kibbutz";
+	}
+	
+	
 	/**
 	 * calculate the new color of the settlement
 	 */

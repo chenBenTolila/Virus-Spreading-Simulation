@@ -108,5 +108,21 @@ public class Map {
 		}
 	}
 	
+	public String[][] makeData(){
+		String[][] data= new String [m_settlements.length][7];
+		for(int i=0; i < m_settlements.length; ++i) {
+			 data[i][0]=  m_settlements[i].getSettlementName();
+			 data[i][1]=  m_settlements[i].getSettlementType();
+			 data[i][2]=  "" + m_settlements[i].getRamzorColor();
+			 data[i][3]=  String.valueOf(m_settlements[i].getNumOfSick());
+			 data[i][4]=  "" + m_settlements[i].getNumVDoses();
+			 data[i][5]=  "" + m_settlements[i].getNumDead();
+			 data[i][6]=  String.valueOf(m_settlements[i].getPeopleAmount());					 
+		}
+		return data;
+	}
+			
+			
+			
 	private Settlement[] m_settlements;    // the list of settlements in the simulation
 }

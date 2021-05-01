@@ -2,6 +2,8 @@ package simulation;
 
 import country.*;
 import io.SimulationFile;
+import ui.StatisticsWindow;
+
 import java.io.*;
 import javax.swing.*;   // for GUI
 
@@ -24,12 +26,14 @@ public class Main {
 		Map m = new Map();   // create an empty map
 		SimulationFile.createMap(m);   // read the map from file
 		m.addSickToMap();   // initialize the population with 1% of sick people
+		
 		for(int i =0; i < 5; ++i)  // do the simulation 5 times
 		{
 			System.out.println("************ Simulation " + (i+1) + " ************");
 			m.contagionSimu();
 			System.out.println(m.toString());
 		}  
+		StatisticsWindow s= new StatisticsWindow(m);
 		}
 		catch (FileNotFoundException ex1) {    // catch errors related to files
             System.out.println("File not found");

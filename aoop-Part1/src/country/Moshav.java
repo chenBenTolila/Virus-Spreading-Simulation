@@ -21,7 +21,11 @@ public class Moshav extends Settlement{
 		super(name, location, ramzorColor, mp);
 	}
 	
-
+	public String getSettlementType() {
+		return "Moshav";
+	}
+	
+	
 	/**
 	 * calculate the new ramzor color of settlement
 	 */
