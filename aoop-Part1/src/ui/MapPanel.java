@@ -34,7 +34,7 @@ public class MapPanel extends JPanel{
 				System.out.println("erorr");
 				return;
 			}
-			for(int j=1;i<pm.length;++j) {
+			for(int j=1; j < pm.length; ++j) {
 				g.drawLine(pm[0].getX(), pm[0].getY(), pm[j].getX(), pm[j].getY());
 			}
 		}
