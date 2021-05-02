@@ -30,7 +30,11 @@ public class MapPanel extends JPanel{
 		
 		for(int i=0;i< m_map.getNumOfSettlement(); ++i) {
 			Point[] pm=m_map.connectedSettlements(i);
-			for(int j=0;i<pm.length;++j) {
+			if(pm==null) {
+				System.out.println("erorr");
+				return;
+			}
+			for(int j=1;i<pm.length;++j) {
 				g.drawLine(pm[0].getX(), pm[0].getY(), pm[j].getX(), pm[j].getY());
 			}
 		}
