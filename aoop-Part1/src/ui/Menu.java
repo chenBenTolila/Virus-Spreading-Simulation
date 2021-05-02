@@ -121,7 +121,7 @@ public class Menu extends JMenuBar {
         m31.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				createAboutDialog();	
+				createHelpDialog();	
 			}
 		});
         
@@ -143,7 +143,19 @@ public class Menu extends JMenuBar {
 	 */
 	public void createSetTicksDialog()
 	{
-		String input = JOptionPane.showInputDialog("Enter numer of ticks per day:");
+		String numTicks[] = new String[21];
+		for(int i = 10; i < 30; ++i)
+		{
+			numTicks[i-10] = String.valueOf(i);
+		}
+		// String[] monthStrings = getMonthStrings(); //get month names
+		SpinnerListModel ticksModel = new SpinnerListModel(numTicks);
+		JSpinner spinner = new JSpinner(ticksModel);
+		JPanel jp = new JPanel();
+		jp.setLayout(new BorderLayout(20, 20));
+		jp.add(spinner, BorderLayout.EAST);
+		JLabel input = new JLabel("Enter numer of ticks per day:");
+		jp
 		try {
 			int temp = Integer.parseInt(input);
 			System.out.println(temp + " hello");
@@ -161,26 +173,30 @@ public class Menu extends JMenuBar {
 	{
 		JDialog dialog = new JDialog((JFrame)null, "About");
 		Container dialogContainer = dialog.getContentPane();
-		dialogContainer.setLayout(new BorderLayout());
-	      dialogContainer.add(new JLabel("Authors: Chen Ben Tolila,\\nHadar Amsalem\\nCreation Date: 15/04/21")
-	      , BorderLayout.CENTER);
-		dialog.pack();
+	    dialogContainer.add(new JLabel("Authors: Chen Ben Tolila, " + "\nHadar Amsalem" + "\nCreation Date: 15/04/21"));
+	    dialog.pack();
 		dialog.setVisible(true);
 		dialog.setLocationRelativeTo(null); // center on screen
 	}
 	
 	/**
-	 * create an help modeless dialog
+	 * create an help modal dialog
 	 */
 	public void createHelpDialog()
 	{
+		/*
 		JDialog dialog = new JDialog((JFrame)null, "Help");
 		Container dialogContainer = dialog.getContentPane();
+		JOptionPane.showMessageDialog(null, " ");
 		dialogContainer.setLayout(new BorderLayout());
 	      dialogContainer.add(new JLabel("print help message")
 	      , BorderLayout.CENTER);
-		dialog.pack();
+	    dialog.pack();
 		dialog.setVisible(true);
 		dialog.setLocationRelativeTo(null); // center on screen
+	      */
+	    JOptionPane.showMessageDialog(null, "The program simulates the infection process of a virus that develops into different mutations.\r\n"
+	    		+ "The simulation takes place on different types of settlement, and combines all the necessary information about the people in the settlement.\r\n"
+	    		+ "");
 	}
 }
