@@ -501,6 +501,20 @@ public abstract class Settlement {
 		return pm;
 	}
 	
+	/**
+	 * 
+	 * @param x - the x coordinate of a point 
+	 * @param y - the y coordinate of a point
+	 * @return if the point is in the area of the settlement
+	 */
+	public boolean isPointInSet(int x, int y)
+	{
+		if ((m_location.getPointX() <= x) && (m_location.getPointX() + m_location.getSizeWidth() >= x))
+			if((m_location.getPointY() <= y) && (m_location.getPointY() + m_location.getSizeHeight() >= y))
+				return true;
+		return false;
+	}			
+	
 	
 	// attributes
 	private String m_name;    // the  name of the settlement

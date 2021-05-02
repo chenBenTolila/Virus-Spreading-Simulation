@@ -19,6 +19,19 @@ public class MapPanel extends JPanel{
 		super();
 		m_map = m;
 		setVisible(true);
+		this.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                int x = evt.getX();
+                int y = evt.getY();
+                
+                for(int i = 0; i < m_map.getNumOfSettlement(); ++i)
+                	if(m_map.isPointInSetIndex(i, x, y))
+                	{
+                		System.out.println("need to open statistics");
+                		break;
+                	}
+            }
+        });
 	}
 	
 	
@@ -44,6 +57,8 @@ public class MapPanel extends JPanel{
 			{
 				g.setColor(col);
 				g.fillRect(loc.getPointX(), loc.getPointY(), loc.getSizeWidth(), loc.getSizeHeight());
+				g.setColor(Color.BLACK);
+				g.drawString(m_map.getIndexSettName(i), loc.getPointX(), loc.getPointY()+(loc.getSizeHeight()/2));
 			}
 		}
 		

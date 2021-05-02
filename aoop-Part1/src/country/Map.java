@@ -182,6 +182,26 @@ public class Map {
 		return m_settlements[index].connectedMiddlePoints();
 	}
 	
+	public String getIndexSettName(int index)
+	{
+		if(index < m_settlements.length)
+			return m_settlements[index].getSettlementName();
+		return null;
+	}
+	
+	/**
+	 * 
+	 * @param index - an index of a settlement in the settlement array
+	 * @param x - the x coordinate of a point
+	 * @param y - the y coordinate of a point
+	 * @return if the point is in the chosen settlement's area
+	 */
+	public boolean isPointInSetIndex(int index, int x, int y)
+	{
+		if(index < m_settlements.length)
+			return m_settlements[index].isPointInSet(x, y);
+		return false;
+	}
 	
 			
 	private Settlement[] m_settlements;    // the list of settlements in the simulation
