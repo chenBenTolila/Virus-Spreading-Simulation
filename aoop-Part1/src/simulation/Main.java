@@ -29,9 +29,8 @@ public class Main {
 		m.addSickToMap();   // initialize the population with 1% of sick people
 		
 		createSimu(m);
-		// MainWindow mw = new MainWindow();
+		MainWindow mw = new MainWindow(m);
 		//StatisticsWindow s = new StatisticsWindow(m);   // need to remove!!!!!!!!!!
-		//new MapPanel(m);
 		}
 		catch (FileNotFoundException ex1) {    // catch errors related to files
             System.out.println("File not found");
@@ -46,7 +45,7 @@ public class Main {
 		int i = 1;
 		while(statusPlay)  // do the simulation 5 times
 		{
-			if(stop == false)
+			if(stop == true)
 				return;
 			// first phase
 			System.out.println("************ Simulation " + (i) + " ************");

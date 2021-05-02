@@ -26,7 +26,7 @@ public class SimulationFile {
 		while((line = bufferedReader.readLine()) != null) {
 			line = line.replaceAll(" ", "");
 			String[] data = line.split(";");
-			if(data[0]!="#") 
+			if(!(data[0].equals("#"))) 
 				createSettlement(data, map);
 		}
 		fr.close();	
@@ -35,7 +35,8 @@ public class SimulationFile {
 		while((line = bufferedReader.readLine()) != null) {
 			line = line.replaceAll(" ", "");
 			String[] data = line.split(";");
-			map.connectSettlements(data[1], data[2]);
+			if(data[0].equals("#"))
+				map.connectSettlements(data[1], data[2]);
 		}
 		fr.close();
 	}

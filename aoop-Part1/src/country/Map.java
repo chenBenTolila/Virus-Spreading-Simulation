@@ -1,7 +1,8 @@
 package country;
 
 import javax.swing.JButton;
-import location.Point;
+import location.*;
+import java.awt.Color;
 
 /**
  * @author Hadar Amsalem
@@ -148,8 +149,33 @@ public class Map {
 	 * @param index get index of settlement
 	 * @return location of settlement
 	 */
-	public Point getLocation(int index) {
+	public Point getLocation(int index)   // maybe not needed!!!!!!
+	{
 		return new Point(m_settlements[index].getLocation().getPointX(),m_settlements[index].getLocation().getPointY());
+	}
+	
+	/**
+	 * 
+	 * @param index of a settlement in the settlements array
+	 * @return the location of the chosen settlement
+	 */
+	public Location getIndexLocation(int index)
+	{
+		if(index < m_settlements.length)
+			return m_settlements[index].getLocation();
+		return null;
+	}
+	
+	/**
+	 * 
+	 * @param index of a settlement in the settlements array
+	 * @return 
+	 */
+	public Color getIndexColor(int index)
+	{
+		if(index < m_settlements.length)
+			return m_settlements[index].getSetColor();
+		return null;
 	}
 	
 	public Point[] connectedSettlements(int index) {

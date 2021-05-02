@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import simulation.*;
+import country.Map;
 
 
 public class MainWindow extends JFrame {
@@ -16,7 +17,7 @@ public class MainWindow extends JFrame {
     /**
      * default constructor
      */
-    public MainWindow()
+    public MainWindow(Map m)
     {
     	super("Main Window");
     	myBorderLayout.setHgap(10);
@@ -25,7 +26,10 @@ public class MainWindow extends JFrame {
     	createJSlider();
     	Menu menu = new Menu();   // creating the menu object
     	this.add(menu, BorderLayout.NORTH);
-    	this.add(new JButton("Map Panel"), BorderLayout.CENTER);  // need to change to a panel!!!!
+    	
+    	// creating the map panel;
+    	MapPanel mp = new MapPanel(m);
+    	this.add(mp, BorderLayout.CENTER);  // need to change to a panel!!!!
     	this.pack();
     	this.setLocationRelativeTo(null);
     	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

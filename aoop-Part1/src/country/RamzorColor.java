@@ -77,7 +77,7 @@ public enum RamzorColor
 	 * 
 	 * @return type of color
 	 */
-	public Color retColor()  
+	public Color retColor()      // check if needed
 	{
 		switch(this)
 		{

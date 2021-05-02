@@ -4,6 +4,7 @@ import population.*;
 import simulation.Clock;
 import virus.*;
 import java.util.Random;
+import java.awt.Color;
 
 
 /**
@@ -58,6 +59,15 @@ public abstract class Settlement {
 	 */
 	protected RamzorColor getRamzorColor() { 
 		return m_ramzorColor;
+	}
+	
+	/**
+	 * 
+	 * @return the color of the settlement in color form
+	 */
+	public Color getSetColor()
+	{
+		return m_ramzorColor.getColor();
 	}
 	
 
@@ -467,7 +477,7 @@ public abstract class Settlement {
 	 * @return location of settlement
 	 */
 	public Location getLocation() {
-		return m_location;
+		return new Location(m_location);
 	}
 	/**
 	 * 
