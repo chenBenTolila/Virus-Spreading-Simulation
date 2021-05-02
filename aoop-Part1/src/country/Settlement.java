@@ -101,7 +101,7 @@ public abstract class Settlement {
 			s += "no connected settlement\n";
 		else
 			for(int i=0; i < m_connectS.length;++i){
-				s+= m_connectS[i].toString()+"\n";
+				// s+= m_connectS[i].toString()+"\n";
 			}
 		return s;
 		

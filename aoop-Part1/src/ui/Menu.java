@@ -151,19 +151,29 @@ public class Menu extends JMenuBar {
 		// String[] monthStrings = getMonthStrings(); //get month names
 		SpinnerListModel ticksModel = new SpinnerListModel(numTicks);
 		JSpinner spinner = new JSpinner(ticksModel);
+		spinner.addChangeListener(new ChangeListener() {
+			
+			@Override
+			public void stateChanged(ChangeEvent e) {
+				try {
+					int temp = Integer.parseInt((String)spinner.getValue());
+					System.out.println(temp + " hello");
+				}
+				catch(Exception e1)
+				{
+					System.out.println("Error - a non integer value was entered");
+				}
+			}
+		});
 		JPanel jp = new JPanel();
 		jp.setLayout(new BorderLayout(20, 20));
 		jp.add(spinner, BorderLayout.EAST);
 		JLabel input = new JLabel("Enter numer of ticks per day:");
-		jp
-		try {
-			int temp = Integer.parseInt(input);
-			System.out.println(temp + " hello");
-		}
-		catch(Exception e1)
-		{
-			System.out.println("Error - a non integer value was entered");
-		}
+		jp.add(input, BorderLayout.WEST);
+		JDialog jd = new JDialog();
+		jd.add(jp);
+		jd.setModal(true);
+		jd.setVisible(true);
 	}
 	
 	/**
