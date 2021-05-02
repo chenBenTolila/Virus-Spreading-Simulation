@@ -26,7 +26,7 @@ public class Main {
 		Map m = new Map();   // create an empty map
 		SimulationFile.createMap(m);   // read the map from file
 		m.addSickToMap();   // initialize the population with 1% of sick people
-		//EditMutationsWindow emw=new EditMutationsWindow();
+		EditMutationsWindow emw=new EditMutationsWindow();
 		createSimu(m);
 		MainWindow mw = new MainWindow(m);
 		//StatisticsWindow s = new StatisticsWindow(m);   // need to remove!!!!!!!!!!

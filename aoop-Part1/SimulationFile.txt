@@ -5,3 +5,4 @@ Moshav; Gevim; 20;100 ;40;40; 100
 # ; Gevim; Ashdod
 Kibbutz; Gat; 120;150 ;70;80; 200
 #; Ashdod; Gat
+City;Tel-Aviv;150;150;30;40
