@@ -14,8 +14,7 @@ import javax.swing.JPanel;
 public class MapPanel extends JPanel{
 	
 	public MapPanel(Map m) {
-		drowConnections(m);
-		
+		m_map = m;
 	}
 
 	public void drowConnections(Map m) {
@@ -44,5 +43,5 @@ public class MapPanel extends JPanel{
 	return new Dimension(400, 400);
 	}
 	
-	private 
+	private Map m_map;
 }
