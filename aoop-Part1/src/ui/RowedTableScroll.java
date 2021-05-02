@@ -1,7 +1,8 @@
 package ui;
-import java.awt.Dimension;
-import java.awt.GridLayout;
+
 import javax.swing.*;
+import javax.swing.table.JTableHeader;
+import java.awt.*;
 
 public class RowedTableScroll extends JScrollPane {
 	private static class RowHeaderRenderer extends JLabel implements ListCellRenderer<String> {
