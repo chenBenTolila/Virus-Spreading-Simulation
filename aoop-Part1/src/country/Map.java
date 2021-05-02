@@ -143,11 +143,6 @@ public class Map {
 		return m_settlements.length;
 	}
 	
-	public JButton settlementButton(int i) {
-		JButton jb=new JButton(m_settlements[i].getSettlementName());
-		jb.setSize(m_settlements[i].getLocation().getSizeHeight(), m_settlements[i].getLocation().getSizeWidth());
-		return jb;
-	}
 	/**
 	 * 
 	 * @param index get index of settlement
@@ -156,6 +151,12 @@ public class Map {
 	public Point getLocation(int index) {
 		return new Point(m_settlements[index].getLocation().getPointX(),m_settlements[index].getLocation().getPointY());
 	}
+	
+	public Point[] connectedSettlements(int index) {
+		return m_settlements[index].connectedMiddlePoints();
+	}
+	
+	
 			
 	private Settlement[] m_settlements;    // the list of settlements in the simulation
 }

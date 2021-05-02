@@ -477,6 +477,20 @@ public abstract class Settlement {
 		return new Point(m_location.getPointX()+m_location.getSizeWidth()/2,m_location.getPointY()+m_location.getSizeHeight()/2);
 	}
 	
+	//maybe not
+	public int getNumConeccted() {
+		return m_connectS.length;
+	}
+	
+	public Point[] connectedMiddlePoints() {
+		Point[] pm=new Point[m_connectS.length+1];
+		pm[0]=this.middleOfSettlement();
+		for(int i=1;i<=m_connectS.length;++i) {
+			pm[i]=m_connectS[i-1].middleOfSettlement();
+		}
+		return pm;
+	}
+	
 	
 	// attributes
 	private String m_name;    // the  name of the settlement
