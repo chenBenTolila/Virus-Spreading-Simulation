@@ -31,7 +31,7 @@ public class Main {
 		createSimu(m);
 		// MainWindow mw = new MainWindow();
 		//StatisticsWindow s = new StatisticsWindow(m);   // need to remove!!!!!!!!!!
-		new MapPanel(m);
+		//new MapPanel(m);
 		}
 		catch (FileNotFoundException ex1) {    // catch errors related to files
             System.out.println("File not found");

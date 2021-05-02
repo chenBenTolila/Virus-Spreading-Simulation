@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 public class MapPanel extends JPanel{
 	
 	public MapPanel(Map m) {
+		super();
 		m_map = m;
 	}
 	
@@ -35,6 +36,7 @@ public class MapPanel extends JPanel{
 		for(int i=0; i < m_map.getNumOfSettlement();++i) {
 			
 		}
+		
 		
 	}
 	
