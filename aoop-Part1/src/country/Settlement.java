@@ -85,7 +85,24 @@ public abstract class Settlement {
 		else
 			for(int i=0;i<m_people.length;++i) {
 				s+= m_people[i].toString()+"\n";
-		}
+			}
+		s += "\nsick people in the settlement:\n";
+		if(m_sickPeople.length == 0)
+			s += "no sick people currently in the settlement\n";
+		else
+			for(int i=0; i < m_sickPeople.length;++i){
+				s+= m_sickPeople[i].toString()+"\n";
+			}
+		s+= "number of vaccine doses: "+ m_numVDoses+"\n";
+		s+= "max people in settlement: "+ m_maxPeople+"\n";
+		s+= "number of dead: "+ m_numDead+"\n";
+		s += "\nconnected to settlement: \n";
+		if(m_connectS.length == 0)
+			s += "no connected settlement\n";
+		else
+			for(int i=0; i < m_connectS.length;++i){
+				s+= m_connectS[i].toString()+"\n";
+			}
 		return s;
 		
 	}
