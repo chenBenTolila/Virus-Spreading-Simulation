@@ -19,9 +19,10 @@ public class EditMutationsWindow extends JFrame{
 	/**
      * default constructor
     */
-	public EditMutationsWindow()
+	public EditMutationsWindow(JFrame parent)
     {
 		super("Edit Mutations");
+		parent.disable();
 		MutationModel model = new MutationModel();
 		JTable table = new JTable(model);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -29,6 +30,14 @@ public class EditMutationsWindow extends JFrame{
 		table.setFillsViewportHeight(true);
 		this.add(new RowedTableScroll(table, model.getArrMutation()));
 		this.pack();
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    	this.addWindowListener(new java.awt.event.WindowAdapter() {
+    	    @Override
+    	    public void windowClosing(java.awt.event.WindowEvent e) {
+    	        e.getWindow().dispose();
+    	        parent.enable();
+    	    }
+    	});
 		this.setVisible(true);
 
     }

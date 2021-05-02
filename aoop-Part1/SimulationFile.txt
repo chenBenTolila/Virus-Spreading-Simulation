@@ -1,8 +1,8 @@
-City; Ashdod; 0;0; 60;50; 1000
+City;Ashdod; 0;0; 60;50; 1000
+City;Tel-Aviv;220;150;30;40; 5000
 #; Beer-Sheva;Gat
 City; Beer-Sheva; 150;0; 70;80; 1200
 Moshav; Gevim; 20;100 ;40;40; 100
 # ; Gevim; Ashdod
 Kibbutz; Gat; 120;150 ;70;80; 200
 #; Ashdod; Gat
-City;Tel-Aviv;150;150;30;40

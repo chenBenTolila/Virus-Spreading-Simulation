@@ -12,9 +12,9 @@ import simulation.*;
 
 public class Menu extends JMenuBar {
 
-	public Menu()
+	public Menu(JFrame parent)
 	{
-		createFileMenu();
+		createFileMenu(parent);
 		createSimulationMenu();
 		createHelpMenu();
 	}
@@ -23,9 +23,9 @@ public class Menu extends JMenuBar {
 	/**
 	 * creates the mini menu file
 	 */
-	public void createFileMenu()
+	public void createFileMenu(JFrame parent)
     {
-		//Menu jf = this;
+		
         JMenu m1 = new JMenu("FILE");
         this.add(m1);
         
@@ -33,6 +33,14 @@ public class Menu extends JMenuBar {
         JMenuItem m11 = new JMenuItem("Load");
         JMenuItem m12 = new JMenuItem("Statistics");
         JMenuItem m13 = new JMenuItem("Mutations Edit");
+        m13.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new EditMutationsWindow(parent);
+			}
+		});
+        
         JMenuItem m14 = new JMenuItem("Exit");
         m14.addActionListener(new ActionListener() {
 			
