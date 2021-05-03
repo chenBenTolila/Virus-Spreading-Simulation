@@ -18,6 +18,7 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		try {
+			
 			Map m = new Map();   // create an empty map
 			MainWindow mw = new MainWindow(m);
 			while(true)
