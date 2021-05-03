@@ -1,17 +1,22 @@
 package ui;
 
+import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.FileDialog;
+import java.awt.Frame;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import javax.swing.BoxLayout;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.ListSelectionModel;
+
+import javax.swing.*;
+
 import javax.swing.table.AbstractTableModel;
 
-import country.Map;
+
+import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
+
 import virus.*;
 
 public class EditMutationsWindow extends JDialog{
@@ -22,7 +27,7 @@ public class EditMutationsWindow extends JDialog{
     */
 	public EditMutationsWindow()
     {
-		super("Edit Mutations");
+		setModalityType(ModalityType.APPLICATION_MODAL);
 		MutationModel model = new MutationModel();
 		JTable table = new JTable(model);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -30,8 +35,7 @@ public class EditMutationsWindow extends JDialog{
 		table.setFillsViewportHeight(true);
 		this.add(new RowedTableScroll(table, model.getArrMutation()));
 		this.pack();
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setMo
+		this.setModal(true);
 		this.setVisible(true);
 
     }
