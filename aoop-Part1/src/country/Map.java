@@ -124,7 +124,7 @@ public class Map {
 			 data[i][0]=  m_settlements[i].getSettlementName();
 			 data[i][1]=  m_settlements[i].getSettlementType();
 			 data[i][2]=  "" + m_settlements[i].getRamzorColor();
-			 data[i][3]=  String.valueOf(m_settlements[i].getNumOfSick());
+			 data[i][3]=  String.valueOf(m_settlements[i].contagiousPercent());
 			 data[i][4]=  String.valueOf(m_settlements[i].getNumVDoses());
 			 data[i][5]=  String.valueOf(m_settlements[i].getNumDead());
 			 data[i][6]=  String.valueOf(m_settlements[i].getPeopleAmount());					 
@@ -199,11 +199,11 @@ public class Map {
 		return null;
 	}
 	
-	public int getIndexNumSick(int index)
+	public String getIndexNumSick(int index)
 	{
 		if(index < m_settlements.length)
-			return m_settlements[index].getNumOfSick();
-		return -1;
+			return String.valueOf(m_settlements[index].contagiousPercent());;
+		return null;
 	}
 	
 	public int getIndexNumVDoses(int index)
