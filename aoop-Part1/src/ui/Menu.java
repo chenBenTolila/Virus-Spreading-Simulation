@@ -44,6 +44,13 @@ public class Menu extends JMenuBar {
 			}
 		});
         JMenuItem m12 = new JMenuItem("Statistics");
+        m12.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new StatisticsWindow(m);
+			}
+		});
         
         JMenuItem m13 = new JMenuItem("Mutations Edit");  // opening Mutation Edit as a modal
         m13.addActionListener(new ActionListener() {
@@ -110,10 +117,10 @@ public class Menu extends JMenuBar {
      // create Simulation menu
         JMenuItem m21 = new JMenuItem("Play");
         m21.addActionListener(new ActionListener() {
-			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Main.setStatusPlay(true);  // update the play status to true
+				System.out.println("in play");
 			}
 		});
        

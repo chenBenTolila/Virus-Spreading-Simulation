@@ -21,7 +21,10 @@ public class Map {
 		m_settlements = new Settlement[0];   // create an empty map
 	}
 	
-
+	public void resetMap()
+	{
+		m_settlements = new Settlement[0];
+	}
 	
 	/**
 	 * the method adds a settlement to the map

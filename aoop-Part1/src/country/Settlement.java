@@ -475,16 +475,18 @@ public abstract class Settlement {
 	 */
 	public void tryToTransfer()
 	{
+		if(m_connectS.length == 0)
+			return;
 		Random rand = new Random();
 		int gp, gs;
-		for(int i=0;i<this.getPeopleAmount()*0.03;++i) {
+		for(int i=0; i<this.getPeopleAmount()*0.03; ++i) {
 			gp=rand.nextInt(this.getPeopleAmount());
 			gs=rand.nextInt(m_connectS.length);
 			if(gp<m_people.length) {
 				transferPerson(m_people[gp],m_connectS[gs]);
 			}
 			else {
-				transferPerson(m_sickPeople[gp],m_connectS[gs]);
+				transferPerson(m_sickPeople[gp- m_people.length],m_connectS[gs]);
 			}
 		}
 	}

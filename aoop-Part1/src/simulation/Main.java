@@ -25,18 +25,16 @@ public class Main {
 		try {
 			Map m = new Map();   // create an empty map
 			MainWindow mw = new MainWindow(m);
-			/*
 			while(true)
 			{
+				System.out.print("");
 				if(stop == false && fileLoaded == true) {
 					createSimu(m);
 				}
-			}
-			*/
-		StatisticsWindow s = new StatisticsWindow(m);   // need to remove!!!!!!!!!!
+			}  
 		}
 		catch (Exception ex1) {    // catch errors related to files
-            System.out.println("Error");
+            System.out.println("Error!!!");
 		}
 	}
 	
@@ -44,31 +42,33 @@ public class Main {
 	public static void createSimu(Map m)
 	{
 		int i = 1;
-		while(statusPlay)  // do the simulation 
+		while(true)  // do the simulation 
 		{
+			System.out.println("");
 			if(stop == true)
 				return;
-			
-			// first phase
-			System.out.println("************ Simulation " + (i) + " ************");
-			m.contagionSimu();
-			
-			// second phase
-			m.sickToConvalecent();
-			
-			// third phase
-			m.transferSettlement();
-			
-			// fourth phase
-			m.vaccinatedSettlement();
-			System.out.println(m.toString());
-			try {
-				Thread.sleep(1000 * sleepTime);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				System.out.println("Failed to sleep betweem simulations");
-			}
-			++i;
+			if(statusPlay == true) {
+				// first phase
+				System.out.println("************ Simulation " + (i) + " ************");
+				m.contagionSimu();
+				
+				// second phase
+				m.sickToConvalecent();
+				
+				// third phase
+				m.transferSettlement();
+				
+				// fourth phase
+				m.vaccinatedSettlement();
+				System.out.println(m.toString());
+				try {
+					Thread.sleep(1000 * sleepTime);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					System.out.println("Failed to sleep betweem simulations");
+				}
+				++i;
+			}	
 		}
 	}
 	

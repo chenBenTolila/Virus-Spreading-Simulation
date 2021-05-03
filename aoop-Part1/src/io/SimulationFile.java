@@ -24,6 +24,7 @@ public class SimulationFile {
 		String line;
 		if(fileName!=null) {
 			fr = new FileReader(fileName);
+			map.resetMap();
 			BufferedReader bufferedReader = new BufferedReader(fr);
 			while((line = bufferedReader.readLine()) != null) {
 				line = line.replaceAll(" ", "");
