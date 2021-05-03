@@ -79,6 +79,7 @@ public class Main {
 				// fourth phase
 				m.vaccinatedSettlement();
 				System.out.println(m.toString());
+				Clock.nextTick();
 				try {
 					Thread.sleep(1000 * sleepTime);
 				} catch (InterruptedException e) {
