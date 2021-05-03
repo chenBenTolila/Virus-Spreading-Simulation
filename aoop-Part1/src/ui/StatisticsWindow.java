@@ -47,16 +47,63 @@ public class StatisticsWindow extends JFrame {
 		JPanel p = new JPanel();
 		BoxLayout bl=new BoxLayout(p, BoxLayout.LINE_AXIS);
 		p.setLayout(bl);
-		String colSelect[]={"Ramzor Color","Settlemen Type", "Doses amount", "Sick Percentage (in portion of 1)"};        
-		JComboBox<String> cb = new JComboBox<String>(colSelect);
-		
+		String colSelect[]={"Settlement Name", "Settlement Type", "Ramzor Color", "Doses amount"};        
+		JComboBox<String> cb = new JComboBox<String>(colSelect); 
 		JLabel l= new JLabel("Enter filter words:");
 		m_filterW = new JTextField();
 		m_filterW.setToolTipText("Filter Name Column");
         m_filterW.getDocument().addDocumentListener(new DocumentListener() {
-            public void insertUpdate(DocumentEvent e) { newFilter(1); }
-            public void removeUpdate(DocumentEvent e) { newFilter(1); }
-            public void changedUpdate(DocumentEvent e) { newFilter(1); }});
+            public void insertUpdate(DocumentEvent e) {
+            	switch(cb.getSelectedIndex())
+            	{
+            	case 0:
+            		newFilter(0);
+            		break;
+            	case 1:
+            		newFilter(1);
+            		break;
+            	case 2:
+            		newFilter(2);
+            		break;
+            	case 3:
+            		newFilter(4);
+            		break;
+            	} 
+            }
+            public void removeUpdate(DocumentEvent e) { 
+            	switch(cb.getSelectedIndex())
+            	{
+            	case 0:
+            		newFilter(0);
+            		break;
+            	case 1:
+            		newFilter(1);
+            		break;
+            	case 2:
+            		newFilter(2);
+            		break;
+            	case 3:
+            		newFilter(4);
+            		break;
+            	} 
+            }
+            public void changedUpdate(DocumentEvent e) { 
+            	switch(cb.getSelectedIndex())
+            	{
+            	case 0:
+            		newFilter(0);
+            		break;
+            	case 1:
+            		newFilter(1);
+            		break;
+            	case 2:
+            		newFilter(2);
+            		break;
+            	case 3:
+            		newFilter(4);
+            		break;
+            	} 
+            }});
 	    p.add(cb);  
 		p.add(l);
 	    p.add(m_filterW); 
