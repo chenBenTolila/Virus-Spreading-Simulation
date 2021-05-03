@@ -3,32 +3,31 @@ package ui;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableRowSorter;
 
-import TableMVCExample.Course;
-import TableMVCExample.Student;
 import country.Map;
 
 
 public class StatisticsWindow extends JFrame {
-
 	/**
      * default constructor
     */
 	public StatisticsWindow(Map m)
     {
 		super("Statistics Window"); 
-	    this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.PAGE_AXIS));
-	    m_data=m.makeData(); // do function to data  
-		m_jt=new JTable(m_data,m_col);
+		this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.PAGE_AXIS));
 		createFilterW();
 		createTableWindow(m);
 		createButtonOptions();
-		this.setSize(800,500);  
+		this.setSize(1000,1000);  
 	    this.setLocationRelativeTo(null);
-		this.setVisible(true);
+		this.pack();
+        this.setVisible(true);
     }
+	
 	/**
 	 * function for filter part
 	 */
@@ -37,46 +36,21 @@ public class StatisticsWindow extends JFrame {
 		BoxLayout bl=new BoxLayout(p, BoxLayout.LINE_AXIS);
 		p.setLayout(bl);
 		String colSelect[]={"Ramzor Color","Settlemen Type", "Doses amount", "Sick Percentage (in portion of 1)"};        
-		JComboBox<String> cb = new JComboBox(colSelect);   
+		JComboBox<String> cb = new JComboBox<String>(colSelect);
+		
 		JLabel l= new JLabel("Enter filter words:");
-		JTextField filterW = new JTextField(); 	
+		m_filterW = new JTextField();
+		m_filterW.setToolTipText("Filter Name Column");
+        m_filterW.getDocument().addDocumentListener(new DocumentListener() {
+            public void insertUpdate(DocumentEvent e) { newFilter(); }
+            public void removeUpdate(DocumentEvent e) { newFilter(); }
+            public void changedUpdate(DocumentEvent e) { newFilter(); }});
 	    p.add(cb);  
 		p.add(l);
-	    p.add(filterW); 
+	    p.add(m_filterW); 
 		this.add(p); 
 	}
 	
-	private void newFilter() {
-        try {
-            sorter.setRowFilter(RowFilter.regexFilter(m_filterW.getText(), 1));
-        } catch (java.util.regex.PatternSyntaxException e) {
-            // If current expression doesn't parse, don't update.
-        }
-    }
-	/**
-	 * function for table show
-	 */
-	public void createTableWindow(Map m)
-    {
-		JPanel p = new JPanel();
-		this.setLayout(new GridLayout(0, 1));
-		String data[][]=m.makeData(); // do function to data
-		String col[]={"Settlement Name","Settlemen Type","Ramzor Color", "Sick Percentage (in portion of 1)", "Doses amount", "Dead Amount", "People Amount"};     
-		JTable jt=new JTable(data,col);
-		jt.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		jt.setPreferredScrollableViewportSize(new Dimension(780, 300));
-		jt.setFillsViewportHeight(true);
-
-		jt.setSize(1200, 800);
-		JScrollPane sp=new JScrollPane(jt);    
-
-		jt.setSize(1000, 500); 
-		this.add(new JScrollPane(jt));
-
-	    p.add(sp);
-		this.add(p);
-
-    }
 	
 	/**
 	 * function for options to table
@@ -117,10 +91,10 @@ public class StatisticsWindow extends JFrame {
                 case 0: return data.getIndexSettName(rowIndex);
                 case 1: return data.getIndexSettType(rowIndex);
                 case 2: return data.getIndexColor(rowIndex);
-                case 3: return data.getIndexNumSick(rowIndex);
-                case 4: return data.getIndexNumVDoses(columnIndex);
-                case 5: return data.getIndexNumDead(columnIndex);
-                case 6:
+                case 3: return data.getIndexPercSick(rowIndex);
+                case 4: return data.getIndexNumVDoses(rowIndex);
+                case 5: return data.getIndexNumDead(rowIndex);
+                case 6: return data.getIndexPeopleAmount(rowIndex);
             }
             return null;
         }
@@ -137,28 +111,49 @@ public class StatisticsWindow extends JFrame {
 
         @Override
         public boolean isCellEditable(int rowIndex, int columnIndex) {
-            return columnIndex > 0;
+            return columnIndex > 1;
         }
 
         @Override
         public void setValueAt(Object aValue, int row, int col) {
+        	/*
             Student student = data.at(row);
             switch (col) {
                 case 1: student.setName((String) aValue); break;
                 case 2: student.setAge((Integer) aValue); break;
                 case 3: student.setDrivingLicense((Boolean) aValue); break;
             }
+            */
             fireTableCellUpdated(row, col);
         }
     }
 	
 	
 	
+	public void createTableWindow(Map m) 
+	{   
+        StatisticModel model = new StatisticModel(m);
+        m_jt = new JTable(model);
+        m_jt.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        m_jt.setPreferredScrollableViewportSize(new Dimension(500, 70));
+        m_jt.setFillsViewportHeight(true);
+        m_jt.setRowSorter(sorter = new TableRowSorter<StatisticModel>(model));
+        this.add(new JScrollPane(m_jt));
+        //this.add(m_jt);
+    }
+
+    private void newFilter() {
+        try {
+            sorter.setRowFilter(RowFilter.regexFilter(m_filterW.getText(), 1));
+        } catch (java.util.regex.PatternSyntaxException e) {
+            // If current expression doesn't parse, don't update.
+        }
+    }
 	
 	
-	// private String m_data[][]; // do function to data
-	// private String m_col[]={"Settlement Name","Settlemen Type","Ramzor Color", "Sick Percentage (in portion of 1)", "Doses amount", "Dead Amount", "People Amount"};     
-	private JTable m_jt=null;
+	
+	
+	private JTable m_jt = null;
 	private JTextField m_filterW; // keep the data from user
-	private TableRowSorter<> sorter;
+	private TableRowSorter<StatisticModel> sorter;
 }

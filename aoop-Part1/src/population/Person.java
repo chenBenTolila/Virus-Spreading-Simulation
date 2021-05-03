@@ -64,7 +64,7 @@ public abstract class Person {
 	public Person contagion(IVirus IV) {
 		if(this.checkIfSick()==false) {
 			Sick s = new Sick(m_age, m_location, m_settlement, Clock.now(), IV);
-			getSettlement().addPerson(s);   // add the sick person to the settlement
+			getSettlement().addSickPerson(s);   // add the sick person to the settlement
 			getSettlement().removePersonFromArr(this);  // remove the person healthy person from the settlement
 			return s;
 			}
