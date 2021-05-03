@@ -181,6 +181,13 @@ public class Map {
 		return null;
 	}
 	
+	public String getIndexColorString(int index)
+	{
+		if(index < m_settlements.length)
+			return m_settlements[index].getSetColor().toString();
+		return null;
+	}
+	
 	public Point[] connectedSettlements(int index) {
 		return m_settlements[index].connectedMiddlePoints();
 	}
