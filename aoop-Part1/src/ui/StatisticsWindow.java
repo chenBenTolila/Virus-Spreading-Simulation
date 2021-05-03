@@ -38,6 +38,7 @@ public class StatisticsWindow extends JFrame {
 		String colSelect[]={"Ramzor Color","Settlemen Type", "Doses amount", "Sick Percentage (in portion of 1)"};        
 		JComboBox<String> cb = new JComboBox<String>(colSelect);
 		
+		
 		JLabel l= new JLabel("Enter filter words:");
 		m_filterW = new JTextField();
 		m_filterW.setToolTipText("Filter Name Column");
@@ -134,16 +135,16 @@ public class StatisticsWindow extends JFrame {
         StatisticModel model = new StatisticModel(m);
         m_jt = new JTable(model);
         m_jt.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        m_jt.setPreferredScrollableViewportSize(new Dimension(500, 70));
+        m_jt.setPreferredScrollableViewportSize(new Dimension(750, 200));
         m_jt.setFillsViewportHeight(true);
         m_jt.setRowSorter(sorter = new TableRowSorter<StatisticModel>(model));
         this.add(new JScrollPane(m_jt));
         //this.add(m_jt);
     }
 
-    private void newFilter() {
+    private void newFilter(int column) {
         try {
-            sorter.setRowFilter(RowFilter.regexFilter(m_filterW.getText(), 1));
+            sorter.setRowFilter(RowFilter.regexFilter(m_filterW.getText(), column));
         } catch (java.util.regex.PatternSyntaxException e) {
             // If current expression doesn't parse, don't update.
         }
