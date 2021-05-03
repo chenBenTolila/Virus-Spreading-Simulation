@@ -23,40 +23,45 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		try {
-		Map m = new Map();   // create an empty map
-		SimulationFile.createMap(m);   // read the map from file
-		m.addSickToMap();   // initialize the population with 1% of sick people
-		createSimu(m);
-		MainWindow mw = new MainWindow(m);
-		//StatisticsWindow s = new StatisticsWindow(m);   // need to remove!!!!!!!!!!
+			Map m = new Map();   // create an empty map
+			MainWindow mw = new MainWindow(m);
+			/*
+			while(true)
+			{
+				if(stop == false && fileLoaded == true) {
+					createSimu(m);
+				}
+			}
+			*/
+		StatisticsWindow s = new StatisticsWindow(m);   // need to remove!!!!!!!!!!
 		}
-		catch (FileNotFoundException ex1) {    // catch errors related to files
-            System.out.println("File not found");
-        }catch (IOException ex2) {
-        	System.out.println("Error in file");
-        }
+		catch (Exception ex1) {    // catch errors related to files
+            System.out.println("Error");
+		}
 	}
 	
 	
 	public static void createSimu(Map m)
 	{
 		int i = 1;
-		while(statusPlay)  // do the simulation 5 times
+		while(statusPlay)  // do the simulation 
 		{
 			if(stop == true)
 				return;
+			
 			// first phase
 			System.out.println("************ Simulation " + (i) + " ************");
 			m.contagionSimu();
-			System.out.println(m.toString());
 			
 			// second phase
 			m.sickToConvalecent();
-			System.out.println(m.toString());
-			// third phase
-		
-			//fourth phase
 			
+			// third phase
+			m.transferSettlement();
+			
+			// fourth phase
+			m.vaccinatedSettlement();
+			System.out.println(m.toString());
 			try {
 				Thread.sleep(1000 * sleepTime);
 			} catch (InterruptedException e) {
@@ -64,8 +69,6 @@ public class Main {
 				System.out.println("Failed to sleep betweem simulations");
 			}
 			++i;
-			if(i == 5)
-				statusPlay = false;
 		}
 	}
 	

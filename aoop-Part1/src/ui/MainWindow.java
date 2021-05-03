@@ -24,7 +24,7 @@ public class MainWindow extends JFrame {
     	myBorderLayout.setVgap(0);
     	this.setLayout(myBorderLayout);
     	createJSlider();
-    	Menu menu = new Menu(this);   // creating the menu object
+    	Menu menu = new Menu(this, m);   // creating the menu object
     	this.add(menu, BorderLayout.NORTH);
     	
     	// creating the map panel;

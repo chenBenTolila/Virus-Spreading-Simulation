@@ -93,12 +93,11 @@ public class Menu extends JMenuBar {
 		else {
 			JDialog dialog = new JDialog((JFrame)null, "file error");
 			Container dialogContainer = dialog.getContentPane();
-		    dialogContainer.add(new JLabel("Enabled Only if the simulation has not started or stopped"));
+		    dialogContainer.add(new JLabel("Stop the current simulation in order to load a file"));
 		    dialog.pack();
 			dialog.setVisible(true);
 			dialog.setLocationRelativeTo(null);
-		}
-			
+		}	
 	}
 	/**
 	 * create the mini menu simulation
@@ -132,8 +131,7 @@ public class Menu extends JMenuBar {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				
+				Main.setStop(true);
 			}
 		});
         

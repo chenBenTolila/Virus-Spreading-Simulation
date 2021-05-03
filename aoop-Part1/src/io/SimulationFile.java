@@ -2,6 +2,7 @@ package io;
 import java.io.*;
 import country.*;
 import population.*;
+import simulation.Main;
 import location.*;
 import java.util.Random;
 
@@ -22,26 +23,30 @@ public class SimulationFile {
 		FileReader fr; 
 		String line;
 		if(fileName!=null) {
-		fr = new FileReader(fileName);
-		BufferedReader bufferedReader = new BufferedReader(fr);
-		while((line = bufferedReader.readLine()) != null) {
-			line = line.replaceAll(" ", "");
-			String[] data = line.split(";");
-			if(!(data[0].equals("#"))) 
-				createSettlement(data, map);
+			fr = new FileReader(fileName);
+			BufferedReader bufferedReader = new BufferedReader(fr);
+			while((line = bufferedReader.readLine()) != null) {
+				line = line.replaceAll(" ", "");
+				String[] data = line.split(";");
+				if(!(data[0].equals("#"))) 
+					createSettlement(data, map);
+			}
+			fr.close();	
+			fr = new FileReader(fileName);
+			bufferedReader = new BufferedReader(fr);
+			while((line = bufferedReader.readLine()) != null) {
+				line = line.replaceAll(" ", "");
+				String[] data = line.split(";");
+				if(data[0].equals("#"))
+					map.connectSettlements(data[1], data[2]);
+			}
+			fr.close();
+			Main.SetfileLoaded(true);
+			Main.setStop(false);
+			map.addSickToMap();   // initialize the population with 1% of sick people
 		}
-		fr.close();	
-		fr = new FileReader(fileName);
-		bufferedReader = new BufferedReader(fr);
-		while((line = bufferedReader.readLine()) != null) {
-			line = line.replaceAll(" ", "");
-			String[] data = line.split(";");
-			if(data[0].equals("#"))
-				map.connectSettlements(data[1], data[2]);
-		}
-		fr.close();
-		}
-		System.out.println("there is no file to open\n");
+		else
+			System.out.println("Failed to open the file");
 	}
 	
 	
