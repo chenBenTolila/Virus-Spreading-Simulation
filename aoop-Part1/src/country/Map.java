@@ -192,6 +192,41 @@ public class Map {
 		return null;
 	}
 	
+	public String getIndexSettType(int index)
+	{
+		if(index < m_settlements.length)
+			return m_settlements[index].getSettlementType();;
+		return null;
+	}
+	
+	public int getIndexNumSick(int index)
+	{
+		if(index < m_settlements.length)
+			return m_settlements[index].getNumOfSick();
+		return -1;
+	}
+	
+	public int getIndexNumVDoses(int index)
+	{
+		if(index < m_settlements.length)
+			return m_settlements[index].getNumVDoses();
+		return -1;
+	}
+	
+	public int getIndexNumDead(int index)
+	{
+		if(index < m_settlements.length)
+			return m_settlements[index].getNumDead();
+		return -1;
+	}
+	
+	public int getIndexPeopleAmount(int index)
+	{
+		if(index < m_settlements.length)
+			return m_settlements[index].getPeopleAmount();
+		return -1;
+	}
+	
 	/**
 	 * 
 	 * @param index - an index of a settlement in the settlement array
