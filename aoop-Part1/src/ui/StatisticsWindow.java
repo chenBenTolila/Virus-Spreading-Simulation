@@ -66,7 +66,6 @@ public class StatisticsWindow extends JFrame {
 	
 	
 	
-	
 	private static class StatisticModel extends AbstractTableModel {
         private Map data;
         private final String[] columnNames = {"Settlement Name","Settlemen Type","Ramzor Color", "Sick Percentage (in portion of 1)", "Doses amount", "Dead Amount", "People Amount"};
