@@ -29,8 +29,8 @@ public class StatisticsWindow extends JFrame {
 		JPanel p = new JPanel();
 		BoxLayout bl=new BoxLayout(p, BoxLayout.LINE_AXIS);
 		p.setLayout(bl);
-		String colSelect[]={"by Ramzor Color","by num of Sick People", "by Num of Doses", "by Num of Dead people", "by Num of People"};        
-		JComboBox cb= new JComboBox(colSelect);    
+		String colSelect[]={"Ramzor Color","Sick People", "by Num of Doses", "by Num of Dead people", "by Num of People"};        
+		JComboBox<String> cb = new JComboBox(colSelect);   
 		JLabel l= new JLabel("Enter filter words:");
 		JTextField filterW = new JTextField(); 
 	    p.add(cb);  
@@ -47,13 +47,13 @@ public class StatisticsWindow extends JFrame {
 		JPanel p = new JPanel();
 		this.setLayout(new GridLayout(0, 1));
 		String data[][]=m.makeData(); // do function to data
-		String col[]={"Settlement Name","Settlemen kind","Ramzor Color", "Sick People", "Num Doses", "Num of Dead", "Num of People"};     
+		String col[]={"Settlement Name","Settlemen Type","Ramzor Color", "Sick Percentage (in portion of 1)", "Doses amount", "Dead Amount", "People Amount"};     
 		JTable jt=new JTable(data,col);
 		jt.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		jt.setPreferredScrollableViewportSize(new Dimension(750, 200));
+		jt.setPreferredScrollableViewportSize(new Dimension(780, 300));
 		jt.setFillsViewportHeight(true);
 
-		jt.setSize(1000, 500);
+		jt.setSize(1200, 800);
 		JScrollPane sp=new JScrollPane(jt);    
 	    p.add(sp);
 		this.add(p);
