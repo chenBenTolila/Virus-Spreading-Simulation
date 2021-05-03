@@ -184,7 +184,7 @@ public class Map {
 	public String getIndexColorString(int index)
 	{
 		if(index < m_settlements.length)
-			return m_settlements[index].getSetColor().toString();
+			return m_settlements[index].getRamzorColor().getColorInString();
 		return null;
 	}
 	

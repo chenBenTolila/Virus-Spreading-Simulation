@@ -89,7 +89,7 @@ public class StatisticsWindow extends JFrame {
             switch (columnIndex) {
                 case 0: return data.getIndexSettName(rowIndex);
                 case 1: return data.getIndexSettType(rowIndex);
-                case 2: return data.getIndexColor(rowIndex);
+                case 2: return data.getIndexColorString(rowIndex);
                 case 3: return data.getIndexPercSick(rowIndex);
                 case 4: return data.getIndexNumVDoses(rowIndex);
                 case 5: return data.getIndexNumDead(rowIndex);
