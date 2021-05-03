@@ -108,6 +108,18 @@ public class Main {
 		stop = val;
 	}
 	
+	public static boolean getStatusPlay() {
+		return statusPlay;
+	}
+	
+	public static boolean getStop() {
+		return stop;
+	}
+	
+	public static boolean getFileLoaded() {
+		return fileLoaded;
+	}
+	
 	private static int sleepTime;   // will keep the speed of the simulation
 	private static boolean fileLoaded = false;   // will keep true if a file is loaded
 	private static boolean statusPlay = true;    // will keep if the simulation are played or paused

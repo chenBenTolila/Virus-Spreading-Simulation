@@ -3,18 +3,23 @@ import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import io.SimulationFile;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+
+import country.Map;
 
 import simulation.*;
 
 
 public class Menu extends JMenuBar {
 
-	public Menu(JFrame parent)
+	public Menu(JFrame parent, Map m)
 	{
-		createFileMenu(parent);
+		createFileMenu(parent, m);
 		createSimulationMenu();
 		createHelpMenu();
 	}
@@ -23,7 +28,7 @@ public class Menu extends JMenuBar {
 	/**
 	 * creates the mini menu file
 	 */
-	public void createFileMenu(JFrame parent)
+	public void createFileMenu(JFrame parent, Map m)
     {
 		
         JMenu m1 = new JMenu("FILE");
@@ -35,7 +40,7 @@ public class Menu extends JMenuBar {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				chooseFile();
+				chooseFile(m);
 			}
 		});
         JMenuItem m12 = new JMenuItem("Statistics");
@@ -65,13 +70,35 @@ public class Menu extends JMenuBar {
         m1.add(m14);
     }
 	
-	
-	public void chooseFile(){
+	/**
+	 * choose new file
+	 */
+	public void chooseFile(Map m){
+		if(Main.getStop() || !Main.getFileLoaded())
+		{
 		FileDialog dialog = new FileDialog((Frame)null, "Select File to Open");
 	    dialog.setMode(FileDialog.LOAD);
 	    dialog.setVisible(true);
 	    String file = dialog.getFile();
 	    System.out.println(file + " chosen.");
+	    SimulationFile.setFileName(file);
+	    Main.setStatusPlay(true);
+	    try {
+			SimulationFile.createMap(m);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println("error with file opening");
+		}
+		}
+		else {
+			JDialog dialog = new JDialog((JFrame)null, "file error");
+			Container dialogContainer = dialog.getContentPane();
+		    dialogContainer.add(new JLabel("Enabled Only if the simulation has not started or stopped"));
+		    dialog.pack();
+			dialog.setVisible(true);
+			dialog.setLocationRelativeTo(null);
+		}
+			
 	}
 	/**
 	 * create the mini menu simulation

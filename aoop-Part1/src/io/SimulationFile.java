@@ -21,7 +21,8 @@ public class SimulationFile {
 	public static void createMap(Map map) throws IOException {
 		FileReader fr; 
 		String line;
-		fr = new FileReader("SimulationFile.txt");
+		if(fileName!=null) {
+		fr = new FileReader(fileName);
 		BufferedReader bufferedReader = new BufferedReader(fr);
 		while((line = bufferedReader.readLine()) != null) {
 			line = line.replaceAll(" ", "");
@@ -30,7 +31,7 @@ public class SimulationFile {
 				createSettlement(data, map);
 		}
 		fr.close();	
-		fr = new FileReader("SimulationFile.txt");
+		fr = new FileReader(fileName);
 		bufferedReader = new BufferedReader(fr);
 		while((line = bufferedReader.readLine()) != null) {
 			line = line.replaceAll(" ", "");
@@ -39,6 +40,8 @@ public class SimulationFile {
 				map.connectSettlements(data[1], data[2]);
 		}
 		fr.close();
+		}
+		System.out.println("there is no file to open\n");
 	}
 	
 	
@@ -111,8 +114,13 @@ public class SimulationFile {
 		}
 	}
 	
+	public static void setFileName(String fName) {
+		fileName=fName;
+	}
+	
 	// static data members
 	public static double deviation = 6;    // deviation 
 	public static double mean = 9;    // mean
 	public static final double maxP = 1.3;
+	private static String fileName = null;
 }
