@@ -256,6 +256,17 @@ public class Map {
 			}
 		}
 	}
+	
+	public void addSickByName(String name, double p)
+	{
+		for(int i=0; i< m_settlements.length; ++i) {
+			if(m_settlements[i].getSettlementName().equals(name)) {
+				m_settlements[i].intializeSickPeople(p);
+				break;
+			}
+		}
+		
+	}
 			
 	private Settlement[] m_settlements;    // the list of settlements in the simulation
 }

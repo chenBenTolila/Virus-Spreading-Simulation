@@ -128,6 +128,13 @@ public class StatisticsWindow extends JFrame {
 			}
 		});
 		p.add(addSick);
+		addSick.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				addSickButtom(m);
+			}
+		});
 		p.add(vaccinate);
 		vaccinate.addActionListener(new ActionListener() {
 			
@@ -138,6 +145,21 @@ public class StatisticsWindow extends JFrame {
 		});
 		this.add(p);
 	}
+	
+	public void addSickButtom(Map m) {
+		try {
+			int row= m_jt.getSelectedRow();
+			if(row != -1) {
+				m.addSickByName((String)m_jt.getValueAt(row, 0),0.001);
+			}
+		}
+		catch(Exception e1)
+		{
+			System.out.println("Error - a non integer value was entered");
+		}
+	}
+	
+	
 	
 	public void saveButtom(){
 		JFileChooser fileChooser = new JFileChooser();
