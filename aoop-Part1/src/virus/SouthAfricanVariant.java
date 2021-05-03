@@ -29,27 +29,29 @@ public class SouthAfricanVariant implements IVirus {
 	 * if the second person is healthy check if he got infected by the first person
 	 */
 	public boolean tryToContagion(Sick p1, Person p2){
-		 Random rand = new Random();   // the random probability of the person getting infected
-		 double probToSick;   // the calculated probability
-		 String vType;   // the variant type
-		 double varSickProb;   // the probability of p2 to get sick infected in the variant according to his age
-		 if(!(p2.checkIfSick())) {   // check if the p2 is healthy
-			 if(Clock.DaysPassed(p1.getSicknessDuration()) < 5)   // check that p1 is sick for 5 or more days
-				 return false;
-			 vType = mutations[rand.nextInt(mutations.length)];
-			 varSickProb = calcProbToSick(vType, p2);
-			 if(varSickProb == 0)   // if the variant can contage at the moment (by status)
-				 return false;
+		if(mutations.length == 0)
+			return false;
+		Random rand = new Random();   // the random probability of the person getting infected
+		double probToSick;   // the calculated probability
+		String vType;   // the variant type
+		double varSickProb;   // the probability of p2 to get sick infected in the variant according to his age
+		if(!(p2.checkIfSick())) {   // check if the p2 is healthy
+			if(Clock.DaysPassed(p1.getSicknessDuration()) < 5)   // check that p1 is sick for 5 or more days
+				return false;
+			vType = mutations[rand.nextInt(mutations.length)];
+			varSickProb = calcProbToSick(vType, p2);
+			if(varSickProb == 0)   // if the variant can contage at the moment (by status)
+				return false;
 		
-			 probToSick = varSickProb*Math.min(1,0.14*Math.pow(Math.E, 2-0.25*p1.distance(p2)));   // calculation of the probability
-			 if (probToSick >= rand.nextDouble())  // exclude 1 - [0,1)  ///	
-			 {
-				 contage(vType, p2);  // infect p2 in the chosen variant
-			 }
-			 return true;
-		 }
-		 else
-			 throw new RuntimeException();   // p2 is already sick
+			probToSick = varSickProb*Math.min(1,0.14*Math.pow(Math.E, 2-0.25*p1.distance(p2)));   // calculation of the probability
+			if (probToSick >= rand.nextDouble())  // exclude 1 - [0,1)  ///	
+			{
+				contage(vType, p2);  // infect p2 in the chosen variant
+			}
+			return true;
+		}
+		else
+			throw new RuntimeException();   // p2 is already sick
 	 }
 	
 	/**
@@ -160,6 +162,66 @@ public class SouthAfricanVariant implements IVirus {
 	public static boolean getCanContage()
 	{
 		return canContage;
+	}
+	
+	/**
+	 * 
+	 * @param virus - a variant name
+	 * @param flag - equals true if we want to add the variant to mutations, and false to remove it from mutation.
+	 */
+	public static void editMutations(String virus, boolean flag)
+	{
+		if(flag)   // need to add the virus to mutations
+		{
+			if(checkVar(virus) == false)  // if the virus doesn't already exist in mutations 
+			{
+				// adding the virus to mutations
+				String temp[] = new String[mutations.length + 1];
+				int i;
+				for( i = 0; i < mutations.length; ++i)
+					temp[i] = mutations[i];
+				temp[i] = virus;
+				mutations = temp;
+			}
+			
+			if(mutations.length != 0)  // check if this virus can develop into a different virus 
+				canContage = true;
+		}
+		
+		else  // need to delete the virus from mutations
+		{ 
+			if(checkVar(virus) == true)  // if the virus exist in mutations
+			{
+				// remove the virus from mutations
+				String temp[] = new String[mutations.length - 1];
+				int j = 0;
+				for(int i = 0; i < mutations.length; ++i)
+				{
+					if(mutations[i].equals(virus))
+						--j;
+					else
+						temp[j] = mutations[i];
+					++j;
+				}
+				mutations = temp;
+			}
+			
+			if(mutations.length == 0)  // check if this virus can develop into a different virus 
+				canContage = false;
+		}
+	}
+	
+	/**
+	 * 
+	 * @param virus -  a virus name
+	 * @return true if the virus is in mutations
+	 */
+	private static boolean checkVar(String virus)
+	{
+		for(int i = 0; i < mutations.length; ++i)
+			if(virus.equals(mutations[i]))
+				return true;
+		return false;
 	}
 	
 	// data members

@@ -12,6 +12,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.AbstractTableModel;
 
 import country.Map;
+import virus.*;
 
 public class EditMutationsWindow extends JFrame{
 	
@@ -76,12 +77,46 @@ public class EditMutationsWindow extends JFrame{
 		}
 		@Override
 		public void setValueAt(Object aValue, int row, int col) {
-		m_mut[row][col]=((Boolean) aValue); 
-		fireTableCellUpdated(row, col);
+			m_mut[row][col]=((Boolean) aValue); 
+			fireTableCellUpdated(row, col);
+			setMutations(row, col);
 		}
 		@Override
 		public Class getColumnClass(int column) { return getValueAt(0, column).getClass(); }
-
+		
+		public void setMutations(int row, int col)
+		{
+			switch(row)
+			{
+			case 0:
+				if(col == 0)
+					BritishVariant.editMutations("British variant", m_mut[row][col]);
+				else if(col == 1)
+					BritishVariant.editMutations("Chinese variant", m_mut[row][col]);
+				else
+					BritishVariant.editMutations("South African variant", m_mut[row][col]);
+				break;
+				
+			case 1:
+				if(col == 0)
+					ChineseVariant.editMutations("British variant", m_mut[row][col]);
+				else if(col == 1)
+					ChineseVariant.editMutations("Chinese variant", m_mut[row][col]);
+				else
+					ChineseVariant.editMutations("South African variant", m_mut[row][col]);
+				break;
+				
+			case 2:
+				if(col == 0)
+					SouthAfricanVariant.editMutations("British variant", m_mut[row][col]);
+				else if(col == 1)
+					SouthAfricanVariant.editMutations("Chinese variant", m_mut[row][col]);
+				else
+					SouthAfricanVariant.editMutations("South African variant", m_mut[row][col]);
+				break;
+			default:
+			}
+		}
 	}
 	
 	

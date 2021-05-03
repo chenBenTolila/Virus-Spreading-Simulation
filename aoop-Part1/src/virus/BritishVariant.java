@@ -26,6 +26,8 @@ public class BritishVariant implements IVirus {
 	  * if the second person is healthy check if he got infected by the first person
 	  */
 	 public boolean tryToContagion(Sick p1, Person p2){
+		 if (mutations.length == 0)
+			 return false;
 		 Random rand = new Random();   // the random probability of the person getting infected
 		 double probToSick;   // the calculated probability
 		 String vType;   // the variant type
@@ -157,6 +159,65 @@ public class BritishVariant implements IVirus {
 		return canContage;
 	}
 	
+	/**
+	 * 
+	 * @param virus - a variant name
+	 * @param flag - equals true if we want to add the variant to mutations, and false to remove it from mutation.
+	 */
+	public static void editMutations(String virus, boolean flag)
+	{
+		if(flag)   // need to add the virus to mutations
+		{
+			if(checkVar(virus) == false)  // if the virus doesn't already exist in mutations 
+			{
+				// adding the virus to mutations
+				String temp[] = new String[mutations.length + 1];
+				int i;
+				for( i = 0; i < mutations.length; ++i)
+					temp[i] = mutations[i];
+				temp[i] = virus;
+				mutations = temp;
+			}
+			
+			if(mutations.length != 0)  // check if this virus can develop into a different virus 
+				canContage = true;
+		}
+		
+		else  // need to delete the virus from mutations
+		{ 
+			if(checkVar(virus) == true)  // if the virus exist in mutations
+			{
+				// remove the virus from mutations
+				String temp[] = new String[mutations.length - 1];
+				int j = 0;
+				for(int i = 0; i < mutations.length; ++i)
+				{
+					if(mutations[i].equals(virus))
+						--j;
+					else
+						temp[j] = mutations[i];
+					++j;
+				}
+				mutations = temp;
+			}
+			
+			if(mutations.length == 0)  // check if this virus can develop into a different virus 
+				canContage = false;
+		}
+	}
+	
+	/**
+	 * 
+	 * @param virus -  a virus name
+	 * @return true if the virus is in mutations
+	 */
+	private static boolean checkVar(String virus)
+	{
+		for(int i = 0; i < mutations.length; ++i)
+			if(virus.equals(mutations[i]))
+				return true;
+		return false;
+	}
 	
 	// data members
 	private static final double dieProb18 = 0.01; // The probability of dying by the age of 18
