@@ -83,20 +83,20 @@ public class StatisticsWindow extends JFrame {
 	    System.out.println(file + " chosen.");
 	    SimulationFile.setFileName(file);
 	    Main.setStatusPlay(true);
-	    try {
-			SimulationFile.createMap(m);
-		} catch (IOException e) {
+	    //try {
+		//	SimulationFile.createMap(m);
+		//} catch (IOException e) {
 			// TODO Auto-generated catch block
-			System.out.println("error with file opening");
-		}
-		}
-		else {
-			JDialog dialog = new JDialog((JFrame)null, "file error");
-			Container dialogContainer = dialog.getContentPane();
-		    dialogContainer.add(new JLabel("Stop the current simulation in order to load a file"));
-		    dialog.pack();
-			dialog.setVisible(true);
-			dialog.setLocationRelativeTo(null);
+		//	System.out.println("error with file opening");
+		//}
+		//}
+		//else {
+		//	JDialog dialog = new JDialog((JFrame)null, "file error");
+		//	Container dialogContainer = dialog.getContentPane();
+		 //   dialogContainer.add(new JLabel("Stop the current simulation in order to load a file"));
+		  //  dialog.pack();
+		//	dialog.setVisible(true);
+		//	dialog.setLocationRelativeTo(null);
 		}	
 	}
 	
