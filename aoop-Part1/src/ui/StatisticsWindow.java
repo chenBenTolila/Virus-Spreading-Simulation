@@ -53,8 +53,14 @@ public class StatisticsWindow extends JFrame {
 		jt.setPreferredScrollableViewportSize(new Dimension(780, 300));
 		jt.setFillsViewportHeight(true);
 
+<<<<<<< HEAD
 		jt.setSize(1200, 800);
 		JScrollPane sp=new JScrollPane(jt);    
+=======
+		jt.setSize(1000, 500);
+		JScrollPane sp=new JScrollPane(jt);   
+		this.add(new JScrollPane(jt));
+>>>>>>> branch 'main' of https://github.com/chenBenTolila/aoop1.git
 	    p.add(sp);
 		this.add(p);
 
