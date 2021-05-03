@@ -19,6 +19,7 @@ import javax.swing.table.TableRowSorter;
 import country.Map;
 import io.SimulationFile;
 import io.StatisticsFile;
+import simulation.Clock;
 import simulation.Main;
 
 
@@ -32,7 +33,7 @@ public class StatisticsWindow extends JFrame {
 		this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.PAGE_AXIS));
 		createFilterW();
 		createTableWindow(m);
-		createButtonOptions();
+		createButtonOptions(m);
 		this.setSize(1000,1000);  
 	    this.setLocationRelativeTo(null);
 		this.pack();
@@ -66,7 +67,7 @@ public class StatisticsWindow extends JFrame {
 	/**
 	 * function for options to table
 	 */
-	public void createButtonOptions() {
+	public void createButtonOptions(Map m) {
 		JPanel p = new JPanel();
 		JButton save=new JButton("Save");
 		JButton addSick= new JButton("Add Sick");
@@ -81,6 +82,13 @@ public class StatisticsWindow extends JFrame {
 		});
 		p.add(addSick);
 		p.add(vaccinate);
+		vaccinate.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				vaccinateButtom(m);
+			}
+		});
 		this.add(p);
 	}
 	
@@ -96,6 +104,43 @@ public class StatisticsWindow extends JFrame {
 		    System.out.println("Save as file: " + fileToSave.getAbsolutePath());
 		}
 		
+	}
+	
+	public void vaccinateButtom(Map m) {
+		JPanel jp = new JPanel();
+		JLabel input = new JLabel("Enter number of vaccinate doses:");
+		jp.add(input);
+		JTextField numDoses = new JTextField();
+		numDoses.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					int value = Integer.parseInt(numDoses.getText());
+					int row= m_jt.getSelectedRow();
+					if(row != -1) {
+						m.setIndexNumDoses((String)m_jt.getValueAt(row, 0), value);
+					}
+				}
+				catch(Exception e1)
+				{
+					System.out.println("Error - a non integer value was entered");
+				}
+			}
+		});
+		numDoses.setToolTipText("Fill Number of doses");
+		numDoses.setMinimumSize(new Dimension(120,80));
+		jp.add(numDoses);  
+		jp.setLayout(new BoxLayout(jp, BoxLayout.LINE_AXIS));
+		JDialog jd = new JDialog();
+		jd.setLocationRelativeTo(null);
+		jd.setPreferredSize(new Dimension(280,70));
+		jd.setModal(true);
+		jd.add(jp);
+		jd.pack();
+		jd.setVisible(true);
+		
+	
 	}
 	
 	

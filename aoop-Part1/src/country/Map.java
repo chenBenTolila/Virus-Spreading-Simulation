@@ -248,6 +248,14 @@ public class Map {
 		return false;
 	}
 	
+	public void setIndexNumDoses(String name, int doses) {
+		for(int i=0; i< m_settlements.length; ++i) {
+			if(m_settlements[i].getSettlementName().equals(name)) {
+				m_settlements[i].addVDoses(doses);
+				break;
+			}
+		}
+	}
 			
 	private Settlement[] m_settlements;    // the list of settlements in the simulation
 }
