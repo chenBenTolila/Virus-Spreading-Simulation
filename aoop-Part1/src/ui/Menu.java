@@ -40,6 +40,7 @@ public class Menu extends JMenuBar {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				chooseFile(m);
+				
 			}
 		});
         JMenuItem m12 = new JMenuItem("Statistics");

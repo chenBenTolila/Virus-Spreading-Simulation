@@ -46,13 +46,21 @@ public class EditMutationsWindow extends JDialog{
 			return m_mutationNames;
 		}
 		public MutationModel() {
+			boolean temp[] = new boolean[m_mutationNames.length];
 			m_mut= new boolean[getRowCount()][getColumnCount()];
-			for(int i=0;i<getRowCount();++i)
-				for(int j=0;j<getColumnCount();++j)
-					if(i==j)
-						m_mut[i][j]=true;
-					else
-						m_mut[i][j]=false;
+			
+			for(int i=0; i<getRowCount(); ++i)
+			{
+				if (i == 0)
+					temp = BritishVariant.getMutBool();
+				else if(i == 1)
+					temp = ChineseVariant.getMutBool();
+				else
+					temp = SouthAfricanVariant.getMutBool();
+				
+				for(int j=0; j<getColumnCount(); ++j)
+						m_mut[i][j]= temp[j];
+			}
 		}
 		@Override
 		public int getRowCount() { return m_mutationNames.length; }
