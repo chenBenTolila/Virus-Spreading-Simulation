@@ -31,6 +31,13 @@ public class Menu extends JMenuBar {
         
         // create File menu
         JMenuItem m11 = new JMenuItem("Load");
+        m11.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				chooseFile();
+			}
+		});
         JMenuItem m12 = new JMenuItem("Statistics");
         
         JMenuItem m13 = new JMenuItem("Mutations Edit");  // opening Mutation Edit as a modal
@@ -58,6 +65,14 @@ public class Menu extends JMenuBar {
         m1.add(m14);
     }
 	
+	
+	public void chooseFile(){
+		FileDialog dialog = new FileDialog((Frame)null, "Select File to Open");
+	    dialog.setMode(FileDialog.LOAD);
+	    dialog.setVisible(true);
+	    String file = dialog.getFile();
+	    System.out.println(file + " chosen.");
+	}
 	/**
 	 * create the mini menu simulation
 	 */
