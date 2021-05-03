@@ -3,6 +3,8 @@ package ui;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import javax.swing.*;
+import javax.swing.table.TableRowSorter;
+
 import country.Map;
 
 
@@ -13,8 +15,10 @@ public class StatisticsWindow extends JFrame {
     */
 	public StatisticsWindow(Map m)
     {
-		super("Statistics Window");   
+		super("Statistics Window"); 
 	    this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.PAGE_AXIS));
+	    m_data=m.makeData(); // do function to data  
+		m_jt=new JTable(m_data,m_col);
 		createFilterW();
 		createTableWindow(m);
 		createButtonOptions();
@@ -29,16 +33,23 @@ public class StatisticsWindow extends JFrame {
 		JPanel p = new JPanel();
 		BoxLayout bl=new BoxLayout(p, BoxLayout.LINE_AXIS);
 		p.setLayout(bl);
-		String colSelect[]={"Ramzor Color","Sick People", "by Num of Doses", "by Num of Dead people", "by Num of People"};        
+		String colSelect[]={"Ramzor Color","Settlemen Type", "Doses amount", "Sick Percentage (in portion of 1)"};        
 		JComboBox<String> cb = new JComboBox(colSelect);   
 		JLabel l= new JLabel("Enter filter words:");
-		JTextField filterW = new JTextField(); 
+		JTextField filterW = new JTextField(); 	
 	    p.add(cb);  
 		p.add(l);
 	    p.add(filterW); 
 		this.add(p); 
 	}
 	
+	private void newFilter() {
+        try {
+            sorter.setRowFilter(RowFilter.regexFilter(m_filterW.getText(), 1));
+        } catch (java.util.regex.PatternSyntaxException e) {
+            // If current expression doesn't parse, don't update.
+        }
+    }
 	/**
 	 * function for table show
 	 */
@@ -53,14 +64,12 @@ public class StatisticsWindow extends JFrame {
 		jt.setPreferredScrollableViewportSize(new Dimension(780, 300));
 		jt.setFillsViewportHeight(true);
 
-<<<<<<< HEAD
 		jt.setSize(1200, 800);
 		JScrollPane sp=new JScrollPane(jt);    
-=======
-		jt.setSize(1000, 500);
-		JScrollPane sp=new JScrollPane(jt);   
+
+		jt.setSize(1000, 500); 
 		this.add(new JScrollPane(jt));
->>>>>>> branch 'main' of https://github.com/chenBenTolila/aoop1.git
+
 	    p.add(sp);
 		this.add(p);
 
@@ -77,6 +86,9 @@ public class StatisticsWindow extends JFrame {
 		this.add(p);
 	}
 	
-	
-	private JTextField filterW; // keep the data from user
+	private String m_data[][]; // do function to data
+	private String m_col[]={"Settlement Name","Settlemen Type","Ramzor Color", "Sick Percentage (in portion of 1)", "Doses amount", "Dead Amount", "People Amount"};     
+	private JTable m_jt=null;
+	private JTextField m_filterW; // keep the data from user
+	private TableRowSorter<> sorter;
 }
