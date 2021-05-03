@@ -1,6 +1,4 @@
 package country;
-
-
 import location.*;
 import java.awt.Color;
 
