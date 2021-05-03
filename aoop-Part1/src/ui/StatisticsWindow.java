@@ -54,7 +54,8 @@ public class StatisticsWindow extends JFrame {
 		jt.setFillsViewportHeight(true);
 
 		jt.setSize(1000, 500);
-		JScrollPane sp=new JScrollPane(jt);    
+		JScrollPane sp=new JScrollPane(jt);   
+		this.add(new JScrollPane(jt));
 	    p.add(sp);
 		this.add(p);
 
