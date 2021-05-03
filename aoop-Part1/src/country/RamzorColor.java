@@ -16,7 +16,12 @@ public enum RamzorColor
 	ORANGE(0.8, Color.ORANGE, 0.6), 
 	RED(0.5, Color.RED, 0.4);
 	
-	
+	/**
+	 * constructor
+	 * @param cSick Probability of sicks 
+	 * @param color get color
+	 * @param pTransfer Probability of transfer a settlement
+	 */
 	private RamzorColor(double cSick, Color color, double pTransfer) {
 		this.cSick= cSick;
 		this.color= color;
@@ -73,30 +78,6 @@ public enum RamzorColor
 		}
 	}
 	
-	/**
-	 * 
-	 * @return type of color
-	 */
-	public Color retColor()      // check if needed
-	{
-		switch(this)
-		{
-		case GREEN:
-			return new Color(0,255,0);
-			
-		case YELLOW:
-			return new Color(255,255,0);
-			
-		case ORANGE:
-			return new Color(255,200,0);
-			
-		case RED:
-			return new Color(255,0,0);
-			
-		default:
-			return null;
-		}
-	}
 	
 	private double cSick;
 	private Color color;
