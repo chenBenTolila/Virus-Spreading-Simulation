@@ -152,6 +152,7 @@ public abstract class Settlement {
 			newArray[i] = m_people[i];   // copy them to the new array
 		newArray[i] = p;  // adding p itself///
 		m_people = newArray;
+		calculateRamzorGrade();
 		return true;
 	}
 	
@@ -171,6 +172,7 @@ public abstract class Settlement {
 			newArray[i] = m_sickPeople[i];  
 		newArray[i] = s;  // adding p itself///
 		m_sickPeople = newArray;
+		calculateRamzorGrade();
 		return true;
 	}
 	
@@ -219,6 +221,7 @@ public abstract class Settlement {
 				++j;
 			}
 			m_people = newArray;
+			calculateRamzorGrade();
 			return true;
 		}
 		else
@@ -244,6 +247,7 @@ public abstract class Settlement {
 				++j;
 			}
 			m_sickPeople = newArray;
+			calculateRamzorGrade();
 			return true;
 		}
 		else
@@ -340,6 +344,7 @@ public abstract class Settlement {
 			else
 				m_people[i].contagion(britV);
 		}
+		calculateRamzorGrade();
 	}
 	
 	/**
