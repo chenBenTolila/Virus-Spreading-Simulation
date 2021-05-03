@@ -27,6 +27,7 @@ public class EditMutationsWindow extends JDialog{
     */
 	public EditMutationsWindow()
     {
+		super((JFrame)null, "Mutations Window");
 		setModalityType(ModalityType.APPLICATION_MODAL);
 		MutationModel model = new MutationModel();
 		JTable table = new JTable(model);

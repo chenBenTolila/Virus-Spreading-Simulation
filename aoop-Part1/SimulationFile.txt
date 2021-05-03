@@ -7,7 +7,7 @@ Moshav; Gevim; 20;100 ;40;40; 100
 # ; Gevim; Gezer
 Kibbutz; Gat; 120;150 ;70;80; 200
 #; Ashdod; Gat
-Moshav; Nir-Galem; 280;20 ;80;40; 800
+Moshav; Nir-Galim; 280;20 ;80;40; 800
 # ; Gat; Gezer
 Kibbutz; Gezer; 50;250 ;110;80; 500
-# ; Beer-Sheva;  Nir-Galem
+# ; Beer-Sheva;  Nir-Galim
