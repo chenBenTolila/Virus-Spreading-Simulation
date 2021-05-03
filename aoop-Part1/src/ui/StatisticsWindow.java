@@ -257,7 +257,7 @@ public class StatisticsWindow extends JFrame {
 
         @Override
         public boolean isCellEditable(int rowIndex, int columnIndex) {
-            return columnIndex > 1;
+            return false;
         }
 
         @Override
@@ -285,7 +285,7 @@ public class StatisticsWindow extends JFrame {
         m_jt.setFillsViewportHeight(true);
         m_jt.setRowSorter(sorter = new TableRowSorter<StatisticModel>(model));
         this.add(new JScrollPane(m_jt));
-        //this.add(m_jt);
+        
     }
 
     private void newFilter(int column) {
