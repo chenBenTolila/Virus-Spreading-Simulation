@@ -206,7 +206,6 @@ public class Menu extends JMenuBar {
 			public void stateChanged(ChangeEvent e) {
 				try {
 					int temp = Integer.parseInt((String)spinner.getValue());
-					System.out.println(temp + " hello");
 				}
 				catch(Exception e1)
 				{
@@ -230,9 +229,17 @@ public class Menu extends JMenuBar {
 	 */
 	public void createAboutDialog()
 	{
+		JPanel jp = new JPanel();
+		jp.setLayout(new BoxLayout(jp, BoxLayout.PAGE_AXIS));
+		jp.add(new JLabel("Authors: Chen Ben Tolila, "));
+		jp.add(new JLabel("Hadar Amsalem"));
+		jp.add(new JLabel("Creation Date: 15/04/21"));
 		JDialog dialog = new JDialog((JFrame)null, "About");
+		/*
 		Container dialogContainer = dialog.getContentPane();
-	    dialogContainer.add(new JLabel("Authors: Chen Ben Tolila, " + "\nHadar Amsalem" + "\nCreation Date: 15/04/21"));
+	    dialogContainer.add(new JLabel("Authors: Chen Ben Tolila,\r\n" + " Hadar Amsalem" + "\nCreation Date: 15/04/21"));
+	    */
+		dialog.add(jp);
 	    dialog.pack();
 		dialog.setVisible(true);
 		dialog.setLocationRelativeTo(null); // center on screen
@@ -243,19 +250,8 @@ public class Menu extends JMenuBar {
 	 */
 	public void createHelpDialog()
 	{
-		/*
-		JDialog dialog = new JDialog((JFrame)null, "Help");
-		Container dialogContainer = dialog.getContentPane();
-		JOptionPane.showMessageDialog(null, " ");
-		dialogContainer.setLayout(new BorderLayout());
-	      dialogContainer.add(new JLabel("print help message")
-	      , BorderLayout.CENTER);
-	    dialog.pack();
-		dialog.setVisible(true);
-		dialog.setLocationRelativeTo(null); // center on screen
-	      */
 	    JOptionPane.showMessageDialog(null, "The program simulates the infection process of a virus that develops into different mutations.\r\n"
-	    		+ "The simulation takes place on different types of settlement, and combines all the necessary information about the people in the settlement.\r\n"
+	    		+ "The simulation takes place on different types of settlement,\r\n" + "and combines all the necessary information about the people in the settlement.\r\n"
 	    		+ "");
 	}
 }
