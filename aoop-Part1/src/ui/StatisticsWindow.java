@@ -38,7 +38,6 @@ public class StatisticsWindow extends JFrame {
 		String colSelect[]={"Ramzor Color","Settlemen Type", "Doses amount", "Sick Percentage (in portion of 1)"};        
 		JComboBox<String> cb = new JComboBox<String>(colSelect);
 		
-		
 		JLabel l= new JLabel("Enter filter words:");
 		m_filterW = new JTextField();
 		m_filterW.setToolTipText("Filter Name Column");
