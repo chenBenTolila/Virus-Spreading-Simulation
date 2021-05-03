@@ -3,8 +3,11 @@ package ui;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import javax.swing.*;
+import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableRowSorter;
 
+import TableMVCExample.Course;
+import TableMVCExample.Student;
 import country.Map;
 
 
@@ -86,8 +89,75 @@ public class StatisticsWindow extends JFrame {
 		this.add(p);
 	}
 	
-	private String m_data[][]; // do function to data
-	private String m_col[]={"Settlement Name","Settlemen Type","Ramzor Color", "Sick Percentage (in portion of 1)", "Doses amount", "Dead Amount", "People Amount"};     
+	
+	
+	
+	
+	private static class StatisticModel extends AbstractTableModel {
+        private Map data;
+        private final String[] columnNames = {"Settlement Name","Settlemen Type","Ramzor Color", "Sick Percentage (in portion of 1)", "Doses amount", "Dead Amount", "People Amount"};
+
+        public StatisticModel(Map data) {
+            this.data = data;
+        }
+
+        @Override
+        public int getRowCount() {
+            return data.getNumOfSettlement();
+        }
+
+        @Override
+        public int getColumnCount() {
+            return columnNames.length;
+        }
+
+        @Override
+        public Object getValueAt(int rowIndex, int columnIndex) {
+            switch (columnIndex) {
+                case 0: return data.getIndexSettName(rowIndex);
+                case 1: return data.getIndexSettType(rowIndex);
+                case 2: return data.getIndexColor(rowIndex);
+                case 3: return data.getIndexNumSick(rowIndex);
+                case 4: return data.getIndexNumVDoses(columnIndex);
+                case 5: return data.getIndexNumDead(columnIndex);
+                case 6:
+            }
+            return null;
+        }
+
+        @Override
+        public String getColumnName(int column) {
+            return columnNames[column];
+        }
+
+        @Override
+        public Class getColumnClass(int c) {
+            return getValueAt(0, c).getClass();
+        }
+
+        @Override
+        public boolean isCellEditable(int rowIndex, int columnIndex) {
+            return columnIndex > 0;
+        }
+
+        @Override
+        public void setValueAt(Object aValue, int row, int col) {
+            Student student = data.at(row);
+            switch (col) {
+                case 1: student.setName((String) aValue); break;
+                case 2: student.setAge((Integer) aValue); break;
+                case 3: student.setDrivingLicense((Boolean) aValue); break;
+            }
+            fireTableCellUpdated(row, col);
+        }
+    }
+	
+	
+	
+	
+	
+	// private String m_data[][]; // do function to data
+	// private String m_col[]={"Settlement Name","Settlemen Type","Ramzor Color", "Sick Percentage (in portion of 1)", "Doses amount", "Dead Amount", "People Amount"};     
 	private JTable m_jt=null;
 	private JTextField m_filterW; // keep the data from user
 	private TableRowSorter<> sorter;

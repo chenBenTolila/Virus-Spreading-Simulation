@@ -116,7 +116,7 @@ public abstract class Settlement {
 	 */
 	public double contagiousPercent(){
 		double countSicks=m_sickPeople.length;    // the amount of sick people
-		int peopleCount= m_people.length + (int)countSicks;   // the number of citizens in the settlement
+		double peopleCount= m_people.length + countSicks;   // the number of citizens in the settlement
 		return countSicks/peopleCount;   // check if the result is double type ////
 	}
 	
