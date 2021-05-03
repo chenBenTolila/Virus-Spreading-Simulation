@@ -1,11 +1,6 @@
 package simulation;
 
 import country.*;
-import io.SimulationFile;
-
-import java.awt.Graphics;
-import java.io.*;
-import javax.swing.*;   // for GUI
 import ui.*;
 
 /**
