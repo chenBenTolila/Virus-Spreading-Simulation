@@ -14,16 +14,15 @@ import javax.swing.table.AbstractTableModel;
 import country.Map;
 import virus.*;
 
-public class EditMutationsWindow extends JFrame{
+public class EditMutationsWindow extends JDialog{
 	
 
 	/**
      * default constructor
     */
-	public EditMutationsWindow(JFrame parent)
+	public EditMutationsWindow()
     {
 		super("Edit Mutations");
-		parent.disable();
 		MutationModel model = new MutationModel();
 		JTable table = new JTable(model);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -32,13 +31,7 @@ public class EditMutationsWindow extends JFrame{
 		this.add(new RowedTableScroll(table, model.getArrMutation()));
 		this.pack();
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    	this.addWindowListener(new java.awt.event.WindowAdapter() {
-    	    @Override
-    	    public void windowClosing(java.awt.event.WindowEvent e) {
-    	    	parent.enable();
-    	        e.getWindow().dispose();
-    	    }
-    	});
+		this.setMo
 		this.setVisible(true);
 
     }

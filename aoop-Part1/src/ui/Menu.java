@@ -56,7 +56,8 @@ public class Menu extends JMenuBar {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new EditMutationsWindow(parent);
+				new EditMutationsWindow();
+				
 			}
 		});
         

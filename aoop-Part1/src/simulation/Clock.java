@@ -44,6 +44,14 @@ public class Clock {
 			ticks_per_day = numTicks;
 	}
 	
+	/**
+	 * reseting current time to 0
+	 */
+	public static void resetTime()
+	{
+		currentTime = 0;
+	}
+	
 	private static long currentTime = 0;  // the current time in the simulation
 	private static int  ticks_per_day=1; // number of ticks in one day
 }

@@ -2,7 +2,7 @@ package io;
 import java.io.*;
 import country.*;
 import population.*;
-import simulation.Main;
+import simulation.*;
 import location.*;
 import java.util.Random;
 
@@ -25,6 +25,7 @@ public class SimulationFile {
 		if(fileName!=null) {
 			fr = new FileReader(fileName);
 			map.resetMap();
+			Clock.resetTime();
 			BufferedReader bufferedReader = new BufferedReader(fr);
 			while((line = bufferedReader.readLine()) != null) {
 				line = line.replaceAll(" ", "");
