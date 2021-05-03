@@ -11,7 +11,6 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 
 import country.Map;
-
 import simulation.*;
 
 
@@ -192,20 +191,19 @@ public class Menu extends JMenuBar {
 	 */
 	public void createSetTicksDialog()
 	{
-		String numTicks[] = new String[21];
-		for(int i = 10; i < 30; ++i)
-		{
-			numTicks[i-10] = String.valueOf(i);
-		}
-		// String[] monthStrings = getMonthStrings(); //get month names
-		SpinnerListModel ticksModel = new SpinnerListModel(numTicks);
-		JSpinner spinner = new JSpinner(ticksModel);
+		SpinnerModel model = new SpinnerNumberModel(10, //initial value
+													5,  // minimum
+													20, //max
+													1); //step
+
+		JSpinner spinner = new JSpinner(model);
 		spinner.addChangeListener(new ChangeListener() {
 			
 			@Override
 			public void stateChanged(ChangeEvent e) {
 				try {
-					int temp = Integer.parseInt((String)spinner.getValue());
+					int value = (Integer) spinner.getValue();
+					Clock.setTicksPerDay(value);
 				}
 				catch(Exception e1)
 				{
@@ -219,8 +217,11 @@ public class Menu extends JMenuBar {
 		jp.setLayout(new BoxLayout(jp, BoxLayout.LINE_AXIS));
 		jp.add(spinner);
 		JDialog jd = new JDialog();
+		jd.setSize(80, 40);
+		jd.setLocationRelativeTo(null);
 		jd.add(jp);
 		jd.setModal(true);
+		jd.pack();
 		jd.setVisible(true);
 	}
 	
