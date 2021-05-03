@@ -219,6 +219,37 @@ public class BritishVariant implements IVirus {
 		return false;
 	}
 	
+	private static boolean[] getMutBool()
+	{
+		boolean temp[] = new boolean[3];
+		for(int i = 0; i <3; ++i)
+		{
+			temp[i] = false;
+			for(int j = 0; j < mutations.length; ++j)
+			{
+				if(i == 1)  // check if the British variant is in mutations
+				{
+					if(mutations[j].equals("British variant"))
+						temp[i] = true;
+					break;
+				}
+				
+				else if(i == 2)  // check if the Chinese variant is in mutations
+				{
+					if(mutations[j].equals("Chinese variant"))
+						temp[i] = true;
+				}
+				
+				else
+				{
+					if(mutations[j].equals("South African variant"))  // check if the South African variant is in mutations
+						temp[i] = true;
+				}	
+			}
+		}
+		return temp;
+	}
+	
 	// data members
 	private static final double dieProb18 = 0.01; // The probability of dying by the age of 18
 	private static final double dieProbUp18 = 0.1; // The probability of dying over the age of 18
