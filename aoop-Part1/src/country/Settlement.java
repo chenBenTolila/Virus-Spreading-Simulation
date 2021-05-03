@@ -321,7 +321,7 @@ public abstract class Settlement {
 	/**
 	 * the method turns 1% of the healthy people in the settlement into sick people
 	 */
-	public void intializeSickPeople()
+	public void intializeSickPeople(double p)
 	{
 		// create an object for each of the variants
 		BritishVariant britV = new BritishVariant();   
@@ -330,7 +330,7 @@ public abstract class Settlement {
 		// int numPeople = m_people.length + m_sickPeople.length;  check what is the 20%!!!!
 		Random rand = new Random();
 		int randVirus;
-		for(int i =0; i < m_people.length * 0.01; ++i)  // go over the first 20% of the people in the array
+		for(int i =0; i < m_people.length * p; ++i)  // go over the first 20% of the people in the array
 		{
 			randVirus = rand.nextInt(3);
 			if (randVirus == 0)    // infect the selected person in one of the variants

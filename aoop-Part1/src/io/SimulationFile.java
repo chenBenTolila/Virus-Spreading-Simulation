@@ -44,7 +44,7 @@ public class SimulationFile {
 			fr.close();
 			Main.SetfileLoaded(true);
 			Main.setStop(false);
-			map.addSickToMap();   // initialize the population with 1% of sick people
+			map.addSickToMap(0.01);   // initialize the population with 1% of sick people
 		}
 		else
 			System.out.println("Failed to open the file");

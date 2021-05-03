@@ -62,11 +62,11 @@ public class Map {
 	/**
 	 * Initialize 1% of the population as sick
 	 */
-	public void addSickToMap()
+	public void addSickToMap(double p)
 	{
 		for(int i = 0; i < m_settlements.length; ++i)  // go over the settlements
 		{
-			m_settlements[i].intializeSickPeople();    // turn 1% of settlement's population into sick people
+			m_settlements[i].intializeSickPeople(p);    // turn 1% of settlement's population into sick people
 		}
 	}
 	 /**
