@@ -166,10 +166,10 @@ public class Menu extends JMenuBar {
 			}
 		});
 		JPanel jp = new JPanel();
-		jp.setLayout(new BorderLayout(20, 20));
-		jp.add(spinner, BorderLayout.EAST);
 		JLabel input = new JLabel("Enter numer of ticks per day:");
-		jp.add(input, BorderLayout.WEST);
+		jp.add(input);
+		jp.setLayout(new BoxLayout(jp, BoxLayout.LINE_AXIS));
+		jp.add(spinner);
 		JDialog jd = new JDialog();
 		jd.add(jp);
 		jd.setModal(true);

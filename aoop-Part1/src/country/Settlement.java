@@ -79,20 +79,6 @@ public abstract class Settlement {
 	{
 		String s= "Settlement name: " + m_name + "\nlocation: " + m_location.toString();
 		s+="\nramzor color: " + m_ramzorColor.getColorInString();
-		s += "\npeople in the settlement:\n";
-		if(m_people.length == 0)     // to string of all the citizens
-			s += "no people currently in the settlement\n";
-		else
-			for(int i=0;i<m_people.length;++i) {
-				s+= m_people[i].toString()+"\n";
-			}
-		s += "\nsick people in the settlement:\n";
-		if(m_sickPeople.length == 0)
-			s += "no sick people currently in the settlement\n";
-		else
-			for(int i=0; i < m_sickPeople.length;++i){
-				s+= m_sickPeople[i].toString()+"\n";
-			}
 		s+= "number of vaccine doses: "+ m_numVDoses+"\n";
 		s+= "max people in settlement: "+ m_maxPeople+"\n";
 		s+= "number of dead: "+ m_numDead+"\n";
@@ -101,10 +87,23 @@ public abstract class Settlement {
 			s += "no connected settlement\n";
 		else
 			for(int i=0; i < m_connectS.length;++i){
-				// s+= m_connectS[i].toString()+"\n";
+				s+= m_connectS[i].getSettlementName() + "\n";
+			}
+		s += "\npeople in the settlement:\n";
+		if(m_people.length == 0 && m_sickPeople.length == 0 )     // to string of all the citizens
+			s += "no people currently in the settlement\n";
+		else
+			for(int i=0;i<m_people.length;++i) {
+				s+= m_people[i].toString()+"\n";
+			}
+		s += "\nsick people in the settlement:\n";
+		if(m_sickPeople.length == 0  && m_people.length != 0)
+			s += "no sick people currently in the settlement\n";
+		else
+			for(int i=0; i < m_sickPeople.length;++i){
+				s+= m_sickPeople[i].toString()+"\n";
 			}
 		return s;
-		
 	}
 	
 	public abstract RamzorColor calculateRamzorGrade();  // Abstract - calculate the new color of the settlement
