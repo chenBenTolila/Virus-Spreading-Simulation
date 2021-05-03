@@ -32,7 +32,8 @@ public class Menu extends JMenuBar {
         // create File menu
         JMenuItem m11 = new JMenuItem("Load");
         JMenuItem m12 = new JMenuItem("Statistics");
-        JMenuItem m13 = new JMenuItem("Mutations Edit");
+        
+        JMenuItem m13 = new JMenuItem("Mutations Edit");  // opening Mutation Edit as a modal
         m13.addActionListener(new ActionListener() {
 			
 			@Override
@@ -41,11 +42,12 @@ public class Menu extends JMenuBar {
 			}
 		});
         
-        JMenuItem m14 = new JMenuItem("Exit");
+        JMenuItem m14 = new JMenuItem("Exit");   // creating Exit option
         m14.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				System.out.println("Program Finished");
 				System.exit(0);   // close the system
 			}
 		});
