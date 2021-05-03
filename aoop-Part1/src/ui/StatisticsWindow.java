@@ -1,7 +1,12 @@
 package ui;
 
+import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.FileDialog;
+import java.awt.Frame;
 import java.awt.GridLayout;
+import java.io.IOException;
+
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -9,6 +14,8 @@ import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableRowSorter;
 
 import country.Map;
+import io.SimulationFile;
+import simulation.Main;
 
 
 public class StatisticsWindow extends JFrame {
@@ -42,9 +49,9 @@ public class StatisticsWindow extends JFrame {
 		m_filterW = new JTextField();
 		m_filterW.setToolTipText("Filter Name Column");
         m_filterW.getDocument().addDocumentListener(new DocumentListener() {
-            public void insertUpdate(DocumentEvent e) { newFilter(); }
-            public void removeUpdate(DocumentEvent e) { newFilter(); }
-            public void changedUpdate(DocumentEvent e) { newFilter(); }});
+            public void insertUpdate(DocumentEvent e) { newFilter(1); }
+            public void removeUpdate(DocumentEvent e) { newFilter(1); }
+            public void changedUpdate(DocumentEvent e) { newFilter(1); }});
 	    p.add(cb);  
 		p.add(l);
 	    p.add(m_filterW); 
@@ -57,10 +64,40 @@ public class StatisticsWindow extends JFrame {
 	 */
 	public void createButtonOptions() {
 		JPanel p = new JPanel();
-		p.add(new JButton("Save"));
-		p.add(new JButton("Add Sick"));
-		p.add(new JButton("Vaccinate"));
+		JButton save=new JButton("Save");
+		JButton addSick= new JButton("Vaccinate");
+		JButton vaccinate=new JButton("Vaccinate");
+		p.add(save);
+		p.add(addSick);
+		p.add(vaccinate);
 		this.add(p);
+	}
+	
+	public void saveButtom(JTable jt){
+		if(Main.getStop() || !Main.getFileLoaded())
+		{
+		FileDialog dialog = new FileDialog((Frame)null, "Select File to Open");
+	    dialog.setMode(FileDialog.LOAD);
+	    dialog.setVisible(true);
+	    String file = dialog.getFile();
+	    System.out.println(file + " chosen.");
+	    SimulationFile.setFileName(file);
+	    Main.setStatusPlay(true);
+	    try {
+			SimulationFile.createMap(m);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println("error with file opening");
+		}
+		}
+		else {
+			JDialog dialog = new JDialog((JFrame)null, "file error");
+			Container dialogContainer = dialog.getContentPane();
+		    dialogContainer.add(new JLabel("Stop the current simulation in order to load a file"));
+		    dialog.pack();
+			dialog.setVisible(true);
+			dialog.setLocationRelativeTo(null);
+		}	
 	}
 	
 	
