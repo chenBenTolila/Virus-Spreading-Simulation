@@ -7,6 +7,7 @@ import javax.swing.JTable;
 import javax.swing.table.TableModel;
 
 public class StatisticsFile {
+	
 	public static boolean exportToCSV(JTable tableToExport,
 	        String pathToExportTo) {
 

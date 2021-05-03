@@ -5,6 +5,9 @@ import java.awt.Dimension;
 import java.awt.FileDialog;
 import java.awt.Frame;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.IOException;
 
 import javax.swing.*;
@@ -15,6 +18,7 @@ import javax.swing.table.TableRowSorter;
 
 import country.Map;
 import io.SimulationFile;
+import io.StatisticsFile;
 import simulation.Main;
 
 
@@ -65,42 +69,34 @@ public class StatisticsWindow extends JFrame {
 	public void createButtonOptions() {
 		JPanel p = new JPanel();
 		JButton save=new JButton("Save");
-		JButton addSick= new JButton("Vaccinate");
+		JButton addSick= new JButton("Add Sick");
 		JButton vaccinate=new JButton("Vaccinate");
 		p.add(save);
+		save.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				saveButtom();
+			}
+		});
 		p.add(addSick);
 		p.add(vaccinate);
 		this.add(p);
 	}
 	
-	public void saveButtom(JTable jt){
-		if(Main.getStop() || !Main.getFileLoaded())
-		{
-		FileDialog dialog = new FileDialog((Frame)null, "Select File to Open");
-	    dialog.setMode(FileDialog.LOAD);
-	    dialog.setVisible(true);
-	    String file = dialog.getFile();
-	    System.out.println(file + " chosen.");
-	    SimulationFile.setFileName(file);
-	    Main.setStatusPlay(true);
-	    //try {
-		//	SimulationFile.createMap(m);
-		//} catch (IOException e) {
-			// TODO Auto-generated catch block
-		//	System.out.println("error with file opening");
-		//}
-		//}
-		//else {
-		//	JDialog dialog = new JDialog((JFrame)null, "file error");
-		//	Container dialogContainer = dialog.getContentPane();
-		 //   dialogContainer.add(new JLabel("Stop the current simulation in order to load a file"));
-		  //  dialog.pack();
-		//	dialog.setVisible(true);
-		//	dialog.setLocationRelativeTo(null);
-		}	
+	public void saveButtom(){
+		JFileChooser fileChooser = new JFileChooser();
+		fileChooser.setDialogTitle("Specify a file to save");   
+		 
+		int userSelection = fileChooser.showSaveDialog(this);
+		 
+		if (userSelection == JFileChooser.APPROVE_OPTION) {
+		    File fileToSave = fileChooser.getSelectedFile();
+		    StatisticsFile.exportToCSV(m_jt, fileToSave.getAbsolutePath());
+		    System.out.println("Save as file: " + fileToSave.getAbsolutePath());
+		}
+		
 	}
-	
-	
 	
 	
 	private static class StatisticModel extends AbstractTableModel {
