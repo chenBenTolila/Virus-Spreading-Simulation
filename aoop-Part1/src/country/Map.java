@@ -199,7 +199,7 @@ public class Map {
 		return null;
 	}
 	
-	public String getIndexNumSick(int index)
+	public String getIndexPercSick(int index)
 	{
 		if(index < m_settlements.length)
 			return String.valueOf(m_settlements[index].contagiousPercent());;
