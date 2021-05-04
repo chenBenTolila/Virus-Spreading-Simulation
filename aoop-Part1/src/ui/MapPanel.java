@@ -27,6 +27,7 @@ public class MapPanel extends JPanel{
                 for(int i = 0; i < m_map.getNumOfSettlement(); ++i)
                 	if(m_map.isPointInSetIndex(i, x, y))
                 	{
+                		StatisticsWindow sw= new StatisticsWindow(m_map , i);
                 		System.out.println("need to open statistics");
                 		break;
                 	}

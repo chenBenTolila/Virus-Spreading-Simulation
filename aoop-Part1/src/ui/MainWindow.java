@@ -23,13 +23,17 @@ public class MainWindow extends JFrame {
     	myBorderLayout.setHgap(10);
     	myBorderLayout.setVgap(0);
     	this.setLayout(myBorderLayout);
+    	// creating the slider
     	createJSlider();
-    	Menu menu = new Menu(this, m);   // creating the menu object
-    	this.add(menu, BorderLayout.NORTH);
-    	
     	// creating the map panel;
     	MapPanel mp = new MapPanel(m);
     	this.add(mp, BorderLayout.CENTER);  // need to change to a panel!!!!
+    	
+    	// creating the menu
+    	Menu menu = new Menu(this, m, mp);   // creating the menu object
+    	this.add(menu, BorderLayout.NORTH);
+    	
+ 
     	this.pack();
     	this.setLocationRelativeTo(null);
     	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

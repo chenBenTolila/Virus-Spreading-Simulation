@@ -16,9 +16,9 @@ import simulation.*;
 
 public class Menu extends JMenuBar {
 
-	public Menu(JFrame parent, Map m)
+	public Menu(JFrame parent, Map m, MapPanel mp)
 	{
-		createFileMenu(parent, m);
+		createFileMenu(parent, m, mp);
 		createSimulationMenu();
 		createHelpMenu();
 	}
@@ -27,7 +27,7 @@ public class Menu extends JMenuBar {
 	/**
 	 * creates the mini menu file
 	 */
-	public void createFileMenu(JFrame parent, Map m)
+	public void createFileMenu(JFrame parent, Map m, MapPanel mp)
     {
 		
         JMenu m1 = new JMenu("FILE");
@@ -40,6 +40,7 @@ public class Menu extends JMenuBar {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				chooseFile(m);
+				mp.repaint();
 				
 			}
 		});
@@ -48,7 +49,7 @@ public class Menu extends JMenuBar {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new StatisticsWindow(m);
+				new StatisticsWindow(m, -1);
 			}
 		});
         
@@ -121,7 +122,6 @@ public class Menu extends JMenuBar {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Main.setStatusPlay(true);  // update the play status to true
-				System.out.println("in play");
 			}
 		});
        

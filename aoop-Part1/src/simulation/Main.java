@@ -23,12 +23,11 @@ public class Main {
 	public static void main(String[] args) {
 		try {
 			Map m = new Map();   // create an empty map
-			test(m);
-			
+			// test(m);
 			MainWindow mw = new MainWindow(m);
 			while(true)
 			{
-				//System.out.print("");
+				System.out.print("");
 				if(stop == false && fileLoaded == true) {
 					createSimu(m);
 				}
@@ -65,7 +64,7 @@ public class Main {
 		int i = 1;
 		while(true)  // do the simulation 
 		{
-			System.out.println("");
+			System.out.print("");
 			if(stop == true)
 				return;
 			if(statusPlay == true) {

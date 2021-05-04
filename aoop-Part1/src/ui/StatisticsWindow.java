@@ -27,12 +27,12 @@ public class StatisticsWindow extends JFrame {
 	/**
      * default constructor
     */
-	public StatisticsWindow(Map m)
+	public StatisticsWindow(Map m, int rowIndex)
     {
 		super("Statistics Window"); 
 		this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.PAGE_AXIS));
 		createFilterW();
-		createTableWindow(m);
+		createTableWindow(m , rowIndex);
 		createButtonOptions(m);
 		this.setSize(1000,1000);  
 	    this.setLocationRelativeTo(null);
@@ -262,21 +262,13 @@ public class StatisticsWindow extends JFrame {
 
         @Override
         public void setValueAt(Object aValue, int row, int col) {
-        	/*
-            Student student = data.at(row);
-            switch (col) {
-                case 1: student.setName((String) aValue); break;
-                case 2: student.setAge((Integer) aValue); break;
-                case 3: student.setDrivingLicense((Boolean) aValue); break;
-            }
-            */
             fireTableCellUpdated(row, col);
         }
     }
 	
 	
 	
-	public void createTableWindow(Map m) 
+	public void createTableWindow(Map m, int rowIndex) 
 	{   
         StatisticModel model = new StatisticModel(m);
         m_jt = new JTable(model);
@@ -285,6 +277,8 @@ public class StatisticsWindow extends JFrame {
         m_jt.setFillsViewportHeight(true);
         m_jt.setRowSorter(sorter = new TableRowSorter<StatisticModel>(model));
         this.add(new JScrollPane(m_jt));
+        if(rowIndex != -1)
+        	m_jt.addRowSelectionInterval(rowIndex, rowIndex);
         
     }
 
