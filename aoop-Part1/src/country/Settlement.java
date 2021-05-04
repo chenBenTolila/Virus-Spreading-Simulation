@@ -72,7 +72,7 @@ public abstract class Settlement {
 	
 
 	/**
-	 * return the settlement in string form  
+	 * return the settlement in string   
 	 */
 	@Override
 	public String toString()   
