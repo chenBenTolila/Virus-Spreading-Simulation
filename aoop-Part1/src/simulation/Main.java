@@ -22,27 +22,6 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 
-		//Map m = new Map();   // create an empty map
-		//test(m);
-		Map m = new Map();   // create an empty map
-		MainWindow mw = new MainWindow(m);
-		while(true)
-		{
-			System.out.print("");
-			if(stop == false && fileLoaded == true) {
-				createSimu(m);
-			}
-		}  
-		/*
-		RamzorColor rc = RamzorColor.ORANGE;
-		System.out.println(rc.getColorInString());
-		rc = RamzorColor.YELLOW;
-		System.out.println(rc.getColorInString());
-		*/
-		
-		//Map m = new Map();   // create an empty map
-		//test(m);
-		
 		try {
 			Map m = new Map();   // create an empty map
 			MainWindow mw = new MainWindow(m);
@@ -58,10 +37,7 @@ public class Main {
             System.out.println("Error!!!");
 		}
 		
-		
-		 
-		 
->>>>>>> branch 'main' of https://github.com/chenBenTolila/aoop1.git
+
 	}
 	
 	public static void test(Map m) {
@@ -133,6 +109,15 @@ public class Main {
 	}
 	
 	/**
+	 * 
+	 * @return the current sleep time in between simulations
+	 */
+	public static int getSleepTime()
+	{
+		return sleepTime;
+	}
+	
+	/**
 	 * the method sets the value of file loaded indicator
 	 * @param val - a boolean value
 	 */
@@ -184,7 +169,7 @@ public class Main {
 		return fileLoaded;
 	}
 	
-	private static int sleepTime;   // will keep the speed of the simulation
+	private static int sleepTime = 10;   // will keep the speed of the simulation
 	private static boolean fileLoaded = false;   // will keep true if a file is loaded
 	private static boolean statusPlay = true;    // will keep if the simulation are played or paused
 	private static boolean stop = false;   // will keep true is the simulation are paused
