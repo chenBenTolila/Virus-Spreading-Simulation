@@ -25,7 +25,6 @@ public class Main {
 		try {
 			Map m = new Map();   // create an empty map
 			MainWindow mw = new MainWindow(m);
-			/*
 			while(true)
 			{
 				System.out.print("");
@@ -33,7 +32,6 @@ public class Main {
 					createSimu(m);
 				}
 			}  
-			*/
 		}
 		catch (Exception ex1) {    // catch errors related to files
             System.out.println("Error!!!");

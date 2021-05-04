@@ -40,8 +40,6 @@ public class Menu extends JMenuBar {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				chooseFile(m);
-				if(Main.getFileLoaded() == true)
-					m.addSickToMap(0.1);   // initialize the population with 1% of sick people
 				mp.repaint();
 				
 			}
