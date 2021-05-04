@@ -449,7 +449,7 @@ public abstract class Settlement {
 	 */
 	public void makeConvalescent(){
 		for(int i=0; i < m_sickPeople.length; ++i)   
-			if(Clock.DaysPassed(m_sickPeople[i].getSicknessDuration())>=25) {
+			if(Clock.DaysPassed(m_sickPeople[i].getContagiousTime())>=25) {
 				addPerson(new Convalescent(m_sickPeople[i].getAge(), m_sickPeople[i].getLocation(), m_sickPeople[i].getSettlement(), m_sickPeople[i].getVirus()));
 				removeSickPersonFromArr(m_sickPeople[i]);
 			}
