@@ -189,6 +189,7 @@ public class StatisticsWindow extends JFrame {
 					int row= m_jt.getSelectedRow();
 					if(row != -1) {
 						m.setIndexNumDoses((String)m_jt.getValueAt(row, 0), value);
+						
 					}
 				}
 				catch(Exception e1)
