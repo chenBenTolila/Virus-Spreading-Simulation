@@ -36,7 +36,7 @@ public class Kibbutz extends Settlement{
 	{
 		double newColor;    // the value of the new color
 		newColor = 0.45 + Math.pow((Math.pow(1.5, getRamzorColor().getColorValue())*(contagiousPercent()-0.4)),3);    // calculate the new color
-		setRamzorColor(colorByValue(newColor));
+		setRamzorColor(RamzorColor.colorByValue(newColor));
 		return getRamzorColor(); 
 	}	
 	

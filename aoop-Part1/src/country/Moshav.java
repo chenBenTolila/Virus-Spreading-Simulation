@@ -36,7 +36,7 @@ public class Moshav extends Settlement{
 	{
 		double newColor;
 		newColor= 0.3+ 3*Math.pow((Math.pow(1.2, getRamzorColor().getColorValue())*(contagiousPercent()-0.35)),5);
-		setRamzorColor(colorByValue(newColor));
+		setRamzorColor(RamzorColor.colorByValue(newColor));
 		return getRamzorColor(); 
 	}
 	

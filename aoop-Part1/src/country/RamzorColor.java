@@ -22,7 +22,7 @@ public enum RamzorColor
 	 * @param color get color
 	 * @param pTransfer Probability of transfer a settlement
 	 */
-	private RamzorColor(double cSick, Color color, double pTransfer) {
+	private RamzorColor(double pTransfer, Color color, double cSick) {
 		this.cSick= cSick;
 		this.color= color;
 		this.pTransfer=pTransfer;
@@ -77,6 +77,24 @@ public enum RamzorColor
 			return "no color";
 		}
 	}
+	
+	
+	/**
+	 * 
+	 * @param val - a double that holds the settlement coefficient of the disease
+	 * @return  return the color the value match
+	 */
+	public static RamzorColor colorByValue(double val)
+	{
+		if(val <= 0.4)    // return the ramzor that match the value
+			return RamzorColor.GREEN;
+		else if(val <= 0.6)
+			return RamzorColor.YELLOW;
+		else if(val <= 0.8)
+			return RamzorColor.ORANGE;
+		else 
+			return RamzorColor.RED;
+		}
 	
 	
 	private double cSick; 

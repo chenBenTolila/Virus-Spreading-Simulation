@@ -21,9 +21,20 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		
+		/*
+		RamzorColor rc = RamzorColor.ORANGE;
+		System.out.println(rc.getColorInString());
+		rc = RamzorColor.YELLOW;
+		System.out.println(rc.getColorInString());
+		*/
+		
+		Map m = new Map();   // create an empty map
+		test(m);
+		
+		/*
 		try {
 			Map m = new Map();   // create an empty map
-			// test(m);
 			MainWindow mw = new MainWindow(m);
 			while(true)
 			{
@@ -36,6 +47,8 @@ public class Main {
 		catch (Exception ex1) {    // catch errors related to files
             System.out.println("Error!!!");
 		}
+		*/
+		
 		 
 		 
 	}
@@ -48,7 +61,10 @@ public class Main {
 		City a= new City(name, loc, rc, mp);
 		Healthy h1= new Healthy(16 ,new Point(55,80),a);
 		Healthy h2= new Healthy(26 ,new Point(45,70),a);
-		a.intializeSickPeople(0.6);
+		m.addSettlement(a);
+		a.addPerson(h1);
+		a.addPerson(h2);
+		a.intializeSickPeople(1);
 		System.out.println(a.getSetColor().toString());
 		a.calculateRamzorGrade();
 		System.out.println(a.getSetColor().toString());

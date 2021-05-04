@@ -38,7 +38,7 @@ public class City extends Settlement{
 	{
 		double newColor;   // the value of the new color
 		newColor= 0.2*Math.pow(4,1.25*contagiousPercent());   // calculate the new color
-		setRamzorColor(colorByValue(newColor));
+		setRamzorColor(RamzorColor.colorByValue(newColor));
 		return getRamzorColor(); 
 	}
 	

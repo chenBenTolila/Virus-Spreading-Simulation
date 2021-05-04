@@ -25,7 +25,7 @@ public abstract class Settlement {
 	public Settlement(String name, Location location, RamzorColor rc, int mp) {
 		m_name = name;
 		m_location = new Location(location);  
-		m_ramzorColor = colorByValue(rc.getColorValue());
+		m_ramzorColor = RamzorColor.colorByValue(rc.getColorValue());
 		m_people = new Person[0];     // create an empty array of healthy citizens
 		m_sickPeople = new Sick[0];   // create an empty array of sick citizens
 		m_maxPeople = mp;
@@ -296,22 +296,7 @@ public abstract class Settlement {
 		return false;    // return if the the transfer succeeded or failed
 	}
 	
-	/**
-	 * 
-	 * @param val - a double that holds the settlement coefficient of the disease
-	 * @return  return the color the value match
-	 */
-	public RamzorColor colorByValue(double val)
-	{
-		if(val <= 0.4)    // return the ramzor that match the value
-			return RamzorColor.GREEN;
-		else if(val <= 0.6)
-			return RamzorColor.YELLOW;
-		else if(val <= 0.8)
-			return RamzorColor.ORANGE;
-		else 
-			return RamzorColor.RED;
-		}
+	
 	
 	/**
 	 * 
@@ -334,17 +319,19 @@ public abstract class Settlement {
 		// int numPeople = m_people.length + m_sickPeople.length;  check what is the 20%!!!!
 		Random rand = new Random();
 		int randVirus;
-		for(int i =0; i < m_people.length * p; ++i)  // go over the first 20% of the people in the array
+		if(p > 1)
+			System.out.println("Error - trying to infect more than the anount of healty people in settlement");
+		double turnSickNum = m_people.length * p;
+		for(int i =0; i < turnSickNum; ++i)  // go over the first p percent of the people in the array
 		{
 			randVirus = rand.nextInt(3);
 			if (randVirus == 0)    // infect the selected person in one of the variants
-				m_people[i].contagion(sAfriV);
+				m_people[0].contagion(sAfriV);
 			else if (randVirus == 1)
-				m_people[i].contagion(chinV);
+				m_people[0].contagion(chinV);
 			else
-				m_people[i].contagion(britV);
+				m_people[0].contagion(britV);
 		}
-		calculateRamzorGrade();
 	}
 	
 	/**
