@@ -21,8 +21,7 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		
-<<<<<<< HEAD
+
 		//Map m = new Map();   // create an empty map
 		//test(m);
 		Map m = new Map();   // create an empty map
@@ -34,7 +33,6 @@ public class Main {
 				createSimu(m);
 			}
 		}  
-=======
 		/*
 		RamzorColor rc = RamzorColor.ORANGE;
 		System.out.println(rc.getColorInString());
