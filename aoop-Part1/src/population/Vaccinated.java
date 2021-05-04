@@ -25,7 +25,10 @@ public class Vaccinated extends Person{
 		m_vaccinationTime= vaccinationTime;
 	}
 	 
-	
+	/**
+	 * copy constructor
+	 * @param v get vaccinated to copy details 
+	 */
 	public Vaccinated(Vaccinated v) {
 		super(v.getAge(),v.getLocation(), v.getSettlement());
 		m_vaccinationTime=v.m_vaccinationTime;

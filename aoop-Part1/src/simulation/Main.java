@@ -56,7 +56,10 @@ public class Main {
 		
 	}
 	
-	
+	/**
+	 * create the simulation
+	 * @param m get map to do simulation
+	 */
 	public static void createSimu(Map m)
 	{
 		int i = 1;
@@ -130,14 +133,26 @@ public class Main {
 		stop = val;
 	}
 	
+	/**
+	 * 
+	 * @return play status
+	 */
 	public static boolean getStatusPlay() {
 		return statusPlay;
 	}
 	
+	/**
+	 * 
+	 * @return stop status
+	 */
 	public static boolean getStop() {
 		return stop;
 	}
 	
+	/**
+	 * 
+	 * @return file loaded status
+	 */
 	public static boolean getFileLoaded() {
 		return fileLoaded;
 	}

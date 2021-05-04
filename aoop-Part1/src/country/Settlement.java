@@ -515,6 +515,10 @@ public abstract class Settlement {
 		return m_connectS.length;
 	}
 	
+	/**
+	 * 
+	 * @return array of middle points of all connected settlements to settlement
+	 */
 	public Point[] connectedMiddlePoints() {
 		Point[] pm=new Point[m_connectS.length+1];
 		pm[0]=this.middleOfSettlement();

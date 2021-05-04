@@ -8,6 +8,12 @@ import javax.swing.table.TableModel;
 
 public class StatisticsFile {
 	
+	/**
+	 * 
+	 * @param tableToExport get data table to read from
+	 * @param pathToExportTo get name of file to save
+	 * @return true if Succeeded else false
+	 */
 	public static boolean exportToCSV(JTable tableToExport,
 	        String pathToExportTo) {
 

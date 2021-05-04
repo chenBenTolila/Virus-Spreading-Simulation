@@ -19,6 +19,9 @@ public class Map {
 		m_settlements = new Settlement[0];   // create an empty map
 	}
 	
+	/**
+	 * reset map to null
+	 */
 	public void resetMap()
 	{
 		m_settlements = new Settlement[0];
@@ -179,6 +182,11 @@ public class Map {
 		return null;
 	}
 	
+	/**
+	 * 
+	 * @param index get index of settlement
+	 * @return color of settlement by string 
+	 */
 	public String getIndexColorString(int index)
 	{
 		if(index < m_settlements.length)
@@ -186,10 +194,20 @@ public class Map {
 		return null;
 	}
 	
+	/**
+	 * 
+	 * @param index get index of settlement
+	 * @return array of middle points of connected settlement
+	 */
 	public Point[] connectedSettlements(int index) {
 		return m_settlements[index].connectedMiddlePoints();
 	}
 	
+	/**
+	 * 
+	 * @param index get index of settlement
+	 * @return name of settlement
+	 */
 	public String getIndexSettName(int index)
 	{
 		if(index < m_settlements.length)
@@ -197,6 +215,11 @@ public class Map {
 		return null;
 	}
 	
+	/**
+	 * 
+	 * @param index get index of settlement
+	 * @return type of settlement
+	 */
 	public String getIndexSettType(int index)
 	{
 		if(index < m_settlements.length)
@@ -204,6 +227,11 @@ public class Map {
 		return null;
 	}
 	
+	/**
+	 * 
+	 * @param index get index of settlement
+	 * @return  contagious Percent of sick people in settlement by string
+	 */
 	public String getIndexPercSick(int index)
 	{
 		if(index < m_settlements.length)
@@ -211,6 +239,11 @@ public class Map {
 		return null;
 	}
 	
+	/**
+	 * 
+	 * @param index get index of settlement
+	 * @return  number of doses in settlement
+	 */
 	public int getIndexNumVDoses(int index)
 	{
 		if(index < m_settlements.length)
@@ -218,6 +251,11 @@ public class Map {
 		return -1;
 	}
 	
+	/**
+	 * 
+	 * @param index get index of settlement
+	 * @return number of dead people in settlement
+	 */
 	public int getIndexNumDead(int index)
 	{
 		if(index < m_settlements.length)
@@ -225,6 +263,11 @@ public class Map {
 		return -1;
 	}
 	
+	/**
+	 * 
+	 * @param index get index of settlement
+	 * @return number of people in settlement
+	 */
 	public int getIndexPeopleAmount(int index)
 	{
 		if(index < m_settlements.length)
@@ -245,7 +288,11 @@ public class Map {
 			return m_settlements[index].isPointInSet(x, y);
 		return false;
 	}
-	
+	/**
+	 *  add doses to settlement
+	 * @param name get name of settlement
+	 * @param doses get number of doses to add
+	 */
 	public void setIndexNumDoses(String name, int doses) {
 		for(int i=0; i< m_settlements.length; ++i) {
 			if(m_settlements[i].getSettlementName().equals(name)) {
@@ -254,7 +301,11 @@ public class Map {
 			}
 		}
 	}
-	
+	/**
+	 *  try to infect the settlement 
+	 * @param name get name of settlement
+	 * @param p get Percentage of infection
+	 */
 	public void addSickByName(String name, double p)
 	{
 		for(int i=0; i< m_settlements.length; ++i) {

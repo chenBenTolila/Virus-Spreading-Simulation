@@ -79,9 +79,9 @@ public enum RamzorColor
 	}
 	
 	
-	private double cSick;
-	private Color color;
-	private double pTransfer;
+	private double cSick; 
+	private Color color; // save color
+	private double pTransfer; // save probability of color transition
 	
 }
 

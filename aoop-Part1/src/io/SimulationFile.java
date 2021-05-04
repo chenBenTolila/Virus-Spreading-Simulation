@@ -121,6 +121,10 @@ public class SimulationFile {
 		}
 	}
 	
+	/**
+	 * 
+	 * @param fName - new name to file
+	 */
 	public static void setFileName(String fName) {
 		fileName=fName;
 	}
@@ -128,6 +132,6 @@ public class SimulationFile {
 	// static data members
 	public static double deviation = 6;    // deviation 
 	public static double mean = 9;    // mean
-	public static final double maxP = 1.3;
-	private static String fileName = null;
+	public static final double maxP = 1.3; // max probability 
+	private static String fileName = null; // save the name of file
 }
