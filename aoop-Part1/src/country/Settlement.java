@@ -348,8 +348,8 @@ public abstract class Settlement {
 		int count=0;   // the number of attempted contagion for each sick person
 		int j, i;   // keep the indexes for the arrays
 		Random rand = new Random();   // will randomize the selection of the person to try contage
-		int sickNum = m_sickPeople.length;   // calculating 20% of the sick
-		for(i =0; i < sickNum*0.2; ++i) {   // going over 20% of the sick
+		double sickNum = m_sickPeople.length * 0.2;   // calculating 20% of the sick
+		for(i =0; i < (int)sickNum; ++i) {   // going over 20% of the sick
 			while(count<3) {
 				if(m_people.length == 0)
 				{

@@ -43,7 +43,7 @@ public class SimulationFile {
 					map.connectSettlements(data[1], data[2]);
 			}
 			fr.close();
-			map.addSickToMap(0.1);   // initialize the population with 1% of sick people
+			map.addSickToMap(0.01);   // initialize the population with 1% of sick people
 			Main.SetfileLoaded(true);
 			Main.setStop(false);
 		}

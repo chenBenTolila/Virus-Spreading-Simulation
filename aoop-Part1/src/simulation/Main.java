@@ -75,8 +75,10 @@ public class Main {
 				// second phase
 				m.sickToConvalecent();
 				
+				
 				// third phase
 				m.transferSettlement();
+				
 				
 				// fourth phase
 				m.vaccinatedSettlement();
