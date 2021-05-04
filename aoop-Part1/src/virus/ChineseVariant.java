@@ -156,15 +156,6 @@ public class ChineseVariant implements IVirus {
 	}
 	
 	
-	/**
-	 * updates the canContage value
-	 * @param val - a boolean value
-	 */
-	public static void setCanContage(boolean val)
-	{
-		canContage = val;
-	}
-	
 	
 	/**
 	 * 
@@ -238,12 +229,18 @@ public class ChineseVariant implements IVirus {
 	
 	
 	
+	/**
+	 * 
+	 * @return a boolean array that contain true or false according to if this can develop into them
+	 * the array is made by this order: British, Chinese, South-African
+	 */
 	public static boolean[] getMutBool()
 	{
-		boolean temp[] = new boolean[3];
-		for(int i = 0; i <3; ++i)
+		boolean temp[] = new boolean[3];  // create boolean array
+		for(int i = 0; i <3; ++i)         // go over all the variants
 		{
-			temp[i] = false;
+			temp[i] = false;       // begin from saying this can't develop into the virus in the index i
+			
 			for(int j = 0; j < mutations.length; ++j)
 			{
 				if(i == 0)  // check if the British variant is in mutations
@@ -285,6 +282,7 @@ public class ChineseVariant implements IVirus {
 	private static final double infectProb18 = 0.2; //  The probability of infection by the age of 18 
 	private static final double infectProb55 = 0.5; //  The probability of infection over the age of 18 to 55
 	private static final double infectProbUp55 = 0.7;  // The probability of infection over the age of 55
-	private static String mutations[] = new String[] {"Chinese variant"};
-	private static boolean canContage = true;
+	
+	private static String mutations[] = new String[] {"Chinese variant"};  // contains the names of the variant that this can develop into 
+	private static boolean canContage = true;  // keep if this is able to contage ( =if mutation.length != 0)
 }

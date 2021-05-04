@@ -70,6 +70,7 @@ public class Size {
 		return m_height;
 	}
 	
+	
 	// data members
 	private int m_width; // Width of location
 	private int m_height; // height of location

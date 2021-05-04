@@ -147,15 +147,6 @@ public class SouthAfricanVariant implements IVirus {
 	
 	
 	/**
-	 * updates the canContage value
-	 * @param val - a boolean value
-	 */
-	public static void setCanContage(boolean val)
-	{
-		canContage = val;
-	}
-	
-	/**
 	 * 
 	 * @return the value of canContage
 	 */
@@ -163,6 +154,7 @@ public class SouthAfricanVariant implements IVirus {
 	{
 		return canContage;
 	}
+	
 	
 	/**
 	 * 
@@ -211,6 +203,7 @@ public class SouthAfricanVariant implements IVirus {
 		}
 	}
 	
+	
 	/**
 	 * 
 	 * @param virus -  a virus name
@@ -225,12 +218,19 @@ public class SouthAfricanVariant implements IVirus {
 	}
 	
 	
+	
+	/**
+	 * 
+	 * @return a boolean array that contain true or false according to if this can develop into them
+	 * the array is made by this order: British, Chinese, South-African
+	 */
 	public static boolean[] getMutBool()
 	{
-		boolean temp[] = new boolean[3];
-		for(int i = 0; i <3; ++i)
+		boolean temp[] = new boolean[3];  // create boolean array
+		for(int i = 0; i <3; ++i)         // go over all the variants
 		{
-			temp[i] = false;
+			temp[i] = false;       // begin from saying this can't develop into the virus in the index i
+			
 			for(int j = 0; j < mutations.length; ++j)
 			{
 				if(i == 0)  // check if the British variant is in mutations
@@ -269,6 +269,7 @@ public class SouthAfricanVariant implements IVirus {
 	private static final double dieProbUp18 = 0.08;    // The probability of dying over the age of 18
 	private static final double infectProb18 = 0.6;    // The probability of infection by the age of 18
 	private static final double infectProbUp18 = 0.5;    // The probability of infection over the age of 18
-	private static String mutations[] = new String[] {"South African variant"};
-	private static boolean canContage = true;
+	
+	private static String mutations[] = new String[] {"South African variant"};  // contains the names of the variant that this can develop into 
+	private static boolean canContage = true;   // keep if this is able to contage ( =if mutation.length != 0)
 }
