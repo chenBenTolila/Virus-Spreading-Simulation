@@ -136,6 +136,12 @@ public abstract class Person {
 		return ans;
 	}
 	
+	
+	public void setSettlement(Settlement s)
+	{
+		m_settlement = s;
+	}
+	
 	// data members
 	private int m_age; // person age
 	private Point m_location; // location of person

@@ -266,8 +266,11 @@ public abstract class Settlement {
 		if(rand.nextDouble() >= prob ) {
 			if(getPersonIndex(p) != -1)   // check if is in this settlement
 			{
-				if(removePersonFromArr(p))    // remove p from this settlement
-					return s.addPerson(p);	  // add p to the new settlement
+				if(s.addPerson(p))    // remove p from this settlement
+				{
+					removePersonFromArr(p);	  // add p to the new settlement
+					p.setSettlement(s);
+				}
 			}
 		}
 		return false;    // return if the the transfer succeeded or failed
@@ -287,8 +290,11 @@ public abstract class Settlement {
 		if(rand.nextDouble() >= prob ) {
 			if(getSickPersonIndex(p) != -1)   // check if is in this settlement
 			{
-				if(removeSickPersonFromArr(p))    // remove p from this settlement
-					return s.addSickPerson(p);	  // add p to the new settlement
+				if(s.addSickPerson(p))     // add p to the new settlement
+				{
+					removeSickPersonFromArr(p);	  // remove p from this settlement
+					p.setSettlement(s);
+				}
 			}
 		}
 		return false;    // return if the the transfer succeeded or failed
