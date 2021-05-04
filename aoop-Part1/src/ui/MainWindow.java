@@ -67,15 +67,15 @@ public class MainWindow extends JFrame {
 		});	
         
         //Turn on labels at major tick marks.
-        simuSpeed.setMajorTickSpacing(10);
+        simuSpeed.setMajorTickSpacing(2);
         simuSpeed.setMinorTickSpacing(1);
         simuSpeed.setPaintTicks(true);
         simuSpeed.setPaintLabels(true);
-        this.add(jp, BorderLayout.NORTH);
+        this.add(jp, BorderLayout.SOUTH);
     }
     
     
     // members for the slider
-    private static final int FPS_MIN = 1;
-    private static final int FPS_MAX = 20;
+    private static final int FPS_MIN = 1; 
+    private static final int FPS_MAX = 20; 
 }
