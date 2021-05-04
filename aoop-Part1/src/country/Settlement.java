@@ -213,12 +213,11 @@ public abstract class Settlement {
 		{
 			Person[] newArray = new Person[m_people.length - 1];   // create a new array of people with size minus 1
 			int j = 0; 
-			for(int i=0; i<m_people.length; ++i) {   // go over the people 
+			for(int i=0; i<m_people.length; ++i, ++j) {   // go over the people 
 				if(getPersonIndex(p) == i)    
-					--j;
+					j -= 1;
 				else
 					newArray[j] = m_people[i];   // copy everyone to the new array except for p
-				++j;
 			}
 			m_people = newArray;
 			calculateRamzorGrade();
@@ -239,12 +238,11 @@ public abstract class Settlement {
 		{
 			Sick[] newArray = new Sick[m_sickPeople.length - 1];   // create a new array of sick people with size minus 1
 			int j = 0; 
-			for(int i=0; i<m_sickPeople.length; ++i) {   // go over the people 
+			for(int i=0; i<m_sickPeople.length; ++i, ++j) {   // go over the people 
 				if(getSickPersonIndex(p) == i)    
 					--j;
 				else
 					newArray[j] = m_sickPeople[i];   // copy everyone to the new array except for p
-				++j;
 			}
 			m_sickPeople = newArray;
 			calculateRamzorGrade();
@@ -261,7 +259,7 @@ public abstract class Settlement {
 	 * @return true if the transfer succeeded
 	 */
 	public boolean transferPerson(Person p, Settlement s){
-		if (s.getMaxPeople() >= s.getPeopleAmount())   // check if there is place in the settlement s
+		if (s.getMaxPeople() <= s.getPeopleAmount())   // check if there is place in the settlement s
 			return false;
 		Random rand= new Random();
 		double prob = m_ramzorColor.getPTransfer()*s.m_ramzorColor.getPTransfer();
@@ -282,7 +280,7 @@ public abstract class Settlement {
 	 * @return true if the transfer succeeded
 	 */
 	public boolean transferSickPerson(Sick p, Settlement s){
-		if (s.getMaxPeople() >= s.getPeopleAmount())   // check if there is place in the settlement s
+		if (s.getMaxPeople() <= s.getPeopleAmount())   // check if there is place in the settlement s
 			return false;
 		Random rand= new Random();
 		double prob = m_ramzorColor.getPTransfer()*s.m_ramzorColor.getPTransfer();
@@ -485,7 +483,7 @@ public abstract class Settlement {
 		for(int i=0; i<amountOfTransfers; ++i) {
 			gp=rand.nextInt(this.getPeopleAmount());
 			gs=rand.nextInt(m_connectS.length);
-			if(gp<m_people.length) {
+			if(gp < m_people.length) {
 				transferPerson(m_people[gp],m_connectS[gs]);
 			}
 			else {
