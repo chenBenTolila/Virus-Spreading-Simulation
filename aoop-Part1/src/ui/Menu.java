@@ -13,7 +13,9 @@ import java.io.IOException;
 import country.Map;
 import simulation.*;
 
-
+/**
+ * menu class
+ */
 public class Menu extends JMenuBar {
 
 	public Menu(JFrame parent, Map m, MapPanel mp)

@@ -1,23 +1,16 @@
 package ui;
 
-import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.FileDialog;
-import java.awt.Frame;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import javax.swing.*;
-
 import javax.swing.table.AbstractTableModel;
-
 
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
-
 import virus.*;
 
+/*
+ * class Edit Mutations Window
+ */
 public class EditMutationsWindow extends JDialog{
 	
 

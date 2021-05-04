@@ -4,6 +4,9 @@ import javax.swing.*;
 import javax.swing.table.JTableHeader;
 import java.awt.*;
 
+/**
+ * RowedTableScroll class to row in table
+ */
 public class RowedTableScroll extends JScrollPane {
 	private static class RowHeaderRenderer extends JLabel implements ListCellRenderer<String> {
 		RowHeaderRenderer(JTable table) {

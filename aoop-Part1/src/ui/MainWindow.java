@@ -4,13 +4,12 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import simulation.*;
 import country.Map;
 
-
+/**
+ * class MainWindow
+ */
 public class MainWindow extends JFrame {
     BorderLayout myBorderLayout = new BorderLayout();
     
@@ -74,13 +73,16 @@ public class MainWindow extends JFrame {
         this.add(jp, BorderLayout.SOUTH);
     }
     
+    /**
+     * method to repaint map after simulation
+     */
     public void repaintMap()
     {
     	mapP.repaint();
     }
     
     
-    MapPanel mapP = null;
+    MapPanel mapP = null; // map panel
     
     // members for the slider
     private static final int FPS_MIN = 1; 

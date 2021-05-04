@@ -1,14 +1,10 @@
 package ui;
 
-import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.FileDialog;
-import java.awt.Frame;
-import java.awt.GridLayout;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.io.IOException;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
@@ -17,10 +13,8 @@ import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableRowSorter;
 
 import country.Map;
-import io.SimulationFile;
 import io.StatisticsFile;
-import simulation.Clock;
-import simulation.Main;
+
 
 
 public class StatisticsWindow extends JFrame {
@@ -150,6 +144,10 @@ public class StatisticsWindow extends JFrame {
 		this.add(p);
 	}
 	
+	/**
+	 * button to add sick to settlement 
+	 * @param m get map
+	 */
 	public void addSickButtom(Map m) {
 		try {
 			int row= m_jt.getSelectedRow();
@@ -165,7 +163,9 @@ public class StatisticsWindow extends JFrame {
 	}
 	
 	
-	
+	/**
+	 * Bottom to save the details from table to csv file
+	 */
 	public void saveButtom(){
 		JFileChooser fileChooser = new JFileChooser();
 		fileChooser.setDialogTitle("Specify a file to save");   
@@ -180,6 +180,10 @@ public class StatisticsWindow extends JFrame {
 		
 	}
 	
+	/**
+	 * vaccinate Buttom to give doses to settlement
+	 * @param m get map
+	 */
 	public void vaccinateButtom(Map m) {
 		JPanel jp = new JPanel();
 		JDialog jd = new JDialog();
@@ -217,7 +221,9 @@ public class StatisticsWindow extends JFrame {
 		jd.setVisible(true);
 	}
 	
-	
+	/**
+	 * class StatisticModel to statistic table
+	 */
 	private static class StatisticModel extends AbstractTableModel {
         private Map data;
         private final String[] columnNames = {"Settlement Name","Settlemen Type","Ramzor Color", "Sick Percentage (in portion of 1)", "Doses amount", "Dead Amount", "People Amount"};
@@ -273,7 +279,11 @@ public class StatisticsWindow extends JFrame {
     }
 	
 	
-	
+	/**
+	 * create the statistic table
+	 * @param m get map
+	 * @param rowIndex get index of row of settlement
+	 */
 	public void createTableWindow(Map m, int rowIndex) 
 	{   
         StatisticModel model = new StatisticModel(m);
@@ -287,7 +297,10 @@ public class StatisticsWindow extends JFrame {
         	m_jt.addRowSelectionInterval(rowIndex, rowIndex);
         
     }
-
+   /**
+    * make the filter to table
+    * @param column get number of column
+    */
     private void newFilter(int column) {
         try {
             sorter.setRowFilter(RowFilter.regexFilter(m_filterW.getText(), column));
@@ -298,7 +311,7 @@ public class StatisticsWindow extends JFrame {
 	
 	
 	
-	private JTable m_jt = null;
+	private JTable m_jt = null; // keep the table object
 	private JTextField m_filterW; // keep the data from user
-	private TableRowSorter<StatisticModel> sorter;
+	private TableRowSorter<StatisticModel> sorter; // sort table 
 }
