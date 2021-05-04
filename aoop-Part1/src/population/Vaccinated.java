@@ -48,7 +48,7 @@ public class Vaccinated extends Person{
 	 */
 	@Override
 	public double contagionProbability() {
-		long t = Clock.now() - m_vaccinationTime;   // the time since the vaccination
+		int t =  Clock.DaysPassed(m_vaccinationTime);    // the number of days since the vaccination
 		if(t<21)   // if the time passed is less then 21
 		{
 			return Math.min(1, 0.56+0.15*Math.sqrt(21-t));

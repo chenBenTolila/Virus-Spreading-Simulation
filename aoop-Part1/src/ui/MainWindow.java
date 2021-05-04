@@ -11,7 +11,8 @@ import country.Map;
  * class MainWindow
  */
 public class MainWindow extends JFrame {
-    BorderLayout myBorderLayout = new BorderLayout();
+
+	BorderLayout myBorderLayout = new BorderLayout();
     
     /**
      * default constructor
