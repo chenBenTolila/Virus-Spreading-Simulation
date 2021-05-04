@@ -79,7 +79,7 @@ public abstract class Settlement {
 	{
 		String s= "Settlement name: " + m_name + "\nlocation: " + m_location.toString();
 		s+="\nramzor color: " + m_ramzorColor.getColorInString();
-		s+= "number of vaccine doses: "+ m_numVDoses+"\n";
+		s+= "\nnumber of vaccine doses: "+ m_numVDoses+"\n";
 		s+= "max people in settlement: "+ m_maxPeople+"\n";
 		s+= "number of dead: "+ m_numDead+"\n";
 		s += "\nconnected to settlement: \n";
@@ -114,6 +114,8 @@ public abstract class Settlement {
 	public double contagiousPercent(){
 		double countSicks=m_sickPeople.length;    // the amount of sick people
 		double peopleCount= m_people.length + countSicks;   // the number of citizens in the settlement
+		if(peopleCount == 0)
+			return 0;
 		return countSicks/peopleCount;   // check if the result is double type ////
 	}
 	
