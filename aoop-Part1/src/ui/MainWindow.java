@@ -71,7 +71,7 @@ public class MainWindow extends JFrame {
         simuSpeed.setMinorTickSpacing(1);
         simuSpeed.setPaintTicks(true);
         simuSpeed.setPaintLabels(true);
-        this.add(jp, BorderLayout.SOUTH);
+        this.add(jp, BorderLayout.NORTH);
     }
     
     
