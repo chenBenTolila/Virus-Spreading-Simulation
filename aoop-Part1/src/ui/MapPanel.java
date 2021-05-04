@@ -13,6 +13,13 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+/**
+ * @author Hadar Amsalem
+ * ID: 316129212 
+ * @author Chen Ben Tolila
+ * ID: 207278029
+ */ 
+
 /*
  * map panel class
  */

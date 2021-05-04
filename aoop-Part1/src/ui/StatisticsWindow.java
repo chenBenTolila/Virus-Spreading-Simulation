@@ -15,6 +15,12 @@ import javax.swing.table.TableRowSorter;
 import country.Map;
 import io.StatisticsFile;
 
+/**
+ * @author Hadar Amsalem
+ * ID: 316129212 
+ * @author Chen Ben Tolila
+ * ID: 207278029
+ */
 
 
 public class StatisticsWindow extends JFrame {

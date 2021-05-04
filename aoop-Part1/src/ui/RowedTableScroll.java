@@ -3,6 +3,12 @@ package ui;
 import javax.swing.*;
 import javax.swing.table.JTableHeader;
 import java.awt.*;
+/**
+ * @author Hadar Amsalem
+ * ID: 316129212 
+ * @author Chen Ben Tolila
+ * ID: 207278029
+ */
 
 /**
  * RowedTableScroll class to row in table

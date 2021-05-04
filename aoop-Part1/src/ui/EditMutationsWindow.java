@@ -1,5 +1,6 @@
 package ui;
 
+
 import java.awt.Dimension;
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
@@ -7,6 +8,13 @@ import javax.swing.table.AbstractTableModel;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import virus.*;
+
+/**
+ * @author Hadar Amsalem
+ * ID: 316129212 
+ * @author Chen Ben Tolila
+ * ID: 207278029
+ */
 
 /*
  * class Edit Mutations Window

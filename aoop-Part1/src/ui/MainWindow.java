@@ -8,6 +8,13 @@ import simulation.*;
 import country.Map;
 
 /**
+ * @author Hadar Amsalem
+ * ID: 316129212 
+ * @author Chen Ben Tolila
+ * ID: 207278029
+ */
+
+/**
  * class MainWindow
  */
 public class MainWindow extends JFrame {

@@ -1,4 +1,5 @@
 package ui;
+
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -12,6 +13,12 @@ import java.io.IOException;
 
 import country.Map;
 import simulation.*;
+/**
+ * @author Hadar Amsalem
+ * ID: 316129212 
+ * @author Chen Ben Tolila
+ * ID: 207278029
+ */
 
 /**
  * menu class
