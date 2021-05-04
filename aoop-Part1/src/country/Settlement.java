@@ -489,7 +489,7 @@ public abstract class Settlement {
 				transferPerson(m_people[gp],m_connectS[gs]);
 			}
 			else {
-				transferPerson(m_sickPeople[gp- m_people.length],m_connectS[gs]);
+				transferSickPerson(m_sickPeople[gp- m_people.length],m_connectS[gs]);
 			}
 		}
 	}
