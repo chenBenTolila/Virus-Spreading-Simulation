@@ -49,7 +49,7 @@ public class Menu extends JMenuBar {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new StatisticsWindow(m, -1);
+				new StatisticsWindow(m, -1, mp);
 			}
 		});
         

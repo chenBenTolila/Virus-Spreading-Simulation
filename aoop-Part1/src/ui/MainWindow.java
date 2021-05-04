@@ -26,11 +26,11 @@ public class MainWindow extends JFrame {
     	// creating the slider
     	createJSlider();
     	// creating the map panel;
-    	MapPanel mp = new MapPanel(m);
-    	this.add(mp, BorderLayout.CENTER);  // need to change to a panel!!!!
+    	mapP = new MapPanel(m);
+    	this.add(mapP, BorderLayout.CENTER);  // need to change to a panel!!!!
     	
     	// creating the menu
-    	Menu menu = new Menu(this, m, mp);   // creating the menu object
+    	Menu menu = new Menu(this, m, mapP);   // creating the menu object
     	this.add(menu, BorderLayout.NORTH);
     	
  
@@ -74,6 +74,13 @@ public class MainWindow extends JFrame {
         this.add(jp, BorderLayout.SOUTH);
     }
     
+    public void repaintMap()
+    {
+    	mapP.repaint();
+    }
+    
+    
+    MapPanel mapP = null;
     
     // members for the slider
     private static final int FPS_MIN = 1; 

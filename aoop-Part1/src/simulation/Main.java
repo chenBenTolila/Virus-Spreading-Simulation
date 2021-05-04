@@ -22,20 +22,15 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 
-		try {
 			Map m = new Map();   // create an empty map
 			MainWindow mw = new MainWindow(m);
 			while(true)
 			{
 				System.out.print("");
 				if(stop == false && fileLoaded == true) {
-					createSimu(m);
+					createSimu(m, mw);
 				}
 			}  
-		}
-		catch (Exception ex1) {    // catch errors related to files
-            System.out.println("Error!!!");
-		}
 		
 
 	}
@@ -62,14 +57,16 @@ public class Main {
 	 * create the simulation
 	 * @param m get map to do simulation
 	 */
-	public static void createSimu(Map m)
+	public static void createSimu(Map m, MainWindow mw)
 	{
 		int i = 1;
 		while(true)  // do the simulation 
 		{
+			mw.repaintMap();
 			System.out.print("");
 			if(stop == true)
 				return;
+			
 			if(statusPlay == true) {
 				// first phase
 				System.out.println("************ Simulation " + (i) + " ************");

@@ -27,13 +27,13 @@ public class StatisticsWindow extends JFrame {
 	/**
      * default constructor
     */
-	public StatisticsWindow(Map m, int rowIndex)
+	public StatisticsWindow(Map m, int rowIndex, MapPanel mp)
     {
 		super("Statistics Window"); 
 		this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.PAGE_AXIS));
 		createFilterW();
 		createTableWindow(m , rowIndex);
-		createButtonOptions(m);
+		createButtonOptions(m, mp);
 		this.setSize(1000,1000);  
 	    this.setLocationRelativeTo(null);
 		this.pack();
@@ -114,7 +114,7 @@ public class StatisticsWindow extends JFrame {
 	/**
 	 * function for options to table
 	 */
-	public void createButtonOptions(Map m) {
+	public void createButtonOptions(Map m, MapPanel mp) {
 		JPanel p = new JPanel();
 		JButton save=new JButton("Save");
 		JButton addSick= new JButton("Add Sick");
@@ -125,6 +125,7 @@ public class StatisticsWindow extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				saveButtom();
+				mp.repaint();
 			}
 		});
 		p.add(addSick);
@@ -134,6 +135,7 @@ public class StatisticsWindow extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				addSickButtom(m);
 				m_jt.updateUI();
+				mp.repaint();
 			}
 		});
 		p.add(vaccinate);
@@ -142,6 +144,7 @@ public class StatisticsWindow extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				vaccinateButtom(m);
+				mp.repaint();
 			}
 		});
 		this.add(p);
@@ -265,6 +268,7 @@ public class StatisticsWindow extends JFrame {
         @Override
         public void setValueAt(Object aValue, int row, int col) {
             fireTableCellUpdated(row, col);
+           
         }
     }
 	
@@ -291,7 +295,6 @@ public class StatisticsWindow extends JFrame {
             // If current expression doesn't parse, don't update.
         }
     }
-	
 	
 	
 	

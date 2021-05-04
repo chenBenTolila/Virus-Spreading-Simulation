@@ -18,6 +18,7 @@ public class MapPanel extends JPanel{
 	public MapPanel(Map m) {
 		super();
 		m_map = m;
+		MapPanel temp = this;
 		setVisible(true);
 		this.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -27,7 +28,7 @@ public class MapPanel extends JPanel{
                 for(int i = 0; i < m_map.getNumOfSettlement(); ++i)
                 	if(m_map.isPointInSetIndex(i, x, y))
                 	{
-                		StatisticsWindow sw= new StatisticsWindow(m_map , i);
+                		StatisticsWindow sw = new StatisticsWindow(m_map , i, temp);
                 		System.out.println("need to open statistics");
                 		break;
                 	}
