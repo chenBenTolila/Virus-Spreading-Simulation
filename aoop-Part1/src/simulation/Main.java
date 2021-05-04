@@ -29,10 +29,9 @@ public class Main {
 		System.out.println(rc.getColorInString());
 		*/
 		
-		Map m = new Map();   // create an empty map
-		test(m);
+		//Map m = new Map();   // create an empty map
+		//test(m);
 		
-		/*
 		try {
 			Map m = new Map();   // create an empty map
 			MainWindow mw = new MainWindow(m);
@@ -47,7 +46,7 @@ public class Main {
 		catch (Exception ex1) {    // catch errors related to files
             System.out.println("Error!!!");
 		}
-		*/
+		
 		
 		 
 		 
