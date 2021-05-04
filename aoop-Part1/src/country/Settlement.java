@@ -323,7 +323,7 @@ public abstract class Settlement {
 		}
 		
 		double turnSickNum = m_people.length * p;
-		for(int i =0; i < turnSickNum; ++i)  // go over the first p percent of the people in the array
+		for(int i =0; i < (int)turnSickNum; ++i)  // go over the first p percent of the people in the array
 		{
 			randVirus = rand.nextInt(3);
 			if (randVirus == 0)    // infect the selected person in one of the variants
