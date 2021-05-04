@@ -22,6 +22,7 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		
+<<<<<<< HEAD
 		//Map m = new Map();   // create an empty map
 		//test(m);
 		Map m = new Map();   // create an empty map
@@ -33,6 +34,36 @@ public class Main {
 				createSimu(m);
 			}
 		}  
+=======
+		/*
+		RamzorColor rc = RamzorColor.ORANGE;
+		System.out.println(rc.getColorInString());
+		rc = RamzorColor.YELLOW;
+		System.out.println(rc.getColorInString());
+		*/
+		
+		//Map m = new Map();   // create an empty map
+		//test(m);
+		
+		try {
+			Map m = new Map();   // create an empty map
+			MainWindow mw = new MainWindow(m);
+			while(true)
+			{
+				System.out.print("");
+				if(stop == false && fileLoaded == true) {
+					createSimu(m);
+				}
+			}  
+		}
+		catch (Exception ex1) {    // catch errors related to files
+            System.out.println("Error!!!");
+		}
+		
+		
+		 
+		 
+>>>>>>> branch 'main' of https://github.com/chenBenTolila/aoop1.git
 	}
 	
 	public static void test(Map m) {
