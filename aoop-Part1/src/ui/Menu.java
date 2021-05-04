@@ -242,7 +242,7 @@ public class Menu extends JMenuBar {
 		jp.add(new JLabel("Creation Date: 15/04/21"));
 		JDialog dialog = new JDialog((JFrame)null, "About");
 		/*
-		Container dialogContainer = dialog.getContentPane();
+		Container dialogContainer = dialog.getContentPane(); 
 	    dialogContainer.add(new JLabel("Authors: Chen Ben Tolila,\r\n" + " Hadar Amsalem" + "\nCreation Date: 15/04/21"));
 	    */
 		dialog.add(jp);
