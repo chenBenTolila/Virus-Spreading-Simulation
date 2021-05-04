@@ -1,4 +1,4 @@
-Moshav; Gevim; 20;100 ;40;40; 100
+Moshav; Gevim; 20;100 ;40;40; 1000
 City;Ashdod; 0;0; 60;50; 200
 #; Tel-Aviv;Nir-Galim
 #; Tel-Aviv;Gat
