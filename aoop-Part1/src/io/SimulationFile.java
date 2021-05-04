@@ -52,6 +52,7 @@ public class SimulationFile {
 	}
 	
 	
+	
 	/**
 	 * 
 	 * @param data get data of settlement
