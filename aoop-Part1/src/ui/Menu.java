@@ -53,6 +53,7 @@ public class Menu extends JMenuBar {
 			}
 		});
         
+        
         JMenuItem m13 = new JMenuItem("Mutations Edit");  // opening Mutation Edit as a modal
         m13.addActionListener(new ActionListener() {
 			
