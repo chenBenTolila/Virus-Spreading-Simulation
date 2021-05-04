@@ -105,7 +105,7 @@ public class Sick extends Person{
 	  */
 	@Override
 	public String toString(){
-		return super.toString() +"  \tStatus: sick     \tinfected in : "+ m_virus+"   \tcontagion time: "+ m_contagiousTime;
+		return super.toString() +"\tStatus: sick\tinfected in: "+ m_virus+"\ncontagion time: "+ m_contagiousTime;
 	}
 	
 	/**

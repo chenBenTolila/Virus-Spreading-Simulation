@@ -92,17 +92,14 @@ public abstract class Settlement {
 		s += "\npeople in the settlement:\n";
 		if(m_people.length == 0 && m_sickPeople.length == 0 )     // to string of all the citizens
 			s += "no people currently in the settlement\n";
-		else
+		else {
 			for(int i=0;i<m_people.length;++i) {
 				s+= m_people[i].toString()+"\n";
 			}
-		s += "\nsick people in the settlement:\n";
-		if(m_sickPeople.length == 0  && m_people.length != 0)
-			s += "no sick people currently in the settlement\n";
-		else
 			for(int i=0; i < m_sickPeople.length;++i){
 				s+= m_sickPeople[i].toString()+"\n";
 			}
+		}
 		return s;
 	}
 	
