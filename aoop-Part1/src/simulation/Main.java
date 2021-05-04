@@ -1,10 +1,6 @@
 package simulation;
 
 import country.*;
-import location.Location;
-import location.Point;
-import location.Size;
-import population.Healthy;
 import ui.*;
 
 /**
@@ -35,23 +31,7 @@ public class Main {
 
 	}
 	
-	public static void test(Map m) {
-		String name="ash";
-		Location loc=new Location(new Point(50,90),new Size(60,30));
-		RamzorColor rc=RamzorColor.GREEN;
-		int mp=600; 
-		City a= new City(name, loc, rc, mp);
-		Healthy h1= new Healthy(16 ,new Point(55,80),a);
-		Healthy h2= new Healthy(26 ,new Point(45,70),a);
-		m.addSettlement(a);
-		a.addPerson(h1);
-		a.addPerson(h2);
-		a.intializeSickPeople(1);
-		System.out.println(a.getSetColor().toString());
-		a.calculateRamzorGrade();
-		System.out.println(a.getSetColor().toString());
-		
-	}
+
 	
 	/**
 	 * create the simulation
