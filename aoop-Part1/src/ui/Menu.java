@@ -193,9 +193,9 @@ public class Menu extends JMenuBar {
 	 */
 	public void createSetTicksDialog()
 	{
-		SpinnerModel model = new SpinnerNumberModel(10, //initial value
-													5,  // minimum
-													20, //max
+		SpinnerModel model = new SpinnerNumberModel(Clock.getTicksPerDay(), //initial value
+													1,  // minimum
+													10, //max
 													1); //step
 
 		JSpinner spinner = new JSpinner(model);

@@ -133,6 +133,7 @@ public class StatisticsWindow extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				addSickButtom(m);
+				m_jt.updateUI();
 			}
 		});
 		p.add(vaccinate);
@@ -157,6 +158,7 @@ public class StatisticsWindow extends JFrame {
 		{
 			System.out.println("Error - a non integer value was entered");
 		}
+		m_jt.updateUI();
 	}
 	
 	
@@ -177,6 +179,7 @@ public class StatisticsWindow extends JFrame {
 	
 	public void vaccinateButtom(Map m) {
 		JPanel jp = new JPanel();
+		JDialog jd = new JDialog();
 		JLabel input = new JLabel("Enter number of vaccinate doses:");
 		jp.add(input);
 		JTextField numDoses = new JTextField();
@@ -189,28 +192,26 @@ public class StatisticsWindow extends JFrame {
 					int row= m_jt.getSelectedRow();
 					if(row != -1) {
 						m.setIndexNumDoses((String)m_jt.getValueAt(row, 0), value);
-						
 					}
 				}
 				catch(Exception e1)
 				{
 					System.out.println("Error - a non integer value was entered");
 				}
+				m_jt.updateUI();
+				jd.dispose();
 			}
 		});
 		numDoses.setToolTipText("Fill Number of doses");
 		numDoses.setMinimumSize(new Dimension(120,80));
 		jp.add(numDoses);  
 		jp.setLayout(new BoxLayout(jp, BoxLayout.LINE_AXIS));
-		JDialog jd = new JDialog();
 		jd.setLocationRelativeTo(null);
 		jd.setPreferredSize(new Dimension(280,70));
 		jd.setModal(true);
 		jd.add(jp);
 		jd.pack();
 		jd.setVisible(true);
-		
-	
 	}
 	
 	

@@ -319,8 +319,11 @@ public abstract class Settlement {
 		// int numPeople = m_people.length + m_sickPeople.length;  check what is the 20%!!!!
 		Random rand = new Random();
 		int randVirus;
-		if(p > 1)
+		if(p > 1) {
 			System.out.println("Error - trying to infect more than the anount of healty people in settlement");
+			return;
+		}
+		
 		double turnSickNum = m_people.length * p;
 		for(int i =0; i < turnSickNum; ++i)  // go over the first p percent of the people in the array
 		{
@@ -341,8 +344,14 @@ public abstract class Settlement {
 		int count=0;   // the number of attempted contagion for each sick person
 		int j, i;   // keep the indexes for the arrays
 		Random rand = new Random();   // will randomize the selection of the person to try contage
-		for(i =0; i< m_sickPeople.length*0.2; ++i) {   // going over 20% of the sick
+		int sickNum = m_sickPeople.length;   // calculating 20% of the sick
+		for(i =0; i < sickNum*0.2; ++i) {   // going over 20% of the sick
 			while(count<3) {
+				if(m_people.length == 0)
+				{
+					System.out.println("can't infect more, all the people are sick");
+					return;
+				}
 				j=rand.nextInt(m_people.length);    // choose a person to contage randomly
 				try {
 					if(m_sickPeople[i].getVirus().tryToContagion(m_sickPeople[i], m_people[j]))   // try to contage the selected person
@@ -357,6 +366,7 @@ public abstract class Settlement {
 			count=0;
 		}
 	}
+	
 	
 	/**
 	 * 
@@ -471,7 +481,8 @@ public abstract class Settlement {
 			return;
 		Random rand = new Random();
 		int gp, gs;
-		for(int i=0; i<this.getPeopleAmount()*0.03; ++i) {
+		double amountOfTransfers = this.getPeopleAmount() *0.03;
+		for(int i=0; i<amountOfTransfers; ++i) {
 			gp=rand.nextInt(this.getPeopleAmount());
 			gs=rand.nextInt(m_connectS.length);
 			if(gp<m_people.length) {

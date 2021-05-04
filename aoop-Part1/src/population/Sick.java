@@ -116,6 +116,13 @@ public class Sick extends Person{
 		throw new RuntimeException();
 	}
 	
+	
+	public long getContagiousTime()
+	{
+		return m_contagiousTime;
+	}
+	
+	
 	 // data members
 	private long m_contagiousTime; // The moment of infection
 	private IVirus m_virus; // kind of virus

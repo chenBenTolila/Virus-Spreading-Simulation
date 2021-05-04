@@ -36,7 +36,7 @@ public class SouthAfricanVariant implements IVirus {
 		String vType;   // the variant type
 		double varSickProb;   // the probability of p2 to get sick infected in the variant according to his age
 		if(!(p2.checkIfSick())) {   // check if the p2 is healthy
-			if(Clock.DaysPassed(p1.getSicknessDuration()) < 5)   // check that p1 is sick for 5 or more days
+			if(Clock.DaysPassed(p1.getContagiousTime()) < 5)   // check that p1 is sick for 5 or more days
 				return false;
 			vType = mutations[rand.nextInt(mutations.length)];
 			varSickProb = calcProbToSick(vType, p2);
