@@ -159,7 +159,7 @@ public class StatisticsWindow extends JFrame {
 		{
 			System.out.println("Error - a non integer value was entered");
 		}
-		// m_jt.updateUI();
+		m_jt.updateUI();
 	}
 	
 	
