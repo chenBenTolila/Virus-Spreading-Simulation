@@ -37,7 +37,7 @@ public class MainWindow extends JFrame {
     	this.add(mapP, BorderLayout.CENTER);  // need to change to a panel!!!!
     	
     	// creating the menu
-    	Menu menu = new Menu(this, m, mapP);   // creating the menu object
+    	menu = new Menu(this, m, mapP);   // creating the menu object
     	this.add(menu, BorderLayout.NORTH);
     	
  
@@ -89,8 +89,18 @@ public class MainWindow extends JFrame {
     	mapP.repaint();
     }
     
+    /**
+     *  update the statistic window
+     */
+    public void updateStatistic()
+    {
+    	if(menu != null)
+    		menu.updateStatTable();
+    }
     
-    MapPanel mapP = null; // map panel
+    private MapPanel mapP = null; // map panel
+    
+    private Menu menu = null;  // the menu
     
     // members for the slider
     private static final int FPS_MIN = 1; 

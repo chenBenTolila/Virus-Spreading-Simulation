@@ -58,7 +58,14 @@ public class Menu extends JMenuBar {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new StatisticsWindow(m, -1, mp);
+				if(!Main.getFileLoaded())
+				{
+					JOptionPane.showMessageDialog(null, "You need to load a file first");
+				}
+				else if(m_sw == null)
+					m_sw = new StatisticsWindow(m, -1, mp);
+				else
+					m_sw.setVisible(true);
 			}
 		});
         
@@ -267,4 +274,16 @@ public class Menu extends JMenuBar {
 	    		+ "The simulation takes place on different types of settlement,\r\n" + "and combines all the necessary information about the people in the settlement.\r\n"
 	    		+ "");
 	}
+	
+	/**
+	 * update the table in the statistic window 
+	 */
+	public void updateStatTable()
+	{
+		if(m_sw != null)
+			m_sw.updateTable();
+	}
+	
+	// members for the statistic window
+    private StatisticsWindow m_sw = null;
 }

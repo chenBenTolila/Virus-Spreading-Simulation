@@ -315,7 +315,13 @@ public class StatisticsWindow extends JFrame {
         }
     }
 	
-	
+    /**
+     * update the information in the table
+     */
+	public void updateTable()
+	{
+		m_jt.updateUI();
+	}
 	
 	private JTable m_jt = null; // keep the table object
 	private JTextField m_filterW; // keep the data from user

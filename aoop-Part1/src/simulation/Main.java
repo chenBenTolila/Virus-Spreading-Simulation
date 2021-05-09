@@ -43,6 +43,7 @@ public class Main {
 		while(true)  // do the simulation 
 		{
 			mw.repaintMap();
+			mw.updateStatistic();
 			System.out.print("");
 			if(stop == true)
 				return;
