@@ -323,6 +323,7 @@ public class StatisticsWindow extends JFrame {
 		m_jt.updateUI();
 	}
 	
+	
 	private JTable m_jt = null; // keep the table object
 	private JTextField m_filterW; // keep the data from user
 	private TableRowSorter<StatisticModel> sorter; // sort table 

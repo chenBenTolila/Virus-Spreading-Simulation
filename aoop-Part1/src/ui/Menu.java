@@ -20,6 +20,7 @@ import simulation.*;
  * ID: 207278029
  */
 
+
 /**
  * menu class
  */
@@ -50,7 +51,6 @@ public class Menu extends JMenuBar {
 			public void actionPerformed(ActionEvent e) {
 				chooseFile(m);
 				mp.repaint();
-				
 			}
 		});
         JMenuItem m12 = new JMenuItem("Statistics");
@@ -157,6 +157,8 @@ public class Menu extends JMenuBar {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Main.setStop(true);
+				m_sw = null;
+				Main.SetfileLoaded(false);
 			}
 		});
         
@@ -283,6 +285,7 @@ public class Menu extends JMenuBar {
 		if(m_sw != null)
 			m_sw.updateTable();
 	}
+	
 	
 	// members for the statistic window
     private StatisticsWindow m_sw = null;

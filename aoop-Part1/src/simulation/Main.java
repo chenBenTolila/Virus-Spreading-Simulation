@@ -63,7 +63,7 @@ public class Main {
 				
 				// fourth phase
 				m.vaccinatedSettlement();
-				System.out.println(m.toString());
+				//System.out.println(m.toString());
 				Clock.nextTick();
 				
 				try {
