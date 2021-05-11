@@ -63,6 +63,10 @@ public class Main {
 				
 				// fourth phase
 				m.vaccinatedSettlement();
+				
+				// fifth phase
+				m.killSettlement();
+				
 				//System.out.println(m.toString());
 				Clock.nextTick();
 				

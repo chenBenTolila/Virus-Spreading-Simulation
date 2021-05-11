@@ -435,6 +435,7 @@ public abstract class Settlement {
 		m_numDead++;
 	}
 	
+	
 	/**
 	 * 
 	 * @return number of dead people
@@ -442,6 +443,7 @@ public abstract class Settlement {
 	public int getNumDead() {
 		return m_numDead;
 	}
+	
 	
 	/**
 	 * make sick people who passed 25 days to convalescent 
@@ -466,6 +468,16 @@ public abstract class Settlement {
 			}
 		}
 	}
+	
+	public void killSickPeople()
+	{
+		for(int i =0; i< m_sickPeople.length; ++i)
+		{
+			m_sickPeople[i].tryToDie();
+		}
+	}
+	
+	
 	
 	/**
 	 * 

@@ -76,6 +76,7 @@ public class Sick extends Person{
 		return Clock.now() - m_contagiousTime;
 	}
 	
+	
 	/**
 	 * 
 	 * @return calculate and returns whether the person will die from the disease
@@ -83,7 +84,7 @@ public class Sick extends Person{
 	public boolean tryToDie() {
 		if( m_virus.tryToKill(this)) {
 			this.getSettlement().addNewDead();
-			this.getSettlement().removePersonFromArr(this);
+			this.getSettlement().removeSickPersonFromArr(this);
 			return true;
 		}
 		return false;

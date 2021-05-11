@@ -115,6 +115,15 @@ public class Map {
 			m_settlements[i].vaccinatedPeople();
 		}
 	}
+	
+	
+	public void killSettlement()
+	{
+		for(int i =0; i < m_settlements.length; ++i)
+			m_settlements[i].killSickPeople();
+	}
+	
+	
 	/**
 	 * 
 	 * @return create the data of all settlement
