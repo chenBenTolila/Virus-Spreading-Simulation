@@ -68,19 +68,19 @@ public class SimulationFile {
 		switch(data[0])
 		{
 		case "City":
-			temp = new City(name, loc, RamzorColor.GREEN, (int)(numPeople*maxP));
+			temp = new City(name, loc, RamzorColor.GREEN, (int)(numPeople*maxP), map);
 			createPeopleArray(temp, numPeople);  
 			map.addSettlement(temp);  // adding the settlement to the map
 			break;
 				
 		case "Kibbutz":
-			temp = new Kibbutz(name, loc, RamzorColor.GREEN, (int)(numPeople*maxP));
+			temp = new Kibbutz(name, loc, RamzorColor.GREEN, (int)(numPeople*maxP), map);
 			createPeopleArray(temp, numPeople);
 			map.addSettlement(temp);  // adding the settlement to the map
 			break;
 				
 		case "Moshav":
-			temp  = new Moshav(name, loc, RamzorColor.GREEN, (int)(numPeople*maxP));
+			temp  = new Moshav(name, loc, RamzorColor.GREEN, (int)(numPeople*maxP), map);
 			createPeopleArray(temp, numPeople);
 			map.addSettlement(temp);  // adding the settlement to the map
 			break;

@@ -2,6 +2,7 @@ package country;
 import location.*;
 import population.*;
 import simulation.Clock;
+import simulation.Main;
 import virus.*;
 import java.util.Random;
 import java.awt.Color;
@@ -14,7 +15,8 @@ import java.awt.Color;
  * ID: 207278029
  */
 
-public abstract class Settlement {
+public abstract class Settlement implements Runnable
+{
 	
 	/**
 	 * the constructor
@@ -22,7 +24,7 @@ public abstract class Settlement {
 	 * @param location the settlement location
 	 * @param ramzorColor - the settlement ramzor color
 	 */
-	public Settlement(String name, Location location, RamzorColor rc, int mp) {
+	public Settlement(String name, Location location, RamzorColor rc, int mp, Map map) {
 		m_name = name;
 		m_location = new Location(location);  
 		m_ramzorColor = RamzorColor.colorByValue(rc.getColorValue());
@@ -32,6 +34,45 @@ public abstract class Settlement {
 		m_numVDoses = 0;
 		m_connectS = new Settlement[0];  // create an empty array of connected settlements
 		m_numDead =0;
+		m_map = map;
+	}
+	
+	/**
+	 * writing the run method for the thread
+	 */
+	public void run()
+	{
+		while(!Main.getStop())
+		{	
+			synchronized (m_map) 
+			{
+				while(!Main.getStatusPlay())   // check for status play / pause
+				{
+					try {
+						m_map.wait();
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+						System.out.println("failed to activate wait on the map");
+					}
+				}
+			}
+		}
+			
+		settSimu(); // activate simulation
+	}
+	
+	
+	/**
+	 * the method activates the simulation on the settlement
+	 */
+	private void settSimu()
+	{
+		tryToInfectThree();
+		makeConvalescent();
+		tryToTransfer();
+		vaccinatedPeople();
+		killSickPeople();
 	}
 	
 	
@@ -343,7 +384,7 @@ public abstract class Settlement {
 	/**
 	 * for 20% of the sick people in the settlement try to infect 3 healthy people
 	 */
-	public void tryToInfectThree() {
+	public synchronized void tryToInfectThree() {
 		int count=0;   // the number of attempted contagion for each sick person
 		int j, i;   // keep the indexes for the arrays
 		Random rand = new Random();   // will randomize the selection of the person to try contage
@@ -448,7 +489,7 @@ public abstract class Settlement {
 	/**
 	 * make sick people who passed 25 days to convalescent 
 	 */
-	public void makeConvalescent(){
+	public synchronized void makeConvalescent(){
 		for(int i=0; i < m_sickPeople.length; ++i)   
 			if(Clock.DaysPassed(m_sickPeople[i].getContagiousTime())>=25) {
 				addPerson(new Convalescent(m_sickPeople[i].getAge(), m_sickPeople[i].getLocation(), m_sickPeople[i].getSettlement(), m_sickPeople[i].getVirus()));
@@ -457,9 +498,9 @@ public abstract class Settlement {
 	}
 	
 	/**
-	 * make healthy people to vaccinated 
+	 * vaccinate healthy people
 	 */
-	public void vaccinatedPeople(){
+	public synchronized void vaccinatedPeople(){
 		for(int i=0; i < m_people.length; ++i) {
 			if(m_people[i].checkIfHealthy() && m_numVDoses>0) {
 				addPerson(new Vaccinated(m_people[i].getAge(), m_people[i].getLocation(), m_people[i].getSettlement(), Clock.now()));
@@ -469,11 +510,16 @@ public abstract class Settlement {
 		}
 	}
 	
+	
+	/**
+	 * 
+	 */
 	public void killSickPeople()
 	{
 		for(int i =0; i< m_sickPeople.length; ++i)
 		{
-			m_sickPeople[i].tryToDie();
+			if(m_sickPeople[i].tryToDie());
+				--i;
 		}
 	}
 	
@@ -566,4 +612,5 @@ public abstract class Settlement {
 	private Sick[] m_sickPeople; // the list of the sick people in settlement
 	private Settlement[] m_connectS; // the array of close settlements
 	private int m_numDead; // the number of dead people
+	private Map m_map; // the map this is part of
 }
