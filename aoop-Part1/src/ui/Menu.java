@@ -58,14 +58,7 @@ public class Menu extends JMenuBar {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(!Main.getFileLoaded())
-				{
-					JOptionPane.showMessageDialog(null, "You need to load a file first");
-				}
-				else if(m_sw == null)
-					m_sw = new StatisticsWindow(m, -1, mp);
-				else
-					m_sw.setVisible(true);
+				openStatWindow(m, -1, mp);
 			}
 		});
         
@@ -286,7 +279,17 @@ public class Menu extends JMenuBar {
 			m_sw.updateTable();
 	}
 	
-	
+	public void openStatWindow(Map m, int index, MapPanel mp)
+	{
+		if(!Main.getFileLoaded())
+		{
+			JOptionPane.showMessageDialog(null, "You need to load a file first");
+		}
+		else if(m_sw == null)
+			m_sw = new StatisticsWindow(m, -1, mp);
+		else
+			m_sw.setVisible(true);
+	}
 	// members for the statistic window
     private StatisticsWindow m_sw = null;
 }

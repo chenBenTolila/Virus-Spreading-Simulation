@@ -11,6 +11,7 @@ import java.awt.Color;
 
 public class Map {
 	
+	
 	/**
 	 * constructor
 	 */
@@ -19,6 +20,7 @@ public class Map {
 		m_settlements = new Settlement[0];   // create an empty map
 	}
 	
+	
 	/**
 	 * reset map to null
 	 */
@@ -26,6 +28,7 @@ public class Map {
 	{
 		m_settlements = new Settlement[0];
 	}
+	
 	
 	/**
 	 * the method adds a settlement to the map

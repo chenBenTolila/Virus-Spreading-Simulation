@@ -58,7 +58,6 @@ public abstract class Settlement implements Runnable
 				}
 			}
 		}
-			
 		settSimu(); // activate simulation
 	}
 	
@@ -514,11 +513,11 @@ public abstract class Settlement implements Runnable
 	/**
 	 * 
 	 */
-	public void killSickPeople()
+	public synchronized void killSickPeople()
 	{
 		for(int i =0; i< m_sickPeople.length; ++i)
 		{
-			if(m_sickPeople[i].tryToDie());
+			if(m_sickPeople[i].tryToDie())
 				--i;
 		}
 	}
@@ -533,6 +532,7 @@ public abstract class Settlement implements Runnable
 		return m_sickPeople.length;
 	}
 	
+	
 	/**
 	 * try to transfer 3% people from settlement
 	 */
@@ -542,7 +542,7 @@ public abstract class Settlement implements Runnable
 			return;
 		Random rand = new Random();
 		int gp, gs;
-		double amountOfTransfers = this.getPeopleAmount() *0.03;
+		double amountOfTransfers = this.getPeopleAmount() * 0.03;
 		for(int i=0; i<amountOfTransfers; ++i) {
 			gp=rand.nextInt(this.getPeopleAmount());
 			gs=rand.nextInt(m_connectS.length);
@@ -554,6 +554,8 @@ public abstract class Settlement implements Runnable
 			}
 		}
 	}
+	
+	
 	/**
 	 * 
 	 * @return location of settlement
