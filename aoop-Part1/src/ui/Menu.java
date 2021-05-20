@@ -5,10 +5,12 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import io.SimulationFile;
+import io.StatisticsFile;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.IOException;
 
 import country.Map;
@@ -73,8 +75,17 @@ public class Menu extends JMenuBar {
 			}
 		});
         
-        JMenuItem m14 = new JMenuItem("Exit");   // creating Exit option
+        JMenuItem m14 = new JMenuItem("Log File");
         m14.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				saveLogFile();
+			}
+		});
+        
+        JMenuItem m15 = new JMenuItem("Exit");   // creating Exit option
+        m15.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -87,7 +98,20 @@ public class Menu extends JMenuBar {
         m1.add(m12);
         m1.add(m13);
         m1.add(m14);
+        m1.add(m15);
     }
+	
+	public void saveLogFile(){
+		JFileChooser fileChooser = new JFileChooser();
+		fileChooser.setDialogTitle("Specify a file to save");   
+		 
+		int userSelection = fileChooser.showSaveDialog(this);
+		 
+		if (userSelection == JFileChooser.APPROVE_OPTION) {
+			File fileToSave = fileChooser.getSelectedFile();
+		    System.out.println("Save as file: " + fileToSave.getAbsolutePath());
+		}
+	}
 	
 	/**
 	 * choose new file
