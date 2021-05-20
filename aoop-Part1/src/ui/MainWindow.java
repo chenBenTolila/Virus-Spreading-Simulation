@@ -18,7 +18,7 @@ import country.Map;
  * class MainWindow
  */
 public class MainWindow extends JFrame {
-
+	
 	BorderLayout myBorderLayout = new BorderLayout();
     
     /**
@@ -70,7 +70,7 @@ public class MainWindow extends JFrame {
 			@Override
 			public void stateChanged(ChangeEvent e) {
 				 
-				Main.setSleepTime(simuSpeed.getValue());  // change the sleep Time of the simulation
+				menu.setSleepTime(simuSpeed.getValue());  // change the sleep Time of the simulation
 			}
 		});	
         
@@ -90,6 +90,7 @@ public class MainWindow extends JFrame {
     	mapP.repaint();
     }
     
+    
     /**
      *  update the statistic window
      */
@@ -99,9 +100,11 @@ public class MainWindow extends JFrame {
     		menu.updateStatTable();
     }
     
+    
     private MapPanel mapP = null; // map panel
     private Menu menu = null;  // the menu
     private Map m;
+    
     
     // members for the slider
     private final int FPS_MIN = 1; 

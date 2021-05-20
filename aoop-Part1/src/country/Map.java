@@ -393,8 +393,8 @@ public class Map {
 	public void MapBarrierAwait()
 	{
 		try {
+			System.out.println("in await");
 			m_barrier.await();
-			
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

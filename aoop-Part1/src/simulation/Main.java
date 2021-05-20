@@ -20,6 +20,7 @@ public class Main {
 
 			Map m = new Map();   // create an empty map
 			MainWindow mw = new MainWindow();
+			/*
 			while(true)
 			{
 				System.out.print("");
@@ -27,8 +28,7 @@ public class Main {
 					createSimu(m, mw);
 				}
 			}  
-		
-
+			*/
 	}
 	
 

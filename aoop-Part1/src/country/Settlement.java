@@ -55,10 +55,10 @@ public abstract class Settlement implements Runnable
 						e.printStackTrace();
 						System.out.println("failed to activate wait on the map");
 					}
-				}
-				settSimu(); // activate simulation
-				m_map.MapBarrierAwait();  
+				} 
 			}
+			settSimu(); // activate simulation
+			m_map.MapBarrierAwait(); 
 		}
 	}
 	

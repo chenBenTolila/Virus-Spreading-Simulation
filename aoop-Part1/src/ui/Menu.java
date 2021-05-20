@@ -5,16 +5,17 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import io.SimulationFile;
-import io.StatisticsFile;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.util.concurrent.CyclicBarrier;
 
 import country.Map;
 import simulation.*;
+
 /**
  * @author Hadar Amsalem
  * ID: 316129212 
@@ -30,7 +31,9 @@ public class Menu extends JMenuBar {
 
 	public Menu(JFrame parent, Map m, MapPanel mp)
 	{
-		createFileMenu(parent, m, mp);
+		this.m = m;
+		this.mp = mp;
+		createFileMenu(parent, mp);
 		createSimulationMenu();
 		createHelpMenu();
 	}
@@ -39,7 +42,7 @@ public class Menu extends JMenuBar {
 	/**
 	 * creates the mini menu file
 	 */
-	public void createFileMenu(JFrame parent, Map m, MapPanel mp)
+	public void createFileMenu(JFrame parent, MapPanel mp)
     {
 		
         JMenu m1 = new JMenu("FILE");
@@ -53,7 +56,11 @@ public class Menu extends JMenuBar {
 			public void actionPerformed(ActionEvent e) {
 				chooseFile(m);
 				mp.repaint();
-				
+				if(fileLoadedFlag)
+				{
+					createBarrier();
+					m.spawnSett();
+				}
 			}
 		});
         JMenuItem m12 = new JMenuItem("Statistics");
@@ -161,7 +168,8 @@ public class Menu extends JMenuBar {
         m21.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Main.setStatusPlay(true);  // update the play status to true
+				m.setPlayState(true);  // update the play status to true
+				//m.notifyAll();
 			}
 		});
        
@@ -170,7 +178,7 @@ public class Menu extends JMenuBar {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Main.setStatusPlay(false);  // update the play status to false
+				m.setPlayState(false);  // update the play status to false
 			}
 		});
         
@@ -179,9 +187,9 @@ public class Menu extends JMenuBar {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Main.setStop(true);
+				m.setStopStat(true);
 				m_sw = null;
-				Main.SetfileLoaded(false);
+				fileLoadedFlag = false;
 			}
 		});
         
@@ -311,7 +319,7 @@ public class Menu extends JMenuBar {
 	
 	public void openStatWindow(Map m, int index, MapPanel mp)
 	{
-		if(!Main.getFileLoaded())
+		if(!fileLoadedFlag)
 		{
 			JOptionPane.showMessageDialog(null, "You need to load a file first");
 		}
@@ -331,6 +339,32 @@ public class Menu extends JMenuBar {
 		return fileLoadedFlag;
 	}
 	
+	public void createBarrier()
+	{
+		CyclicBarrier barrier = new CyclicBarrier(m.getNumOfSettlement(), new Runnable()
+				{
+					@Override
+					public void run() {
+						System.out.println("in barrier");
+						if(m_sw != null)
+							m_sw.updateTable();
+						
+						mp.repaint();
+						Clock.nextTick();
+						
+						try {
+							Thread.sleep(1000 * sleepTime);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+							System.out.println("failed to sleep");
+						}
+						
+					}
+				});
+		m.setMapBarrier(barrier);
+	}
+	
 	
 	/**
 	 * 
@@ -341,8 +375,32 @@ public class Menu extends JMenuBar {
 		fileLoadedFlag = val;
 	}
 	
+	
+	/**
+	 * 
+	 * @return the sleep time between simulations
+	 */
+	public int getSleepTime()
+	{
+		return sleepTime;
+	}
+	
+	
+	/**
+	 * 
+	 * @param val - the new sleep time between simulations
+	 */
+	public void setSleepTime(int val)
+	{
+		sleepTime = val;
+	}
+	
 	// members for the statistic window
     private StatisticsWindow m_sw = null;
     private boolean fileLoadedFlag = false;
+    // the map
+    private Map m;
+    private MapPanel mp;
+    private int sleepTime = 10;
     
 }
