@@ -53,6 +53,7 @@ public class Menu extends JMenuBar {
 			public void actionPerformed(ActionEvent e) {
 				chooseFile(m);
 				mp.repaint();
+				
 			}
 		});
         JMenuItem m12 = new JMenuItem("Statistics");
@@ -145,6 +146,8 @@ public class Menu extends JMenuBar {
 			dialog.setLocationRelativeTo(null);
 		}	
 	}
+	
+	
 	/**
 	 * create the mini menu simulation
 	 */
@@ -327,6 +330,7 @@ public class Menu extends JMenuBar {
 	{
 		return fileLoadedFlag;
 	}
+	
 	
 	/**
 	 * 

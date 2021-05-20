@@ -27,6 +27,7 @@ public class MainWindow extends JFrame {
     public MainWindow()
     {
     	super("Main Window");
+    	m =new Map(); // create an empty map
     	myBorderLayout.setHgap(10);
     	myBorderLayout.setVgap(0);
     	this.setLayout(myBorderLayout);
@@ -63,7 +64,7 @@ public class MainWindow extends JFrame {
     	JPanel jp = new JPanel();
     	jp.setLayout(new BoxLayout(jp, BoxLayout.PAGE_AXIS));
     	jp.add(new JLabel("Simulation speed"));
-        JSlider simuSpeed = new JSlider(JSlider.HORIZONTAL,FPS_MIN, FPS_MAX, Main.getSleepTime());
+        JSlider simuSpeed = new JSlider(JSlider.HORIZONTAL,FPS_MIN, FPS_MAX, deafultSimuSpeed);
         jp.add(simuSpeed, BorderLayout.SOUTH);
         simuSpeed.addChangeListener(new ChangeListener() {
 			@Override
@@ -100,9 +101,11 @@ public class MainWindow extends JFrame {
     
     private MapPanel mapP = null; // map panel
     private Menu menu = null;  // the menu
-    private Map m = null;
+    private Map m;
     
     // members for the slider
-    private static final int FPS_MIN = 1; 
-    private static final int FPS_MAX = 20; 
+    private final int FPS_MIN = 1; 
+    private final int FPS_MAX = 20; 
+    private int deafultSimuSpeed = 10;
+    		
 }

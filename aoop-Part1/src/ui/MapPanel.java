@@ -30,6 +30,8 @@ public class MapPanel extends JPanel{
 		setVisible(true);
 		this.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
+            	if(m_map == null)
+            		return;
                 int x = evt.getX();
                 int y = evt.getY();
                 
@@ -52,6 +54,8 @@ public class MapPanel extends JPanel{
 		super.paintComponent(g);
 		Graphics2D gr = (Graphics2D) g;
 		gr.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+		if(m_map == null)
+			return;
 		
 		for(int i=0;i< m_map.getNumOfSettlement(); ++i) {
 			Point[] pm=m_map.connectedSettlements(i);
