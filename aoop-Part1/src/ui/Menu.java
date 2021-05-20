@@ -103,7 +103,10 @@ public class Menu extends JMenuBar {
 	    SimulationFile.setFileName(file);
 	    Main.setStatusPlay(true);
 	    try {
-			SimulationFile.createMap(m);
+			fileLoadedFlag = SimulationFile.createMap(m);
+			if(fileLoadedFlag == true)
+				m.setStopStat(false);
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			System.out.println("error with file opening");
@@ -291,6 +294,27 @@ public class Menu extends JMenuBar {
 			m_sw.setVisible(true);
 	}
 	
+	
+	/**
+	 * 
+	 * @return the file loaded flag status
+	 */
+	public boolean IsFileLoaded()
+	{
+		return fileLoadedFlag;
+	}
+	
+	/**
+	 * 
+	 * @param val - the new status of the file loaded flag 
+	 */
+	public void setFileLoadedFlag(boolean val)
+	{
+		fileLoadedFlag = val;
+	}
+	
 	// members for the statistic window
     private StatisticsWindow m_sw = null;
+    private boolean fileLoadedFlag = false;
+    
 }

@@ -19,7 +19,7 @@ public class Main {
 	public static void main(String[] args) {
 
 			Map m = new Map();   // create an empty map
-			MainWindow mw = new MainWindow(m);
+			MainWindow mw = new MainWindow();
 			while(true)
 			{
 				System.out.print("");

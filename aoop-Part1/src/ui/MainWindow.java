@@ -24,7 +24,7 @@ public class MainWindow extends JFrame {
     /**
      * default constructor
      */
-    public MainWindow(Map m)
+    public MainWindow()
     {
     	super("Main Window");
     	myBorderLayout.setHgap(10);
@@ -99,8 +99,8 @@ public class MainWindow extends JFrame {
     }
     
     private MapPanel mapP = null; // map panel
-    
     private Menu menu = null;  // the menu
+    private Map m = null;
     
     // members for the slider
     private static final int FPS_MIN = 1; 

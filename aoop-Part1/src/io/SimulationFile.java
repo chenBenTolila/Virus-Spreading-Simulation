@@ -19,7 +19,7 @@ public class SimulationFile {
 	 * the method create the map for the simulation from the information in the file
 	 * @param map - will keep the map of the simulation
 	 */
-	public static void createMap(Map map) throws IOException {
+	public static boolean createMap(Map map) throws IOException {
 		FileReader fr; 
 		String line;
 		if(fileName!=null) {
@@ -44,11 +44,18 @@ public class SimulationFile {
 			}
 			fr.close();
 			map.addSickToMap(0.01);   // initialize the population with 1% of sick people
+			return true;
+			
+			// 
+			/* need to change the flags's statuses in the menu class!!!!!!!!!!!!!!!!!!!!!
 			Main.SetfileLoaded(true);
 			Main.setStop(false);
+			*/
 		}
-		else
+		else {
 			System.out.println("Failed to open the file");
+			return false;
+		}
 	}
 	
 	
