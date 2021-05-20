@@ -290,6 +290,7 @@ public class Menu extends JMenuBar {
 		else
 			m_sw.setVisible(true);
 	}
+	
 	// members for the statistic window
     private StatisticsWindow m_sw = null;
 }

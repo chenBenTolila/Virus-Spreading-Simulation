@@ -57,6 +57,7 @@ public abstract class Settlement implements Runnable
 					}
 				}
 				settSimu(); // activate simulation
+				m_map.MapBarrierAwait();  
 			}
 		}
 	}

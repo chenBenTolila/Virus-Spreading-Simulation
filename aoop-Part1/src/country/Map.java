@@ -1,6 +1,8 @@
 package country;
 import location.*;
 import java.awt.Color;
+import java.util.concurrent.BrokenBarrierException;
+import java.util.concurrent.CyclicBarrier;
 
 /**
  * @author Hadar Amsalem
@@ -376,8 +378,35 @@ public class Map {
 		m_stop = val;
 	}
 	
+	/**
+	 * 
+	 * @param cb - a cyclic barrier
+	 */
+	public void setMapBarrier(CyclicBarrier cb)
+	{
+		m_barrier = cb;
+	}
+	
+	/**
+	 * activate await method on the cyclic barrier
+	 */
+	public void MapBarrierAwait()
+	{
+		try {
+			m_barrier.await();
+			
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (BrokenBarrierException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 	
 	private boolean m_stop = false;  // keep if the simulation is in status stop
 	private boolean m_statusPlay = true;	// keep if the simulation is in status play or pause
 	private Settlement[] m_settlements;    // the list of settlements in the simulation
+	private CyclicBarrier m_barrier;  // a cyclic barrier for the settlements threads
 }
