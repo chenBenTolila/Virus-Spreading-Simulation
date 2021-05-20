@@ -555,6 +555,12 @@ public abstract class Settlement implements Runnable
 		}
 	}
 	
+	private synchronized Person randCitizen()
+	{
+		Random rand = new Random();
+		int gp; // will keep the index of the random person we will try to transfer
+		gp=rand.nextInt(this.getPeopleAmount());
+	}
 	
 	/**
 	 * 
