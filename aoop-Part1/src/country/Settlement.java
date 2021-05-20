@@ -298,9 +298,29 @@ public abstract class Settlement implements Runnable
 	 * @return true if the transfer succeeded
 	 */
 	public boolean transferPerson(Person p, Settlement s){
+		if(System.identityHashCode(s) > System.identityHashCode(this))  // checking which settlement we need to synchronize first
+		{
+			synchronized (s){
+				synchronized (this) {
+					return checkTransfer(p, s);
+				}
+			}
+		}
+		
+		else
+		{
+			synchronized (this) {
+				synchronized (s) {
+					return checkTransfer(p, s);
+				}
+			}
+		}
+		
+		// check if its ok its in check transfer
+		/*
 		if (s.getMaxPeople() <= s.getPeopleAmount())   // check if there is place in the settlement s
 			return false;
-		Random rand= new Random();
+		Random rand = new Random();
 		double prob = m_ramzorColor.getPTransfer()*s.m_ramzorColor.getPTransfer();
 		if(rand.nextDouble() >= prob ) {
 			if(getPersonIndex(p) != -1)   // check if is in this settlement
@@ -309,11 +329,41 @@ public abstract class Settlement implements Runnable
 				{
 					removePersonFromArr(p);	  // add p to the new settlement
 					p.setSettlement(s);
+					return true;
+				}
+			}
+		}
+		return false;    // return if the the transfer succeeded or failed
+		*/
+	}
+	
+	
+	/**
+	 * 
+	 * @param p - the person we want to transfer 
+	 * @param s - the settlement we want to try to transfer the to
+	 * @return if the method succeeded to transfer p
+	 */
+	private boolean checkTransfer(Person p, Settlement s)
+	{
+		if (s.getMaxPeople() <= s.getPeopleAmount())   // check if there is place in the settlement s
+			return false;
+		Random rand = new Random();
+		double prob = m_ramzorColor.getPTransfer()*s.m_ramzorColor.getPTransfer();
+		if(rand.nextDouble() >= prob ) {
+			if(getPersonIndex(p) != -1)   // check if is in this settlement
+			{
+				if(s.addPerson(p))    // remove p from this settlement
+				{
+					removePersonFromArr(p);	  // add p to the new settlement
+					p.setSettlement(s);
+					return true;
 				}
 			}
 		}
 		return false;    // return if the the transfer succeeded or failed
 	}
+	
 	
 	/**
 	 * 
@@ -322,6 +372,28 @@ public abstract class Settlement implements Runnable
 	 * @return true if the transfer succeeded
 	 */
 	public boolean transferSickPerson(Sick p, Settlement s){
+		if(System.identityHashCode(s) > System.identityHashCode(this))  // checking which settlement we need to synchronize first
+		{
+			synchronized (s){
+				synchronized (this) {
+					return checkSickTransfer(p, s);
+				}
+			}
+		}
+		
+		else
+		{
+			synchronized (this) {
+				synchronized (s) {
+					return checkSickTransfer(p, s);
+				}
+			}
+		}
+		
+		
+		// check if to remove !!!!!!!!!!!!!!!!!!!!!!!
+		
+		/*
 		if (s.getMaxPeople() <= s.getPeopleAmount())   // check if there is place in the settlement s
 			return false;
 		Random rand= new Random();
@@ -333,13 +405,33 @@ public abstract class Settlement implements Runnable
 				{
 					removeSickPersonFromArr(p);	  // remove p from this settlement
 					p.setSettlement(s);
+					return true;
+				}
+			}
+		}
+		return false;    // return if the the transfer succeeded or failed
+		*/
+	}
+	
+	private boolean checkSickTransfer(Sick p, Settlement s)
+	{
+		if (s.getMaxPeople() <= s.getPeopleAmount())   // check if there is place in the settlement s
+			return false;
+		Random rand= new Random();
+		double prob = m_ramzorColor.getPTransfer()*s.m_ramzorColor.getPTransfer();
+		if(rand.nextDouble() >= prob ) {
+			if(getSickPersonIndex(p) != -1)   // check if is in this settlement
+			{
+				if(s.addSickPerson(p))     // add p to the new settlement
+				{
+					removeSickPersonFromArr(p);	  // remove p from this settlement
+					p.setSettlement(s);
+					return true;
 				}
 			}
 		}
 		return false;    // return if the the transfer succeeded or failed
 	}
-	
-	
 	
 	/**
 	 * 
@@ -542,24 +634,37 @@ public abstract class Settlement implements Runnable
 			return;
 		Random rand = new Random();
 		int gp, gs;
+		Person transfer;
 		double amountOfTransfers = this.getPeopleAmount() * 0.03;
+		
 		for(int i=0; i<amountOfTransfers; ++i) {
-			gp=rand.nextInt(this.getPeopleAmount());
+			transfer = randCitizen();
 			gs=rand.nextInt(m_connectS.length);
-			if(gp < m_people.length) {
-				transferPerson(m_people[gp],m_connectS[gs]);
+			if(!transfer.checkIfSick()) {
+				transferPerson(transfer, m_connectS[gs]);
 			}
 			else {
-				transferSickPerson(m_sickPeople[gp- m_people.length],m_connectS[gs]);
+				transferSickPerson((Sick)(transfer) ,m_connectS[gs]);
 			}
 		}
 	}
 	
+	/**
+	 * the method choose a random person from the settlement's population
+	 * @return the chosen person
+	 */
 	private synchronized Person randCitizen()
 	{
 		Random rand = new Random();
 		int gp; // will keep the index of the random person we will try to transfer
 		gp=rand.nextInt(this.getPeopleAmount());
+		if(gp < m_people.length) {
+			return m_people[gp];
+		}
+		else
+		{
+			return m_sickPeople[gp- m_people.length];
+		}
 	}
 	
 	/**
