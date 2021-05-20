@@ -347,7 +347,31 @@ public class Map {
 		return m_stop;
 	}
 	
-	public boll
+	/**
+	 * 
+	 * @return the play flag's status
+	 */
+	public boolean getPlayStat() {
+		return m_statusPlay;
+	}
+	
+	/**
+	 * set the play flag's status
+	 * @param val - a boolean value
+	 */
+	public void setPlayState(boolean val)
+	{
+		m_statusPlay = val;
+	}
+	
+	/**
+	* set the stop flag's status
+	 * @param val - a boolean value
+	 */
+	public void setStopStat(boolean val)
+	{
+		m_stop = val;
+	}
 	
 	
 	private boolean m_stop = false;  // keep if the simulation is in status stop
