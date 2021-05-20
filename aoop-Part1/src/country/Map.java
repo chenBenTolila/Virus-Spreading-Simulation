@@ -328,6 +328,17 @@ public class Map {
 		}
 		
 	}
-			
+	
+	/**
+	 * make all settlement as a thread and start them
+	 */
+	public void spawnSett() {
+		for(int i=0; i < m_settlements.length; ++i) {
+			new Thread(m_settlements[i]).start();
+		}
+	}
+	
+	private boolean m_stop = false;  // keep if the simulation in status stop
+	private boolean m_statusPlay = true;	// keep if the simulation in status play or pause
 	private Settlement[] m_settlements;    // the list of settlements in the simulation
 }
