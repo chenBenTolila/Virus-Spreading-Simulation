@@ -42,11 +42,11 @@ public abstract class Settlement implements Runnable
 	 */
 	public void run()
 	{
-		while(!Main.getStop())
+		while(!m_map.getStopStat())
 		{	
 			synchronized (m_map) 
 			{
-				while(!Main.getStatusPlay())   // check for status play / pause
+				while(!m_map.getPlayStat())   // check for status play / pause
 				{
 					try {
 						m_map.wait();
@@ -56,9 +56,9 @@ public abstract class Settlement implements Runnable
 						System.out.println("failed to activate wait on the map");
 					}
 				}
+				settSimu(); // activate simulation
 			}
 		}
-		settSimu(); // activate simulation
 	}
 	
 	
@@ -725,5 +725,5 @@ public abstract class Settlement implements Runnable
 	private Sick[] m_sickPeople; // the list of the sick people in settlement
 	private Settlement[] m_connectS; // the array of close settlements
 	private int m_numDead; // the number of dead people
-	private Map m_map; // the map this is part of
+	private Map m_map=null; // the map this is part of
 }

@@ -300,6 +300,8 @@ public class Map {
 			return m_settlements[index].isPointInSet(x, y);
 		return false;
 	}
+	
+	
 	/**
 	 *  add doses to settlement
 	 * @param name get name of settlement
@@ -313,6 +315,7 @@ public class Map {
 			}
 		}
 	}
+	
 	/**
 	 *  try to infect the settlement 
 	 * @param name get name of settlement
