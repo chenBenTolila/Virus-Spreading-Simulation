@@ -18,6 +18,7 @@ import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
 import country.Map;
+import country.Settlement;
 import simulation.*;
 
 /**
@@ -94,7 +95,12 @@ public class Menu extends JMenuBar {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				saveLogFile();
+				if(Map.getLogger() == null)
+					saveLogFile();
+				else
+				{
+					// pop up window
+				}
 			}
 		});
         
@@ -129,32 +135,21 @@ public class Menu extends JMenuBar {
 		    System.out.println("Save as file: " + fileToSave.getAbsolutePath());
 		    
 		    
-		    logger = Logger.getLogger("MyLog");  
-		    FileHandler fh;  
-
+		    logger = Logger.getLogger("Map");  
+		    FileHandler fh; 
 		    try {  
-
 		        // This block configure the logger with handler and formatter  
-		        fh = new FileHandler("C:\\Users\\Hadar\\test1.txt");  
+		        fh = new FileHandler(fileToSave.getAbsolutePath() + ".txt");  
 		        logger.addHandler(fh);
 		        SimpleFormatter formatter = new SimpleFormatter();  
-		        fh.setFormatter(formatter);  
-
-		        // the following statement is used to log any messages  
-		        logger.info("My first log\nsecon line");  
-
+		        fh.setFormatter(formatter); 
+		        Map.setLogger(logger);
 		    } catch (SecurityException e) { 
 		        e.printStackTrace();  
 		    } catch (IOException e) {  
 		        e.printStackTrace();  
 		    }  
-
-		    logger.info("another log");
 		}
-	}
-	
-	public void writeToLog(Settlement s, int start, int amount) {
-		for(int i=0; i< )
 	}
 	
 	/**

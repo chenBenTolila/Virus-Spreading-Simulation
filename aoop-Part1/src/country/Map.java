@@ -3,6 +3,7 @@ import location.*;
 import java.awt.Color;
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
+import java.util.logging.Logger;
 
 /**
  * @author Hadar Amsalem
@@ -403,10 +404,25 @@ public class Map {
 			e.printStackTrace();
 		}
 	}
-
+	
+	public static Logger getLogger()
+	{
+		return logger;
+	}
+	
+	public static void setLogger(Logger log)
+	{
+		logger = log;
+	}
+	
+	public static void writeToLog(Settlement s, int amount) {
+		for(int i = 0; i < amount; ++i)
+			logger.info(s.getSettlementName() + "\n" + s.getNumOfSick() + "\n" + s.getNumDead());
+	}
 	
 	private boolean m_stop = false;  // keep if the simulation is in status stop
 	private boolean m_statusPlay = true;	// keep if the simulation is in status play or pause
 	private Settlement[] m_settlements;    // the list of settlements in the simulation
 	private CyclicBarrier m_barrier;  // a cyclic barrier for the settlements threads
+	private static Logger logger = null;
 }

@@ -613,9 +613,13 @@ public abstract class Settlement implements Runnable
 			if(m_sickPeople[i].tryToDie())
 				--i;
 		}
-		if(((double)(m_numDead* 100)/ getPeopleAmount())-logPerDead >= 1 ) {
-			
+		if(Map.getLogger() != null)
+		{
+			if(((double)(m_numDead* 100)/ getPeopleAmount())-logPerDead >= 1 ) {
+				Map.writeToLog(this, (m_numDead* 100)/ getPeopleAmount()-logPerDead); 
+			}
 		}
+		logPerDead = (m_numDead* 100)/ getPeopleAmount();
 	}
 	
 	
