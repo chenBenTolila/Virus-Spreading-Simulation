@@ -68,6 +68,9 @@ public class Menu extends JMenuBar {
 						m.spawnSett();
 					}
 				}
+				else {
+					JOptionPane.showMessageDialog(null, "In order to louad, You need to stop the corrent simulation");
+				}
 			}
 		});
         JMenuItem m12 = new JMenuItem("Statistics");
