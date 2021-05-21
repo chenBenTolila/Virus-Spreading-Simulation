@@ -58,6 +58,7 @@ public abstract class Settlement implements Runnable
 				} 
 			}
 			settSimu(); // activate simulation
+			System.out.println(getSettlementName());
 			m_map.MapBarrierAwait(); 
 		}
 	}
@@ -604,7 +605,7 @@ public abstract class Settlement implements Runnable
 	
 	
 	/**
-	 * 
+	 * tring to kill all the dead people in the settlement
 	 */
 	public synchronized void killSickPeople()
 	{
@@ -616,8 +617,8 @@ public abstract class Settlement implements Runnable
 		if(((double)(m_numDead* 100)/ getPeopleAmount())-logPerDead >= 1 )
 		{
 			if(Map.getLogger() != null)
-				Map.writeToLog(this, (m_numDead * 100) / getPeopleAmount()-logPerDead); 
-			logPerDead = (m_numDead* 100) / getPeopleAmount();
+				Map.writeToLog(this, (m_numDead * 100) / (getPeopleAmount() + m_numDead)-logPerDead); 
+			logPerDead = (m_numDead* 100) / (getPeopleAmount() + m_numDead);
 		}
 	}
 	

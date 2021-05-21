@@ -12,6 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.time.format.DateTimeFormatter;
 import java.util.concurrent.CyclicBarrier;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
@@ -69,7 +70,7 @@ public class Menu extends JMenuBar {
 					}
 				}
 				else {
-					JOptionPane.showMessageDialog(null, "In order to louad, You need to stop the corrent simulation");
+					JOptionPane.showMessageDialog(null, "In order to load a new file, you need to stop the current simulation");
 				}
 			}
 		});
@@ -102,7 +103,7 @@ public class Menu extends JMenuBar {
 					saveLogFile();
 				else
 				{
-					// pop up window
+					JOptionPane.showMessageDialog(null, "You already opened a log file");
 				}
 			}
 		});
@@ -144,7 +145,8 @@ public class Menu extends JMenuBar {
 		        // This block configure the logger with handler and formatter  
 		        fh = new FileHandler(fileToSave.getAbsolutePath() + ".txt");  
 		        logger.addHandler(fh);
-		        SimpleFormatter formatter = new SimpleFormatter();  
+		        SimpleFormatter formatter = new SimpleFormatter(); 
+		        //SimpleFormatter formatter = DateTimeFormatter.ofPattern("YYYY-MM-dd HH:mm:ss").format(DateTime.now());
 		        fh.setFormatter(formatter); 
 		        Map.setLogger(logger);
 		    } catch (SecurityException e) { 
@@ -161,23 +163,24 @@ public class Menu extends JMenuBar {
 	public void chooseFile(Map m){
 		if(Main.getStop() || !Main.getFileLoaded())
 		{
-		FileDialog dialog = new FileDialog((Frame)null, "Select File to Open");
-	    dialog.setMode(FileDialog.LOAD);
-	    dialog.setVisible(true);
-	    String file = dialog.getFile();
-	    System.out.println(file + " chosen.");
-	    SimulationFile.setFileName(file);
-	    Main.setStatusPlay(true);
-	    try {
-			fileLoadedFlag = SimulationFile.createMap(m);
-			if(fileLoadedFlag == true)
-				m.setStopStat(false);
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			System.out.println("error with file opening");
+			FileDialog dialog = new FileDialog((Frame)null, "Select File to Open");
+		    dialog.setMode(FileDialog.LOAD);
+		    dialog.setVisible(true);
+		    String file = dialog.getFile();
+		    System.out.println(file + " chosen.");
+		    SimulationFile.setFileName(file);
+		    Main.setStatusPlay(true);
+		    try {
+				fileLoadedFlag = SimulationFile.createMap(m);
+				if(fileLoadedFlag == true)
+					m.setStopStat(false);
+				
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				System.out.println("error with file opening");
+			}
 		}
-		}
+		/*
 		else {
 			JDialog dialog = new JDialog((JFrame)null, "file error");
 			Container dialogContainer = dialog.getContentPane();
@@ -185,7 +188,8 @@ public class Menu extends JMenuBar {
 		    dialog.pack();
 			dialog.setVisible(true);
 			dialog.setLocationRelativeTo(null);
-		}	
+		}
+		*/	
 	}
 	
 	
@@ -202,10 +206,18 @@ public class Menu extends JMenuBar {
         m21.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				m.setPlayState(true);  // update the play status to true
-				synchronized (m) {
-					m.notifyAll();
+				if(fileLoadedFlag)
+				{
+					m.setPlayState(true);  // update the play status to true
+					synchronized (m) {
+						m.notifyAll();
+					}
 				}
+				else
+				{
+					JOptionPane.showMessageDialog(null, "You need to load a simulation first");
+				}
+				
 			}
 		});
        
@@ -214,7 +226,12 @@ public class Menu extends JMenuBar {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				m.setPlayState(false);  // update the play status to false
+				if(fileLoadedFlag)
+					m.setPlayState(false);  // update the play status to false
+				else
+				{
+					JOptionPane.showMessageDialog(null, "You need to load a simulation first");
+				}
 			}
 		});
         
@@ -223,9 +240,16 @@ public class Menu extends JMenuBar {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				m.setStopStat(true);
-				m_sw = null;
-				fileLoadedFlag = false;
+				if(fileLoadedFlag)
+				{
+					m.setStopStat(true);
+					m_sw = null;
+					fileLoadedFlag = false;
+				}
+				else
+				{
+					JOptionPane.showMessageDialog(null, "You need to load a simulation first");
+				}
 			}
 		});
         

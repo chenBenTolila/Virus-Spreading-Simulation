@@ -18,7 +18,7 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 
-			Map m = new Map();   // create an empty map
+			//Map m = new Map();   // create an empty map
 			MainWindow mw = new MainWindow();
 			/*
 			while(true)
@@ -27,8 +27,8 @@ public class Main {
 				if(stop == false && fileLoaded == true) {
 					createSimu(m, mw);
 				}
-			}  
-			*/
+			}  */
+			
 	}
 	
 
@@ -37,6 +37,8 @@ public class Main {
 	 * create the simulation
 	 * @param m get map to do simulation
 	 */
+	
+	
 	public static void createSimu(Map m, MainWindow mw)
 	{
 		int i = 1;
@@ -152,11 +154,12 @@ public class Main {
 	public static boolean getFileLoaded() {
 		return fileLoaded;
 	}
-	
+
 	private static int sleepTime = 10;   // will keep the speed of the simulation
 	private static boolean fileLoaded = false;   // will keep true if a file is loaded
 	private static boolean statusPlay = true;    // will keep if the simulation are played or paused
 	private static boolean stop = false;   // will keep true is the simulation are paused
+	
 }
 
 

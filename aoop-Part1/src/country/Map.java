@@ -394,7 +394,6 @@ public class Map {
 	public void MapBarrierAwait()
 	{
 		try {
-			System.out.println("in await");
 			m_barrier.await();
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
@@ -418,6 +417,7 @@ public class Map {
 	public static void writeToLog(Settlement s, int amount) {
 		for(int i = 0; i < amount; ++i)
 			logger.info(s.getSettlementName() + "\n" + s.getNumOfSick() + "\n" + s.getNumDead());
+			logger.info((String.valueOf(((s.getNumDead()*100) / (s.getPeopleAmount()+ s.getNumDead())))));
 	}
 	
 	private boolean m_stop = false;  // keep if the simulation is in status stop
