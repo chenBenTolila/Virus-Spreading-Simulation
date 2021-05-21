@@ -613,6 +613,9 @@ public abstract class Settlement implements Runnable
 			if(m_sickPeople[i].tryToDie())
 				--i;
 		}
+		if(((double)(m_numDead* 100)/ getPeopleAmount())-logPerDead >= 1 ) {
+			
+		}
 	}
 	
 	
@@ -727,4 +730,5 @@ public abstract class Settlement implements Runnable
 	private Settlement[] m_connectS; // the array of close settlements
 	private int m_numDead; // the number of dead people
 	private Map m_map=null; // the map this is part of
+	private int logPerDead=0; // the max percent of dead for which we printed to the log file
 }

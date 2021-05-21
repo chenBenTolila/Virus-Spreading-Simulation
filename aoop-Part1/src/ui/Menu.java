@@ -13,6 +13,9 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.CyclicBarrier;
+import java.util.logging.FileHandler;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 import country.Map;
 import simulation.*;
@@ -112,6 +115,9 @@ public class Menu extends JMenuBar {
         m1.add(m15);
     }
 	
+	/**
+	 * save the dead in file
+	 */
 	public void saveLogFile(){
 		JFileChooser fileChooser = new JFileChooser();
 		fileChooser.setDialogTitle("Specify a file to save");   
@@ -121,7 +127,34 @@ public class Menu extends JMenuBar {
 		if (userSelection == JFileChooser.APPROVE_OPTION) {
 			File fileToSave = fileChooser.getSelectedFile();
 		    System.out.println("Save as file: " + fileToSave.getAbsolutePath());
+		    
+		    
+		    logger = Logger.getLogger("MyLog");  
+		    FileHandler fh;  
+
+		    try {  
+
+		        // This block configure the logger with handler and formatter  
+		        fh = new FileHandler("C:\\Users\\Hadar\\test1.txt");  
+		        logger.addHandler(fh);
+		        SimpleFormatter formatter = new SimpleFormatter();  
+		        fh.setFormatter(formatter);  
+
+		        // the following statement is used to log any messages  
+		        logger.info("My first log\nsecon line");  
+
+		    } catch (SecurityException e) { 
+		        e.printStackTrace();  
+		    } catch (IOException e) {  
+		        e.printStackTrace();  
+		    }  
+
+		    logger.info("another log");
 		}
+	}
+	
+	public void writeToLog(Settlement s, int start, int amount) {
+		for(int i=0; i< )
 	}
 	
 	/**
@@ -407,5 +440,5 @@ public class Menu extends JMenuBar {
     private Map m;
     private MapPanel mp;
     private int sleepTime = 10;
-    
+    private Logger logger= null;  
 }
