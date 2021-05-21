@@ -4,6 +4,7 @@ import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+
 import io.SimulationFile;
 
 import java.awt.*;
@@ -54,12 +55,14 @@ public class Menu extends JMenuBar {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				chooseFile(m);
-				mp.repaint();
-				if(fileLoadedFlag)
-				{
-					createBarrier();
-					m.spawnSett();
+				if(!fileLoadedFlag) {
+					chooseFile(m);
+					mp.repaint();
+					if(fileLoadedFlag)
+					{
+						createBarrier();
+						m.spawnSett();
+					}
 				}
 			}
 		});
@@ -169,7 +172,9 @@ public class Menu extends JMenuBar {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				m.setPlayState(true);  // update the play status to true
-				//m.notifyAll();
+				synchronized (m) {
+					m.notifyAll();
+				}
 			}
 		});
        
