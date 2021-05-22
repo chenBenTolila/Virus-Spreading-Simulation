@@ -12,6 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.concurrent.CyclicBarrier;
 import java.util.logging.FileHandler;
@@ -146,7 +147,7 @@ public class Menu extends JMenuBar {
 		        fh = new FileHandler(fileToSave.getAbsolutePath() + ".txt");  
 		        logger.addHandler(fh);
 		        SimpleFormatter formatter = new SimpleFormatter(); 
-		        //SimpleFormatter formatter = DateTimeFormatter.ofPattern("YYYY-MM-dd HH:mm:ss").format(DateTime.now());
+		        //SimpleFormatter formatter = DateTimeFormatter.ofPattern("YYYY-MM-dd HH:mm:ss").format(LocalDateTime.now());
 		        fh.setFormatter(formatter); 
 		        Map.setLogger(logger);
 		    } catch (SecurityException e) { 
