@@ -34,7 +34,7 @@ public class MainWindow extends JFrame {
     	// creating the slider
     	createJSlider();
     	// creating the map panel;
-    	mapP = new MapPanel(m);
+    	mapP = new MapPanel(m, this);
     	this.add(mapP, BorderLayout.CENTER);  // need to change to a panel!!!!
     	
     	// creating the menu
@@ -98,6 +98,11 @@ public class MainWindow extends JFrame {
     {
     	if(menu != null)
     		menu.updateStatTable();
+    }
+    
+    public Menu getMenu()
+    {
+    	return menu;
     }
     
     

@@ -27,13 +27,13 @@ public class StatisticsWindow extends JFrame {
 	/**
      * default constructor
     */
-	public StatisticsWindow(Map m, int rowIndex, MapPanel mp)
+	public StatisticsWindow(Map m, int rowIndex)
     {
 		super("Statistics Window"); 
 		this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.PAGE_AXIS));
 		createFilterW();
 		createTableWindow(m , rowIndex);
-		createButtonOptions(m, mp);
+		createButtonOptions(m);
 		this.setSize(1000,1000);  
 	    this.setLocationRelativeTo(null);
 		this.pack();
@@ -114,7 +114,7 @@ public class StatisticsWindow extends JFrame {
 	/**
 	 * function for options to table
 	 */
-	public void createButtonOptions(Map m, MapPanel mp) {
+	public void createButtonOptions(Map m) {
 		JPanel p = new JPanel();
 		JButton save=new JButton("Save");
 		JButton addSick= new JButton("Add Sick");
@@ -125,7 +125,7 @@ public class StatisticsWindow extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				saveButtom();
-				mp.repaint();
+				// mp.repaint();   // repainting the map
 			}
 		});
 		p.add(addSick);
@@ -135,7 +135,7 @@ public class StatisticsWindow extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				addSickButtom(m);
 				m_jt.updateUI();
-				mp.repaint();
+				//mp.repaint();   // repainting the map
 			}
 		});
 		p.add(vaccinate);
@@ -144,7 +144,7 @@ public class StatisticsWindow extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				vaccinateButtom(m);
-				mp.repaint();
+				//mp.repaint();   // repainting the map
 			}
 		});
 		this.add(p);
@@ -315,6 +315,7 @@ public class StatisticsWindow extends JFrame {
         }
     }
 	
+    
     /**
      * update the information in the table
      */
@@ -323,6 +324,17 @@ public class StatisticsWindow extends JFrame {
 		m_jt.updateUI();
 	}
 	
+	
+	/**
+	 * 
+	 * @param index - an index of a row we want to select in the table
+	 */
+	public void deselectAndSelectARow(int index)
+	{
+		m_jt.clearSelection();
+		if(index != -1)
+			m_jt.addRowSelectionInterval(index, index);
+	}
 	
 	private JTable m_jt = null; // keep the table object
 	private JTextField m_filterW; // keep the data from user

@@ -23,14 +23,18 @@ import javax.swing.JPanel;
  */
 public class MapPanel extends JPanel{
 	
-	public MapPanel(Map m) {
+	public MapPanel(Map m, MainWindow mw) {
 		super();
+		mainWindow = mw;
 		m_map = m;
-		MapPanel temp = this;
+		// MapPanel temp = this;
 		setVisible(true);
 		this.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
             	if(m_map == null)
+            		return;
+            	Menu m_menu = mainWindow.getMenu();
+            	if(m_menu == null)
             		return;
                 int x = evt.getX();
                 int y = evt.getY();
@@ -38,10 +42,11 @@ public class MapPanel extends JPanel{
                 for(int i = 0; i < m_map.getNumOfSettlement(); ++i)
                 	if(m_map.isPointInSetIndex(i, x, y))
                 	{
-                		StatisticsWindow sw = new StatisticsWindow(m_map , i, temp);
-                		System.out.println("need to open statistics");
+                		m_menu.openStatWindow(m_map, i);
+                		//System.out.println("need to open statistics");
                 		break;
                 	}
+                	
             }
         });
 	}
@@ -88,6 +93,7 @@ public class MapPanel extends JPanel{
 	public Dimension getPreferredSize() {
 	return new Dimension(400, 400);
 	}
-	
+	 
 	private Map m_map; // keep map object
+	private MainWindow mainWindow = null;
 }

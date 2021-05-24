@@ -40,7 +40,7 @@ public class Menu extends JMenuBar {
 	{
 		this.m = m;
 		this.mp = mp;
-		createFileMenu(parent, mp);
+		createFileMenu(parent);
 		createSimulationMenu();
 		createHelpMenu();
 	}
@@ -49,7 +49,7 @@ public class Menu extends JMenuBar {
 	/**
 	 * creates the mini menu file
 	 */
-	public void createFileMenu(JFrame parent, MapPanel mp)
+	public void createFileMenu(JFrame parent)
     {
 		
         JMenu m1 = new JMenu("FILE");
@@ -80,7 +80,7 @@ public class Menu extends JMenuBar {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				openStatWindow(m, -1, mp);
+				openStatWindow(m, -1);
 			}
 		});
         
@@ -378,16 +378,19 @@ public class Menu extends JMenuBar {
 			m_sw.updateTable();
 	}
 	
-	public void openStatWindow(Map m, int index, MapPanel mp)
+	public void openStatWindow(Map m, int index)
 	{
 		if(!fileLoadedFlag)
 		{
 			JOptionPane.showMessageDialog(null, "You need to load a file first");
 		}
 		else if(m_sw == null)
-			m_sw = new StatisticsWindow(m, -1, mp);
+			m_sw = new StatisticsWindow(m, index);
 		else
+		{
+			m_sw.deselectAndSelectARow(index);
 			m_sw.setVisible(true);
+		}
 	}
 	
 	
@@ -455,6 +458,7 @@ public class Menu extends JMenuBar {
 	{
 		sleepTime = val;
 	}
+	
 	
 	// members for the statistic window
     private StatisticsWindow m_sw = null;
