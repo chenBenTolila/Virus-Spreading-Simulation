@@ -11,5 +11,5 @@ Kibbutz; Gat; 120;150 ;70;80; 2100
 #; Ashdod; Gat
 Moshav; Nir-Galim; 280;20 ;80;40; 1150
 # ; Gat; Gezer
-Kibbutz; Gezer; 50;250 ;110;80; 1470
+Kibbutz; Gezer; 50;250 ;110;50; 1470
 # ; Beer-Sheva;  Nir-Galim

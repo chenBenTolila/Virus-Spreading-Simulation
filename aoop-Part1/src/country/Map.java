@@ -416,12 +416,6 @@ public class Map {
 	 * @param amount - the amount of logs we need to write
 	 */
 	public void writeToLog(Settlement s, int amount) {
-		/*
-		for(int i = 0; i < amount; ++i)
-			logger.info(s.getSettlementName() + "\n" + s.getNumOfSick() + "\n" + s.getNumDead());
-		*/
-		
-		
 		try
 		{
 			FileWriter fw = new FileWriter(logFilePath, true);
@@ -461,6 +455,43 @@ public class Map {
 	{
 		logFilePath = path;
 	}
+	
+	/**
+	 * 
+	 * @return the max X value in the map
+	 */
+	public int getMaxXInMap() {
+		int maxX = 0;
+		int currentX;
+		Location currLoc;
+		for(int i =0; i< m_settlements.length; ++i)
+		{
+			currLoc = m_settlements[i].getLocation();
+			currentX = currLoc.getPointX() + currLoc.getSizeWidth();
+			if(currentX > maxX)
+				maxX = currentX;
+		}
+		return maxX;
+	}
+	
+	/**
+	 * 
+	 * @return the max Y value in the map
+	 */
+	public int getMaxYInMap() {
+		int maxY = 0;
+		int currentY;
+		Location currLoc;
+		for(int i =0; i< m_settlements.length; ++i)
+		{
+			currLoc = m_settlements[i].getLocation();
+			currentY = currLoc.getPointY() + currLoc.getSizeHeight();
+			if(currentY > maxY)
+				maxY = currentY;
+		}
+		return maxY;
+	}
+	
 	
 	private boolean m_stop = false;  // keep if the simulation is in status stop
 	private boolean m_statusPlay = true;	// keep if the simulation is in status play or pause

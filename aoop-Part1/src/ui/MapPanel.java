@@ -36,8 +36,13 @@ public class MapPanel extends JPanel{
             	Menu m_menu = mainWindow.getMenu();
             	if(m_menu == null)
             		return;
-                int x = evt.getX();
-                int y = evt.getY();
+            	int max_x = m_map.getMaxXInMap();
+        		int max_y = m_map.getMaxYInMap();
+        		
+        		double Xratio = getWidth() / (max_x + 1.0);
+        		double Yratio = getHeight() / (max_y + 1.0);
+                int x = (int)(evt.getX() / Xratio);
+                int y = (int)(evt.getY() / Yratio);
                 
                 for(int i = 0; i < m_map.getNumOfSettlement(); ++i)
                 	if(m_map.isPointInSetIndex(i, x, y))
@@ -62,10 +67,22 @@ public class MapPanel extends JPanel{
 		if(m_map == null)
 			return;
 		
+		int max_x = m_map.getMaxXInMap();
+		int max_y = m_map.getMaxYInMap();
+		
+		double Xratio = getWidth() / (max_x + 1.0);
+		double Yratio = getHeight() / (max_y + 1.0);
+		
+		//System.out.println("Xmax: " + max_x);
+		//System.out.println("Ymax: " + max_y);
+		
 		for(int i=0;i< m_map.getNumOfSettlement(); ++i) {
 			Point[] pm=m_map.connectedSettlements(i);
 			for(int j=1; j < pm.length; ++j) {
-				g.drawLine(pm[0].getX(), pm[0].getY(), pm[j].getX(), pm[j].getY());
+				g.drawLine((int)(pm[0].getX() * Xratio), (int)(pm[0].getY() * Yratio), (int)(pm[j].getX() * Xratio), (int)(pm[j].getY() * Yratio));
+				//System.out.println(m_map.getIndexSettName(i));
+				//System.out.println("x middle: "+ pm[0].getX() * Xratio);
+				//System.out.println("y middle: "+ pm[0].getY() * Yratio);
 			}
 		}
 		Color col;
@@ -76,9 +93,9 @@ public class MapPanel extends JPanel{
 			if(col != null & loc != null)
 			{
 				g.setColor(col);
-				g.fillRect(loc.getPointX(), loc.getPointY(), loc.getSizeWidth(), loc.getSizeHeight());
+				g.fillRect((int)(loc.getPointX() * Xratio) , (int)(loc.getPointY() * Yratio), (int)(loc.getSizeWidth() * Xratio), (int)(loc.getSizeHeight() * Yratio));
 				g.setColor(Color.BLACK);
-				g.drawString(m_map.getIndexSettName(i), loc.getPointX(), loc.getPointY()+(loc.getSizeHeight()/2));
+				g.drawString(m_map.getIndexSettName(i), (int)(loc.getPointX() * Xratio), (int)((loc.getPointY()+(loc.getSizeHeight()/2)) * Yratio));
 			}
 		}
 	}

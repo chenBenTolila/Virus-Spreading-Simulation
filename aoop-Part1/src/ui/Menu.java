@@ -148,7 +148,7 @@ public class Menu extends JMenuBar {
 	 * choose new file
 	 */
 	public void chooseFile(Map m){
-		if(Main.getStop() || !Main.getFileLoaded())
+		if(m.getStopStat() || !fileLoadedFlag)
 		{
 			FileDialog dialog = new FileDialog((Frame)null, "Select File to Open");
 		    dialog.setMode(FileDialog.LOAD);
@@ -156,7 +156,7 @@ public class Menu extends JMenuBar {
 		    String file = dialog.getFile();
 		    System.out.println(file + " chosen.");
 		    SimulationFile.setFileName(file);
-		    Main.setStatusPlay(true);
+		    m.setPlayState(true);
 		    try {
 				fileLoadedFlag = SimulationFile.createMap(m);
 				if(fileLoadedFlag == true)

@@ -316,26 +316,6 @@ public abstract class Settlement implements Runnable
 				}
 			}
 		}
-		
-		// check if its ok its in check transfer
-		/*
-		if (s.getMaxPeople() <= s.getPeopleAmount())   // check if there is place in the settlement s
-			return false;
-		Random rand = new Random();
-		double prob = m_ramzorColor.getPTransfer()*s.m_ramzorColor.getPTransfer();
-		if(rand.nextDouble() >= prob ) {
-			if(getPersonIndex(p) != -1)   // check if is in this settlement
-			{
-				if(s.addPerson(p))    // remove p from this settlement
-				{
-					removePersonFromArr(p);	  // add p to the new settlement
-					p.setSettlement(s);
-					return true;
-				}
-			}
-		}
-		return false;    // return if the the transfer succeeded or failed
-		*/
 	}
 	
 	
@@ -390,28 +370,6 @@ public abstract class Settlement implements Runnable
 				}
 			}
 		}
-		
-		
-		// check if to remove !!!!!!!!!!!!!!!!!!!!!!!
-		
-		/*
-		if (s.getMaxPeople() <= s.getPeopleAmount())   // check if there is place in the settlement s
-			return false;
-		Random rand= new Random();
-		double prob = m_ramzorColor.getPTransfer()*s.m_ramzorColor.getPTransfer();
-		if(rand.nextDouble() >= prob ) {
-			if(getSickPersonIndex(p) != -1)   // check if is in this settlement
-			{
-				if(s.addSickPerson(p))     // add p to the new settlement
-				{
-					removeSickPersonFromArr(p);	  // remove p from this settlement
-					p.setSettlement(s);
-					return true;
-				}
-			}
-		}
-		return false;    // return if the the transfer succeeded or failed
-		*/
 	}
 	
 	private boolean checkSickTransfer(Sick p, Settlement s)
@@ -586,6 +544,7 @@ public abstract class Settlement implements Runnable
 			if(Clock.DaysPassed(m_sickPeople[i].getContagiousTime())>=25) {
 				addPerson(new Convalescent(m_sickPeople[i].getAge(), m_sickPeople[i].getLocation(), m_sickPeople[i].getSettlement(), m_sickPeople[i].getVirus()));
 				removeSickPersonFromArr(m_sickPeople[i]);
+				--i;
 			}
 	}
 	
