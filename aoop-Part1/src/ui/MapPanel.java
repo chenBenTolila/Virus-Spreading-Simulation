@@ -64,7 +64,6 @@ public class MapPanel extends JPanel{
 		
 		for(int i=0;i< m_map.getNumOfSettlement(); ++i) {
 			Point[] pm=m_map.connectedSettlements(i);
-			//JLabel lab=new JLabel(m_map.ge);
 			for(int j=1; j < pm.length; ++j) {
 				g.drawLine(pm[0].getX(), pm[0].getY(), pm[j].getX(), pm[j].getY());
 			}
