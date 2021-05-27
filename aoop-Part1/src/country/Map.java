@@ -1,6 +1,12 @@
 package country;
 import location.*;
 import java.awt.Color;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 import java.util.logging.Logger;
@@ -404,24 +410,61 @@ public class Map {
 		}
 	}
 	
-	public Logger getLogger()
-	{
-		return logger;
-	}
-	
-	public void setLogger(Logger log)
-	{
-		logger = log;
-	}
-	
+	/**
+	 * 
+	 * @param s - the settlement we want to write the log for
+	 * @param amount - the amount of logs we need to write
+	 */
 	public void writeToLog(Settlement s, int amount) {
+		/*
 		for(int i = 0; i < amount; ++i)
 			logger.info(s.getSettlementName() + "\n" + s.getNumOfSick() + "\n" + s.getNumDead());
+		*/
+		
+		
+		try
+		{
+			FileWriter fw = new FileWriter(logFilePath, true);
+			BufferedWriter bw = new BufferedWriter(fw);
+		    PrintWriter out = new PrintWriter(bw);
+		    DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+		    for(int i = 0; i < amount; ++i)
+		    {
+		    	out.println(dateFormatter.format(LocalDateTime.now()));
+		    	out.println(s.getSettlementName());
+		    	out.println(s.getNumOfSick());
+		    	out.println(s.getNumDead());
+		    	
+		    }
+		    out.close();
+		}
+		catch (IOException e) {
+		    //exception handling left as an exercise for the reader
+			System.out.println("failed to open log file for writing");
+		}
+	}
+	
+	/**
+	 * 
+	 * @return absolute path of the log file
+	 */
+	public String getLogFilePath()
+	{
+		return logFilePath;
+	}
+	
+	/**
+	 * updating the path of the log file
+	 * @param path - the absolute path of the log file
+	 */
+	public void setLogFilePath(String path)
+	{
+		logFilePath = path;
 	}
 	
 	private boolean m_stop = false;  // keep if the simulation is in status stop
 	private boolean m_statusPlay = true;	// keep if the simulation is in status play or pause
 	private Settlement[] m_settlements;    // the list of settlements in the simulation
 	private CyclicBarrier m_barrier;  // a cyclic barrier for the settlements threads
-	private Logger logger = null;
+	private String logFilePath = null; // the absolute path of the log file
 }

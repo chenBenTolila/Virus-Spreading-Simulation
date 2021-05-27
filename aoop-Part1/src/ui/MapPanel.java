@@ -81,9 +81,9 @@ public class MapPanel extends JPanel{
 				g.drawString(m_map.getIndexSettName(i), loc.getPointX(), loc.getPointY()+(loc.getSizeHeight()/2));
 			}
 		}
-		
-		
 	}
+	
+	
 	
 	/*
 	 * map size

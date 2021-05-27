@@ -66,7 +66,7 @@ public class Menu extends JMenuBar {
 					mp.repaint();
 					if(fileLoadedFlag)
 					{
-						m.setLogger(logger);
+						m.setLogFilePath(logPath);
 						createBarrier();
 						m.spawnSett();
 					}
@@ -101,7 +101,7 @@ public class Menu extends JMenuBar {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(m.getLogger() == null)
+				if(m.getLogFilePath() == null)
 					saveLogFile();
 				else
 				{
@@ -139,23 +139,8 @@ public class Menu extends JMenuBar {
 		if (userSelection == JFileChooser.APPROVE_OPTION) {
 			File fileToSave = fileChooser.getSelectedFile();
 		    System.out.println("Save as file: " + fileToSave.getAbsolutePath());
-		    
-		    
-		    logger = Logger.getLogger("Map");  
-		    FileHandler fh; 
-		    try {  
-		        // This block configure the logger with handler and formatter  
-		        fh = new FileHandler(fileToSave.getAbsolutePath() + ".log");  
-		        logger.addHandler(fh);
-		        SimpleFormatter formatter = new SimpleFormatter(); 
-		        //SimpleFormatter formatter = DateTimeFormatter.ofPattern("YYYY-MM-dd HH:mm:ss").format(LocalDateTime.now());
-		        fh.setFormatter(formatter); 
-		        m.setLogger(logger);
-		    } catch (SecurityException e) { 
-		        e.printStackTrace();  
-		    } catch (IOException e) {  
-		        e.printStackTrace();  
-		    }  
+		    logPath = fileToSave.getAbsolutePath();
+		    m.setLogFilePath(logPath);
 		}
 	}
 	
@@ -182,16 +167,6 @@ public class Menu extends JMenuBar {
 				System.out.println("error with file opening");
 			}
 		}
-		/*
-		else {
-			JDialog dialog = new JDialog((JFrame)null, "file error");
-			Container dialogContainer = dialog.getContentPane();
-		    dialogContainer.add(new JLabel("Stop the current simulation in order to load a file"));
-		    dialog.pack();
-			dialog.setVisible(true);
-			dialog.setLocationRelativeTo(null);
-		}
-		*/	
 	}
 	
 	
@@ -474,5 +449,6 @@ public class Menu extends JMenuBar {
     private Map m;
     private MapPanel mp;
     private int sleepTime = 10;
-    private Logger logger= null;  
+    private Logger logger= null;
+    private String logPath = null;
 }
