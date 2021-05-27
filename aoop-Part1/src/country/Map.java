@@ -319,7 +319,9 @@ public class Map {
 	public void setIndexNumDoses(String name, int doses) {
 		for(int i=0; i< m_settlements.length; ++i) {
 			if(m_settlements[i].getSettlementName().equals(name)) {
-				m_settlements[i].addVDoses(doses);
+				synchronized (m_settlements[i]) {
+					m_settlements[i].addVDoses(doses);
+				}
 				break;
 			}
 		}
@@ -334,7 +336,9 @@ public class Map {
 	{
 		for(int i=0; i< m_settlements.length; ++i) {
 			if(m_settlements[i].getSettlementName().equals(name)) {
-				m_settlements[i].intializeSickPeople(p);
+				synchronized (m_settlements[i]) {
+					m_settlements[i].intializeSickPeople(p);
+				}
 				break;
 			}
 		}

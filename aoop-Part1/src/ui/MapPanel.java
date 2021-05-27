@@ -73,16 +73,12 @@ public class MapPanel extends JPanel{
 		double Xratio = getWidth() / (max_x + 1.0);
 		double Yratio = getHeight() / (max_y + 1.0);
 		
-		//System.out.println("Xmax: " + max_x);
-		//System.out.println("Ymax: " + max_y);
 		
 		for(int i=0;i< m_map.getNumOfSettlement(); ++i) {
 			Point[] pm=m_map.connectedSettlements(i);
 			for(int j=1; j < pm.length; ++j) {
 				g.drawLine((int)(pm[0].getX() * Xratio), (int)(pm[0].getY() * Yratio), (int)(pm[j].getX() * Xratio), (int)(pm[j].getY() * Yratio));
-				//System.out.println(m_map.getIndexSettName(i));
-				//System.out.println("x middle: "+ pm[0].getX() * Xratio);
-				//System.out.println("y middle: "+ pm[0].getY() * Yratio);
+				
 			}
 		}
 		Color col;

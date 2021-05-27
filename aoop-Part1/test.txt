@@ -1,2 +1,2 @@
-City;Ashdod; 0;0; 60;50; 2000
+City;Ashdod;0;0; 60;50;2000
 City;Tel-Aviv;250;150;40;50; 3000

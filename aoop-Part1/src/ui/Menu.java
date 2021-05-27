@@ -449,6 +449,6 @@ public class Menu extends JMenuBar {
     private Map m;
     private MapPanel mp;
     private int sleepTime = 10;
-    private Logger logger= null;
+    //private Logger logger= null;
     private String logPath = null;
 }
