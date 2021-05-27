@@ -2,7 +2,6 @@ package country;
 import location.*;
 import population.*;
 import simulation.Clock;
-import simulation.Main;
 import virus.*;
 import java.util.Random;
 import java.awt.Color;
@@ -641,7 +640,7 @@ public abstract class Settlement implements Runnable
 		if(m_connectS.length == 0)
 			return;
 		Random rand = new Random();
-		int gp, gs;
+		int gs;
 		Person transfer;
 		double amountOfTransfers = this.getPeopleAmount() * 0.03;
 		

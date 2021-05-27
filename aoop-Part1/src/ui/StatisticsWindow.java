@@ -336,6 +336,14 @@ public class StatisticsWindow extends JFrame {
 			m_jt.addRowSelectionInterval(index, index);
 	}
 	
+	/**
+	 * clears the text field that is used for filtering
+	 */
+	public void clearTextField()
+	{
+		m_filterW.setText("");
+	}
+	
 	private JTable m_jt = null; // keep the table object
 	private JTextField m_filterW; // keep the data from user
 	private TableRowSorter<StatisticModel> sorter; // sort table 

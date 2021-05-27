@@ -144,7 +144,7 @@ public class Menu extends JMenuBar {
 		    FileHandler fh; 
 		    try {  
 		        // This block configure the logger with handler and formatter  
-		        fh = new FileHandler(fileToSave.getAbsolutePath() + ".txt");  
+		        fh = new FileHandler(fileToSave.getAbsolutePath() + ".log");  
 		        logger.addHandler(fh);
 		        SimpleFormatter formatter = new SimpleFormatter(); 
 		        //SimpleFormatter formatter = DateTimeFormatter.ofPattern("YYYY-MM-dd HH:mm:ss").format(LocalDateTime.now());
@@ -388,6 +388,7 @@ public class Menu extends JMenuBar {
 			m_sw = new StatisticsWindow(m, index);
 		else
 		{
+			m_sw.clearTextField();
 			m_sw.deselectAndSelectARow(index);
 			m_sw.setVisible(true);
 		}
