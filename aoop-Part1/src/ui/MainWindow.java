@@ -27,7 +27,7 @@ public class MainWindow extends JFrame {
     public MainWindow()
     {
     	super("Main Window");
-    	m =new Map(); // create an empty map
+    	m = new Map(); // create an empty map
     	myBorderLayout.setHgap(10);
     	myBorderLayout.setVgap(0);
     	this.setLayout(myBorderLayout);

@@ -404,25 +404,24 @@ public class Map {
 		}
 	}
 	
-	public static Logger getLogger()
+	public Logger getLogger()
 	{
 		return logger;
 	}
 	
-	public static void setLogger(Logger log)
+	public void setLogger(Logger log)
 	{
 		logger = log;
 	}
 	
-	public static void writeToLog(Settlement s, int amount) {
+	public void writeToLog(Settlement s, int amount) {
 		for(int i = 0; i < amount; ++i)
 			logger.info(s.getSettlementName() + "\n" + s.getNumOfSick() + "\n" + s.getNumDead());
-			//logger.info((String.valueOf(((s.getNumDead()*100) / (s.getPeopleAmount()+ s.getNumDead())))));
 	}
 	
 	private boolean m_stop = false;  // keep if the simulation is in status stop
 	private boolean m_statusPlay = true;	// keep if the simulation is in status play or pause
 	private Settlement[] m_settlements;    // the list of settlements in the simulation
 	private CyclicBarrier m_barrier;  // a cyclic barrier for the settlements threads
-	private static Logger logger = null;
+	private Logger logger = null;
 }

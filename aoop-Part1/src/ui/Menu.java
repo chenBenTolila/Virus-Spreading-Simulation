@@ -40,7 +40,7 @@ public class Menu extends JMenuBar {
 	{
 		this.m = m;
 		this.mp = mp;
-		createFileMenu(parent);
+		createFileMenu();
 		createSimulationMenu();
 		createHelpMenu();
 	}
@@ -49,7 +49,7 @@ public class Menu extends JMenuBar {
 	/**
 	 * creates the mini menu file
 	 */
-	public void createFileMenu(JFrame parent)
+	public void createFileMenu()
     {
 		
         JMenu m1 = new JMenu("FILE");
@@ -66,6 +66,7 @@ public class Menu extends JMenuBar {
 					mp.repaint();
 					if(fileLoadedFlag)
 					{
+						m.setLogger(logger);
 						createBarrier();
 						m.spawnSett();
 					}
@@ -100,7 +101,7 @@ public class Menu extends JMenuBar {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(Map.getLogger() == null)
+				if(m.getLogger() == null)
 					saveLogFile();
 				else
 				{
@@ -149,7 +150,7 @@ public class Menu extends JMenuBar {
 		        SimpleFormatter formatter = new SimpleFormatter(); 
 		        //SimpleFormatter formatter = DateTimeFormatter.ofPattern("YYYY-MM-dd HH:mm:ss").format(LocalDateTime.now());
 		        fh.setFormatter(formatter); 
-		        Map.setLogger(logger);
+		        m.setLogger(logger);
 		    } catch (SecurityException e) { 
 		        e.printStackTrace();  
 		    } catch (IOException e) {  
@@ -243,8 +244,13 @@ public class Menu extends JMenuBar {
 			public void actionPerformed(ActionEvent e) {
 				if(fileLoadedFlag)
 				{
+					// check the order (stop and then play)
 					m.setStopStat(true);
+					m.setPlayState(true);
+					if(m_sw != null)
+						m_sw.dispose();
 					m_sw = null;
+					// m = null;
 					fileLoadedFlag = false;
 				}
 				else
@@ -365,7 +371,7 @@ public class Menu extends JMenuBar {
 	public void createHelpDialog()
 	{
 	    JOptionPane.showMessageDialog(null, "The program simulates the infection process of a virus that develops into different mutations.\r\n"
-	    		+ "The simulation takes place on different types of settlement,\r\n" + "and combines all the necessary information about the people in the settlement.\r\n"
+	    		+ "The simulation takes place on different types of settlements,\r\n" + "and combines all the necessary information about the people in each settlement.\r\n"
 	    		+ "");
 	}
 	
