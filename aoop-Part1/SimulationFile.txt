@@ -13,3 +13,4 @@ Moshav; Nir-Galim; 280;20 ;80;40; 1150
 # ; Gat; Gezer
 Kibbutz; Gezer; 50;250 ;110;50; 1470
 # ; Beer-Sheva;  Nir-Galim
+City ; Ramat-Gan  ; 260; 250; 40; 40; 1500 
