@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
+import java.util.Iterator;
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 
@@ -17,7 +19,8 @@ import java.util.concurrent.CyclicBarrier;
  * ID: 207278029
  */
 
-public class Map {
+public class Map implements Iterable<Settlement>
+{
 	
 	
 	/**
@@ -178,29 +181,39 @@ public class Map {
 		return new Point(m_settlements[index].getLocation().getPointX(),m_settlements[index].getLocation().getPointY());
 	}
 	
+	
+	
+	/*
 	/**
 	 * 
 	 * @param index of a settlement in the settlements array
 	 * @return the location of the chosen settlement
 	 */
+	/*
 	public Location getIndexLocation(int index)
 	{
 		if(index < m_settlements.length)
 			return m_settlements[index].getLocation();
 		return null;
 	}
+	*/
 	
+	
+	
+	/*
 	/**
 	 * 
 	 * @param index of a settlement in the settlements array
 	 * @return 
 	 */
+	/*
 	public Color getIndexColor(int index)
 	{
 		if(index < m_settlements.length)
 			return m_settlements[index].getSetColor();
 		return null;
 	}
+	*/
 	
 	/**
 	 * 
@@ -214,26 +227,35 @@ public class Map {
 		return null;
 	}
 	
+	
+	/*
 	/**
 	 * 
 	 * @param index get index of settlement
 	 * @return array of middle points of connected settlement
 	 */
+	/*
 	public Point[] connectedSettlements(int index) {
 		return m_settlements[index].connectedMiddlePoints();
 	}
+	*/
+	
 	
 	/**
 	 * 
 	 * @param index get index of settlement
 	 * @return name of settlement
 	 */
+	
 	public String getIndexSettName(int index)
 	{
 		if(index < m_settlements.length)
 			return m_settlements[index].getSettlementName();
 		return null;
 	}
+	
+	
+	
 	
 	/**
 	 * 
@@ -495,6 +517,12 @@ public class Map {
 		return maxY;
 	}
 	
+	
+	@Override
+	public Iterator<Settlement> iterator() {
+		// TODO Auto-generated method stub
+		return (Iterator<Settlement>) Arrays.stream(m_settlements).iterator();
+	}
 	
 	private boolean m_stop = false;  // keep if the simulation is in status stop
 	private boolean m_statusPlay = true;	// keep if the simulation is in status play or pause

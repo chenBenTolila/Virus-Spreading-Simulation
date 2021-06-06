@@ -12,6 +12,7 @@ import java.util.concurrent.CyclicBarrier;
 
 import simulation.*;
 import country.Map;
+import country.Settlement;
 import io.SimulationFile;
 import location.Location;
 import location.Point;
@@ -103,15 +104,12 @@ public class MainWindow extends JFrame {
     	
     	public MapPanel() {
     		super();
-    		//mainWindow = mw;
-    		//m_map = m;
-    		// MapPanel temp = this;
     		setVisible(true);
     		this.addMouseListener(new java.awt.event.MouseAdapter() {
                 public void mouseClicked(java.awt.event.MouseEvent evt) {
                 	if(m == null)
                 		return;
-                	//Menu m_menu = getMenu();
+                	
                 	if(menu == null)
                 		return;
                 	int max_x = m.getMaxXInMap();
@@ -151,7 +149,33 @@ public class MainWindow extends JFrame {
     		double Xratio = getWidth() / (max_x + 1.0);
     		double Yratio = getHeight() / (max_y + 1.0);
     		
+    		for(Settlement s : m)   // using iterator on map
+    		{
+    			Point[] pm = s.connectedMiddlePoints();
+    			for(int j=1; j < pm.length; ++j) {
+    				g.drawLine((int)(pm[0].getX() * Xratio), (int)(pm[0].getY() * Yratio), (int)(pm[j].getX() * Xratio), (int)(pm[j].getY() * Yratio));
+    				
+    			}
+    		}
     		
+    		Color col;
+    		Location loc;
+    		for(Settlement s: m)  // using iterator on map
+    		{
+    			col = s.getSetColor();
+    			loc = s.getLocation();
+    			if(col != null & loc != null)
+    			{
+    				g.setColor(col);
+    				g.fillRect((int)(loc.getPointX() * Xratio) , (int)(loc.getPointY() * Yratio), (int)(loc.getSizeWidth() * Xratio), (int)(loc.getSizeHeight() * Yratio));
+    				g.setColor(Color.BLACK);
+    				g.drawString(s.getSettlementName(), (int)(loc.getPointX() * Xratio), (int)((loc.getPointY()+(loc.getSizeHeight()/2)) * Yratio));
+    			}
+    		}
+    		
+    		
+    		// drwing the map without iterator
+    		/*
     		for(int i=0;i< m.getNumOfSettlement(); ++i) {
     			Point[] pm=m.connectedSettlements(i);
     			for(int j=1; j < pm.length; ++j) {
@@ -159,8 +183,9 @@ public class MainWindow extends JFrame {
     				
     			}
     		}
-    		Color col;
-    		Location loc;
+    		*/
+  
+    		/*
     		for(int i=0; i < m.getNumOfSettlement();++i) {
     			col = m.getIndexColor(i);
     			loc = m.getIndexLocation(i);
@@ -172,6 +197,7 @@ public class MainWindow extends JFrame {
     				g.drawString(m.getIndexSettName(i), (int)(loc.getPointX() * Xratio), (int)((loc.getPointY()+(loc.getSizeHeight()/2)) * Yratio));
     			}
     		}
+    		*/
     	}
     	
     	
@@ -198,8 +224,6 @@ public class MainWindow extends JFrame {
 
     	public Menu()
     	{
-    		//this.m = m;
-    		//this.mp = mapP;
     		createFileMenu();
     		createSimulationMenu();
     		createHelpMenu();
@@ -607,10 +631,6 @@ public class MainWindow extends JFrame {
         private boolean fileLoadedFlag = false;
         private int sleepTime = 10;
         private String logPath = null;
-        // the map
-        //private Map m;
-        //private ui.MainWindow.MapPanel mp;
-        //private Logger logger= null;
     }
 
     
