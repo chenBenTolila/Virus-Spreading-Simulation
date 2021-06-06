@@ -246,7 +246,7 @@ public class MainWindow extends JFrame {
     		});
             
             
-            JMenuItem m13 = new JMenuItem("Mutations Edit");  // opening Mutation Edit as a modal
+            JMenuItem m13 = new JMenuItem("Edit Mutations");  // opening Mutation Edit as a modal
             m13.addActionListener(new ActionListener() {
     			
     			@Override

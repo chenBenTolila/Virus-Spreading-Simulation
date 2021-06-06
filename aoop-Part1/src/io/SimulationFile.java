@@ -22,6 +22,7 @@ public class SimulationFile {
 	public static boolean createMap(Map map) throws IOException {
 		FileReader fr; 
 		String line;
+		Settlement temp;
 		if(fileName!=null) {
 			fr = new FileReader(fileName);
 			map.resetMap();
@@ -30,8 +31,10 @@ public class SimulationFile {
 			while((line = bufferedReader.readLine()) != null) {
 				line = line.replaceAll(" ", "");
 				String[] data = line.split(";");
-				if(!(data[0].equals("#"))) 
-					createSettlement(data, map);
+				if(!(data[0].equals("#"))) {
+					temp = settFactory(data, map);
+					map.addSettlement(temp);
+				}
 			}
 			fr.close();	
 			fr = new FileReader(fileName);
@@ -58,14 +61,12 @@ public class SimulationFile {
 		}
 	}
 	
-	
-	
 	/**
 	 * 
 	 * @param data get data of settlement
 	 * @param map get map of simulation
 	 */
-	public static void createSettlement(String[] data, Map map) {
+	public static Settlement settFactory(String[] data, Map map) {
 		Settlement temp;
 		String name = data[1];
 		Point cord  = new Point(Integer.parseInt(data[2]), Integer.parseInt(data[3]));
@@ -77,26 +78,27 @@ public class SimulationFile {
 		case "City":
 			temp = new City(name, loc, RamzorColor.GREEN, (int)(numPeople*maxP), map);
 			createPeopleArray(temp, numPeople);  
-			map.addSettlement(temp);  // adding the settlement to the map
 			break;
 				
 		case "Kibbutz":
 			temp = new Kibbutz(name, loc, RamzorColor.GREEN, (int)(numPeople*maxP), map);
 			createPeopleArray(temp, numPeople);
-			map.addSettlement(temp);  // adding the settlement to the map
 			break;
 				
 		case "Moshav":
 			temp  = new Moshav(name, loc, RamzorColor.GREEN, (int)(numPeople*maxP), map);
 			createPeopleArray(temp, numPeople);
-			map.addSettlement(temp);  // adding the settlement to the map
 			break;
 				
 		default:
 			 System.out.println("type of settelment is undefined");
+			 temp=null;
 			 break;
 		}
+		return temp;
 	}
+	
+
 	
 	/**
 	 * the method calculates the age for a new person
