@@ -683,6 +683,7 @@ public abstract class Settlement implements Runnable
 	}			
 	
 	
+	
 	// attributes
 	private String m_name;    // the  name of the settlement
 	private Location m_location;    // the location of the settlement
