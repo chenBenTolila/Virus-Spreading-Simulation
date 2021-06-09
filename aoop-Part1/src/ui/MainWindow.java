@@ -153,11 +153,14 @@ public class MainWindow extends JFrame {
     		{
     			Point[] pm = s.connectedMiddlePoints();
     			for(int j=1; j < pm.length; ++j) {
-    				g.drawLine((int)(pm[0].getX() * Xratio), (int)(pm[0].getY() * Yratio), (int)(pm[j].getX() * Xratio), (int)(pm[j].getY() * Yratio));
-    				
+    				if(j % 2 == 0)
+    					g.setColor(Color.BLACK);
+    				else
+    					g.setColor(Color.BLUE);
+    				g.drawLine((int)(pm[0].getX() * Xratio), (int)(pm[0].getY() * Yratio), (int)(pm[j].getX() * Xratio), (int)(pm[j].getY() * Yratio));	
     			}
     		}
-    		
+    		 
     		Color col;
     		Location loc;
     		for(Settlement s: m)  // using iterator on map
@@ -166,7 +169,7 @@ public class MainWindow extends JFrame {
     			loc = s.getLocation();
     			if(col != null & loc != null)
     			{
-    				g.setColor(col);
+   				g.setColor(col);
     				g.fillRect((int)(loc.getPointX() * Xratio) , (int)(loc.getPointY() * Yratio), (int)(loc.getSizeWidth() * Xratio), (int)(loc.getSizeHeight() * Yratio));
     				g.setColor(Color.BLACK);
     				g.drawString(s.getSettlementName(), (int)(loc.getPointX() * Xratio), (int)((loc.getPointY()+(loc.getSizeHeight()/2)) * Yratio));
