@@ -684,6 +684,16 @@ public abstract class Settlement implements Runnable
 	
 	
 	
+	/**
+	 * 
+	 * @return the array of the settlements that are connected to this
+	 */
+	public Settlement[] getConnectSettlements()
+	{
+		return m_connectS;
+	}
+	
+	
 	// attributes
 	private String m_name;    // the  name of the settlement
 	private Location m_location;    // the location of the settlement

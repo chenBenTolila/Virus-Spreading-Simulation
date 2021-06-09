@@ -149,16 +149,22 @@ public class MainWindow extends JFrame {
     		double Xratio = getWidth() / (max_x + 1.0);
     		double Yratio = getHeight() / (max_y + 1.0);
     		
+    		LineDecorator ld = null;
     		for(Settlement s : m)   // using iterator on map
     		{
+    			Settlement connect[] = s.getConnectSettlements();
+    			for (Settlement b : connect)
+    			{
+    				ld = new LineDecorator(s, b);
+    				ld.drawColoredLine(g, Xratio, Yratio);
+    			}
+    			
+    			/*
     			Point[] pm = s.connectedMiddlePoints();
     			for(int j=1; j < pm.length; ++j) {
-    				if(j % 2 == 0)
-    					g.setColor(Color.BLACK);
-    				else
-    					g.setColor(Color.BLUE);
     				g.drawLine((int)(pm[0].getX() * Xratio), (int)(pm[0].getY() * Yratio), (int)(pm[j].getX() * Xratio), (int)(pm[j].getY() * Yratio));	
     			}
+    			*/
     		}
     		 
     		Color col;
