@@ -1,10 +1,7 @@
 package io;
 import java.io.*;
 import country.*;
-import population.*;
 import simulation.*;
-import location.*;
-import java.util.Random;
 
 /**
  * @author Hadar Amsalem
@@ -28,11 +25,12 @@ public class SimulationFile {
 			map.resetMap();
 			Clock.resetTime();
 			BufferedReader bufferedReader = new BufferedReader(fr);
+			SettlementFactory SettlementF = new SettlementFactory();
 			while((line = bufferedReader.readLine()) != null) {
 				line = line.replaceAll(" ", "");
 				String[] data = line.split(";");
 				if(!(data[0].equals("#"))) {
-					temp = settFactory(data, map);
+					temp = SettlementF.getFactory(data, map);
 					map.addSettlement(temp);
 				}
 			}
@@ -48,12 +46,6 @@ public class SimulationFile {
 			fr.close();
 			map.addSickToMap(0.01);   // initialize the population with 1% of sick people
 			return true;
-			
-			// 
-			/* need to change the flags's statuses in the menu class!!!!!!!!!!!!!!!!!!!!!
-			Main.SetfileLoaded(true);
-			Main.setStop(false);
-			*/
 		}
 		else {
 			System.out.println("Failed to open the file");
@@ -66,6 +58,7 @@ public class SimulationFile {
 	 * @param data get data of settlement
 	 * @param map get map of simulation
 	 */
+	/*
 	public static Settlement settFactory(String[] data, Map map) {
 		Settlement temp;
 		String name = data[1];
@@ -97,13 +90,14 @@ public class SimulationFile {
 		}
 		return temp;
 	}
-	
+	*/
 
 	
 	/**
 	 * the method calculates the age for a new person
 	 * @return the age
 	 */
+	/*
 	public static int intizializePersonAge()
 	{
 		int y;   // a random integer between 1-4 (including)
@@ -117,12 +111,14 @@ public class SimulationFile {
 		x = temp*deviation + mean;   // initialize x
 		return (int)((5 * x) + y);   // return the calculated age
 	}
+	*/
 
 	/**
 	 * the method initialize a settlement with people
 	 * @param s - the settlement
 	 * @param numOfPersons - the number of people to add to the settlement
 	 */
+	/*
 	public static void createPeopleArray(Settlement s, int numOfPersons) {
 		Healthy p;
 		for(int i=0; i< numOfPersons; ++i) {   
@@ -130,6 +126,8 @@ public class SimulationFile {
 			s.addPerson(p);   // add the person to the settlement
 		}
 	}
+	
+	*/
 	
 	/**
 	 * 
@@ -139,9 +137,6 @@ public class SimulationFile {
 		fileName=fName;
 	}
 	
-	// static data members
-	public static double deviation = 6;    // deviation 
-	public static double mean = 9;    // mean
-	public static final double maxP = 1.3; // max probability 
+	 
 	private static String fileName = null; // save the name of file
 }
