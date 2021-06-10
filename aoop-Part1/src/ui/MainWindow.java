@@ -11,7 +11,6 @@ import java.io.IOException;
 import java.util.concurrent.CyclicBarrier;
 
 import simulation.*;
-import ui.LogFileOriginator.LogFileMemento;
 import country.Map;
 import country.Settlement;
 import io.SimulationFile;
@@ -235,7 +234,7 @@ public class MainWindow extends JFrame {
     					mapP.repaint();
     					if(fileLoadedFlag)
     					{
-    						m.setLogFilePath(logPath);
+    						m.setLogFilePath(logOriginator.getState());
     						createBarrier();
     						m.spawnSett();
     					}
@@ -273,33 +272,21 @@ public class MainWindow extends JFrame {
     			
     			@Override
     			public void actionPerformed(ActionEvent e) {
-    				if(logPath == null)
-    					saveLogFile();
-    				
-    				else
-    				{
-    					JOptionPane.showMessageDialog(null, "You already opened a log file");
-    				}
+    				saveLogFile();
     			}
     		});
-
+            
             JMenuItem m15 = new JMenuItem("Undo Log File");  
             m15.addActionListener(new ActionListener() {
     			
     			@Override
     			public void actionPerformed(ActionEvent e) {
-    				if(mutationWindow == null)
-    				{
-    					// do some chen magic
-    				}
-    				else
-    					mutationWindow.setVisible(true);
-    				
+    				undoLogFile();
     			}
     		});
             
             JMenuItem m16 = new JMenuItem("Exit");   // creating Exit option
-            m15.addActionListener(new ActionListener() {
+            m16.addActionListener(new ActionListener() {
     			
     			@Override
     			public void actionPerformed(ActionEvent e) {
@@ -328,9 +315,9 @@ public class MainWindow extends JFrame {
     		if (userSelection == JFileChooser.APPROVE_OPTION) {
     			File fileToSave = fileChooser.getSelectedFile();
     		    System.out.println("Save as file: " + fileToSave.getAbsolutePath());
-    		    
-    		    logPath = fileToSave.getAbsolutePath();
-    		    m.setLogFilePath(logPath);
+    		    String logPath = fileToSave.getAbsolutePath();
+    		    updateLogFilePath(logPath);
+    		    m.setLogFilePath(logOriginator.getState());
     		}
     	}
     	
@@ -338,7 +325,21 @@ public class MainWindow extends JFrame {
     	{
     		if(logOriginator.getState() != null)
     		{
-    			// logCaretaker.addMemento(new LogFileMemento(logOriginator.getState()));
+    			logCaretaker.addMemento(logOriginator.getState());
+    		}
+    		logOriginator.setState(logPath);
+    	}
+    	
+    	public void undoLogFile()
+    	{
+    		String logPath = logCaretaker.getMemento();
+    		if(logPath == null)
+    			JOptionPane.showMessageDialog(null, "You don't have a former log file path");
+    		else
+    		{
+    			logOriginator.setState(logPath);
+    			m.setLogFilePath(logOriginator.getState());
+    			System.out.println("Save as file: " + logOriginator.getState());
     		}
     	}
     	
@@ -645,7 +646,7 @@ public class MainWindow extends JFrame {
         private StatisticsWindow m_sw = null;
         private boolean fileLoadedFlag = false;
         private int sleepTime = 10;
-        private String logPath = null;
+        //private String logPath = null;
         private LogFileOriginator logOriginator = new LogFileOriginator();
         private LogFileCaretaker logCaretaker = new LogFileCaretaker();
     }

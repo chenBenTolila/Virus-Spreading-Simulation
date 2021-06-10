@@ -12,9 +12,12 @@ public class LogFileOriginator {
 	
 	/**
 	 * 
-	 * @return the state of the current decorator
+	 * @return the state of the current memento
 	 */
 	public String getState() { return state; } 
+	
+	
+	/*
 	public LogFileMemento createMemento() { 
 		return new LogFileMemento(state); 
 	} 
@@ -22,13 +25,15 @@ public class LogFileOriginator {
 	 * set a new memento
 	 * @param memento - a memento
 	 */
-	public void setMemento(LogFileMemento memento) { 
-		state = memento.getState(); 
+	/*
+	public void setMemento(String memento) { 
+		state = memento; 
 	}
+	*/
 	
 	private String state = null; // the current state
 	
-	
+	/*
 	// inner class
 	public class LogFileMemento {
 		
@@ -40,4 +45,5 @@ public class LogFileOriginator {
 		
 		private String state;  // the log file absolute path
 	}
+	*/
 }

@@ -1,6 +1,6 @@
 package ui;
 import java.util.ArrayList;
-import ui.LogFileOriginator.LogFileMemento;
+import java.util.Stack;
 
 
 public class LogFileCaretaker { 
@@ -9,18 +9,19 @@ public class LogFileCaretaker {
 	 * add m to the history states
 	 * @param m -  a memento
 	 */
-	public void addMemento(LogFileMemento m) { 
-		if(statesList.size() == max_size)
-			statesList.remove(0);
-		statesList.add(m); 
+	public void addMemento(String memento) { 
+		history.add(memento);
 	}
 	
 	/**
 	 * 
 	 * @return the memento that we added last
 	 */
-	public LogFileMemento getMemento() { 
-		return (LogFileMemento) statesList.get(max_size - 1); 
+	public String getMemento() { 
+		if(history.size() > 0)
+			return history.pop();
+		else 
+			return null;
 	} 
 	
 	/**
@@ -29,8 +30,9 @@ public class LogFileCaretaker {
 	 */
 	public int getSize()
 	{
-		return statesList.size();
+		return history.size();
 	}
-	private int max_size = 1;
-	private ArrayList<LogFileMemento> statesList = new ArrayList<LogFileMemento>(1);
+	
+	private Stack<String> history = new Stack<>();
+	//private ArrayList<LogFileMemento> statesList = new ArrayList<LogFileMemento>(1);
 }
