@@ -268,7 +268,7 @@ public class MainWindow extends JFrame {
     			}
     		});
             
-            JMenuItem m14 = new JMenuItem("Log File");
+            JMenuItem m14 = new JMenuItem("Save Log File");
             m14.addActionListener(new ActionListener() {
     			
     			@Override
@@ -282,8 +282,23 @@ public class MainWindow extends JFrame {
     				}
     			}
     		});
+
+            JMenuItem m15 = new JMenuItem("Undo Log File");  
+            m15.addActionListener(new ActionListener() {
+    			
+    			@Override
+    			public void actionPerformed(ActionEvent e) {
+    				if(mutationWindow == null)
+    				{
+    					// do some chen magic
+    				}
+    				else
+    					mutationWindow.setVisible(true);
+    				
+    			}
+    		});
             
-            JMenuItem m15 = new JMenuItem("Exit");   // creating Exit option
+            JMenuItem m16 = new JMenuItem("Exit");   // creating Exit option
             m15.addActionListener(new ActionListener() {
     			
     			@Override
@@ -298,6 +313,7 @@ public class MainWindow extends JFrame {
             m1.add(m13);
             m1.add(m14);
             m1.add(m15);
+            m1.add(m16);
         }
     	
     	/**

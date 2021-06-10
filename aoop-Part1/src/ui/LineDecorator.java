@@ -8,12 +8,24 @@ import java.awt.RenderingHints;
 import country.Settlement;
 
 public class LineDecorator {
+	
+	/***
+	 * Ctor
+	 * @param a settlement one
+	 * @param b settlement two
+	 */
 	public LineDecorator(Settlement a, Settlement b)
 	{
 		m_a = a;
 		m_b = b;
 	}
 	
+	/***
+	 * draw the colorful lines between the settlement
+	 * @param g for draw
+	 * @param Xratio size of line
+	 * @param Yratio size of line
+	 */
 	public void drawColoredLine(Graphics g, double Xratio, double Yratio)
 	{
 		Graphics2D gr = (Graphics2D) g;
@@ -31,6 +43,6 @@ public class LineDecorator {
 		g.setColor(Color.black);
 	}
 	
-	private Settlement m_a;
-	private Settlement m_b;
+	private Settlement m_a; // first settlement 
+	private Settlement m_b; // second settlement
 }
