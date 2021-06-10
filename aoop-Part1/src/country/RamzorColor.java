@@ -23,8 +23,8 @@ public enum RamzorColor
 	 * @param pTransfer Probability of transfer a settlement
 	 */
 	private RamzorColor(double pTransfer, Color color, double cSick) {
-		this.cSick= cSick;
-		this.color= color;
+		this.cSick = cSick;
+		this.color = color;
 		this.pTransfer=pTransfer;
 	}
 	

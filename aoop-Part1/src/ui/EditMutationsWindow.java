@@ -2,6 +2,9 @@ package ui;
 
 
 import java.awt.Dimension;
+import java.util.ArrayList;
+import java.util.Random;
+
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
 
@@ -46,23 +49,64 @@ public class EditMutationsWindow extends JDialog{
 		public String[] getArrMutation() {
 			return m_mutationNames;
 		}
+		
+		/**
+		 * create the mutatiom model
+		 */
 		public MutationModel() {
-			boolean temp[] = new boolean[m_mutationNames.length];
-			m_mut= new boolean[getRowCount()][getColumnCount()];
+			m_mut = new boolean[getRowCount()][getColumnCount()];
 			
+			// boolean temp[] = new boolean[m_mutationNames.length];
 			for(int i=0; i<getRowCount(); ++i)
 			{
+				/*
 				if (i == 0)
-					temp = BritishVariant.getMutBool();
+					temp = new boolean[] {true, false, false};
 				else if(i == 1)
 					temp = ChineseVariant.getMutBool();
 				else
 					temp = SouthAfricanVariant.getMutBool();
-				
+				*/
 				for(int j=0; j<getColumnCount(); ++j)
-						m_mut[i][j]= temp[j];
+					if(i == j)
+						m_mut[i][j] = true;
+					else
+						m_mut[i][j] = false;
 			}
 		}
+		
+		/**
+		 * 
+		 * @param index - the index of the row we want to return 
+		 * @return the row we chose
+		 */
+		private boolean[] getRow(int index)
+		{
+			if (index < getRowCount() && index >= 0)
+				return m_mut[index];
+			else
+				return null;
+		}
+		
+		/***
+		 *  returning an index of a random virus that the virus in row
+		 * @param row - an index of a row
+		 * @return an index of a random virus with true value in the row 
+		 */
+		public int randVirus(int index)
+		{
+			boolean row[] = getRow(index);
+			if(row == null)
+				return -1;
+			Random rand = new Random();
+			ArrayList<Integer> trueArray = new ArrayList<Integer>(row.length);
+			for(int i = 0; i < row.length; ++i)
+				if(row[i] == true)
+					trueArray.add(i);
+			return (trueArray.get(rand.nextInt(trueArray.size())));
+			
+		}
+		
 		@Override
 		public int getRowCount() { return m_mutationNames.length; }
 		@Override
@@ -90,6 +134,7 @@ public class EditMutationsWindow extends JDialog{
 		@Override
 		public Class getColumnClass(int column) { return getValueAt(0, column).getClass(); }
 		
+		/*
 		public void setMutations(int row, int col)
 		{
 			switch(row)
@@ -123,6 +168,7 @@ public class EditMutationsWindow extends JDialog{
 			default:
 			}
 		}
+		*/
 	}
 	
 	

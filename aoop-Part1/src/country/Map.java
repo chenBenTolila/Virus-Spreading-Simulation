@@ -84,6 +84,8 @@ public class Map implements Iterable<Settlement>
 			m_settlements[i].intializeSickPeople(p);    // turn 1% of settlement's population into sick people
 		}
 	}
+	
+	
 	 /**
 	  * try to contagion 3 people with each sick person
 	  */
@@ -155,6 +157,8 @@ public class Map implements Iterable<Settlement>
 		}
 		return data;
 	}
+	
+	
 	/**
 	 * start transfer from settlement
 	 */
@@ -163,6 +167,8 @@ public class Map implements Iterable<Settlement>
 			m_settlements[i].tryToTransfer();
 		}
 	}
+	
+	
 	/**
 	 * 
 	 * @return  number of settlements
@@ -170,6 +176,7 @@ public class Map implements Iterable<Settlement>
 	public int getNumOfSettlement() {
 		return m_settlements.length;
 	}
+	
 	
 	/**
 	 * 

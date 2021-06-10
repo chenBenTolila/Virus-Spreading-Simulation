@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.util.concurrent.CyclicBarrier;
 
 import simulation.*;
+import ui.LogFileOriginator.LogFileMemento;
 import country.Map;
 import country.Settlement;
 import io.SimulationFile;
@@ -182,31 +183,6 @@ public class MainWindow extends JFrame {
     			}
     		}
     		
-    		
-    		// drwing the map without iterator
-    		/*
-    		for(int i=0;i< m.getNumOfSettlement(); ++i) {
-    			Point[] pm=m.connectedSettlements(i);
-    			for(int j=1; j < pm.length; ++j) {
-    				g.drawLine((int)(pm[0].getX() * Xratio), (int)(pm[0].getY() * Yratio), (int)(pm[j].getX() * Xratio), (int)(pm[j].getY() * Yratio));
-    				
-    			}
-    		}
-    		*/
-  
-    		/*
-    		for(int i=0; i < m.getNumOfSettlement();++i) {
-    			col = m.getIndexColor(i);
-    			loc = m.getIndexLocation(i);
-    			if(col != null & loc != null)
-    			{
-    				g.setColor(col);
-    				g.fillRect((int)(loc.getPointX() * Xratio) , (int)(loc.getPointY() * Yratio), (int)(loc.getSizeWidth() * Xratio), (int)(loc.getSizeHeight() * Yratio));
-    				g.setColor(Color.BLACK);
-    				g.drawString(m.getIndexSettName(i), (int)(loc.getPointX() * Xratio), (int)((loc.getPointY()+(loc.getSizeHeight()/2)) * Yratio));
-    			}
-    		}
-    		*/
     	}
     	
     	
@@ -284,7 +260,10 @@ public class MainWindow extends JFrame {
     			
     			@Override
     			public void actionPerformed(ActionEvent e) {
-    				new EditMutationsWindow();
+    				if(mutationWindow == null)
+    					new EditMutationsWindow();
+    				else
+    					mutationWindow.setVisible(true);
     				
     			}
     		});
@@ -294,8 +273,9 @@ public class MainWindow extends JFrame {
     			
     			@Override
     			public void actionPerformed(ActionEvent e) {
-    				if(m.getLogFilePath() == null)
+    				if(logPath == null)
     					saveLogFile();
+    				
     				else
     				{
     					JOptionPane.showMessageDialog(null, "You already opened a log file");
@@ -332,10 +312,20 @@ public class MainWindow extends JFrame {
     		if (userSelection == JFileChooser.APPROVE_OPTION) {
     			File fileToSave = fileChooser.getSelectedFile();
     		    System.out.println("Save as file: " + fileToSave.getAbsolutePath());
+    		    
     		    logPath = fileToSave.getAbsolutePath();
     		    m.setLogFilePath(logPath);
     		}
     	}
+    	
+    	public void updateLogFilePath(String logPath)
+    	{
+    		if(logOriginator.getState() != null)
+    		{
+    			// logCaretaker.addMemento(new LogFileMemento(logOriginator.getState()));
+    		}
+    	}
+    	
     	
     	/**
     	 * choose new file
@@ -640,15 +630,11 @@ public class MainWindow extends JFrame {
         private boolean fileLoadedFlag = false;
         private int sleepTime = 10;
         private String logPath = null;
+        private LogFileOriginator logOriginator = new LogFileOriginator();
+        private LogFileCaretaker logCaretaker = new LogFileCaretaker();
     }
 
     
-    
-    
-    
-    
-    
-    // end test
     
     /**
      * method to repaint map after simulation
@@ -668,15 +654,18 @@ public class MainWindow extends JFrame {
     		menu.updateStatTable();
     }
     
-    public Menu getMenu()
+    
+    public Menu getMenu()    // check if needed
     {
     	return menu;
     }
     
     
+    
     private MapPanel mapP = null; // map panel
     private Menu menu = null;  // the menu
     private Map m;
+    private EditMutationsWindow mutationWindow = null;  // the edit mutationsW
     
     
     // members for the slider
