@@ -15,7 +15,7 @@ import country.Map;
 import country.Settlement;
 import io.SimulationFile;
 import location.Location;
-import location.Point;
+
 
 /**
  * @author Hadar Amsalem

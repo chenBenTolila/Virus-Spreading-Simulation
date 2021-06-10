@@ -1,6 +1,13 @@
 package virus;
 
 
+/**
+ * @author Hadar Amsalem
+ * ID: 316129212 
+ * @author Chen Ben Tolila
+ * ID: 207278029
+ */
+
 public enum VirusesEnum {
 	BRITISH("BritishVariant"),
 	CHINESE("ChineseVariant"),

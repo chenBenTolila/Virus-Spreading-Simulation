@@ -1,12 +1,17 @@
 package virus;
 
+/**
+ * @author Hadar Amsalem
+ * ID: 316129212 
+ * @author Chen Ben Tolila
+ * ID: 207278029
+ */
+
 import java.util.ArrayList;
 import java.util.Random;
 
-import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 
-import ui.EditMutationsWindow;
 
 public class VirusManager {
 	private static VirusManager instance = null; 

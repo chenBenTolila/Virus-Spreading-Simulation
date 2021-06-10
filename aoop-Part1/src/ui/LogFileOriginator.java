@@ -1,5 +1,12 @@
 package ui;
 
+/**
+ * @author Hadar Amsalem
+ * ID: 316129212 
+ * @author Chen Ben Tolila
+ * ID: 207278029
+ */
+
 public class LogFileOriginator {
 	
 	
@@ -17,33 +24,7 @@ public class LogFileOriginator {
 	public String getState() { return state; } 
 	
 	
-	/*
-	public LogFileMemento createMemento() { 
-		return new LogFileMemento(state); 
-	} 
-	/**
-	 * set a new memento
-	 * @param memento - a memento
-	 */
-	/*
-	public void setMemento(String memento) { 
-		state = memento; 
-	}
-	*/
 	
 	private String state = null; // the current state
 	
-	/*
-	// inner class
-	public class LogFileMemento {
-		
-		public LogFileMemento(String state){ 
-			this.state = state; 
-		} 
-		
-		public String getState() { return state; }
-		
-		private String state;  // the log file absolute path
-	}
-	*/
 }

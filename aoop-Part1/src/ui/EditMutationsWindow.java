@@ -2,9 +2,6 @@ package ui;
 
 
 import java.awt.Dimension;
-import java.util.ArrayList;
-import java.util.Random;
-
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
 
