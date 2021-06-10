@@ -40,9 +40,12 @@ public class EditMutationsWindow extends JDialog{
 		this.add(new RowedTableScroll(table, model.getArrMutation()));
 		this.pack();
 		this.setModal(true);
-		this.setVisible(true);
-
+		VirusManager virusManager = VirusManager.getVirusManager();
+		virusManager.setmutationTable(table);
+		//this.setVisible(true);
     }
+	
+	
 	private class MutationModel extends AbstractTableModel {
 		private boolean[][] m_mut;
 		private final String[] m_mutationNames = {"British variant", "Chinese variant", "South African variant"};
@@ -59,14 +62,7 @@ public class EditMutationsWindow extends JDialog{
 			// boolean temp[] = new boolean[m_mutationNames.length];
 			for(int i=0; i<getRowCount(); ++i)
 			{
-				/*
-				if (i == 0)
-					temp = new boolean[] {true, false, false};
-				else if(i == 1)
-					temp = ChineseVariant.getMutBool();
-				else
-					temp = SouthAfricanVariant.getMutBool();
-				*/
+				
 				for(int j=0; j<getColumnCount(); ++j)
 					if(i == j)
 						m_mut[i][j] = true;
@@ -75,11 +71,14 @@ public class EditMutationsWindow extends JDialog{
 			}
 		}
 		
+		
+		// check if to remove
 		/**
 		 * 
 		 * @param index - the index of the row we want to return 
 		 * @return the row we chose
 		 */
+		/*
 		private boolean[] getRow(int index)
 		{
 			if (index < getRowCount() && index >= 0)
@@ -87,12 +86,13 @@ public class EditMutationsWindow extends JDialog{
 			else
 				return null;
 		}
-		
+		*/
 		/***
 		 *  returning an index of a random virus that the virus in row
 		 * @param row - an index of a row
 		 * @return an index of a random virus with true value in the row 
 		 */
+		/*
 		public int randVirus(int index)
 		{
 			boolean row[] = getRow(index);
@@ -104,8 +104,8 @@ public class EditMutationsWindow extends JDialog{
 				if(row[i] == true)
 					trueArray.add(i);
 			return (trueArray.get(rand.nextInt(trueArray.size())));
-			
 		}
+		*/
 		
 		@Override
 		public int getRowCount() { return m_mutationNames.length; }
@@ -129,9 +129,10 @@ public class EditMutationsWindow extends JDialog{
 		public void setValueAt(Object aValue, int row, int col) {
 			m_mut[row][col]=((Boolean) aValue); 
 			fireTableCellUpdated(row, col);
+			
 			//VirusFactory vf= new VirusFactory();
 			//vf.getVirus((String)getValueAt(row, col));
-			setMutations(row, col);
+			//setMutations(row, col);
 		}
 		@Override
 		public Class getColumnClass(int column) { return getValueAt(0, column).getClass(); }

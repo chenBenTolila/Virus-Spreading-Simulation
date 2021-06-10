@@ -28,9 +28,57 @@ public class ChineseVariant implements IVirus {
 	}
 	
 	
+	
+	
+	
+	// test
+	 
+	/**
+	  * if the second person is healthy check if he got infected by the first person
+	  */
+	 public boolean tryToContagion(Sick p1, Person p2){
+		 
+		 Random rand = new Random();   // the random probability of the person getting infected
+		 double probToSick;   // the calculated probability
+		 IVirus vType;   // the variant type
+		 double varSickProb;   // the probability of p2 to get sick infected in the variant according to his age
+		 if(!(p2.checkIfSick())) {   // check if the p2 is healthy
+			 if(Clock.DaysPassed(p1.getContagiousTime()) < 5)   // check that p1 is sick for 5 or more days
+			 {
+				 return false;
+			 }
+			 
+			 vType = (VirusManager.getVirusManager()).getRandomVirus(VirusesEnum.CHINESE);
+			 if(vType == null)  // this variant can't develop to any variant
+				 return false;
+			 
+			 varSickProb = vType.contagionProbability(p2);
+			 if(varSickProb == 0)   // if the variant can contage at the moment (by status)
+				 return false;
+		
+			 probToSick = varSickProb*Math.min(1,0.14*Math.pow(Math.E, 2-0.25*p1.distance(p2)));   // calculation of the probability
+			 if (probToSick >= rand.nextDouble())  // exclude 1 - [0,1)  ///	
+			 {
+				 p2.contagion(vType);
+			 }
+			 return true;
+		 }
+		 else
+			 throw new RuntimeException();   // p2 is not healthy
+	 }
+		 
+		 
+		 // end test
+	
+	
+	
+	
+	
+	
 	/**
 	 * if the second person is healthy check if he got infected by the first person
 	 */
+	 /*
 	public boolean tryToContagion(Sick p1, Person p2){
 		
 		if(mutations.length == 0)
@@ -57,7 +105,7 @@ public class ChineseVariant implements IVirus {
 		 else
 			 throw new RuntimeException();   // p2 is not healthy
 	 }
-	
+	*/
 	
 	/**
 	  * the method infect the person in the variant
@@ -65,6 +113,7 @@ public class ChineseVariant implements IVirus {
 	  * @param p - a person 
 	  * @return if the infection succeeded or not
 	  */
+	 /*
 	 public boolean contage(String s, Person p)
 	 {
 		 // creating all the variants kinds
@@ -98,7 +147,7 @@ public class ChineseVariant implements IVirus {
 			 else return false;
 		 }
 	 }
-	 
+	 */
 	 
 	
 	 /**
@@ -107,6 +156,7 @@ public class ChineseVariant implements IVirus {
 	  * @param p - a person
 	  * @return the probability of the person to get infected in the variant
 	  */
+	 /*
 	 public double calcProbToSick(String s, Person p)
 	 {
 		 // creating all the variant types
@@ -128,7 +178,7 @@ public class ChineseVariant implements IVirus {
 				 return sAfriV.contagionProbability(p);
 			 else return 0;
 	 }
-	
+	*/
 	
 	/**
 	 * return true if the person died from the virus
@@ -161,17 +211,19 @@ public class ChineseVariant implements IVirus {
 	 * 
 	 * @return the value of canContage
 	 */
+	/*
 	public static boolean getCanContage()
 	{
 		return canContage;
 	}
-	
+	*/
 	
 	/**
 	 * 
 	 * @param virus - a variant name
 	 * @param flag - equals true if we want to add the variant to mutations, and false to remove it from mutation.
 	 */
+	/*
 	public static void editMutations(String virus, boolean flag)
 	{
 		if(flag)   // need to add the virus to mutations
@@ -213,12 +265,14 @@ public class ChineseVariant implements IVirus {
 				canContage = false;
 		}
 	}
+	*/
 	
 	/**
 	 * 
 	 * @param virus -  a virus name
 	 * @return true if the virus is in mutations
 	 */
+	/*
 	private static boolean checkVar(String virus)
 	{
 		for(int i = 0; i < mutations.length; ++i)
@@ -226,7 +280,7 @@ public class ChineseVariant implements IVirus {
 				return true;
 		return false;
 	}
-	
+	*/
 	
 	
 	/**
@@ -234,6 +288,7 @@ public class ChineseVariant implements IVirus {
 	 * @return a boolean array that contain true or false according to if this can develop into them
 	 * the array is made by this order: British, Chinese, South-African
 	 */
+	/*
 	public static boolean[] getMutBool()
 	{
 		boolean temp[] = new boolean[3];  // create boolean array
@@ -273,7 +328,7 @@ public class ChineseVariant implements IVirus {
 		}
 		return temp;
 	}
-	
+	*/
 	
 	// data members
 	private static final double dieProb18 = 0.001; // The probability of dying by the age of 18
@@ -283,6 +338,6 @@ public class ChineseVariant implements IVirus {
 	private static final double infectProb55 = 0.5; //  The probability of infection over the age of 18 to 55
 	private static final double infectProbUp55 = 0.7;  // The probability of infection over the age of 55
 	
-	private static String mutations[] = new String[] {"Chinese variant"};  // contains the names of the variant that this can develop into 
-	private static boolean canContage = true;  // keep if this is able to contage ( =if mutation.length != 0)
+	//private static String mutations[] = new String[] {"Chinese variant"};  // contains the names of the variant that this can develop into 
+	//private static boolean canContage = true;  // keep if this is able to contage ( =if mutation.length != 0)
 }

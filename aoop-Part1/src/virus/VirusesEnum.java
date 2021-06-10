@@ -11,7 +11,20 @@ public enum VirusesEnum {
 		m_virus = virus;
 	}
 	
-	
+	public static String getVirusNameByIndex(int index)
+	{
+		switch(index)
+		{
+		case 0:
+			return "BritishVariant";
+		case 1:
+			return "ChineseVariant";
+		case 2: 
+			return "SouthAfrican";
+		default: 
+			return null;
+		}
+	}
 	
 	String m_virus;
 }

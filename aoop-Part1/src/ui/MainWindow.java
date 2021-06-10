@@ -64,6 +64,7 @@ public class MainWindow extends JFrame {
     	    }
     	});
     	this.setVisible(true);
+    	mutationWindow = new EditMutationsWindow();
     }
     
     /**
