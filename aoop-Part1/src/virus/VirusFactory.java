@@ -10,16 +10,19 @@ public class VirusFactory {
 	 */
 	public IVirus getVirus(String virus)
 	{
-		switch(virus)
-		{
-		case 1:
-			return new BritishVariant();
-		case 2:
-			return new ChineseVariant();
-		case 3: 
-			return new SouthAfricanVariant();
-		default: 
-			return null;
+		if(virus!=null) {
+			switch(virus)
+			{
+			case "BritishVariant":
+				return new BritishVariant();
+			case "ChineseVariant":
+				return new ChineseVariant();
+			case "SouthAfrican": 
+				return new SouthAfricanVariant();
+			default: 
+				return null;
+			}
 		}
+		return null;
 	}
 }

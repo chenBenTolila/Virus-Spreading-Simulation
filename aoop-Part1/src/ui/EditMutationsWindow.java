@@ -129,6 +129,8 @@ public class EditMutationsWindow extends JDialog{
 		public void setValueAt(Object aValue, int row, int col) {
 			m_mut[row][col]=((Boolean) aValue); 
 			fireTableCellUpdated(row, col);
+			//VirusFactory vf= new VirusFactory();
+			//vf.getVirus((String)getValueAt(row, col));
 			setMutations(row, col);
 		}
 		@Override
